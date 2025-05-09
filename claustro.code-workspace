@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "./",
+      "name": "project-root"
+    },
+    {
+      "path": "./factory",
+      "name": "factory"
+    },
+    {
+      "path": "./shop",
+      "name": "shop"
+    }
+  ]
+  // you can add other settings here
+}
