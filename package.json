@@ -8,5 +8,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "workspaces": [
+    "partnership/*"
+  ],
+  "dependencies": {
+    "claustro": "file:"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.3"
+  }
 }
