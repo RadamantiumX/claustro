@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo dev"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "turbo": "^2.5.3"
-  }
+  },
+  "packageManager": "pnpm@9.15.1"
 }
