@@ -28,6 +28,16 @@ If run *npx run turbo dev* on the console, the develop executions is enable on b
 
 It's mandatory include the *"packageManager": "pnpm@9.15.1"* on that file.
 
+## Dependencies
+
+The *node_modules* only exists on root folder, but the dependencies can be installed on the current project. We must use the follow command:
+
+```bash
+pnpm i <<dependency-name>> --workspace factory
+```
+
+The **factory** folder is only for this example.
+
 Non custom project
 
 See the next tutorial for more info: https://dusanstam.com/posts/react-express-monorepo
