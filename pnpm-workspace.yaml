@@ -1,0 +1,4 @@
+packages:
+  - "partnership/*"
+  - "partnership/factory/*"
+  - "partnership/shop/*"

@@ -1,5 +1,8 @@
 **/node_modules
-.turbo
+
+**/.turbo
+
+
 .env
 .env-production
 .env-dev
