@@ -8,5 +8,12 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "claustro": "file:"
+  },
+  "packageManager": "pnpm@11.0.0",
+  "devDependencies": {
+    "turbo": "^2.5.3"
+  }
 }
