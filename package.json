@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npx turbo run dev",
+    "build": "npx turbo run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
