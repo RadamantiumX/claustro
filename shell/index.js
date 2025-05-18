@@ -6,47 +6,20 @@ import { packageManager } from './lib/data.lib.js'
 
 
 
-const packageManager = [
-       {
-            name: 'npm',
-            value: 'npm',
-            description: 'Most popular package manager'
-        },
-        {
-            name: 'yarn',
-            value: 'yarn',
-            description: 'Awesome and fastest'
-        },
-        {
-            name: 'pnpm',
-            value: 'pnpm',
-            description: 'Fastest and professional'
-        }
-]
+
 
 
 
 export async function shellInput(){
+   
+  const workspace = await select({
+    message: "Select a package manager",
+    choices: workspaceGroupConfig
+  })
 
    const pkgManagerSelector = await select({
       message: "Select a package manager",
-       choices :[
-       {
-            name: 'npm',
-            value: 'npm',
-            description: 'Most popular package manager'
-        },
-        {
-            name: 'yarn',
-            value: 'yarn',
-            description: 'Awesome and fastest'
-        },
-        {
-            name: 'pnpm',
-            value: 'pnpm',
-            description: 'Fastest and professional'
-        }
-     ]
+       choices : packageManager
    })
 
    const packageSelected = await input({
