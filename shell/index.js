@@ -3,7 +3,7 @@ import { select, input, confirm } from "@inquirer/prompts"
 import { exec } from 'child_process'
 import { workspaceGroupConfig } from './config/workspaces.config.js'
 import { packageManager } from './config/data.config.js'
-
+import { commandExe } from './process/command-exe.process.js'
 
 
 
@@ -31,20 +31,8 @@ export async function shellInput(){
     console.log(colors.bgMagenta('Installation cancelled...'))
   }
     console.log(colors.bgBlue('Intalling...'))
-    exec(`${pkgManagerSelector} add ${packageSelected}`, (error, stdout, stderr)=>{
-        
-            if(error){
-                console.error(`Error ${error.message}`)
-                console.log(colors.bgRed('The package name is incorrect...'))
-                return
-            }
-            if(stderr){
-                console.error(`stderr: ${stderr}`)
-                return
-            }
-            console.log(stdout)
-            console.log(colors.bgGreen('🚀 Succcess!'))
-        })
+
+  commandExe(workspace, packageManager, packageSelected)   
   
  console.log(colors.bgBlue('Done!'))
   return

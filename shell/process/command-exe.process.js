@@ -1,8 +1,10 @@
 import { exec } from 'child_process'
+import { sentenceMaker } from '../helper/sentence-maker.helper'
 
-export function commandExe(pkgManager, pkgSelected) {
+export function commandExe(folderSelected,pkgManager, pkgSelected) {
     try{
-        exec(`${pkgManager} add ${pkgSelected}`, (error, stdout, stderr)=>{
+        const flagSentence = sentenceMaker(folderSelected)
+        exec(`${pkgManager} add ${pkgSelected} ${flagSentence}`, (error, stdout, stderr)=>{
             
                 if(error){
                     console.error(`Error ${error.message}`)
