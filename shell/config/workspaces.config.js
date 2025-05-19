@@ -8,6 +8,7 @@ export const workspaceGroupConfig = [
             name: 'shop',
             value: 'shop',
             description: 'Client'
+            
         },
         {
             name: 'root',
