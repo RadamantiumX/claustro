@@ -2,10 +2,10 @@ import { exec } from 'child_process'
 import { sentenceMaker } from '../helper/sentence-maker.helper.js'
 import colors from 'ansi-colors'
 
-export function commandExe(folderSelected,pkgManager, pkgSelected) {
+export function commandExe(folderSelected,pkgManager, pkgSelected, type) {
     try{
         const flagSentence = sentenceMaker(folderSelected)
-        exec(`${pkgManager} add ${pkgSelected} ${flagSentence}`, (error, stdout, stderr)=>{
+        exec(`${pkgManager} add ${type ? '-D' : ''} ${pkgSelected} ${flagSentence}`, (error, stdout, stderr)=>{
             
                 if(error){
                     console.error(`Error ${error.message}`)

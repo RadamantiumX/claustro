@@ -23,17 +23,20 @@ export async function shellInput(){
    const packageSelected = await input({
       message: 'Enter the name of the package'
    })
-
+  const confirmType = await confirm({
+     message: "It's a DEV dependency?"
+  })
   const confirmExec = await confirm({
     message: 'Want continue with the process?'
   }) 
 
   if(!confirmExec){
     console.log(colors.bgMagenta('Installation cancelled...'))
+    return
   }
     console.log(colors.bgBlue('Intalling...'))
 
-  commandExe(workspace, pkgManagerSelector, packageSelected)
+  commandExe(workspace, pkgManagerSelector, packageSelected, confirmType)
   
  
   return
