@@ -8,7 +8,7 @@
     "dev": "npx turbo run dev",
     "build": "npx turbo run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ws-handle": "node shell/index.js"
+    "ws-pkg": "node shell/index.js"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,7 @@ import colors from 'ansi-colors'
 import { select, input, confirm } from "@inquirer/prompts"
 import { exec } from 'child_process'
 import { workspaceGroupConfig } from './config/workspaces.config.js'
-import { packageManager } from './lib/data.lib.js'
+import { packageManager } from './config/data.config.js'
 
 
 
