@@ -1,13 +1,14 @@
 import colors from 'ansi-colors'
 import { select, input, confirm } from "@inquirer/prompts"
-import { exec } from 'child_process'
 import { workspaceGroupConfig } from './config/workspaces.config.js'
 import { packageManager } from './config/data.config.js'
 import { commandExe } from './process/command-exe.process.js'
+import { SIGN_NAME } from './ASCII/console.avatar.js'
 
 
 
 export async function shellInput(){
+  console.log(colors.magenta(SIGN_NAME))
   try{
   const workspace = await select({
     message: "Select a package manager",
@@ -32,9 +33,9 @@ export async function shellInput(){
   }
     console.log(colors.bgBlue('Intalling...'))
 
-  commandExe(workspace, packageManager, packageSelected)   
+  commandExe(workspace, pkgManagerSelector, packageSelected)
   
- console.log(colors.bgBlue('Done!'))
+ 
   return
 }catch(error){
   if(error.toString().startsWith('ExitPromptError')){

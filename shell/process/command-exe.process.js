@@ -1,5 +1,6 @@
 import { exec } from 'child_process'
-import { sentenceMaker } from '../helper/sentence-maker.helper'
+import { sentenceMaker } from '../helper/sentence-maker.helper.js'
+import colors from 'ansi-colors'
 
 export function commandExe(folderSelected,pkgManager, pkgSelected) {
     try{
