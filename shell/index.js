@@ -3,13 +3,21 @@ import { select, input, confirm } from "@inquirer/prompts"
 import { workspaceGroupConfig } from './config/workspaces.config.js'
 import { packageManager } from './config/data.config.js'
 import { commandExe } from './process/command-exe.process.js'
-import { SIGN_NAME } from './ASCII/console.avatar.js'
+import { SIGN_NAME } from './ASCII/console.avatar.js' // ASCII Sign Dev Name: Radamantium
 
 
-
+/**
+ * Executable script: "pnpm run ws-pkg"
+ * Install dependencies packages with short node-command into any workspace folder of choice
+ * @returns {void}
+ */
 export async function shellInput(){
+
+  
   console.log(colors.magenta(SIGN_NAME))
   try{
+  
+  // inquirer/promps   
   const workspace = await select({
     message: "Select a package manager",
     choices: workspaceGroupConfig
@@ -36,6 +44,7 @@ export async function shellInput(){
   }
     console.log(colors.bgBlue('Intalling...'))
 
+  // Child process Executable  
   commandExe(workspace, pkgManagerSelector, packageSelected, confirmType)
   
  
