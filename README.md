@@ -41,3 +41,12 @@ The **factory** folder is only for this example.
 Non custom project
 
 See the next tutorial for more info: https://dusanstam.com/posts/react-express-monorepo
+
+
+## PACKAGE INSTALLATION MANAGER
+
+USe the follow command to install any dependency:
+
+```bash
+pnpm run ws-pkg
+```

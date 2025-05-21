@@ -17,25 +17,25 @@ export async function shellInput(){
   console.log(colors.magenta(SIGN_NAME))
   try{
   
-  // inquirer/promps   
-  const workspace = await select({
-    message: "Select a package manager",
+  // inquirer/prompts   
+  const workspace = await select({ // All exists Workspace folders on the projects
+    message: "Select a workspace folder 📁",
     choices: workspaceGroupConfig
   })
 
-   const pkgManagerSelector = await select({
-      message: "Select a package manager",
+   const pkgManagerSelector = await select({ // 
+      message: "Select a package manager 🚀",
        choices : packageManager
    })
 
    const packageSelected = await input({
-      message: 'Enter the name of the package'
+      message: 'Enter the name of the package 📦'
    })
   const confirmType = await confirm({
-     message: "It's a DEV dependency?"
+     message: "It's a DEV dependency? 🤔"
   })
   const confirmExec = await confirm({
-    message: 'Want continue with the process?'
+    message: 'Want continue with the process? 🤔'
   }) 
 
   if(!confirmExec){
