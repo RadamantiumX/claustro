@@ -13,9 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "claustro": "file:"
-  },
   "packageManager": "pnpm@11.0.0",
   "devDependencies": {
     "@inquirer/prompts": "^7.5.1",
