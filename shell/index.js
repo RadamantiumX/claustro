@@ -42,7 +42,7 @@ export async function shellInput(){
     console.log(colors.bgMagenta('Installation cancelled...'))
     return
   }
-    console.log(colors.bgBlue('Intalling...'))
+    console.log(colors.bgBlue('Installing...'))
 
   // Child process Executable  
   commandExe(workspace, pkgManagerSelector, packageSelected, confirmType)
