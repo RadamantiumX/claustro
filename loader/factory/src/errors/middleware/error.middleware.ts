@@ -1,10 +1,15 @@
 import { Request, Response, NextFunction } from 'express'
-import AppError  from '../appErrors'
+import { JWTFactoryErrors } from '../JWTfactoryErrors'
+
 
 export const errorMiddleware = (error:any, req:Request, res:Response, next:NextFunction) => {
    try{
-
-   }catch{
-       throw new AppError('Unspected Error', 500, 'Something went wrong!', false)
+    const errorFactory = new JWTFactoryErrors()
+    const JWTmessage = errorFactory.create(error)
+    res.status(401).json({ errorName: JWTmessage.name, message: JWTmessage.message })
+    return
+   }catch(error){
+       console.error(error)
+       return
    }
 }

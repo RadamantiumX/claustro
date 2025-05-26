@@ -2,7 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
-import { AppError } from './errors/appErrors'
+import AppError  from './errors/appErrors'
+import { errorMiddleware } from './errors/middleware/error.middleware'
 
 dotenv.config()
 
@@ -27,7 +28,7 @@ app.all('*', (req, res, next) => {
   )
   next(error)
 })
-
+app.use(errorMiddleware)
 app.listen(PORT, ()=>{
     console.log(`Server is online: http://localhost:${PORT}`)
 })
