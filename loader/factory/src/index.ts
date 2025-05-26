@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
-import { AppError } from './errors/app.errors'
+import { AppError } from './errors/appErrors'
 
 dotenv.config()
 
