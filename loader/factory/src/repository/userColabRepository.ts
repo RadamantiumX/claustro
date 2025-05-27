@@ -1,0 +1,5 @@
+class UserColabRepository{
+    async getUnique(){
+       
+    }
+}
