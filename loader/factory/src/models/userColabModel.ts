@@ -1,0 +1,5 @@
+class UserColabModel{
+    async getUserColab(){
+
+    }
+}
