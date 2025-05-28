@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { JWTFactoryErrors } from '../JWTfactoryErrors'
+import { JWTFactoryErrors } from '../JWTFactoryErrors'
 
 
 export const errorMiddleware = (error:any, req:Request, res:Response, next:NextFunction) => {
