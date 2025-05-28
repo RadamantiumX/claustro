@@ -1,5 +1,7 @@
 import { prisma } from "../config/prismaClient";
-import { UserColab } from "factory";
+import { UserColab, UserColabClientResponse } from "factory";
+import { timeStampParsed } from "../helper/timeStampParser";
+import bcrypt from 'bcryptjs'
 
 export class UserColabRepository{
     async getUnique(username:Pick<UserColab, "username">):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin">>{
@@ -12,19 +14,44 @@ export class UserColabRepository{
        
     }
 
-    async updateTimestampSignIn(){
-        
+    async updateTimestampSignIn(username:Pick<UserColab, "username">):Promise<void>{
+        const lastSignIn = timeStampParsed()
+        await prisma.userColab.update({
+            where: { username: username },
+            data: { lastSignIn: lastSignIn }
+        })
+        return
     }
-    async createUserColab(){
-
+    async createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{
+        await prisma.userColab.create({
+            data:{
+                username: payload.username,
+                password: bcrypt.hashSync(payload.password, 10),
+                isSuperAdmin: payload.isSuperAdmin
+            }
+        })
+        return
     }
 
-    async getUsersColab(){
+    async getUsersColab(): Promise<UserColabClientResponse>{
+         const [users, totalUsers] =  await prisma.$transaction([
+      prisma.userColab.findMany({
+        omit: { password: true },
+        orderBy: { createdAt: 'desc' }
+      }), // Password excluding from the response
+      prisma.userColab.count()
+    ])
 
+    return { users, totalUsers }
     }
 
-    async getUserColab(){
+    async getUserColab(id: Pick<UserColab, 'id'>):Promise<Omit<UserColab, 'password'> | null>{
+         const userColab = await prisma.userColab.findFirst({
+      where: { id: id },
+      omit: { password: true }
+    })
 
+    return userColab
     }
 
     async updateUserColab(){

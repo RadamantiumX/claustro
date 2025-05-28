@@ -15,3 +15,8 @@ export interface UserColab {
   updatedAt: Date | null
   isSuperAdmin: boolean
 }
+
+export type UserColabClientResponse = {
+  users: Omit<UserColab, 'password'>[]
+  totalUsers: number
+}
