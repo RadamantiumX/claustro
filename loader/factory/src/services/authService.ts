@@ -1,5 +1,7 @@
+import { IuserColabRepository } from "factory";
 export class AuthService{
-    constructor(userColabRepository){
-
+    userColabRepository: IuserColabRepository;
+    constructor(userColabRepository:IuserColabRepository){
+        this.userColabRepository = userColabRepository
     }
 }

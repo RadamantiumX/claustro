@@ -54,10 +54,21 @@ export class UserColabRepository{
     return userColab
     }
 
-    async updateUserColab(){
+    async updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>): Promise<void>{
+       await prisma.userColab.update({
+      where: { id: payload.id },
+      data: {
+        username: payload.username,
+        password: bcrypt.hashSync(payload.password, 10),
+        isSuperAdmin: payload.isSuperAdmin,
+        updatedAt: timeStampParsed()
+      }
+    })
 
+    return
     }
-    async destroyUserColab(){
-
+    async destroyUserColab(id: Pick<UserColab, 'id'>):Promise<void>{
+     await prisma.userColab.delete({ where: { id: id } })
+     return
     }
 }
