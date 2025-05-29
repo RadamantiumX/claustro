@@ -22,8 +22,19 @@ export class UserColabRepository{
         })
         return
     }
-    async createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{
+    async createUserColab(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>{
         await prisma.userColab.create({
+            data:{
+                username: payload.username,
+                password: bcrypt.hashSync(payload.password, 10),
+                
+            }
+        })
+        return
+    }
+
+    async createSuperAdmin(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{
+      await prisma.userColab.create({
             data:{
                 username: payload.username,
                 password: bcrypt.hashSync(payload.password, 10),
