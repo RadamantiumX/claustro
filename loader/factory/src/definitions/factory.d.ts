@@ -161,3 +161,15 @@ export interface IuserColabRepository {
     updateUserColab(payload: Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>): Promise<void>;
     destroyUserColab(id: Pick<UserColab, 'id'>): Promise<void>;
 }
+
+export interface Auth{
+  login: (bodyReq: Pick<UserColab, "username" | "password">) => Promise<{
+        authData: {
+            id: string;
+            username: string;
+            isSuperAdmin: boolean;
+        };
+        accessToken: string;
+    }>;
+    verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin">>;
+}

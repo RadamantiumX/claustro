@@ -1,17 +1,17 @@
 import { IuserColabRepository } from "factory";
-import { UserColab } from "factory";
+import { UserColab, Auth } from "factory";
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
-import { JWTtokenSign } from "../helper/jwtFunctions";
+import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";
 
 
 
 // Dependency Injection + Singleton PATTERN
 export class AuthService{
-    private static instance: AuthService;
+    private static instance: AuthService; // Only for instance
     userColabRepository: IuserColabRepository;
-    auth
+    auth:Auth
     private constructor(userColabRepository:IuserColabRepository){
         this.userColabRepository = userColabRepository
         this.auth = {
@@ -56,8 +56,10 @@ export class AuthService{
             accessToken: accessToken
         }
       },
-      verifyCredentials: async () => {
-
+      verifyCredentials: async (authHeader:string) => {
+        const { username } = JWTverifyAndDecode(authHeader)
+        const checkUser = await this.userColabRepository.getUnique({username})
+        return checkUser
       }
   }
     }
