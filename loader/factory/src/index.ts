@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
 import AppError  from './errors/appErrors'
-import { errorMiddleware } from './errors/middleware/error.middleware'
+import { errorMiddleware } from './errors/middleware/errorMiddleware'
 
 dotenv.config()
 

@@ -2,7 +2,9 @@ import { IuserColabRepository } from "factory";
 import { UserColab } from "factory";
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
+import { JWTtokenSign } from "../helper/jwtFunctions";
 
+// Dependency Injection
 export class AuthService{
     userColabRepository: IuserColabRepository;
     constructor(userColabRepository:IuserColabRepository){
@@ -35,13 +37,23 @@ export class AuthService{
         await this.userColabRepository.updateTimestampSignIn({
             username: bodyReq.username
         })
-
+         const accessToken = JWTtokenSign({
+            id: verifyUser.id,
+            username: verifyUser.username,
+            isSuperAdmin: verifyUser.isSuperAdmin,
+            expiresIn: '1h'
+         })
         return {
             authData: {
                 id: verifyUser?.id,
                 username: verifyUser.username,
                 isSuperAdmin: verifyUser.isSuperAdmin
-            }
+            },
+            accessToken: accessToken
         }
     }
+
+   async verifyCredentials(){
+      
+  }
 }
