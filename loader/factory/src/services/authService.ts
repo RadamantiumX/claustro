@@ -3,16 +3,20 @@ import { UserColab } from "factory";
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
 import { JWTtokenSign } from "../helper/jwtFunctions";
+import { UserColabRepository } from "../repository/userColabRepository";
 
-// Dependency Injection
+
+
+// Dependency Injection + Singleton PATTERN
 export class AuthService{
+    private static instance: AuthService;
     userColabRepository: IuserColabRepository;
-    constructor(userColabRepository:IuserColabRepository){
+    auth
+    private constructor(userColabRepository:IuserColabRepository){
         this.userColabRepository = userColabRepository
-    }
-
-    async login(bodyReq: Pick<UserColab, 'username' | 'password'>){
-        const verifyUser = await this.userColabRepository.getUnique({username: bodyReq.username})
+        this.auth = {
+             login: async (bodyReq: Pick<UserColab, 'username' | 'password'>) => {
+            const verifyUser = await this.userColabRepository.getUnique({username: bodyReq.username})
         if(!verifyUser){
            throw new AppError(
             'Unauthorized',
@@ -51,9 +55,19 @@ export class AuthService{
             },
             accessToken: accessToken
         }
+      },
+      verifyCredentials: async () => {
+
+      }
+  }
     }
 
-   async verifyCredentials(){
-      
-  }
+   static getInstance (){
+       if(!AuthService.instance){
+           AuthService.instance = new AuthService(new UserColabRepository)
+           console.log('Service Auth ONLINE')
+       }
+       return AuthService.instance
+   }
+
 }
