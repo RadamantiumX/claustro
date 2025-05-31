@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { JWTFactoryErrors } from '../jwtFactoryErrors'
 
-export const errorMiddleware = (error:any, req:Request, res:Response, next:NextFunction) => {
+export const jwtErrorMiddleware = (error:any, req:Request, res:Response, next:NextFunction) => {
    try{
     const errorFactory = new JWTFactoryErrors()
     const JWTmessage = errorFactory.create(error)
