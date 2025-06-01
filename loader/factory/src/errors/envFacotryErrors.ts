@@ -36,7 +36,7 @@ class TrpcErrors extends envCustomErrors{
 export class EnvFactoryErrors{
     create(error:any){
         if(error instanceof PrismaClientKnownRequestError){
-
+             // Do something
         }
     }
 }
