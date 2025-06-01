@@ -1,4 +1,5 @@
 import { HttpCode } from "errors"
+import { Prisma } from "@prisma/client"
 
 class envCustomErrors extends Error{
     public code:HttpCode
@@ -18,8 +19,24 @@ class PrismaErrors extends envCustomErrors{
     
 }
 
-export class EnvFactoryErrors{
-    create(){
+class ZodErrors extends envCustomErrors{
+    constructor( issues:any,code:HttpCode){
+         super(`Zod Error - Validation fail: ${issues.message}`)
+         this.code = code
+    }
+}
 
+class TrpcErrors extends envCustomErrors{
+    constructor(message:string, code:HttpCode){
+       super(`TRPC Error: ${message}`)
+       this.code = code
+    }
+}
+
+export class EnvFactoryErrors{
+    create(error:any){
+        if(error instanceof Prisma.PrismaClientKnownRequestError){
+
+        }
     }
 }
