@@ -1,5 +1,7 @@
 import { HttpCode } from "errors"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
+import z from 'zod'
+import { TRPCError } from "@trpc/server/dist"
 
 class envCustomErrors extends Error{
     public code:HttpCode
@@ -34,9 +36,16 @@ class TrpcErrors extends envCustomErrors{
 }
 
 export class EnvFactoryErrors{
-    create(error:any){
+    create(error:any, code:HttpCode){
         if(error instanceof PrismaClientKnownRequestError){
-             // Do something
+             return new PrismaErrors(error.meta, code)
         }
+        if(error instanceof z.ZodError){
+            return new ZodErrors(error.issues, code)
+        }
+        if(error instanceof TRPCError){
+            return new TrpcErrors(error.message, code)
+        }
+        throw new Error(error)
     }
 }
