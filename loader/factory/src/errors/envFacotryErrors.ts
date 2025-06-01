@@ -1,5 +1,5 @@
 import { HttpCode } from "errors"
-import { Prisma } from "@prisma/client"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 
 class envCustomErrors extends Error{
     public code:HttpCode
@@ -35,7 +35,7 @@ class TrpcErrors extends envCustomErrors{
 
 export class EnvFactoryErrors{
     create(error:any){
-        if(error instanceof Prisma.PrismaClientKnownRequestError){
+        if(error instanceof PrismaClientKnownRequestError){
 
         }
     }
