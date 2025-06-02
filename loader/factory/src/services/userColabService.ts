@@ -1,4 +1,5 @@
 import { IuserColabRepository, UserColab, UserColabClientResponse } from "factory"
+import { UserColabRepository } from "../repository/userColabRepository"
 
 export class UserColabService {
     private static instance:UserColabService
@@ -26,7 +27,19 @@ export class UserColabService {
             update: async (payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>):Promise<void> =>{
                await this.userColabRepository.updateUserColab(payload)
                return
+            },
+            delete: async(id: Pick<UserColab, 'id'>):Promise<void>=>{
+               await this.userColabRepository.destroyUserColab(id)
+               return
             }
          }
     }
+
+    static getInstance (){
+           if(!UserColabService.instance){
+               UserColabService.instance = new UserColabService(new UserColabRepository)
+               console.log('Service Auth ONLINE')
+           }
+           return UserColabService.instance
+       }
 }
