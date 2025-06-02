@@ -38,7 +38,7 @@ export class UserColabService {
     static getInstance (){
            if(!UserColabService.instance){
                UserColabService.instance = new UserColabService(new UserColabRepository)
-               console.log('Service Auth ONLINE')
+               console.log('Service userColab ONLINE')
            }
            return UserColabService.instance
        }

@@ -10,7 +10,7 @@ export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptio
     // JWT to improve
    const token:any = req.headers.authorization 
    try{
-    const authServiceInstance = AuthService.getInstance()
+    const authServiceInstance = AuthService.getInstance() // Access to intance
     const verifyUser = authServiceInstance.auth.verifyCredentials(token)
     if(!verifyUser){
         throw new TRPCError({
