@@ -1,12 +1,12 @@
 import {  initTRPC, TRPCError } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { AuthService } from '../services/authService'
-import {NextFunction} from 'express'
+
 
 
 
 // see the documentation
-export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptions, next:NextFunction) =>{
+export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
     // JWT to improve
    const token:any = req.headers.authorization 
    try{
@@ -24,3 +24,5 @@ export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptio
     console.error(error)
    }
 }
+type Context = Awaited<ReturnType< typeof createContext >> | any // Temporary solving
+export const trpc = initTRPC.context<Context>().create()
