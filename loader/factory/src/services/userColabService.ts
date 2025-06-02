@@ -1,4 +1,4 @@
-import { IuserColabRepository, UserColab } from "factory"
+import { IuserColabRepository, UserColab, UserColabClientResponse } from "factory"
 
 export class UserColabService {
     private static instance:UserColabService
@@ -7,9 +7,25 @@ export class UserColabService {
     private constructor(userColabRepository:IuserColabRepository){
          this.userColabRepository = userColabRepository
          this.userData = {
-            create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => {
+            list:async ():Promise<UserColabClientResponse>=>{
+                const allUsers = await this.userColabRepository.getUsersColab()
+                return allUsers
+            },
+            create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >):Promise<void> => {
                   const verifyUnique = await this.userColabRepository.getUnique({username:bodyReq.username})
-                  
+                  if(!verifyUnique){
+                    throw new Error()
+                  }
+                  await this.userColabRepository.createUserColab(bodyReq)
+                  return
+            },
+            select: async (id:Pick<UserColab, "id">)=>{
+                  const user = await this.userColabRepository.getUserColab(id)
+                  return user
+            },
+            update: async (payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>):Promise<void> =>{
+               await this.userColabRepository.updateUserColab(payload)
+               return
             }
          }
     }
