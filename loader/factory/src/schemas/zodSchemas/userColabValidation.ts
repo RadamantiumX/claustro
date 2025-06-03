@@ -1,8 +1,10 @@
 import z from 'zod'
 import { UserColab } from 'factory'
 
-const userSchema = z
+export const userSchema = z
   .object({
+    id: z.string(),
+    lastSignIn: z.string(),
     username: z
       .string({
         required_error: 'The nickname is riquired'

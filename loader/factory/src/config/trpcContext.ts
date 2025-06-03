@@ -19,7 +19,7 @@ export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptio
         })
     }
 
-    return verifyUser
+    return { user: verifyUser }
    }catch(error){
     console.error(error)
    }
