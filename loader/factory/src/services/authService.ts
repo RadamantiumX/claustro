@@ -1,5 +1,5 @@
 import { IuserColabRepository } from "factory";
-import { UserColab, Auth } from "factory";
+import { UserColab, AuthMethods } from "factory";
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
@@ -11,7 +11,7 @@ import { UserColabRepository } from "../repository/userColabRepository";
 export class AuthService{
     private static instance: AuthService; // Only for instance
     userColabRepository: IuserColabRepository;
-    auth:Auth
+    auth:AuthMethods
     private constructor(userColabRepository:IuserColabRepository){
         this.userColabRepository = userColabRepository
         this.auth = {
@@ -55,6 +55,20 @@ export class AuthService{
             },
             accessToken: accessToken
         }
+      },
+      register: async (bodyReq:Pick<UserColab, "username" | "password">) => {
+        const verifyUser = await this.userColabRepository.getUnique({username: bodyReq.username})
+        if(verifyUser){
+           throw new AppError(
+            'Bad Request',
+            400,
+            'Provide a different username',
+            false
+           )
+          
+        }
+         await this.userColabRepository.createSuperAdmin(bodyReq)
+         return
       },
       verifyCredentials: async (authHeader:string) => {
         const { username } = JWTverifyAndDecode(authHeader)

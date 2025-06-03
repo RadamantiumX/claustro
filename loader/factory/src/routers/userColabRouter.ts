@@ -12,7 +12,7 @@ export const userColabRouter = trpc.router({
     }),
     create: trpc.procedure.input(userSchema.omit({ id:true, lastSignIn:true }))
      .mutation(({input})=>{
-         return userColabServiceInstance.userData.create(input)
+         return userColabServiceInstance.userData.create({input})
      }),
      delete: trpc.procedure.input(userSchema.pick({ id:true }))
        .mutation(({input})=>{

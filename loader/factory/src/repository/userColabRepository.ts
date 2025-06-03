@@ -33,12 +33,12 @@ export class UserColabRepository{
         return
     }
 
-    async createSuperAdmin(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{
+    async createSuperAdmin(payload: Pick<UserColab, 'username' | 'password' >):Promise<void>{
       await prisma.userColab.create({
             data:{
                 username: payload.username,
                 password: bcrypt.hashSync(payload.password, 10),
-                isSuperAdmin: payload.isSuperAdmin
+                isSuperAdmin: true
             }
         })
         return

@@ -155,14 +155,14 @@ export interface IuserColabRepository {
     getUnique(username: Pick<UserColab, "username">): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin">>;
     updateTimestampSignIn(username: Pick<UserColab, "username">): Promise<void>;
     createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>;
-    createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'|'isSuperAdmin'>):Promise<void>;
+    createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;
     getUsersColab(): Promise<UserColabClientResponse>;
     getUserColab(id: Pick<UserColab, 'id'>): Promise<Omit<UserColab, 'password'> | null>;
     updateUserColab(payload: Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>): Promise<void>;
     destroyUserColab(id: Pick<UserColab, 'id'>): Promise<void>;
 }
 
-export interface Auth{
+export interface AuthMethods{
   login: (bodyReq: Pick<UserColab, "username" | "password">) => Promise<{
         authData: {
             id: string;
@@ -171,5 +171,14 @@ export interface Auth{
         };
         accessToken: string;
     }>;
+    register: (bodyReq:Pick<UserColab, "username" | "password">)=> Promise<void>;
     verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin">>;
+}
+
+export interface UserColabMethods{
+  list: () => Promise<UserColabClientResponse>;
+  create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
+  select: (id:Pick<UserColab, "id">) => Promise<> ;
+  update: (payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>)=>Promise<void>;
+  delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
 }

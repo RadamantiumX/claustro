@@ -1,10 +1,10 @@
-import { IuserColabRepository, UserColab, UserColabClientResponse } from "factory"
+import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "factory"
 import { UserColabRepository } from "../repository/userColabRepository"
 
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
-    userData:any
+    userData:UserColabMethods
     private constructor(userColabRepository:IuserColabRepository){
          this.userColabRepository = userColabRepository
          this.userData = {
