@@ -1,6 +1,8 @@
 import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "factory"
 import { UserColabRepository } from "../repository/userColabRepository"
 
+
+
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
@@ -24,7 +26,7 @@ export class UserColabService {
                   const user = await this.userColabRepository.getUserColab(id)
                   return user
             },
-            update: async (payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>):Promise<void> =>{
+            update: async (payload:Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin">):Promise<void> =>{
                await this.userColabRepository.updateUserColab(payload)
                return
             },

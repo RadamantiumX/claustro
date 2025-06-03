@@ -1,6 +1,7 @@
 import { trpc } from "../config/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
+import { UserColab } from "factory";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
@@ -12,7 +13,7 @@ export const userColabRouter = trpc.router({
     }),
     create: trpc.procedure.input(userSchema.omit({ id:true, lastSignIn:true }))
      .mutation(({input})=>{
-         return userColabServiceInstance.userData.create({input})
+         return userColabServiceInstance.userData.create(input)
      }),
      delete: trpc.procedure.input(userSchema.pick({ id:true }))
        .mutation(({input})=>{

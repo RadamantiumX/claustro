@@ -17,7 +17,7 @@ export const userSchema = z
         required_error: 'The password is riquered'
       })
       .min(8, { message: 'The password must be at 8 characters minimum' }),
-    isSuperAdmin: z.boolean().nullable()
+    isSuperAdmin: z.boolean()
   })
   .required()
 

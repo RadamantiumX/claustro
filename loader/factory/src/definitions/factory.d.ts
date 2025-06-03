@@ -175,10 +175,17 @@ export interface AuthMethods{
     verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin">>;
 }
 
+export interface trpcPayload {
+    id: string,
+    username: string,
+    password: string,
+    isSuperAdmin: boolean | null
+}
+
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
   select: (id:Pick<UserColab, "id">) => Promise<> ;
-  update: (payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>)=>Promise<void>;
+  update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
   delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
 }
