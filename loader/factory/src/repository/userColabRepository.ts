@@ -4,7 +4,7 @@ import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 
 export class UserColabRepository{
-    async getUnique(username:Pick<UserColab, "username">):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin">>{
+    async getUnique({username}:Pick<UserColab, "username">):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
        const unique = await prisma.userColab.findUnique({
          where:{ username: username },
          select: { id: true, username: true, password: true, isSuperAdmin: true }
@@ -14,7 +14,7 @@ export class UserColabRepository{
        
     }
 
-    async updateTimestampSignIn(username:Pick<UserColab, "username">):Promise<void>{
+    async updateTimestampSignIn({username}:Pick<UserColab, "username">):Promise<void>{
         const lastSignIn = timeStampParsed()
         await prisma.userColab.update({
             where: { username: username },
@@ -56,7 +56,7 @@ export class UserColabRepository{
     return { users, totalUsers }
     }
 
-    async getUserColab(id: Pick<UserColab, 'id'>):Promise<Omit<UserColab, 'password'> | null>{
+    async getUserColab({id}: Pick<UserColab, 'id'>):Promise<Omit<UserColab, 'password'> | null>{
          const userColab = await prisma.userColab.findFirst({
       where: { id: id },
       omit: { password: true }
@@ -78,7 +78,7 @@ export class UserColabRepository{
 
     return
     }
-    async destroyUserColab(id: Pick<UserColab, 'id'>):Promise<void>{
+    async destroyUserColab({id}: Pick<UserColab, 'id'>):Promise<void>{
      await prisma.userColab.delete({ where: { id: id } })
      return
     }

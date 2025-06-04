@@ -38,10 +38,14 @@ export class UserColabService {
     }
 
     static getInstance (){
-           if(!UserColabService.instance){
+          
+               if(!UserColabService.instance){
                UserColabService.instance = new UserColabService(new UserColabRepository)
                console.log('Service userColab ONLINE')
+               
            }
            return UserColabService.instance
+         
+           
        }
 }

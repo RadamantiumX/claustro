@@ -14,3 +14,14 @@ export const jwtErrorMiddleware = (error:any, req:Request, res:Response, next:Ne
    }
 }
 
+export const typeScriptError = (error:any, req:Request, res:Response, next:NextFunction) => {
+  try{
+    if (error instanceof TypeError){
+        console.log('The error is here: ', error)
+    }
+   console.log('Ho no', error )
+ }catch(error){
+   console.error(error)
+  }
+}
+

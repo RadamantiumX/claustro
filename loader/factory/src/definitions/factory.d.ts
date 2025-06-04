@@ -152,7 +152,7 @@ export interface RateLimiterRule {
 
 
 export interface IuserColabRepository {
-    getUnique(username: Pick<UserColab, "username">): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin">>;
+    getUnique(username: Pick<UserColab, "username">): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
     updateTimestampSignIn(username: Pick<UserColab, "username">): Promise<void>;
     createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>;
     createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;
@@ -172,7 +172,7 @@ export interface AuthMethods{
         accessToken: string;
     }>;
     register: (bodyReq:Pick<UserColab, "username" | "password">)=> Promise<void>;
-    verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin">>;
+    verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null>;
 }
 
 export interface trpcPayload {

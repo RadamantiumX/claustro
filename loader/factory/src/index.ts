@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
 import AppError  from './errors/appErrors'
-import { jwtErrorMiddleware } from './errors/middleware/errorMiddleware'
+import { jwtErrorMiddleware, typeScriptError } from './errors/middleware/errorMiddleware'
 import { createContext } from './config/trpcContext'
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
@@ -14,7 +14,7 @@ dotenv.config()
 const app:Application = express()
 
 const PORT = 3000
-
+app.use(typeScriptError)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -44,6 +44,7 @@ app.all('*', (req, res, next) => {
   next(error)
 })
 app.use(jwtErrorMiddleware)
+
 app.listen(PORT, ()=>{
     console.log(`Server is online: http://localhost:${PORT}`)
 })
