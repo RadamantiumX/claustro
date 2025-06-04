@@ -14,7 +14,7 @@ dotenv.config()
 const app:Application = express()
 
 const PORT = 3000
-app.use(typeScriptError)
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -30,11 +30,10 @@ app.use(
     router: appRouter,
     createContext: createContext
   })
-
 )
-
+app.use(typeScriptError)
 // Custom ERROR HANDLE
-app.all('*', (req, res, next) => {
+/*app.all('*', (req, res, next) => {
   const error = new AppError(
     'Resource not found',
     404,
@@ -42,7 +41,7 @@ app.all('*', (req, res, next) => {
     false
   )
   next(error)
-})
+})*/
 app.use(jwtErrorMiddleware)
 
 app.listen(PORT, ()=>{

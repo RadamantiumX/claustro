@@ -5,11 +5,23 @@
       "dependsOn": ["^build"],
       "outputs": [
         "dist/**"
-      ]
+      ],
+      "env": ["DATABASE_URL"]
     },
 
     "dev": {
       "cache": false
-    }
+    },
+    "db:generate": {
+    "cache": false
+  },
+  "db:migrate": {
+    "cache": false,
+    "persistent": true
+  },
+  "db:deploy": {
+    "cache": false
   }
+  }
+  
 }
