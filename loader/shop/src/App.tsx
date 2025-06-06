@@ -9,23 +9,20 @@ import type { AppRouter } from '../../factory/src/routers'
 
 function App() {
  const queryClient = getQueryClient()
- const [trpcClient] = useState(()=>{
-    createTRPCClient<AppRouter>({
+ const [trpcClient] = useState(()=> createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
           url: 'http://localhost:3000/trpc'
         }),
-      ]
-    })
- })
+      ],
+    }),
+ )
 
   return (
     <>
      <QueryClientProvider client={queryClient}>
-        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-          <div className="">
-            Now is TRPC + REACTQUERY
-          </div>
+        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient} children={undefined}>
+          {/* App Mode */}
         </TRPCProvider>
      </QueryClientProvider>
     </>
