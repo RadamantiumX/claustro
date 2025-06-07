@@ -1,4 +1,4 @@
-import './App.css'
+
 import {  QueryClientProvider } from '@tanstack/react-query'
 import { createTRPCClient, httpBatchLink } from '@trpc/client'
 import { useState } from 'react'
