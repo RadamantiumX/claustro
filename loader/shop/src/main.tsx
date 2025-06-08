@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Providers } from './shared/Providers'
 import { App } from './core/App'
 
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Providers>
