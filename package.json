@@ -5,10 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx turbo run dev",
+    "dev": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ws-pkg": "node shell/index.js"
+    "ws-pkg": "node shell/index.js",
+    "gen": "cd loader/factory && npx prisma generate"
   },
   "keywords": [],
   "author": "",
