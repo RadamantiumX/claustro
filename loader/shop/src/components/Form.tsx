@@ -1,7 +1,9 @@
 export default function Form() {
   return (
-    <div>
-      
-    </div>
+    <form action="">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>Login</button>
+    </form>
   )
 }
