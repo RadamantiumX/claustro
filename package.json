@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run gen && npx turbo run dev",
+    "dev": "npx turbo run dev",
+    "dev-gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ws-pkg": "node shell/index.js",
