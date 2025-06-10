@@ -1,7 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useContext, useState } from "react";
 import Cookies from 'js-cookie'
 
-const StateContext = createContext(
+// interface ContextProps {
+//     user: any
+//     token: any
+//     setUser: ()=>void
+//     setToken: ()=>void
+// }
+
+const StateContext:any = createContext(
     {
         user: null,
         token: null,
@@ -11,11 +19,11 @@ const StateContext = createContext(
     }
 )
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }:any) => {
     const [ user, setUser ] = useState({})
     const [token, _setToken] = useState(Cookies.get('ACCESS_TOKEN'))
 
-    const setToken = (token) => {
+    const setToken = (token:any) => {
         _setToken(token)
         if(token){
             Cookies.set('ACCESS_TOKEN',token, {expires: 7})
