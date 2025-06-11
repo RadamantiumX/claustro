@@ -7,14 +7,14 @@ import { jwtErrorMiddleware, typeScriptError } from './errors/middleware/errorMi
 import { createContext } from './config/trpcContext'
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
-
+import cors from 'cors'
 
 dotenv.config()
 
 const app:Application = express()
 
 const PORT = 3000
-
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 

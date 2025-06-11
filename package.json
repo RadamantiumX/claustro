@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
+    "prisma-studio": "cd loader/factory && npx prisma studio",
     "dev-gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "echo \"Error: no test specified\" && exit 1",

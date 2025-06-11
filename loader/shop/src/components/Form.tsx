@@ -5,19 +5,27 @@ import { useState } from "react"
 
 export default function Form() {
   const trpc = useTRPC()
-  // 
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     isSuperAdmin: false
   })
+  
+  const create = useMutation(trpc.userColab.create.mutationOptions())
+
   const handleChange = (e:any) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
   const handleSubmit = (e:any) => {
-      e.preventDefault()
-      const create = useMutation(trpc.userColab.create(formData))
-      return
+     try{
+        e.preventDefault()
+      create.mutate(formData)
+      
+     }catch(error){
+       console.log(error)
+     }
+      
   }
 
   return (
