@@ -1,7 +1,7 @@
 import { trpc } from "../config/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
-import { UserColab } from "factory";
+
 
 const userColabServiceInstance = UserColabService.getInstance()
 
