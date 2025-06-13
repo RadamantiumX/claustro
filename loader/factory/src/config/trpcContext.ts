@@ -1,12 +1,13 @@
 import {  initTRPC, TRPCError } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { AuthService } from '../services/authService'
+import { UserColab } from 'factory'
 
 
 
 
 // see the documentation
-export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
+export const createContext = async ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
     // JWT to improve
    const token:any = req.headers.authorization 
    try{
@@ -16,7 +17,7 @@ export const createContext = ({ req, res }:trpcExpress.CreateExpressContextOptio
     const authServiceInstance = AuthService.getInstance() // Access to intance
 
 
-    const verifyUser = authServiceInstance.auth.verifyCredentials(token)
+    const verifyUser:Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null = await  authServiceInstance.auth.verifyCredentials(token)
     
 
     return { user: verifyUser }
