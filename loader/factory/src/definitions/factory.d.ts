@@ -152,7 +152,7 @@ export interface RateLimiterRule {
 
 
 export interface IuserColabRepository {
-    getUnique(username: Pick<UserColab, "username">): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
+    getUnique({username}:Pick<UserColab, 'username'> ): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
     updateTimestampSignIn(username: Pick<UserColab, "username">): Promise<void>;
     createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>;
     createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;

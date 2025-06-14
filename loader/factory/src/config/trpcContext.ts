@@ -16,9 +16,7 @@ export const createContext = async ({ req, res }:trpcExpress.CreateExpressContex
     }
     const authServiceInstance = AuthService.getInstance() // Access to intance
 
-
     const verifyUser:Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null = await  authServiceInstance.auth.verifyCredentials(token)
-    
 
     return { user: verifyUser }
    }catch(error){

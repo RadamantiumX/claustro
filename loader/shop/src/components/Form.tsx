@@ -17,10 +17,10 @@ export default function Form() {
   const handleChange = (e:any) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e:any) => {
      try{
         e.preventDefault()
-      create.mutate(formData)
+     create.mutate(formData)
       
      }catch(error){
        console.log(error)

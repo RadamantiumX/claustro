@@ -3,8 +3,10 @@ import { UserColab, UserColabClientResponse } from "factory";
 import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 
+
+
 export class UserColabRepository{
-    async getUnique({username}:Pick<UserColab, "username">):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
+    async getUnique({username}:Pick<UserColab, 'username'>):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
        const unique = await prisma.userColab.findUnique({
          where:{ username: username },
          select: { id: true, username: true, password: true, isSuperAdmin: true }

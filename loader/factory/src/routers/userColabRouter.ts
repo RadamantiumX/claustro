@@ -5,16 +5,16 @@ import { TRPCError } from '@trpc/server'
 
 const userColabServiceInstance = UserColabService.getInstance()
 
-const authMiddleware = trpc.middleware(({ctx, next})=>{
+/*const authMiddleware = trpc.middleware(({ctx, next})=>{
   if(!ctx){
     console.log('no user authorized')
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
 
   return next({ ctx })
-})
+})*/
 
-const protectedProcedure = trpc.procedure.use(authMiddleware)
+// const protectedProcedure = trpc.procedure.use(authMiddleware)
 
 export const userColabRouter = trpc.router({
     list: trpc.procedure.query(({ ctx })=>{

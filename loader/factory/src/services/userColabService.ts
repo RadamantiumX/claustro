@@ -2,7 +2,7 @@ import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMeth
 import { UserColabRepository } from "../repository/userColabRepository"
 
 
-
+type username = string
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
@@ -15,9 +15,10 @@ export class UserColabService {
                 return allUsers
             },
             create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >):Promise<void> => {
+                  
                   const verifyUnique = await this.userColabRepository.getUnique({username:bodyReq.username})
-                  if(!verifyUnique){
-                    throw new Error()
+                  if(verifyUnique){
+                    throw new Error(`The appear on: ${bodyReq.username}`)
                   }
                   await this.userColabRepository.createUserColab(bodyReq)
                   return
