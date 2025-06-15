@@ -5,32 +5,32 @@ import { TRPCError } from '@trpc/server'
 
 const userColabServiceInstance = UserColabService.getInstance()
 
-/*const authMiddleware = trpc.middleware(({ctx, next})=>{
+const authMiddleware = trpc.middleware(({ctx, next})=>{
   if(!ctx){
     console.log('no user authorized')
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
 
   return next({ ctx })
-})*/
+})
 
-// const protectedProcedure = trpc.procedure.use(authMiddleware)
+ const protectedProcedure = trpc.procedure.use(authMiddleware)
 
 export const userColabRouter = trpc.router({
-    list: trpc.procedure.query(({ ctx })=>{
+    list: protectedProcedure.query(({ ctx })=>{
        // console.log(ctx)
         
        return userColabServiceInstance.userData.list()
     }),
-    create: trpc.procedure.input(userSchema.omit({ id:true, lastSignIn:true }))
+    create: protectedProcedure.input(userSchema.omit({ id:true, lastSignIn:true }))
      .mutation(({input})=>{
          return userColabServiceInstance.userData.create(input)
      }),
-     delete: trpc.procedure.input(userSchema.pick({ id:true }))
+     delete: protectedProcedure.input(userSchema.pick({ id:true }))
        .mutation(({input})=>{
             return userColabServiceInstance.userData.delete(input)
     }),
-    update: trpc.procedure.input(userSchema.omit({ lastSignIn:true }))
+    update: protectedProcedure.input(userSchema.omit({ lastSignIn:true }))
      .mutation(({input})=>{
         return userColabServiceInstance.userData.update(input)
      })
