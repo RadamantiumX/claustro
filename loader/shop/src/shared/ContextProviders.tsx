@@ -1,13 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, type JSX, type ReactNode } from "react";
 import Cookies from 'js-cookie'
 
-// interface ContextProps {
-//     user: any
-//     token: any
-//     setUser: ()=>void
-//     setToken: ()=>void
-// }
+ 
 
 const StateContext:any = createContext(
     {
@@ -19,7 +14,7 @@ const StateContext:any = createContext(
     }
 )
 
-export const ContextProvider = ({ children }:any) => {
+export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
     const [ user, setUser ] = useState({})
     const [token, _setToken] = useState(Cookies.get('ACCESS_TOKEN'))
 
