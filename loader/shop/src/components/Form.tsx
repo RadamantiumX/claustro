@@ -12,7 +12,7 @@ export default function Form() {
     isSuperAdmin: false
   })
   
-  const create = useMutation(trpc.userColab.create.mutationOptions())
+  const login = useMutation(trpc.auth.login.mutationOptions())
 
   const handleChange = (e:any) => {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -20,7 +20,8 @@ export default function Form() {
   const handleSubmit = async (e:any) => {
      try{
         e.preventDefault()
-     create.mutate(formData)
+    // create.mutate(formData)
+       login.mutate(formData)
       
      }catch(error){
        console.log(error)
@@ -33,7 +34,7 @@ export default function Form() {
       <input id="username" name="username" type="text" placeholder="username" value={formData.username} onChange={handleChange}/>
       <input id="password" name="password" type="password" placeholder="password" value={formData.password} onChange={handleChange}/>
       
-      <button type="submit">Register</button>
+      <button type="submit">Login</button>
     </form>
   )
 }
