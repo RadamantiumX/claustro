@@ -30,11 +30,14 @@ export default function Form() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input id="username" name="username" type="text" placeholder="username" value={formData.username} onChange={handleChange}/>
-      <input id="password" name="password" type="password" placeholder="password" value={formData.password} onChange={handleChange}/>
+    <div className="flex flex-col items-center">
+      <form className="flex flex-col gap-2 mt-20" onSubmit={handleSubmit}>
+      <input className="p-1 rounded-sm" id="username" name="username" type="text" placeholder="username" value={formData.username} onChange={handleChange}/>
+      <input className="p-1 rounded-sm" id="password" name="password" type="password" placeholder="password" value={formData.password} onChange={handleChange}/>
       
-      <button type="submit">Login</button>
+      <button className="rounded-sm bg-blue-400 px-3 py-1 border-2 font-bold" type="submit">Login</button>
     </form>
+    </div>
+    
   )
 }
