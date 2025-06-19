@@ -32,13 +32,11 @@ export default function Form() {
 
   return (
     <div className="flex flex-col items-center">
-      <form className="flex flex-col gap-2 mt-20" onSubmit={handleSubmit}>
+
+      <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <input className="py-1 px-2 rounded-sm" id="username" name="username" type="text" placeholder="username" value={formData.username} onChange={handleChange}/>
       <input className="py-1 px-2 rounded-sm" id="password" name="password" type="password" placeholder="password" value={formData.password} onChange={handleChange}/>
-      <CustomButton color="blue-400" typeBtn="submit">
-          Login
-      </CustomButton>
-      
+      <CustomButton inner="Login"  typeBtn="submit" />
     </form>
     </div>
     

@@ -1,5 +1,7 @@
-import { Link } from "react-router"
+
 // import { trpc } from "../utils"
+import { CustomLink } from "../components/CustomLink"
+import { PageTitle } from "../components/PageTitle"
 
  export default function  Home () {
    
@@ -10,10 +12,8 @@ import { Link } from "react-router"
     <div className="flex flex-col items-center">
 
       <div className="flex flex-col justify-center items-center mt-20 gap-y-10">
-        <h1 className="font-bold text-2xl">
-           Welcome to... Unknow Area 🔍
-        </h1>
-      <Link className="rounded-sm bg-amber-500 px-3 py-1 border-2 font-bold" to="/signin">Sign In</Link>
+        <PageTitle title="Welcome to... Unknow Area 🔍"/>
+        <CustomLink inner="Sign In" route="/signin" color="red"/>
       </div>
       
     </div>
