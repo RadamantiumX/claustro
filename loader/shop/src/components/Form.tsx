@@ -3,10 +3,11 @@ import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import {CustomButton} from './CustomButton'
+import { useStateContext } from "../shared/ContextProviders"
 
 export default function Form() {
   const trpc = useTRPC()
-
+  const { setToken }:any = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -22,8 +23,9 @@ export default function Form() {
      try{
         e.preventDefault()
     // create.mutate(formData)
-       login.mutate(formData)
-      
+      login.mutate(formData)
+      setToken(login.data.accessToken)
+      console.log(login.data.accessToken)
      }catch(error){
        console.log(error)
      }

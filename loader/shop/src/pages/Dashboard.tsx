@@ -2,8 +2,8 @@
 
 export default function Dashboard() {
   return (
-    <div>
-      Dashboard
+    <div >
+      <h1 className="text-red-50">Dashboard</h1>
     </div>
   )
 }
