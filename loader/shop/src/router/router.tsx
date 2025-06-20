@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Signin from "../pages/Signin";
@@ -6,20 +6,25 @@ import Dashboard from "../pages/Dashboard";
 import Index from "../pages/Index";
 
 import GuestLayout from "../layouts/GuestLayout";
-import DefaultLayout from "../layouts/DefaultLayout";
+import DefaultLayout from '../layouts/DefaultLayout';
 
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: GuestLayout,
+        element: <GuestLayout/>,
         children:[
             {
                 path: '/',
-                Component: Home
+                element: <Navigate to='/home'/>
+
+            },
+            {
+                path: '/home',
+                element: <Home/>
             },
             {
                 path: '/signin',
-                Component: Signin
+                element: <Signin/>
             }
         ]
     },
@@ -28,13 +33,18 @@ const router = createBrowserRouter([
         Component: DefaultLayout,
         children: [
             {
-                path: '/',
-                Component: Dashboard,
+                path:'/',
+                element: <Navigate to="/dashboard"/>
+
+            },
+            {
+                path: '/dashboard',
+                element:<Dashboard/>,
             
             },
             {
                 path: '/index',
-                Component: Index
+                element: <Index/>
             }
         ]
     }

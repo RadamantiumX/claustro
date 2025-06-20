@@ -1,4 +1,4 @@
-import { Outlet, Navigate } from "react-router"
+import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
 
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Outlet, Navigate } from "react-router"
+import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
 
 export default function GuestLayout() {
