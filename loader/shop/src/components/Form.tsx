@@ -7,7 +7,7 @@ import { useStateContext } from "../shared/ContextProviders"
 
 export default function Form() {
   const trpc = useTRPC()
-  const { setToken }:any = useStateContext()
+  const { setToken, setUser }:any = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -23,9 +23,14 @@ export default function Form() {
      try{
         e.preventDefault()
     // create.mutate(formData)
-      login.mutate(formData)
-      setToken(login.data.accessToken)
-      console.log(login.data.accessToken)
+      login.mutate(formData,{
+        onSuccess: (data, variables, context)=>{
+          setToken(data.accessToken)
+          setUser(variables.username)
+        }
+      })
+      
+
      }catch(error){
        console.log(error)
      }

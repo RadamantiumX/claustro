@@ -1,9 +1,10 @@
-import React from 'react'
+import { useStateContext } from "../shared/ContextProviders"
 
 export default function Index() {
+  const { user }:any = useStateContext()
   return (
     <div>
-      Main Index
+      Welcome {user}
     </div>
   )
 }
