@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 
 import Home from "../pages/Home";
 import Signin from "../pages/Signin";
@@ -29,7 +29,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                Component: Dashboard
+                Component: Dashboard,
+            
             },
             {
                 path: '/index',

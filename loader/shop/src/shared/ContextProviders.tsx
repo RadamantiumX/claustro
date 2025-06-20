@@ -15,7 +15,7 @@ const StateContext:any = createContext(
 )
 
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
-    const [ user, setUser ] = useState({})
+    const [ user, _setUser ] = useState(Cookies.get('USERNAME_ACCESS'))
     const [token, _setToken] = useState(Cookies.get('ACCESS_TOKEN'))
 
     const setToken = (token:any) => {
@@ -24,6 +24,15 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
             Cookies.set('ACCESS_TOKEN',token, {expires: 7})
         }else{
             Cookies.remove('ACCESS_TOKEN')
+        }
+    }
+
+    const setUser = (user:any) =>{
+        _setUser(user)
+        if(user){
+            Cookies.set('USERNAME_ACCESS', user,{expires: 7})
+        }else{
+            Cookies.remove('USERNAME_ACCESS')
         }
     }
 
