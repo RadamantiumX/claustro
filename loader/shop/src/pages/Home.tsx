@@ -1,6 +1,6 @@
 
 // import { trpc } from "../utils"
-import { CustomLink } from "../components/CustomLink"
+import { CustomLink } from "../components/buttons/CustomLink"
 import { PageTitle } from "../components/PageTitle"
 
  export default function  Home () {

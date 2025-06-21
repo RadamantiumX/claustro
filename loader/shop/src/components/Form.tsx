@@ -2,10 +2,10 @@
 import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-import {CustomButton} from './CustomButton'
+import {CustomButton} from './buttons/CustomButton'
 import { useStateContext } from "../shared/ContextProviders"
 
-export default function Form() {
+export const Form=()=> {
   const trpc = useTRPC()
   const { setToken, setUser }:any = useStateContext()
   const [formData, setFormData] = useState({

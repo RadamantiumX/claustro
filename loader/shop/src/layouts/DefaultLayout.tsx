@@ -1,5 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
+import { Nav } from "../components/Nav"
 
 
 export default function DefaultLayout() {
@@ -10,6 +11,7 @@ export default function DefaultLayout() {
   }
   return (
     <div>
+      <Nav/>
       <Outlet/>
     </div>
   )

@@ -1,5 +1,5 @@
-import Form from "../components/Form"
-import { CustomLink } from "../components/CustomLink"
+import {Form} from "../components/Form"
+import { CustomLink } from "../components/buttons/CustomLink"
 import { PageTitle } from "../components/PageTitle"
 
 
