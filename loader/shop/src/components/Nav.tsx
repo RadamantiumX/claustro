@@ -1,7 +1,11 @@
+import { LogoutButton } from "./buttons/LogoutButton"
+
 export const Nav = () =>{
     return(
         <>
-        <div>Navbar</div>
+        <div>
+            <LogoutButton/>
+        </div>
         </>
     )
 }
