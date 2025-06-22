@@ -6,7 +6,14 @@
       "outputs": [
         "dist/**"
       ],
-      "env": ["DATABASE_URL", "VITE_ACCESS_TOKEN", "VITE_USERNAME"]
+      "env": ["DATABASE_URL", "VITE_ACCESS_TOKEN", "VITE_USERNAME"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
     },
 
     "dev": {
