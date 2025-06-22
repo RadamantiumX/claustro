@@ -6,7 +6,7 @@
       "outputs": [
         "dist/**"
       ],
-      "env": ["DATABASE_URL"]
+      "env": ["DATABASE_URL", "ACCESS_TOKEN", "USERNAME"]
     },
 
     "dev": {

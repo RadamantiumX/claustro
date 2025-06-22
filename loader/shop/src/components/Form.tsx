@@ -22,8 +22,10 @@ export const Form=()=> {
   const handleSubmit = async (e:any) => {
      try{
         e.preventDefault()
+        console.log(import.meta.env.USERNAME)
     // create.mutate(formData)
       login.mutate(formData,{
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onSuccess: (data, variables, context)=>{
           setToken(data.accessToken)
           setUser(variables.username)
