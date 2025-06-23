@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
+import { Footer } from "../components/Footer"
 
 export default function GuestLayout() {
   const { token }:any = useStateContext()
@@ -8,8 +9,9 @@ export default function GuestLayout() {
     return <Navigate to='/index'/>
   }
   return (
-    <div>
+    <>
       <Outlet/>
-    </div>
+      <Footer/>
+    </>
   )
 }
