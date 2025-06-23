@@ -9,14 +9,14 @@ import { PageTitle } from "../components/PageTitle"
   return (
     <>
      
-    <div className="flex flex-col items-center">
+    <main className="flex flex-col items-center">
 
       <div className="flex flex-col justify-center items-center mt-20 gap-y-10">
         <PageTitle title="Welcome to... Unknow Area 🔍"/>
         <CustomLink inner="Sign In" route="/signin" color="red"/>
       </div>
       
-    </div>
+    </main>
     
     </>
   )

@@ -4,8 +4,8 @@ export default function Index() {
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
    const { user }:any = useStateContext()
   return (
-    <div>
+    <main>
       Welcome {user}
-    </div>
+    </main>
   )
 }
