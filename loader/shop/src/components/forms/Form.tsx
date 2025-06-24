@@ -16,10 +16,10 @@ export const Form=()=> {
   
   const login = useMutation(trpc.auth.login.mutationOptions())
 
-  const handleChange = (e:any) => {
+  const handleChange = (e:any):void => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e:any):Promise<void> => {
      try{
         e.preventDefault()
         console.log(import.meta.env.USERNAME)
