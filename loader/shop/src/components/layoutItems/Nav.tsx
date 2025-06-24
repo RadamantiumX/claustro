@@ -1,4 +1,4 @@
-import { LogoutButton } from "./buttons/LogoutButton"
+import { LogoutButton } from "../buttons/LogoutButton"
 
 export const Nav = () =>{
     return(

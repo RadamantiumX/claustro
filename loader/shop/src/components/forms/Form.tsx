@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useTRPC } from "../utils/trpc"
+import { useTRPC } from "../../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-import {CustomButton} from './buttons/CustomButton'
-import { useStateContext } from "../shared/ContextProviders"
+import {CustomButton} from '../buttons/CustomButton'
+import { useStateContext } from "../../shared/ContextProviders"
 
 export const Form=()=> {
   const trpc = useTRPC()

@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
-import { Nav } from "../components/Nav"
+import { Nav } from "../components/layoutItems/Nav"
 
 
 export default function DefaultLayout() {
@@ -10,9 +10,9 @@ export default function DefaultLayout() {
    return <Navigate to="/signin"/>
   }
   return (
-    <div>
+    <>
       <Nav/>
       <Outlet/>
-    </div>
+    </>
   )
 }
