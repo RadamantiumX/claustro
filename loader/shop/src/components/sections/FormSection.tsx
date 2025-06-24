@@ -1,6 +1,6 @@
-import { PageSubTitle } from "../../components/headers/PageSubTitle"
-import { Form } from "../../components/forms/Form"
-import { CustomLink } from "../../components/buttons/CustomLink"
+import { PageSubTitle } from "../headers/PageSubTitle"
+import { Form } from "../forms/Form"
+import { CustomLink } from "../buttons/CustomLink"
 
 export default function FormSection() {
   return (
