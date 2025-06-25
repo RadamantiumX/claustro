@@ -1,0 +1,23 @@
+import { PageSubTitle } from "../../headers/PageSubTitle"
+import { CustomLink } from "../../buttons/CustomLink"
+import { BasicCard } from "../../cards/BasicCard"
+import { Forms } from "../../forms/Forms"
+import { useLogin } from "../../../hooks/useLogin"
+
+export default function FormSection() {
+  const { handleChange, handleSubmit, formData  } = useLogin()
+  return (
+    <section className="flex flex-col items-center h-screen">
+          <BasicCard>
+              <PageSubTitle title="Sign In to your account"/>
+              <Forms
+                handleChange={handleChange} 
+                handleSubmit={handleSubmit} 
+                inputs={[{typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},{typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}]}
+                />
+             <CustomLink inner="Back" route="/" color="gray"/>
+           </BasicCard>
+             
+    </section>
+  )
+}

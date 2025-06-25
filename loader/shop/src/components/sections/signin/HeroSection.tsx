@@ -1,4 +1,4 @@
-import { PageTitle } from "../headers/PageTitle"
+import { PageTitle } from "../../headers/PageTitle"
 
 export default function HeroSection() {
   return (

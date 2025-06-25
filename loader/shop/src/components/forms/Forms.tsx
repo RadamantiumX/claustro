@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CustomButton } from "../buttons/CustomButton"
 import React from "react"
 
 export interface FormProps{
-    handleSubmit: ()=>Promise<void>;
-    handleChange: ()=>void;
+    handleSubmit: (e:any)=>Promise<void>;
+    handleChange: (e:any)=>void;
     inputs: 
         {
             typeInput: string;

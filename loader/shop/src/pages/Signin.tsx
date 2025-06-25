@@ -1,5 +1,5 @@
-import FormSection from "../components/sections/FormSection"
-import HeroSection from "../components/sections/HeroSection"
+import FormSection from "../components/sections/signin/FormSection"
+import HeroSection from "../components/sections/signin/HeroSection"
 
 export default function Signin() {
   
