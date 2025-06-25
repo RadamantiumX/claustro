@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
-
+@tailwind utilities;
 
 * {
   box-sizing: border-box;
@@ -16,4 +16,13 @@ body {
   font-size: 14px;
   color: #d1c8c8;
   background-color: #444141;
+}
+
+@layer utilities {
+    .card-basic{
+      @apply flex flex-col items-center p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl;
+    }
+    .font-large{
+      @apply font-bold text-4xl tracking-widest;
+    }
 }
