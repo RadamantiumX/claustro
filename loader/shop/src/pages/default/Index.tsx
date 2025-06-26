@@ -1,4 +1,4 @@
-import { useStateContext } from "../shared/ContextProviders"
+import { useStateContext } from "../../shared/ContextProviders"
 
 export default function Index() {
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
