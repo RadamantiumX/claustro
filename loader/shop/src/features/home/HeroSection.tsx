@@ -1,5 +1,5 @@
-import { HeroGuest } from "../../hero/HeroGuest"
-import { PageTitle } from '../../headers/PageTitle';
+import { HeroGuest } from "../../components/hero/HeroGuest"
+import { PageTitle } from '../../components/headers/PageTitle';
 
 export default function HeroSection() {
   return (
