@@ -1,9 +1,10 @@
 import { PageTitle } from "../../headers/PageTitle"
+import { HeroGuest } from "../../hero/HeroGuest"
 
 export default function HeroSection() {
   return (
-    <header className="flex h-40 items-center">
+    <HeroGuest>
       <PageTitle title="Free Store Data"/>
-    </header>
+    </HeroGuest>
   )
 }

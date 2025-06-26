@@ -22,6 +22,9 @@ body {
     .main-layout{
       @apply flex flex-col items-center;
     }
+    .hero-center{
+      @apply flex h-40 items-center;
+    }
     .card-basic{
       @apply flex flex-col items-center p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl;
     }
