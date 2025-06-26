@@ -3,12 +3,13 @@ import { CustomLink } from "../../../components/buttons/CustomLink"
 import { BasicCard } from "../../../components/cards/BasicCard"
 import { Form } from "../../../components/forms/Form"
 import { useLogin } from "../../../hooks/useLogin"
+import Guest from "../../../components/sectionsTemplate/GuestContent"
 
 
 export default function FormSection() {
   const { handleChange, handleSubmit, formData  } = useLogin()
   return (
-    <section className="flex flex-col items-center h-screen">
+    <Guest>
           <BasicCard>
               <PageSubTitle title="Sign In to your account"/>
               <Form
@@ -19,6 +20,6 @@ export default function FormSection() {
              <CustomLink inner="Back" route="/" color="gray"/>
            </BasicCard>
              
-    </section>
+    </Guest>
   )
 }

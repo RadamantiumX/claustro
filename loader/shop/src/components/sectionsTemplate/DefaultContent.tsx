@@ -1,6 +1,6 @@
 import React,{type ReactNode} from "react"
 
-const Guest:React.FC<{children:ReactNode}> = ({children}) =>{
+const DefaultContent:React.FC<{children:ReactNode}> = ({children}) =>{
 return(
     <>
      <section className="flex flex-col items-center gap-y-5 mt-20 h-screen">
@@ -10,4 +10,4 @@ return(
 )
 }
 
-export default Guest
+export default DefaultContent
