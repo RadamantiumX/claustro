@@ -1,7 +1,7 @@
 
 // import { trpc } from "../utils"
-import { CustomLink } from "../../components/buttons/CustomLink"
-import { PageTitle } from "../../components/headers/PageTitle"
+import HeroSection from "../../features/guest/home/HeroSection"
+import StartSection from "../../features/guest/home/StartSection"
 
  export default function  Home () {
    
@@ -10,12 +10,8 @@ import { PageTitle } from "../../components/headers/PageTitle"
     <>
      
     <main className="main-layout">
-
-      <div className="flex flex-col justify-center items-center mt-20 gap-y-10">
-        <PageTitle title="Welcome to... Unknow Area 🔍"/>
-        <CustomLink inner="Sign In" route="/signin" color="red"/>
-      </div>
-      
+      <HeroSection/>
+      <StartSection/>
     </main>
     
     </>

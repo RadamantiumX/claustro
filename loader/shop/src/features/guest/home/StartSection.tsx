@@ -1,9 +1,10 @@
-import React from 'react'
+import GuestContent from "../../../components/sectionsTemplate/GuestContent"
+import { CustomLink } from "../../../components/buttons/CustomLink"
 
 export default function StartSection() {
   return (
-    <div>
-      
-    </div>
+    <GuestContent>
+      <CustomLink inner="Get Started" route="/signin" color="red"/>
+    </GuestContent>
   )
 }
