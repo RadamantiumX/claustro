@@ -1,8 +1,9 @@
-import { PageSubTitle } from "../../components/headers/PageSubTitle"
-import { CustomLink } from "../../components/buttons/CustomLink"
-import { BasicCard } from "../../components/cards/BasicCard"
-import { Form } from "../../components/forms/Form"
-import { useLogin } from "../../hooks/useLogin"
+import { PageSubTitle } from "../../../components/headers/PageSubTitle"
+import { CustomLink } from "../../../components/buttons/CustomLink"
+import { BasicCard } from "../../../components/cards/BasicCard"
+import { Form } from "../../../components/forms/Form"
+import { useLogin } from "../../../hooks/useLogin"
+
 
 export default function FormSection() {
   const { handleChange, handleSubmit, formData  } = useLogin()

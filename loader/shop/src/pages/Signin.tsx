@@ -1,5 +1,5 @@
-import FormSection from "../features/signin/FormSection"
-import HeroSection from "../features/signin/HeroSection"
+import FormSection from "../features/guest/signin/FormSection"
+import HeroSection from "../features/guest/signin/HeroSection"
 
 export default function Signin() {
   
