@@ -4,7 +4,7 @@ import HeroSection from "../components/sections/signin/HeroSection"
 export default function Signin() {
   
   return (
-    <main className="flex flex-col items-center" >
+    <main className="main-layout" >
       <HeroSection/>
       <FormSection/>
     </main>

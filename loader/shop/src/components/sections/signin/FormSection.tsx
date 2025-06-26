@@ -1,7 +1,7 @@
 import { PageSubTitle } from "../../headers/PageSubTitle"
 import { CustomLink } from "../../buttons/CustomLink"
 import { BasicCard } from "../../cards/BasicCard"
-import { Forms } from "../../forms/Forms"
+import { Form } from "../../forms/Form"
 import { useLogin } from "../../../hooks/useLogin"
 
 export default function FormSection() {
@@ -10,7 +10,7 @@ export default function FormSection() {
     <section className="flex flex-col items-center h-screen">
           <BasicCard>
               <PageSubTitle title="Sign In to your account"/>
-              <Forms
+              <Form
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
                 inputs={[{typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},{typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}]}

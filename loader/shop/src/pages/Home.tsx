@@ -9,7 +9,7 @@ import { PageTitle } from "../components/headers/PageTitle"
   return (
     <>
      
-    <main className="flex flex-col items-center">
+    <main className="main-layout">
 
       <div className="flex flex-col justify-center items-center mt-20 gap-y-10">
         <PageTitle title="Welcome to... Unknow Area 🔍"/>
