@@ -19,6 +19,9 @@ body {
 }
 
 @layer utilities {
+    .screen-content {
+      @apply flex flex-col items-center gap-y-5 mt-20 h-screen;
+    }
     .main-layout{
       @apply flex flex-col items-center;
     }
