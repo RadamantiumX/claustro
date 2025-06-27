@@ -34,4 +34,10 @@ body {
     .font-large{
       @apply font-bold text-4xl tracking-widest;
     }
+    .purple-link{
+      @apply rounded-sm bg-purple-400 px-3 py-1 font-bold;
+    } 
+    .blue-button{
+      @apply rounded-sm bg-blue-400 px-3 py-1 font-bold cursor-pointer;
+    }
 }
