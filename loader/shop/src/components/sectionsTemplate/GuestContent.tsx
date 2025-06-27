@@ -3,7 +3,7 @@ import React,{type ReactNode} from "react"
 const GuestContent:React.FC<{children:ReactNode}> = ({children}) =>{
 return(
     <>
-     <section className="flex flex-col items-center gap-y-5 mt-20 h-screen">
+     <section className="screen-content">
       {children}
      </section>
     </>
