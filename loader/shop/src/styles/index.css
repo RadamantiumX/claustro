@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import "tailwindcss";
 @tailwind utilities;
 
 * {
@@ -39,5 +39,11 @@ body {
     } 
     .blue-button{
       @apply rounded-sm bg-blue-400 px-3 py-1 font-bold cursor-pointer;
+    }
+    .flex-center{
+      @apply flex flex-col items-center;
+    }
+    .input-rounded{
+      @apply py-1 px-2 rounded-sm
     }
 }

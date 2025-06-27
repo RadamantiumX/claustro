@@ -18,10 +18,10 @@ export interface FormProps{
 export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}) => {
     return(
         <>
-        <div className="flex flex-col items-center">
+        <div className="flex-center">
               <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               {inputs.map((input, key)=>(
-                <input key={key} className="py-1 px-2 rounded-sm" 
+                <input key={key} className="input-rounded" 
                 id={input.propInput}
                 name={input.propInput} 
                 type={input.typeInput} 
@@ -30,9 +30,9 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}) =>
                 onChange={handleChange}/>
               ))}
               
-              <CustomButton inner="Login"  typeBtn="submit" />
+              <CustomButton inner="Login"  typeBtn="submit" fontSize=""/>
             </form>
-            </div>
+        </div>
         </>
     )
 }
