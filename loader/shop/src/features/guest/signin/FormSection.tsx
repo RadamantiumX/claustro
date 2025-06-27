@@ -17,7 +17,7 @@ export default function FormSection() {
                 handleSubmit={handleSubmit} 
                 inputs={[{typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},{typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}]}
                 />
-             <CustomLink inner="Back" route="/" />
+             <CustomLink inner="Back" route="/" fontSize=""/>
            </BasicCard>
              
     </Guest>
