@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useContext, useState, type JSX, type ReactNode } from "react";
+import React,{ createContext, useContext, useState, type JSX, type ReactNode } from "react";
 import Cookies from 'js-cookie'
 
- 
+interface StateProps {
+    user: null | string | undefined;
+    token: null | string | undefined;
+    setUser: (user:string)=>void;  // React.Dispatch<React.SetStateAction<string| undefined>>
+    setToken: (token:string)=>void; // React.Dispatch<React.SetStateAction<string| undefined>>
+}
 
-const StateContext:any = createContext(
+const StateContext:React.Context<StateProps> = createContext(
     {
         user: null,
         token: null,
@@ -18,7 +23,7 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
     const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
 
-    const setToken = (token:any) => {
+    const setToken = (token:string) => {
         _setToken(token)
         if(token){
             Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 7})
@@ -27,7 +32,7 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
         }
     }
 
-    const setUser = (user:any) =>{
+    const setUser = (user:string) =>{
         _setUser(user)
         if(user){
             Cookies.set(`${import.meta.env.VITE_USERNAME}`, user,{expires: 7})
@@ -50,4 +55,4 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
     )
 }
 
-export const useStateContext = () => useContext(StateContext)
+export const useStateContext = ():StateProps => useContext(StateContext)
