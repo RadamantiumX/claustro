@@ -1,8 +1,8 @@
 import React from "react"
+import type { btnProps } from '../../types/components';
 
-type btn = "submit" | "reset" | "button" | undefined
 
-export const CustomButton:React.FC<{inner: string,  typeBtn:btn, fontSize:string}> = ({inner, typeBtn, fontSize})=> {
+export const CustomButton:React.FC<btnProps> = ({inner, typeBtn, fontSize})=> {
   return (
     <button type={typeBtn} className={`blue-button ${fontSize}`}>
       {inner}
