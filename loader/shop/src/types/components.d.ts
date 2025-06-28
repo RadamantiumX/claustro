@@ -9,3 +9,7 @@ export interface shareProps{
 export interface btnProps extends shareProps{
    typeBtn: btn;
 }
+
+export interface linkProps extends shareProps{
+    route:string
+}
