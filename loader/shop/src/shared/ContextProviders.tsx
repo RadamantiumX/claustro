@@ -9,7 +9,7 @@ interface StateProps {
     setToken: (token:string)=>void; // React.Dispatch<React.SetStateAction<string| undefined>>
 }
 
-const StateContext:React.Context<StateProps> = createContext(
+const StateContext:React.Context<StateProps> | any = createContext(
     {
         user: null,
         token: null,
