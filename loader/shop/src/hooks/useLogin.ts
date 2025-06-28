@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query"
 export const useLogin = () =>{
     const trpc = useTRPC()
  
-  const { setToken, setUser }:any = useStateContext()
+  const { setToken, setUser } = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
