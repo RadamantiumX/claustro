@@ -1,21 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CustomButton } from "../buttons/CustomButton"
 import React from "react"
+import type { FormProps } from "../../types/components"
 
-export interface FormProps{
-    handleSubmit: (e:any)=>Promise<void>;
-    handleChange: (e:any)=>void;
-    inputs: 
-        {
-            typeInput: string;
-            propInput:string;
-            placeholder:string;
-            value: string;
-        }[]
-    
-}
 
-export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}) => {
+export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):React.ReactNode => {
     return(
         <>
         <div className="flex-center">

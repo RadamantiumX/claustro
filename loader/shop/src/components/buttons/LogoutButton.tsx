@@ -1,6 +1,7 @@
 import { useLogout } from "../../hooks/useLogout"
+import React from "react"
 
-export const LogoutButton = () =>{
+export const LogoutButton = ():React.ReactNode =>{
     const { onLogout } = useLogout()
     return(
         <>
