@@ -1,6 +1,7 @@
+import React from "react"
 import { LogoutButton } from "../buttons/LogoutButton"
 
-export const Nav = () =>{
+export const Nav = ():React.ReactNode =>{
     return(
         <>
         <div>
