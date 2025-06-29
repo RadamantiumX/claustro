@@ -4,10 +4,10 @@ import type { logoutOutput } from "../types/hooks"
 
 export const useLogout = ():logoutOutput =>{
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { setToken, setUser }:any = useStateContext()
+    const { setToken, setUser } = useStateContext()
      const onLogout = () =>{
         setToken(null)
-        setUser({})
+        setUser(null)
         Cookies.remove(import.meta.env.VITE_ACCESS_TOKEN)
         Cookies.remove(import.meta.env.VITE_USERNAME)
     }

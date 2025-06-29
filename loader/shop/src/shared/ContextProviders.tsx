@@ -5,8 +5,8 @@ import Cookies from 'js-cookie'
 interface StateProps {
     user: null | string | undefined;
     token: null | string | undefined;
-    setUser: (user:string)=>void;  // React.Dispatch<React.SetStateAction<string| undefined>>
-    setToken: (token:string)=>void; // React.Dispatch<React.SetStateAction<string| undefined>>
+    setUser: (user:string | undefined | null)=>void;  // React.Dispatch<React.SetStateAction<string| undefined>>
+    setToken: (token:string | null )=>void; // React.Dispatch<React.SetStateAction<string| undefined>>
 }
 
 const StateContext:React.Context<StateProps> | any = createContext(
