@@ -7,3 +7,7 @@ export interface SignInHandler{
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
 }
+
+export interface logoutOutput {
+    onLogout:()=>void
+}
