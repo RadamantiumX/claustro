@@ -1,3 +1,4 @@
+import React from "react"
 import { PageSubTitle } from "../../../components/headers/PageSubTitle"
 import { CustomLink } from "../../../components/buttons/CustomLink"
 import { BasicCard } from "../../../components/cards/BasicCard"
@@ -6,7 +7,7 @@ import { useLogin } from "../../../hooks/useLogin"
 import Guest from "../../../components/sectionsTemplate/GuestContent"
 
 
-export default function FormSection() {
+export default function FormSection():React.ReactNode {
   const { handleChange, handleSubmit, formData  } = useLogin()
   return (
     <Guest>

@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useStateContext } from "../shared/ContextProviders"
-import { useState } from "react"
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
+import type { SignInHandler } from "../types/hooks"
 
-export const useLogin = () =>{
+
+export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  
   const { setToken, setUser } = useStateContext()
@@ -16,10 +17,10 @@ export const useLogin = () =>{
   
   const login = useMutation(trpc.auth.login.mutationOptions())
 
-  const handleChange = (e:any):void => {
+  const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
-  const handleSubmit = async (e:any):Promise<void> => {
+  const handleSubmit = async (e:FormEvent<HTMLFormElement>):Promise<void> => {
      try{
         e.preventDefault()
         console.log(import.meta.env.USERNAME)

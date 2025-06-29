@@ -1,7 +1,8 @@
 import { HeroGuest } from '../../../components/hero/HeroGuest';
 import { PageTitle } from '../../../components/headers/PageTitle';
+import React from 'react';
 
-export default function HeroSection() {
+export default function HeroSection():React.ReactNode {
   return (
     <>
       <HeroGuest>
