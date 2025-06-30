@@ -1,5 +1,3 @@
-
-// import { trpc } from "../utils"
 import HeroSection from "../../features/guest/home/HeroSection"
 import StartSection from "../../features/guest/home/StartSection"
 
