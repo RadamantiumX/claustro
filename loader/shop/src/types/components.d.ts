@@ -27,3 +27,8 @@ export interface FormProps{
         }[]
     
 }
+
+export interface NavBarBtnProp{
+    route:string;
+    inner:string;
+}
