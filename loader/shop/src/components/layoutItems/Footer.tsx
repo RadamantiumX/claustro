@@ -1,5 +1,11 @@
 import React from "react"
 
+/**
+ * Only layout component footer, shared on default and guest
+ * 
+ * @component
+ * @returns {React.ReactNode}
+ */
 export const Footer = ():React.ReactNode =>{
     return(
         <>
