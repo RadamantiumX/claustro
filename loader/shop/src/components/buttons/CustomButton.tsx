@@ -3,6 +3,7 @@ import type { btnProps } from '../../types/components';
 
 /**
  * This is a reused comp to use anywere on the project
+ * 
  * @component
  * @param btnProps.inner - Inside button text
  * @param btnProps.typeBtn - Type of button property
