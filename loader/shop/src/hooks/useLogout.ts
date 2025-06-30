@@ -3,7 +3,6 @@ import Cookies from "js-cookie"
 import type { logoutOutput } from "../types/hooks"
 
 export const useLogout = ():logoutOutput =>{
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { setToken, setUser } = useStateContext()
      const onLogout = () =>{
         setToken(null)
