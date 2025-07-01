@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React,{ createContext, useContext, useState, type JSX, type ReactNode } from "react";
-import Cookies from 'js-cookie'
+import React,{ createContext, useContext, type JSX, type ReactNode } from "react";
+import { useContextState } from "../hooks/useContextStates";
 import type { StateProps } from "../types/shred";
 
 
@@ -16,26 +16,7 @@ const StateContext:React.Context<StateProps> | any = createContext(
 )
 
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
-    const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
-    const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
-
-    const setToken = (token:string) => {
-        _setToken(token)
-        if(token){
-            Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 7})
-        }else{
-            Cookies.remove(`${import.meta.env.VITE_ACCESS_TOKEN}`)
-        }
-    }
-
-    const setUser = (user:string) =>{
-        _setUser(user)
-        if(user){
-            Cookies.set(`${import.meta.env.VITE_USERNAME}`, user,{expires: 7})
-        }else{
-            Cookies.remove(`${import.meta.env.VITE_USERNAME}`)
-        }
-    }
+   const {user, token, setUser, setToken} = useContextState()
 
     return (
         <StateContext.Provider
