@@ -5,6 +5,16 @@ import { useMutation } from "@tanstack/react-query"
 import type { SignInHandler } from "../types/hooks"
 
 
+/**
+ * - Custom Hook -
+ *  * Use the tRPC hook to manage data mutations options
+ *  * Use Context Hook to set Token & User values
+ *  * Use State Hook for the FormData, adding initials empty values, for the string (username & password), and false for the boolean (isSuperAdmin)
+ *  * Use the mutation Hook to mutate server data
+ *  * Handle Change inputs Events
+ *  * Handle Submit Event on Form trigger, and mutate the data
+ * @returns {SignInHandler}
+ */
 export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  

@@ -1,8 +1,12 @@
 import { useStateContext } from "../shared/ContextProviders"
 import Cookies from "js-cookie"
-import type { logoutOutput } from "../types/hooks"
+import type { LogoutOutput } from "../types/hooks"
 
-export const useLogout = ():logoutOutput =>{
+/**
+ * 
+ * @returns 
+ */
+export const useLogout = ():LogoutOutput =>{
     const { setToken, setUser } = useStateContext()
      const onLogout = () =>{
         setToken(null)

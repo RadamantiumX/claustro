@@ -6,7 +6,10 @@ import { Form } from "../../../components/forms/Form"
 import { useLogin } from "../../../hooks/useLogin"
 import Guest from "../../../components/sectionsTemplate/GuestContent"
 
-
+/**
+ * Form for Auth Section on Guest Layout
+ * @returns {React.ReactNode}
+ */
 export default function FormSection():React.ReactNode {
   const { handleChange, handleSubmit, formData  } = useLogin()
   return (

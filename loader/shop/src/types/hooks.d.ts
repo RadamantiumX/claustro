@@ -8,6 +8,6 @@ export interface SignInHandler{
     handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
-export interface logoutOutput {
+export interface LogoutOutput {
     onLogout:()=>void
 }
