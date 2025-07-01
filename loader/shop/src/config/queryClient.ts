@@ -1,7 +1,10 @@
 import { QueryClient } from '@tanstack/react-query';
 
-
-function makeQueryClient() {
+/**
+ * Manage the caching and fetching use instance of {QueryClient}
+ * @returns {QueryClient}
+ */
+function makeQueryClient():QueryClient {
     return new QueryClient({
         defaultOptions: {
             queries: {
@@ -13,6 +16,7 @@ function makeQueryClient() {
 
 let browserQueryClient:QueryClient | undefined = undefined
 
+// Using QueryClient Instance
 export function getQueryClient(){
     if(typeof window === 'undefined'){
         return makeQueryClient()
