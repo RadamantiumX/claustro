@@ -1,9 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
 import { Nav } from "../components/layoutItems/Nav"
+import React from "react"
 
-
-export default function DefaultLayout() {
+/**
+ * Layout for Default page or Authenticated user
+ * @returns {React.ReactNode}
+ */
+export default function DefaultLayout():React.ReactNode {
   const { token } = useStateContext()
   if(!token){
    return <Navigate to="/signin"/>

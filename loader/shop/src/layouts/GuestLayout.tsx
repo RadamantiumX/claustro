@@ -2,6 +2,10 @@ import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../shared/ContextProviders"
 import { Footer } from "../components/layoutItems/Footer"
 
+/**
+ * Layout for Guests pages 
+ * @returns {React.ReactNode}
+ */
 export default function GuestLayout() {
   const { token } = useStateContext()
   if(token){
