@@ -3,8 +3,11 @@ import Cookies from "js-cookie"
 import type { LogoutOutput } from "../types/hooks"
 
 /**
- * 
- * @returns 
+ * - Custom Hook -
+ *  * Use Context Hook to set Token & User values
+ *  * Handle logout to make nullish token and user states
+ *  * Removes cookies values
+ * @returns {SignInHandler}
  */
 export const useLogout = ():LogoutOutput =>{
     const { setToken, setUser } = useStateContext()

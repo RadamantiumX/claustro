@@ -3,6 +3,11 @@ import { httpBatchLink, createTRPCClient } from "@trpc/client";
 import { QueryClient } from "@tanstack/react-query";
 import type { AppRouter } from "../../../factory/src/routers";
 
+
+/**
+ * - Custom Hook -
+ * @returns {SignInHandler}
+ */
 export const useTrpc = () => {
     const [trpcQueryClient] = useState(
         () => 
