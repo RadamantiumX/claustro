@@ -1,9 +1,12 @@
 import HeroSection from "../../features/guest/home/HeroSection"
 import StartSection from "../../features/guest/home/StartSection"
+import React from "react"
 
- export default function  Home () {
-   
-
+/**
+ * Home page on Guest Layout
+ * @returns {React.ReactNode}
+ */
+ export default function  Home ():React.ReactNode {
   return (
     <>
      

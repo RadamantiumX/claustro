@@ -1,13 +1,14 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-
 import Home from "../pages/guest/Home";
 import Signin from "../pages/guest/Signin";
 import Dashboard from "../pages/default/Dashboard";
 import Index from "../pages/default/Index";
-
 import GuestLayout from "../layouts/GuestLayout";
 import DefaultLayout from '../layouts/DefaultLayout';
 
+/**
+ * 
+ */
 const router = createBrowserRouter([
     {
         path: "/",
