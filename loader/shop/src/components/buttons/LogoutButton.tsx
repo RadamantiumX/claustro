@@ -9,7 +9,7 @@ export const LogoutButton = ():React.ReactNode =>{
     const { onLogout } = useLogout() // Sign out handle hook
     return(
         <>
-         <button className="cursor-pointer" onClick={onLogout}>
+         <button className="rounded-sm bg-red-400 px-3 py-1 font-bold cursor-pointer" onClick={onLogout}>
             Logout
          </button>
         </>

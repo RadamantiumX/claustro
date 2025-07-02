@@ -4,7 +4,7 @@ import { useContextState } from "../hooks/useContextStates";
 import type { StateProps } from "../types/shred";
 
 
-
+// Context initials values
 const StateContext:React.Context<StateProps> | any = createContext(
     {
         user: null,
@@ -14,7 +14,12 @@ const StateContext:React.Context<StateProps> | any = createContext(
         setToken: () => {}
     }
 )
-
+/**
+ * Context to share data to all component wraped on the App
+ * 
+ * @param children --> Elements to wrap in this context
+ * @returns {JSX.Element}
+ */
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
    const {user, token, setUser, setToken} = useContextState()
 

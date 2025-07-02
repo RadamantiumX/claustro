@@ -1,9 +1,15 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-import type { PropsWithChildren } from "react";
+import type { JSX, PropsWithChildren } from "react";
 import { useTrpc } from "../hooks/useTrpc";
 import { TRPCProvider } from "../utils/trpc";
 
-export const Providers = ({children}: PropsWithChildren) =>{
+/**
+ * tRPC Provider Context, to manage the Client, querys and mutations
+ * 
+ * @param children --> Elements to wrap in this context
+ * @returns {JSX.Element}
+ */
+export const Providers = ({children}: PropsWithChildren):JSX.Element =>{
   const { trpcQueryClient, trpcClient } = useTrpc()
   return(
     <TRPCProvider trpcClient={trpcClient} queryClient={trpcQueryClient}>

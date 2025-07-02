@@ -11,9 +11,9 @@ import { LogoutButton } from "../buttons/LogoutButton"
 export const Nav = ():React.ReactNode =>{
     return(
         <>
-        <div>
+        <nav className="flex justify-between h-10 bg-gray-600">
             <LogoutButton/>
-        </div>
+        </nav>
         </>
     )
 }
