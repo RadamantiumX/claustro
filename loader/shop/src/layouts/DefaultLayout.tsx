@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom"
-import { useStateContext } from "../shared/ContextProviders"
+import { useStateContext } from "../hooks/useCtxStates"
 import { Nav } from "../components/layoutItems/Nav"
 import React from "react"
 

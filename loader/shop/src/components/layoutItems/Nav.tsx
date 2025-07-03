@@ -1,5 +1,6 @@
 import React from "react"
 import { LogoutButton } from "../buttons/LogoutButton"
+import { NavButton } from "../buttons/NavButton"
 
 
 /**
@@ -13,6 +14,7 @@ export const Nav = ():React.ReactNode =>{
         <>
         <nav className="flex justify-between h-10 bg-gray-600">
             <LogoutButton/>
+            <NavButton route="#" inner=""/>
         </nav>
         </>
     )

@@ -1,19 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React,{ createContext, useContext, type JSX, type ReactNode } from "react";
-import { useContextState } from "../hooks/useContextStates";
-import type { StateProps } from "../types/shred";
+import React,{ type JSX, type ReactNode } from "react";
+import { useCtxState } from "../hooks/useCtxStates";
+import { StateContext } from "../config/stateContext";
 
 
-// Context initials values
-const StateContext:React.Context<StateProps> | any = createContext(
-    {
-        user: null,
-        token: null,
-
-        setUser: () => {},
-        setToken: () => {}
-    }
-)
 /**
  * Context to share data to all component wraped on the App
  * 
@@ -21,7 +10,7 @@ const StateContext:React.Context<StateProps> | any = createContext(
  * @returns {JSX.Element}
  */
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
-   const {user, token, setUser, setToken} = useContextState()
+   const {user, token, setUser, setToken} = useCtxState()
 
     return (
         <StateContext.Provider
@@ -37,4 +26,3 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
     )
 }
 
-export const useStateContext = ():StateProps => useContext(StateContext)

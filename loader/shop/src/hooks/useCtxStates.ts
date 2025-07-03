@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Cookies from "js-cookie";
+import type { StateProps } from "../types/shared";
+import { StateContext } from "../config/stateContext";
 
-export const useContextState = () =>{
+export const useCtxState = () =>{
      const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
 
@@ -24,3 +26,5 @@ export const useContextState = () =>{
     }
  return {user, token, setUser, setToken}
 }
+
+export const useStateContext = ():StateProps => useContext(StateContext)
