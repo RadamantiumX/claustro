@@ -1,4 +1,4 @@
-import { useStateContext } from "../../shared/ContextProviders"
+
 import React from "react"
 
 /**
@@ -7,10 +7,10 @@ import React from "react"
  */
 export default function Index():React.ReactNode {
 
-   const { user } = useStateContext()
+  
   return (
     <main>
-      Welcome {user}
+      Index Page
     </main>
   )
 }

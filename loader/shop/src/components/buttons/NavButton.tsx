@@ -11,7 +11,7 @@ import type { NavBarBtnProp } from "../../types/components"
 export const NavButton:React.FC<NavBarBtnProp> = ({route, inner}):React.ReactNode =>{
     return(
         <>
-         <Link to={route}>{inner}</Link>
+         <Link className="uppercase font-bold" to={route}>{inner}</Link>
         </>
     )
 }

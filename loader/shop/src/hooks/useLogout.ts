@@ -1,4 +1,4 @@
-import { useStateContext } from "../shared/ContextProviders"
+import { useStateContext } from "./useCtxStates"
 import Cookies from "js-cookie"
 import type { LogoutOutput } from "../types/hooks"
 

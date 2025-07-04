@@ -5,7 +5,7 @@ import { useStateContext } from "../../hooks/useCtxStates"
 
 /**
  * Only layout Default component Navbar
- * 
+ * celulares rotos
  * @component
  * @returns {React.ReactNode}
  */
@@ -13,9 +13,10 @@ export const Nav = ():React.ReactNode =>{
     const { user } = useStateContext()
     return(
         <>
-        <nav className="flex justify-between h-10 bg-gray-600">
-            <LogoutButton/>
+        <nav className="flex justify-between items-center h-10 px-10 bg-gray-600">
             <NavButton route="#" inner={`${user}`}/>
+            <LogoutButton/>
+            
         </nav>
         </>
     )
