@@ -1,6 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../hooks/useCtxStates"
 import { Nav } from "../components/layoutItems/Nav"
+import { SideBar } from "../components/layoutItems/SideBar"
 import React from "react"
 
 /**
@@ -15,6 +16,7 @@ export default function DefaultLayout():React.ReactNode {
   return (
     <>
       <Nav/>
+      <SideBar/>
       <Outlet/>
     </>
   )
