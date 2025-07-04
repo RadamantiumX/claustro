@@ -1,6 +1,6 @@
 import React from "react"
 import { LogoutButton } from "../buttons/LogoutButton"
-import { NavButton } from "../buttons/NavButton"
+import { UserLink } from "../buttons/UserLink"
 import { useStateContext } from "../../hooks/useCtxStates"
 
 /**
@@ -14,7 +14,7 @@ export const Nav = ():React.ReactNode =>{
     return(
         <>
         <nav className="flex justify-between items-center h-10 px-10 bg-gray-600">
-            <NavButton route="#" inner={`${user}`}/>
+            <UserLink route="#" inner={`${user}`}/>
             <LogoutButton/>
             
         </nav>
