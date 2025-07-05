@@ -10,15 +10,17 @@ import { StateContext } from "../config/stateContext";
  * @returns {JSX.Element}
  */
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
-   const {user, token, setUser, setToken} = useCtxState()
+   const {user, token, setUser, setToken, over, setOver} = useCtxState()
 
     return (
         <StateContext.Provider
          value={{
             user,
             token,
+            over,
             setUser,
-            setToken
+            setToken,
+            setOver
          }}
         >
             {children}

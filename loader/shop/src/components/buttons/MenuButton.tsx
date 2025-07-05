@@ -1,8 +1,9 @@
 import { Menu } from '../../../icons/Menu';
-import { useMouseOver } from '../../hooks/useMouseOver';
+import { useStateContext } from '../../hooks/useCtxStates';
 
 export const MenuButton = () => {
-    const {over, setOver} = useMouseOver()
+   const {over, setOver} = useStateContext()
+
     return (
         <>
          <button className='cursor-pointer' onMouseOver={()=>setOver(true)} onMouseLeave={()=>setOver(false)}>
