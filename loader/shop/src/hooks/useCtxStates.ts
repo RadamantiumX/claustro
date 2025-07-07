@@ -7,6 +7,7 @@ export const useCtxState = () =>{
      const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
     const [over, setOver] = useState(false)
+    const [bounce, setBounce] = useState(false)
 
     const setToken = (token:string) => {
         _setToken(token)
@@ -25,7 +26,7 @@ export const useCtxState = () =>{
             Cookies.remove(`${import.meta.env.VITE_USERNAME}`)
         }
     }
- return {user, token, setUser, setToken, over, setOver}
+ return {user, token, setUser, setToken, over, setOver, bounce, setBounce}
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)
