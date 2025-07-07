@@ -1,7 +1,7 @@
 import { useLogout } from "../../hooks/useLogout"
 import { useStateContext } from "../../hooks/useCtxStates";
 import React from "react"
-import { OffPower } from '../../../icons/offPower';
+import { OffPower } from '../../icons/offPower';
 
 
 /**

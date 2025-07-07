@@ -1,4 +1,4 @@
-import { Menu } from '../../../icons/Menu';
+import { Menu } from '../../icons/Menu';
 import { useStateContext } from '../../hooks/useCtxStates';
 
 export const MenuButton = () => {
