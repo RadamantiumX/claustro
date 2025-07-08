@@ -11,10 +11,10 @@ import { useStateContext } from "../../hooks/useCtxStates"
  * @returns {React.ReactNode}
  */
 export const Nav = ():React.ReactNode =>{
-    const { user } = useStateContext()
+    const { user, setOver } = useStateContext()
     return(
         <>
-        <nav className="flex justify-between items-center h-10 px-10 bg-gray-600">
+        <nav onClick={()=>setOver(false)} className="flex justify-between items-center h-10 px-10 bg-gray-600">
             <MenuButton/>
             <div className="flex flex-row items-center gap-x-2">
                  <UserLink route="#" inner={`${user}`}/>
