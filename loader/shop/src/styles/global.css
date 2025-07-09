@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import "tailwindcss";
+@tailwind utilities;
+
+
+* {
+  box-sizing: border-box;
+}
+html, body, #root {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #d1c8c8;
+  background-color: #444141;
+}
+
+
+   
+
+@layer utilities {
+    .screen-content {
+      @apply flex flex-col items-center gap-y-5 mt-20 h-screen;
+    }
+    .main-layout{
+      @apply flex flex-col items-center;
+    }
+    .hero-center{
+      @apply flex h-40 items-center;
+    }
+    .card-basic{
+      @apply flex flex-col items-center p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl;
+    }
+    .font-large{
+      @apply font-bold text-4xl tracking-widest;
+    }
+    .purple-link{
+      @apply rounded-sm bg-purple-400 px-3 py-1 font-bold;
+    } 
+    .blue-button{
+      @apply rounded-sm bg-blue-400 px-3 py-1 font-bold cursor-pointer;
+    }
+    .flex-center{
+      @apply flex flex-col items-center;
+    }
+    .input-rounded{
+      @apply py-1 px-2 rounded-sm;
+    }
+    
+     .menu-display{
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out absolute;
+    }
+    
+    .menu-hide{
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out absolute;
+    }
+   
+}
+
+ 

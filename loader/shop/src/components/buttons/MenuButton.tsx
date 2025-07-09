@@ -8,7 +8,7 @@ export const MenuButton = () => {
 
     return (
         <>
-         <button className='cursor-pointer hover:rotate-95 ease-in-out duration-500' onMouseOver={()=>setOver(true)}>
+         <button title='Menu' className='cursor-pointer hover:rotate-95 ease-in-out duration-500' onMouseOver={()=>setOver(true)}>
              <Menu mouseOver={over}/>
         </button>
         </>
