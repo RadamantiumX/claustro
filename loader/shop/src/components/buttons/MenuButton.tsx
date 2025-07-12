@@ -1,5 +1,5 @@
-import { Menu } from '../../icons/Menu';
-import { useStateContext } from '../../hooks/useCtxStates';
+import { Menu } from '../../icons/icons';
+import { useStateContext } from '../../hooks/hooks';
 
 export const MenuButton = () => {
    const {over, setOver} = useStateContext()

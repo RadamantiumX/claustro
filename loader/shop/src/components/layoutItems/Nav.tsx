@@ -2,7 +2,7 @@ import React from "react"
 import { LogoutButton } from "../buttons/LogoutButton"
 import { UserLink } from "../buttons/UserLink"
 import { MenuButton } from "../buttons/MenuButton"
-import { useStateContext } from "../../hooks/useCtxStates"
+import { useStateContext } from "../../hooks/hooks"
 
 /**
  * Only layout Default component Navbar

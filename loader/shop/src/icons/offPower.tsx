@@ -1,5 +1,5 @@
 import React from "react"
-import { useStateContext } from "../hooks/useCtxStates"
+import { useStateContext } from "../hooks/hooks"
 
 export const OffPower = ():React.ReactNode => {
     const { bounce } = useStateContext()
