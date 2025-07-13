@@ -24,7 +24,7 @@ export const useLogin = ():SignInHandler =>{
     password: '',
     isSuperAdmin: false
   })
-  setDisabled(true)
+  
   const login = useMutation(trpc.auth.login.mutationOptions())
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
@@ -33,6 +33,7 @@ export const useLogin = ():SignInHandler =>{
   const handleSubmit = async (e:FormEvent<HTMLFormElement>):Promise<void> => {
      try{
         e.preventDefault()
+        setDisabled(true)
         console.log(import.meta.env.USERNAME)
     // create.mutate(formData)
       login.mutate(formData,{

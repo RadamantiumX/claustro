@@ -20,7 +20,7 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
         <div className="flex-center">
               <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               {inputs.map((input, key)=>(
-                <input key={key} className="input-rounded opacity-40" 
+                <input key={key} className={`input-rounded ${disabled ? "opacity-40" : ""}`}
                 id={input.propInput}
                 name={input.propInput} 
                 type={input.typeInput} 
