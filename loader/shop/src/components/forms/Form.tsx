@@ -25,7 +25,7 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
                 placeholder={input.placeholder} 
                 value={input.value} 
                 onChange={handleChange}
-                disabled
+                disabled={false}
                 />
               ))}
               <LoginButton/>
