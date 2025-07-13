@@ -2,7 +2,8 @@
 import React from "react"
 import type { FormProps } from "../../types/components"
 import { LoginButton } from "../buttons/LoginButton"
-
+import { useStateContext } from "../../hooks/useCtxStates"
+import { Loader } from "../../icons/Loader"
 /**
  * Form component to reuse anywere on this project, can adapt the qty of inputs
  * 
@@ -13,6 +14,7 @@ import { LoginButton } from "../buttons/LoginButton"
  * @returns 
  */
 export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):React.ReactNode => {
+  const { disabled } = useStateContext()
     return(
         <>
         <div className="flex-center">
@@ -25,10 +27,14 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
                 placeholder={input.placeholder} 
                 value={input.value} 
                 onChange={handleChange}
-                disabled={false}
+                disabled={disabled}
                 />
               ))}
-              <LoginButton/>
+              <LoginButton>
+                {
+                  !disabled ? <div>Sing In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
+                }
+              </LoginButton>
               {/*<CustomButton inner="Login"  typeBtn="submit" fontSize=""/>*/}
             </form>
         </div>

@@ -18,13 +18,13 @@ import type { SignInHandler } from "../types/hooks"
 export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  
-  const { setToken, setUser } = useStateContext()
+  const { setToken, setUser, setDisabled } = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     isSuperAdmin: false
   })
-  
+  setDisabled(true)
   const login = useMutation(trpc.auth.login.mutationOptions())
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
@@ -39,6 +39,7 @@ export const useLogin = ():SignInHandler =>{
         onSuccess: (data, variables)=>{
           setToken(data.accessToken)
           setUser(variables.username)
+          setDisabled(false)
         }
       })
       
