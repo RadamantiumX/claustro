@@ -1,3 +1,3 @@
 export { Close } from './Close';
 export { Menu } from './Menu';
-export { OffPower } from './offPower';
+export { OffPower } from './OffPower';
