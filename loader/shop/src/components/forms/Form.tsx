@@ -31,11 +31,10 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
                 />
               ))}
               <LoginButton>
-                {
+                {// Change inner button content --> State depending
                   !loading ? <div>Sign In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
                 }
               </LoginButton>
-              {/*<CustomButton inner="Login"  typeBtn="submit" fontSize=""/>*/}
             </form>
         </div>
         </>

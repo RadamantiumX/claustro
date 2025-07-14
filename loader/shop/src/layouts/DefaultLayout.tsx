@@ -2,6 +2,7 @@ import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../hooks/useCtxStates"
 import { Nav } from "../components/layoutItems/Nav"
 import { SideBar } from "../components/layoutItems/SideBar"
+import { NotificationCard } from "../components/cards/NotificationCard"
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
 
@@ -17,6 +18,7 @@ export default function DefaultLayout():React.ReactNode {
   }
   return (
     <>
+    <NotificationCard/>
       <Nav/>
       <SideBar/>
       <Outlet/>
