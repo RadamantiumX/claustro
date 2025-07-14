@@ -9,12 +9,12 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         token: null,
         over: false,
         bounce: false,
-        disabled: false,
+        loading: false,
 
         setUser: () => {},
         setToken: () => {},
         setOver: ()=>false,
         setBounce: ()=>false,
-        setDisabled: ()=>false
+        setLoading: ()=>false
     }
 )

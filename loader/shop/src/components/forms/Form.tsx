@@ -14,25 +14,25 @@ import { Loader } from "../../icons/Loader"
  * @returns 
  */
 export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):React.ReactNode => {
-  const { disabled } = useStateContext()
+  const { loading } = useStateContext()
     return(
         <>
         <div className="flex-center">
               <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
               {inputs.map((input, key)=>(
-                <input key={key} className={`input-rounded ${disabled ? "opacity-40" : ""}`}
+                <input key={key} className={`input-rounded ${loading ? "opacity-40" : ""}`}
                 id={input.propInput}
                 name={input.propInput} 
                 type={input.typeInput} 
                 placeholder={input.placeholder} 
                 value={input.value} 
                 onChange={handleChange}
-                disabled={disabled}
+                disabled={loading}
                 />
               ))}
               <LoginButton>
                 {
-                  !disabled ? <div>Sing In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
+                  !loading ? <div>Sing In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
                 }
               </LoginButton>
               {/*<CustomButton inner="Login"  typeBtn="submit" fontSize=""/>*/}
