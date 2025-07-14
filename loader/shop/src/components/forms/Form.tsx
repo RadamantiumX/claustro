@@ -32,7 +32,7 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
               ))}
               <LoginButton>
                 {
-                  !loading ? <div>Sing In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
+                  !loading ? <div>Sign In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
                 }
               </LoginButton>
               {/*<CustomButton inner="Login"  typeBtn="submit" fontSize=""/>*/}
@@ -41,4 +41,4 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
         </>
     )
 }
-// TODO: Set disabled when is loading the fetch on server
+///// TODO: Set disabled when is loading the fetch on server --> ✅ Done
