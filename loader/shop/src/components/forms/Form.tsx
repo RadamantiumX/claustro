@@ -15,6 +15,7 @@ import { Loader } from "../../icons/Loader"
  */
 export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):React.ReactNode => {
   const { loading } = useStateContext()
+ 
     return(
         <>
         <div className="flex-center">

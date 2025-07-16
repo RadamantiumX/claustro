@@ -20,7 +20,9 @@ body {
 }
 
 
-   
+
+
+
 
 @layer utilities {
     .screen-content {
@@ -63,4 +65,12 @@ body {
    }
 }
 
- 
+
+.progress-value{
+   animation: load 10s normal forwards;
+}
+
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 50%; }
+}
