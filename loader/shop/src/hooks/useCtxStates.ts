@@ -9,6 +9,7 @@ export const useCtxState = () =>{
     const [over, setOver] = useState(false)
     const [bounce, setBounce] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [responseTime, setResponseTime] = useState()
 
     const setToken = (token:string) => {
         _setToken(token)
@@ -27,7 +28,7 @@ export const useCtxState = () =>{
             Cookies.remove(`${import.meta.env.VITE_USERNAME}`)
         }
     }
- return {user, token, setUser, setToken, over, setOver, bounce, setBounce, loading, setLoading}
+ return {user, token, setUser, setToken, over, setOver, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)

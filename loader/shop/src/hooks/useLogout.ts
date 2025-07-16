@@ -12,7 +12,7 @@ import type { LogoutOutput } from "../types/hooks"
 export const useLogout = ():LogoutOutput =>{
 const { setToken, setUser } = useStateContext()
   
-    
+   // const start = performance.now()
      const onLogout = () =>{
         setTimeout(()=>{
         setToken(null)
@@ -20,7 +20,7 @@ const { setToken, setUser } = useStateContext()
         Cookies.remove(import.meta.env.VITE_ACCESS_TOKEN)
         Cookies.remove(import.meta.env.VITE_USERNAME)
         },2000)
-        
+// const end = performance.now()
     }
 
 

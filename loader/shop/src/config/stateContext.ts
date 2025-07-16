@@ -10,11 +10,13 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         over: false,
         bounce: false,
         loading: false,
+        responseTime: null,
 
         setUser: () => {},
         setToken: () => {},
         setOver: ()=>false,
         setBounce: ()=>false,
-        setLoading: ()=>false
+        setLoading: ()=>false,
+        setResponseTIme: ()=>{}
     }
 )
