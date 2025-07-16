@@ -26,10 +26,10 @@ setBar(document.getElementById('bar'))
  },[])*/
 
   return (
-    <div className='flex flex-col items-center'>
-    <div className='flex flex-col justify-end absolute rounded-sm bg-blue-900 p-5'>
-       <h4>This is a notification</h4> 
-       <div id="bar" className={`h-1`}></div>
+    <div className='flex flex-col w-full items-center'>
+    <div className='flex w-full flex-col justify-end absolute rounded-sm  p-5'>
+       
+       <div id="bar" className={`h-1 z-50`}></div>
        <button onClick={actionBtn}>Click</button>
     </div>
     

@@ -14,10 +14,13 @@ const { setToken, setUser } = useStateContext()
   
     
      const onLogout = () =>{
+        setTimeout(()=>{
         setToken(null)
         setUser(null)
         Cookies.remove(import.meta.env.VITE_ACCESS_TOKEN)
         Cookies.remove(import.meta.env.VITE_USERNAME)
+        },2000)
+        
     }
 
 
