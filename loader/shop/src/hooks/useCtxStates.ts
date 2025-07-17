@@ -30,12 +30,8 @@ export const useCtxState = () =>{
     }
 
     const setResponseTime = (time:number) =>{
-       // _setResponseTime(time)
-        if(responseTime > 0){
-            _setResponseTime(0)
-        }else{
-            _setResponseTime(time)
-        }
+        _setResponseTime(time)
+    
     }
 
  return {user, token, setUser, setToken, over, setOver, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}

@@ -18,7 +18,7 @@ import type { SignInHandler } from "../types/hooks"
 export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  
-  const { setToken, setUser, setLoading } = useStateContext()
+  const { setToken, setUser, setLoading, setResponseTime, setBounce } = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -33,18 +33,20 @@ export const useLogin = ():SignInHandler =>{
   const handleSubmit = async (e:FormEvent<HTMLFormElement>):Promise<void> => {
      try{
         e.preventDefault()
-        const start = performance.now()
+        // const start = performance.now()
         setLoading(true)
         console.log(import.meta.env.USERNAME)
     // create.mutate(formData)
       login.mutate(formData,{
         onSuccess: (data, variables)=>{
-          const end = performance.now()
-          const resposeTime = end - start
-          console.log(`${resposeTime} miliseconds`)
+          // const end = performance.now()
+          // const resposeTime = end - start
+          // console.log(`${resposeTime} miliseconds`)
           setToken(data.accessToken)
           setUser(variables.username)
           setLoading(false)
+          setResponseTime(0)
+          setBounce(false)
         }
       })
       
