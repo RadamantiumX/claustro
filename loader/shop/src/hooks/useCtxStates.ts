@@ -9,7 +9,7 @@ export const useCtxState = () =>{
     const [over, setOver] = useState(false)
     const [bounce, setBounce] = useState(false)
     const [loading, setLoading] = useState(false)
-    const [responseTime, setResponseTime] = useState()
+    const [responseTime, _setResponseTime] = useState(0)
 
     const setToken = (token:string) => {
         _setToken(token)
@@ -28,6 +28,16 @@ export const useCtxState = () =>{
             Cookies.remove(`${import.meta.env.VITE_USERNAME}`)
         }
     }
+
+    const setResponseTime = (time:number) =>{
+       // _setResponseTime(time)
+        if(responseTime > 0){
+            _setResponseTime(0)
+        }else{
+            _setResponseTime(time)
+        }
+    }
+
  return {user, token, setUser, setToken, over, setOver, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}
 }
 
