@@ -2,6 +2,7 @@ import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../hooks/useCtxStates"
 import { Nav } from "../components/layoutItems/Nav"
 import { SideBar } from "../components/layoutItems/SideBar"
+import { Footer } from "../components/layoutItems/Footer"
 
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
@@ -24,6 +25,7 @@ export default function DefaultLayout():React.ReactNode {
       <main className="bg-gray-700">
         <Outlet/>
       </main>
+      <Footer/>
       
     </>
   )
