@@ -6,8 +6,8 @@ import React from "react"
 export default function Dashboard():React.ReactNode {
  
   return (
-    <main className="main-layout">
+    <div className="main-layout">
       <h1 className="text-red-500">Dashboard</h1>
-    </main>
+    </div>
   )
 }

@@ -9,9 +9,9 @@ import React from "react"
 export default function Signin():React.ReactNode {
   
   return (
-    <main className="main-layout" >
+    <div className="main-layout" >
       <HeroSection/>
       <FormSection/>
-    </main>
+    </div>
   )
 }

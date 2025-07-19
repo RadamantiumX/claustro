@@ -10,10 +10,10 @@ import React from "react"
   return (
     <>
      
-    <main className="main-layout">
+    <div className="main-layout">
       <HeroSection/>
       <StartSection/>
-    </main>
+    </div>
     
     </>
   )

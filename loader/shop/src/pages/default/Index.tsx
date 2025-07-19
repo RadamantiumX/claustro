@@ -11,9 +11,9 @@ export default function Index():React.ReactNode {
 
   
   return (
-    <main className="main-layout">
+    <div className="main-layout">
       <HeroSection/>
       <TableSection/>
-    </main>
+    </div>
   )
 }

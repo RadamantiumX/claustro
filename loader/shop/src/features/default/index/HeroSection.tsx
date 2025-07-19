@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <>
      <HeroDefault>
-       <PageTitle title="Api Data"/>
+       <PageTitle title="Accounts Data"/>
      </HeroDefault>
     </>
   )
