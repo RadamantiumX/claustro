@@ -15,12 +15,12 @@ html, body, #root {
 
 @layer utilities {
     body{
-      @apply font-[Roboto] font-sans m-0 p-0 font-['14px'] text-gray-200 bg-gray-700;
+      @apply font-[Roboto] font-sans m-0 p-0 font-['14px'] text-gray-200 bg-gray-900;
     }
     .screen-content {
       @apply flex flex-col items-center gap-y-5 mt-20 h-screen;
     }
-    .main-layout{
+    .page-flex{
       @apply flex flex-col items-center;
     }
     .hero-center{

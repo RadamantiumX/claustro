@@ -11,7 +11,7 @@ export default function Index():React.ReactNode {
 
   
   return (
-    <div className="main-layout">
+    <div className="page-flex">
       <HeroSection/>
       <TableSection/>
     </div>

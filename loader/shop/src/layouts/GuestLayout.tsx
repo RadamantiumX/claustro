@@ -13,7 +13,10 @@ export default function GuestLayout() {
   }
   return (
     <>
+    <main className="bg-gray-900">
       <Outlet/>
+    </main>
+      
       <Footer/>
     </>
   )

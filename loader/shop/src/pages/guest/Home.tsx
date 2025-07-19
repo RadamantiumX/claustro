@@ -10,7 +10,7 @@ import React from "react"
   return (
     <>
      
-    <div className="main-layout">
+    <div className="page-flex">
       <HeroSection/>
       <StartSection/>
     </div>

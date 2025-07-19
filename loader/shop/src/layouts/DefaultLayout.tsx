@@ -21,7 +21,10 @@ export default function DefaultLayout():React.ReactNode {
    
       <Nav/>
       <SideBar/>
-      <Outlet/>
+      <main className="bg-gray-700">
+        <Outlet/>
+      </main>
+      
     </>
   )
 }

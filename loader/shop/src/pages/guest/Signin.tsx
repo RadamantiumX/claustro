@@ -9,7 +9,7 @@ import React from "react"
 export default function Signin():React.ReactNode {
   
   return (
-    <div className="main-layout" >
+    <div className="page-flex" >
       <HeroSection/>
       <FormSection/>
     </div>
