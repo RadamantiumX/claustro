@@ -1,9 +1,9 @@
 import React from "react"
-import { LogoutButton } from "../buttons/LogoutButton"
 import { NavProgressBar } from "../misc/NavProgressBar"
 import { UserLink } from "../buttons/UserLink"
 import { MenuButton } from "../buttons/MenuButton"
 import { useStateContext } from "../../hooks/hooks"
+import { ChevronButton } from "../buttons/ChevronButton"
 
 /**
  * Only layout Default component Navbar
@@ -20,7 +20,7 @@ export const Nav = ():React.ReactNode =>{
             <MenuButton/>
             <div className="flex flex-row items-center gap-x-2">
                  <UserLink route="#" inner={`${user}`}/>
-                 <LogoutButton/>
+                 <ChevronButton/>
             </div>
             </div>
             <NavProgressBar/>

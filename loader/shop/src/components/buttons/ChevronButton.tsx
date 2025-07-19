@@ -1,7 +1,7 @@
-
+import { Chevron } from "../../icons/icons"
 
 export const ChevronButton = () => {
   return (
-    <button>ChevronButton</button>
+    <button className="cursor-pointer"><Chevron/></button>
   )
 }
