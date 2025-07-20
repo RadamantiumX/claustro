@@ -1,7 +1,7 @@
 import { Menu } from '../../icons/icons';
 import { useStateContext } from '../../hooks/hooks';
 
-export const MenuButton = () => {
+export const SideBarButton = () => {
    const {over, setOver} = useStateContext()
 
   

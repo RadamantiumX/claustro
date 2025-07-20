@@ -1,9 +1,9 @@
 import React from "react"
 import { NavProgressBar } from "../misc/NavProgressBar"
-import { UserLink } from "../buttons/UserLink"
-import { MenuButton } from "../buttons/MenuButton"
+import { UserButton } from "../buttons/UserButton"
+import { SideBarButton } from "../buttons/SideBarButton"
 import { useStateContext } from "../../hooks/hooks"
-import { ChevronButton } from "../buttons/ChevronButton"
+
 
 /**
  * Only layout Default component Navbar
@@ -17,10 +17,9 @@ export const Nav = ():React.ReactNode =>{
         <>
         <nav onClick={()=>setOver(false)} className="bg-gray-600">
             <div className="flex justify-between items-center h-10 px-10">
-            <MenuButton/>
+            <SideBarButton/>
             <div className="flex flex-row items-center gap-x-2">
-                 <UserLink route="#" inner={`${user}`}/>
-                 <ChevronButton/>
+                 <UserButton inner={`${user}`}/>
             </div>
             </div>
             <NavProgressBar/>

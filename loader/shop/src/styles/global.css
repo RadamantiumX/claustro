@@ -53,7 +53,13 @@ html, body, #root {
       @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out absolute;
     }
    .hover-close{
-     @apply flex justify-end m-2 cursor-pointer hover:text-yellow-400
+     @apply flex justify-end m-2 cursor-pointer hover:text-yellow-400;
+   }
+   .rotate-chevron{
+     @apply rotate-180 ease-in-out duration-500;
+   }
+   .back-chevron{
+    @apply rotate-none ease-in-out duration-500;
    }
 }
 
