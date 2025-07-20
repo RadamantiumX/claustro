@@ -2,7 +2,7 @@ import React from "react"
 import { useStateContext } from "../../hooks/hooks"
 import { Close } from "../../icons/icons"
 
-export const SideBar = ():React.ReactNode => {
+export const SideMenuBar = ():React.ReactNode => {
     const {over, setOver} = useStateContext()
     return(
         <aside onMouseOver={()=>setOver(true)}  className={over?`menu-display`:'menu-hide'}>

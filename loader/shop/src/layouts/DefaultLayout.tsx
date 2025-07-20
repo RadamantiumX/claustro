@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { useStateContext } from "../hooks/useCtxStates"
 import { Nav } from "../components/layoutItems/Nav"
-import { SideBar } from "../components/layoutItems/SideBar"
+import { SideMenuBar } from "../components/layoutItems/SideMenuBar"
 import { Footer } from "../components/layoutItems/Footer"
 
 import React from "react"
@@ -21,7 +21,7 @@ export default function DefaultLayout():React.ReactNode {
     <>
    
       <Nav/>
-      <SideBar/>
+      <SideMenuBar/>
       <main className="bg-gray-700">
         <Outlet/>
       </main>

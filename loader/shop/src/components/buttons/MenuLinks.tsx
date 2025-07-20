@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom"
+
 export const MenuLinks = () => {
   return (
-    <div>MenuLinks</div>
+    <Link to="#">MenuLinks</Link>
   )
 }
