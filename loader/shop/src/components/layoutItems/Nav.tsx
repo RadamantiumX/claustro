@@ -23,7 +23,9 @@ export const Nav = ():React.ReactNode =>{
             </div>
             </div>
             <NavProgressBar/>
+             
         </nav>
+        
         </>
     )
 }
