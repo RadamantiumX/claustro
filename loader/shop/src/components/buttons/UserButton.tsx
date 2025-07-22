@@ -1,7 +1,8 @@
 import React from "react"
 import type { NavBarBtnProp } from "../../types/components"
 import { Chevron } from "../../icons/icons"
-import { useRotate } from "../../hooks/hooks"
+import { useUserMenu } from "../../hooks/hooks"
+
 
 /**
  * Component to reuse on Navbar only
@@ -10,10 +11,10 @@ import { useRotate } from "../../hooks/hooks"
  * @returns { React.ReactNode }
  */
 export const UserButton:React.FC<NavBarBtnProp> = ({inner}):React.ReactNode =>{
-    const {rotate, handleRotate} = useRotate()
+    const {rotate, handleClick} = useUserMenu()
     return(
         <>
-         <button onClick={handleRotate} className="flex flex-row cursor-pointer uppercase font-bold hover:underline" >{inner} <Chevron rotate={rotate}/></button>
+         <button onClick={handleClick} className="flex flex-row cursor-pointer uppercase font-bold hover:underline" >{inner} <Chevron rotate={rotate}/></button>
         </>
     )
 }
