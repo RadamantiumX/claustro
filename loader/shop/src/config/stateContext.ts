@@ -8,6 +8,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         user: null,
         token: null,
         over: false,
+        show: false,
         bounce: false,
         loading: false,
         responseTime: null,
@@ -15,6 +16,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         setUser: () => {},
         setToken: () => {},
         setOver: ()=>false,
+        setShow: ()=>false,
         setBounce: ()=>false,
         setLoading: ()=>false,
         setResponseTIme: ()=>{}

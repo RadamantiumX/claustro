@@ -7,6 +7,7 @@ export const useCtxState = () =>{
      const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
     const [over, setOver] = useState(false)
+    const [show, setShow] = useState(false)
     const [bounce, setBounce] = useState(false)
     const [loading, setLoading] = useState(false)
     const [responseTime, _setResponseTime] = useState(0)
@@ -34,7 +35,7 @@ export const useCtxState = () =>{
     
     }
 
- return {user, token, setUser, setToken, over, setOver, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}
+ return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)
