@@ -46,17 +46,17 @@ html, body, #root {
     }
     
      .side-menu-display{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out absolute;
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out fixed;
     }
     
     .side-menu-hide{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out absolute;
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed;
     }
     .user-menu-display{
-      @apply h-1/2 w-40 transition bg-amber-700 top-10 right-0 ease-in-out absolute;
+      @apply h-1/2 w-40 transition bg-amber-700 top-10 right-0 ease-in-out fixed;
     }
     .user-menu-hide{
-      @apply h-1/2 w-40 transition -translate-y-full bg-amber-700 top-10 right-0 ease-in-out absolute;
+      @apply h-1/2 w-40 transition -translate-y-full bg-amber-700 top-10 right-0 ease-in-out fixed;
     }
    .hover-close{
      @apply flex justify-end m-2 cursor-pointer hover:text-yellow-400;
