@@ -20,6 +20,9 @@ html, body, #root {
     .screen-content {
       @apply flex flex-col items-center gap-y-5 mt-20 h-screen;
     }
+    .nav-flex{
+      @apply flex justify-between items-center h-12 px-10;
+    }
     .page-flex{
       @apply flex flex-col items-center;
     }
@@ -53,10 +56,10 @@ html, body, #root {
       @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed;
     }
     .user-menu-display{
-      @apply h-1/2 w-40 transition bg-amber-700 top-10 right-0 ease-in-out fixed;
+      @apply h-auto w-40 transition bg-amber-700 duration-500 delay-300 top-10 right-0 ease-in-out fixed;
     }
     .user-menu-hide{
-      @apply h-1/2 w-40 transition -translate-y-full bg-amber-700 top-10 right-0 ease-in-out fixed;
+      @apply h-auto w-40 transition -translate-y-full duration-500 delay-300 bg-amber-700 top-10 right-0 ease-in-out fixed;
     }
    .hover-close{
      @apply flex justify-end m-2 cursor-pointer hover:text-yellow-400;
@@ -66,6 +69,9 @@ html, body, #root {
    }
    .back-chevron{
     @apply rotate-none ease-in-out duration-500;
+   }
+   .link-hover{
+    @apply hover:rounded-sm hover:bg-amber-600 focus:outline-2 p-2;
    }
 }
 

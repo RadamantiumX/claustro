@@ -17,7 +17,7 @@ export const Nav = ():React.ReactNode =>{
     return(
         <>
         <nav onClick={()=>setOver(false)} className="bg-gray-600 w-full z-1000 fixed">
-            <div className="flex justify-between items-center h-10 px-10">
+            <div className="nav-flex">
             <SideBarButton/>
             <div className="flex flex-row items-center gap-x-2">
                  <UserButton inner={`${user}`}/>
