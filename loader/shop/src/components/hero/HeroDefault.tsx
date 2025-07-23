@@ -9,7 +9,7 @@ import React from "react"
 export const HeroDefault:React.FC<{children:React.ReactNode}> = ({children}):React.ReactNode => {
     return(
         <>
-        <header className="flex flex-col gap-y-5 h-20 w-full mt-[15%] sm:mt-[5%] items-center">
+        <header className="hero-flex-center">
           {children}
         </header>
         </>
