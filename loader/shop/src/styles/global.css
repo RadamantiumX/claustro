@@ -29,6 +29,9 @@ html, body, #root {
     .hero-center{
       @apply flex h-40 items-center;
     }
+    .hero-flex-center{
+       @apply flex flex-col gap-y-5 h-20 w-full mt-[15%] sm:mt-[5%] items-center;
+    }
     .card-basic{
       @apply flex flex-col items-center p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl;
     }
@@ -72,6 +75,9 @@ html, body, #root {
    }
    .link-hover{
     @apply hover:rounded-sm hover:bg-amber-600 focus:outline-2 p-2;
+   }
+   .input-search-block{
+    @apply block w-full h-10 p-4 ps-15 rounded mb-8 italic text-gray-600 bg-amber-100 focus:outline-none text-xl shadow-lg;
    }
 }
 
