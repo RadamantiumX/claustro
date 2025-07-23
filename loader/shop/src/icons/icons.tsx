@@ -3,5 +3,7 @@ export { Close } from './Close';
 export { Menu } from './Menu';
 export { OffPower } from './OffPower';
 export { Loader } from './Loader';
-export { MagnifyGlass } from './MagnifyGlass'
-
+export { MagnifyGlass } from './MagnifyGlass';
+export { Edit } from './Edit';
+export { Trash } from './Trash';
+export { Eye } from './Eye';
