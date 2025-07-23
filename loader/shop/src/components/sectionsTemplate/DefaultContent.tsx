@@ -10,7 +10,7 @@ const DefaultContent:React.FC<{children:ReactNode}> = ({children}):React.ReactNo
    
 return(
     <>
-     <section className="flex flex-col items-center gap-y-5 mt-20 h-screen">
+     <section className="flex flex-col items-center gap-y-5 mt-20 w-full h-screen">
       {children}
      </section>
     </>
