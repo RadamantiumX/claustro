@@ -1,15 +1,14 @@
 import React from 'react'
-import { DataCard } from '../../../components/cards/DataCard'
 import { DataTable } from '../../../components/misc/DataTable'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 
-export default function TableSection() {
+export default function TableSection():React.ReactNode {
   return (
     <>
     <DefaultContent>
-     <DataCard>
+    
         <DataTable/>
-     </DataCard>
+   
      </DefaultContent>
     </>
   )
