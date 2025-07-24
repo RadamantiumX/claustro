@@ -1,34 +1,5 @@
 {
     "accounts":[
-        {
-            "id":"abc123",
-            "email": "user1@mail.com",
-            "xAccount": "user1"
-            
-        },
-        {
-            "id":"abc123",
-            "email": "user1@mail.com",
-            "xAccount": "user1"
-            
-        },
-        {
-            "id":"abc123",
-            "email": "user1@mail.com",
-            "xAccount": "user1"
-            
-        },
-        {
-            "id":"abc123",
-            "email": "user1@mail.com",
-            "xAccount": "user1"
-            
-        },
-        {
-            "id":"abc123",
-            "email": "user1@mail.com",
-            "xAccount": "user1"
-            
-        }
+       
     ]
 }

@@ -22,16 +22,16 @@ export const DataTable = () => {
       </tr>
     </thead>
     <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
-     {Data ? Data.accounts.map((item, key)=>(
+     {Data?.accounts.length > 0 ? Data?.accounts.map((item, key)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
-          {item.id}
+          {item?.id}
         </td>
         <td className="p-3">
-          {item.email}
+          {item?.email}
         </td>
         <td className="p-3">
-          {item.xAccount}
+          {item?.xAccount}
         </td>
         <td className="flex p-3 gap-2">
           <TableLink><Trash/></TableLink>
@@ -39,7 +39,7 @@ export const DataTable = () => {
           <TableLink><Eye/></TableLink>
         </td>
       </tr>
-     )): <div className="">No Content</div>}
+     )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}
       
       
     </tbody>
