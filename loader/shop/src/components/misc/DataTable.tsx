@@ -22,7 +22,7 @@ export const DataTable = () => {
       </tr>
     </thead>
     <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
-     {Data.accounts.map((item, key)=>(
+     {Data ? Data.accounts.map((item, key)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
           {item.id}
@@ -39,7 +39,7 @@ export const DataTable = () => {
           <TableLink><Eye/></TableLink>
         </td>
       </tr>
-     ))}
+     )): <div className="">No Content</div>}
       
       
     </tbody>
