@@ -1,5 +1,5 @@
-import { IuserColabRepository } from "factory";
-import { UserColab, AuthMethods } from "factory";
+import { IuserColabRepository, UserColab, AuthMethods } from "def";
+
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";

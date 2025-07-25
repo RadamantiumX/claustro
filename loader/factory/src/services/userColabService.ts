@@ -1,8 +1,8 @@
-import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "factory"
+import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "def"
 import { UserColabRepository } from "../repository/userColabRepository"
 
 
-type username = string
+
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
