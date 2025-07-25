@@ -12,12 +12,14 @@ export class DataRepository{
             xUser: true,
             apiData: {
                 select: {
+                    id:true,
                     appName: true,
                     appId: true
                 }
             },
             apiKeys: {
                 select: {
+                    id: true,
                     apiKey: true,
                     apiKeySecret: true,
                     bearerToken: true,
