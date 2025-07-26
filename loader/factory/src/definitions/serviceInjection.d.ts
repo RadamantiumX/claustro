@@ -1,4 +1,4 @@
-import { Datum, ApiData, ApiKey } from "def";
+import { Datum, ApiData, ApiKey, UserColab, UserColabClientResponse } from "def";
 
 export interface Overload{
     id: Pick<Datum, "id">;
@@ -26,4 +26,18 @@ export interface IDataRepository{
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt">):Promise<void>;
      destroyData(payload: Pick<Datum, 'id'>):Promise<void>;
+}
+
+export interface IApiDataRepository{
+    getUnique({id}:Pick<ApiData, "id">):Promise<Pick<ApiData, "appName" | "appId">>;
+    createApiData(payload: Omit<ApiData, "id"| "createdAt" | "updatedAt">):Promise<void>;
+    updateApiData(payload:Omit<ApiData, "createdAt" | "updatedAt" | "dataId">):Promise<void>;
+    destroyApiData(payload:Pick<ApiData, "id">):Promise<void>;
+}
+
+export interface IApiKeyRepository{
+    getUnique({id}:Pick<ApiKey, "id">):Promise<Pick<ApiKey, "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret">>;
+    createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">):Promise<void>;
+    updateApiKey(payload:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">):Promise<void>;
+    destroyApiKey(payload: Pick<ApiKey, "id">):Promise<void>;
 }
