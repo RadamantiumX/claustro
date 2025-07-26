@@ -11,11 +11,13 @@ export class DataService{
     private constructor(dataRepository:IDataRepository){
         this.dataRepository = dataRepository
         this.data = {
-            list:{},
-            create: {},
-            select:{},
-            update: {},
-            delete: {}
+            list:async()=>{
+                
+            },
+            create:async()=>{},
+            select:async()=>{},
+            update:async()=>{},
+            delete:async()=>{}
         }
     }
 
