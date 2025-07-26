@@ -24,7 +24,9 @@ export { AllRelatedData } from './factory';
 export { RateLimiterRule } from './factory';
 export { AuthMethods } from './factory';
 export { trpcPayload } from './factory';
-export { UserColabMethods } from './factory';
+
+export { UserColabMethods } from './methods';
+export { DataMethods } from './methods';
 
 export { IuserColabRepository } from './serviceInjection';
 export { IDataRepository } from './serviceInjection';

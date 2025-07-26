@@ -1,11 +1,22 @@
 import { Datum, ApiData, ApiKey, UserColab, UserColabClientResponse } from "factory";
 
 export interface Overload{
-    id: Pick<Datum, "id">;
-    emaiSource: Pick<Datum, "emailSource">;
-    xUser: Pick<Datum, "xUser">;
-    apiData: Pick<ApiData, "id" | "appName" | "appId">;
-    apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret">
+     id: number;
+  emailSource: string;
+  xUser: string;
+  apiData: {
+    id:number;
+    appName:string;
+    appId: string;
+  } | null;
+  apiKeys: {
+    id: number;
+    apiKey: string;
+    apiKeySecret: string;
+    bearerToken: string;
+    accessToken: string;
+    accessTokenSecret: string;
+  } | null;
 }
 
 export interface IuserColabRepository {
@@ -20,8 +31,8 @@ export interface IuserColabRepository {
 }
 
 export interface IDataRepository{
-     getUnique({id}:Pick<Datum, "id">):Promise<Overload>;
-     getForEmailSource({emailSource}:Pick<Datum, "emailSource">):Promise<Overload>;
+     getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
+     getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
      allData():Promise<ApiData, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt">;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt">):Promise<void>;

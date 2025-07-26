@@ -7,3 +7,11 @@ export interface UserColabMethods{
   update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
   delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
 }
+
+export interface DataMethods{
+   list: () => Promise<>;
+   create: () => Promise<>;
+   select: () => Promise<>;
+   update: () => Promise<>;
+   delete: () => Promise<>;
+}

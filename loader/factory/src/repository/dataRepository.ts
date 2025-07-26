@@ -1,11 +1,12 @@
 import { prisma } from "../config/prismaClient";
 import { Datum } from "def";
 import { timeStampParsed } from "../helper/timeStampParser";
+import { Overload } from "serviceInjection";
 
 export class DataRepository{
-    async getUnique({id}:Pick<Datum, "id">){
-       const unique = prisma.data.findUnique({
-        where:{ id: id },
+    async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
+       const unique = await prisma.data.findUnique({
+        where:{ id: payload.id },
         select:{
             id: true,
             emailSource:true,
@@ -33,9 +34,9 @@ export class DataRepository{
     return unique
     }
 
-    async getForEmailSource({emailSource}:Pick<Datum, "emailSource">){
-       const unique = prisma.data.findUnique({
-        where:{ emailSource: emailSource },
+    async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>{
+       const unique = await prisma.data.findUnique({
+        where:{ emailSource: payload.emailSource },
         select:{
             id: true,
             emailSource:true,
