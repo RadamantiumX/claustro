@@ -1,4 +1,4 @@
-import { HttpCode } from "errors"
+import { HttpCode } from "def"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 import z from 'zod'
 import { TRPCError } from "@trpc/server/dist"

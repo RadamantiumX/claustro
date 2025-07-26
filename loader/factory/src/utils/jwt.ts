@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { IPayload } from 'factory'
+import { IPayload } from 'def'
 import jwt from 'jsonwebtoken'
 
 

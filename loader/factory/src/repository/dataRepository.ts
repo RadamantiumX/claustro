@@ -1,5 +1,5 @@
 import { prisma } from "../config/prismaClient";
-import { Datum } from "factory";
+import { Datum } from "def";
 import { timeStampParsed } from "../helper/timeStampParser";
 
 export class DataRepository{
@@ -42,12 +42,14 @@ export class DataRepository{
             xUser: true,
             apiData: {
                 select: {
+                    id:true,
                     appName: true,
                     appId: true
                 }
             },
             apiKeys: {
                 select: {
+                    id: true,
                     apiKey: true,
                     apiKeySecret: true,
                     bearerToken: true,

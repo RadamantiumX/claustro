@@ -1,4 +1,4 @@
-import { ApiData } from "factory";
+import { ApiData } from "def";
 import { prisma } from "../config/prismaClient";
 
 export class ApiDataRepository{

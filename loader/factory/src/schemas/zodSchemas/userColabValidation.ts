@@ -1,5 +1,5 @@
 import z from 'zod'
-import { UserColab } from 'factory'
+import { UserColab } from 'def'
 
 export const userSchema = z
   .object({

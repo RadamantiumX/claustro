@@ -1,5 +1,5 @@
 import { prisma } from "../config/prismaClient";
-import { ApiKey } from "factory";
+import { ApiKey } from "def";
 
 export class ApiKeyRepository{
     async getUnique({id}:Pick<ApiKey, "id">){

@@ -1,7 +1,7 @@
 import {  initTRPC, TRPCError } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { AuthService } from '../services/authService'
-import { UserColab } from 'factory'
+import { UserColab } from 'def'
 
 
 
