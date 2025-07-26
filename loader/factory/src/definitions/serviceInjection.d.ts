@@ -1,4 +1,4 @@
-import { Datum, ApiData, ApiKey, UserColab, UserColabClientResponse } from "def";
+import { Datum, ApiData, ApiKey, UserColab, UserColabClientResponse } from "factory";
 
 export interface Overload{
     id: Pick<Datum, "id">;
