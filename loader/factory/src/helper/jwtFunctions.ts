@@ -1,4 +1,4 @@
-import { DecodedTokenKeys, JWTSign, JWTOptions } from 'def'
+import { DecodedTokenKeys, JWTSign, JWTOptions } from 'index'
 import jwt from '../utils/jwt'
 import { timeStampParsed } from './timeStampParser'
 

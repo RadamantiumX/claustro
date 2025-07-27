@@ -1,4 +1,4 @@
-import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "def"
+import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "index"
 import { UserColabRepository } from "../repository/userColabRepository"
 
 

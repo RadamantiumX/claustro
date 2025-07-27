@@ -1,4 +1,4 @@
-import { IuserColabRepository, UserColab, AuthMethods } from "def";
+import { IuserColabRepository, UserColab, AuthMethods } from "index";
 
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'

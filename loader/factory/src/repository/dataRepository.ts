@@ -1,5 +1,5 @@
 import { prisma } from "../config/prismaClient";
-import { Datum, Overload } from "def";
+import { Datum, Overload } from "index";
 import { timeStampParsed } from "../helper/timeStampParser";
 
 

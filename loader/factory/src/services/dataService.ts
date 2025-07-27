@@ -1,4 +1,4 @@
-import { IDataRepository, DataMethods, Datum } from "def";
+import { IDataRepository, DataMethods, Datum } from "index";
 import { DataRepository } from "../repository/dataRepository";
 
 

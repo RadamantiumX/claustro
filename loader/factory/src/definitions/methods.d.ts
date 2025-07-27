@@ -18,5 +18,9 @@ export interface DataMethods{
 }
 
 export interface ApiDataMethods{
-  
+    list: () => Promise<>;
+    create: () => Promise<>;
+    select: () => Promise<>;
+    update: () => Promise<>;
+    delete: () => Promise<>;
 }
