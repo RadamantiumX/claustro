@@ -1,7 +1,7 @@
 import { prisma } from "../config/prismaClient";
-import { Datum } from "def";
+import { Datum, Overload } from "def";
 import { timeStampParsed } from "../helper/timeStampParser";
-import { Overload } from "serviceInjection";
+
 
 export class DataRepository{
     async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
