@@ -64,7 +64,7 @@ export class DataRepository{
     return unique
     }
 
-    async allData(){
+    async allData():Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
         const allDataRecords = await prisma.data.findMany({
             select:{
                 id: true,

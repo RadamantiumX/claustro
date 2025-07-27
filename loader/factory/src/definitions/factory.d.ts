@@ -65,17 +65,16 @@ export interface Datum {
   xUser: string
   xPsw: string
   userColabId: string
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
-
 export interface ApiData {
   id: number
   appName: string
   appId: string
   dataId: number
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export interface ApiKey {
@@ -87,8 +86,8 @@ export interface ApiKey {
   accessTokenSecret: string
   apiDataId: number
   dataId: number
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export type UserColabService = {

@@ -32,3 +32,4 @@ export { IuserColabRepository } from './serviceInjection';
 export { IDataRepository } from './serviceInjection';
 export { IApiDataRepository } from './serviceInjection';
 export { IApiKeyRepository } from './serviceInjection';
+export { Overload } from './serviceInjection';

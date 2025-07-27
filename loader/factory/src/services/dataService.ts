@@ -1,8 +1,8 @@
-import { IDataRepository, DataMethods } from "def";
+import { IDataRepository, DataMethods, Datum, Overload } from "def";
 import { DataRepository } from "../repository/dataRepository";
 
 
-// TODO: adding the methods on definitions
+///// TODO: adding the methods on definitions ✅
 export class DataService{
     private static instance:DataService;
     dataRepository:IDataRepository;
@@ -12,10 +12,22 @@ export class DataService{
         this.dataRepository = dataRepository
         this.data = {
             list:async()=>{
-                
+                const allData = await this.dataRepository.allData()
+                return allData
             },
-            create:async()=>{},
-            select:async()=>{},
+            create:async(bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>=>{
+                // TODO: Validations here! 🌍
+                await this.dataRepository.createData(bodyReq)
+                return
+            },
+            selectUniqueForId:async(bodyReq:Pick<Datum, "id">)=>{
+                const uniqueForId = await this.dataRepository.getUnique(bodyReq)
+                return uniqueForId
+            },
+            selectUniqueForEmail:async(bodyReq:Pick<Datum, "emailSource">)=>{
+                const uniqueForEmail = await this.dataRepository.getForEmailSource(bodyReq)
+                return uniqueForEmail
+            },
             update:async()=>{},
             delete:async()=>{}
         }

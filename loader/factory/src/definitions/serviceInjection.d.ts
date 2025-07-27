@@ -33,7 +33,7 @@ export interface IuserColabRepository {
 export interface IDataRepository{
      getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
      getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
-     allData():Promise<ApiData, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt">;
+     allData():Promise<Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt">):Promise<void>;
      destroyData(payload: Pick<Datum, 'id'>):Promise<void>;
