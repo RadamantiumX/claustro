@@ -16,3 +16,7 @@ export interface DataMethods{
    update: (bodyReq:Omit<Datum, "createdAt" | "updatedAt">) => Promise<void>;
    delete: (bodyReq:Pick<Datum, 'id'>) => Promise<void>;
 }
+
+export interface ApiDataMethods{
+  
+}
