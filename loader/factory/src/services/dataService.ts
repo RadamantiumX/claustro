@@ -1,4 +1,4 @@
-import { IDataRepository, DataMethods, Datum, Overload } from "def";
+import { IDataRepository, DataMethods, Datum } from "def";
 import { DataRepository } from "../repository/dataRepository";
 
 
@@ -28,8 +28,15 @@ export class DataService{
                 const uniqueForEmail = await this.dataRepository.getForEmailSource(bodyReq)
                 return uniqueForEmail
             },
-            update:async()=>{},
-            delete:async()=>{}
+            update:async(bodyReq:Omit<Datum, "createdAt" | "updatedAt">)=>{
+                // TODO: Validations here! 🌍
+                await this.dataRepository.updateData(bodyReq)
+                return
+            },
+            delete:async(bodyReq:Pick<Datum, 'id'>)=>{
+                await this.dataRepository.destroyData(bodyReq)
+                return
+            }
         }
     }
 
