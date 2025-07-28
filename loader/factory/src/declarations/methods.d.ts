@@ -1,4 +1,4 @@
-import { UserColab, UserColabClientResponse } from "factory";
+import { ApiData, UserColab, UserColabClientResponse } from "factory";
 
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
@@ -18,9 +18,15 @@ export interface DataMethods{
 }
 
 export interface ApiDataMethods{
-    list: () => Promise<>;
-    create: () => Promise<>;
-    select: () => Promise<>;
-    update: () => Promise<>;
-    delete: () => Promise<>;
+    create: (bodyReq:Omit<ApiData, "id"| "createdAt" | "updatedAt">) => Promise<void>;
+    selectUniqueForId: (bodyReq:Pick<ApiData, "id">) => Promise<Pick<ApiData, "appName" | "appId"> | null>;
+    update: (bodyReq:Omit<ApiData, "createdAt" | "updatedAt" | "dataId">) => Promise<void>;
+    delete: (bodyReq:Pick<ApiData, "id">) => Promise<void>;
+}
+
+export interface ApiKeyMethods{
+   create: () =>Promise<>;
+   selectUniqueForId:()=>Promise<>;
+   update:()=>Promise<>;
+   delete:()=>Promise<>;
 }

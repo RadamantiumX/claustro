@@ -28,6 +28,7 @@ export { trpcPayload } from './factory';
 export { UserColabMethods } from './methods';
 export { DataMethods } from './methods';
 export { ApiDataMethods } from './methods';
+export { ApiKeyMethods } from './methods';
 
 export { IuserColabRepository } from './serviceInjection';
 export { IDataRepository } from './serviceInjection';

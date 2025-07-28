@@ -2,9 +2,9 @@ import { ApiData } from "index";
 import { prisma } from "../config/prismaClient";
 
 export class ApiDataRepository{
-    async getUnique({id}:Pick<ApiData, "id">){
+    async getUnique(payload:Pick<ApiData, "id">){
         const unique = await prisma.apiData.findUnique({
-            where: {id:id},
+            where: {id:payload.id},
             select:{
                 appName: true,
                 appId: true

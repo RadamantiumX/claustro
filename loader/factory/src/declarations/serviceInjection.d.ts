@@ -40,14 +40,14 @@ export interface IDataRepository{
 }
 
 export interface IApiDataRepository{
-    getUnique({id}:Pick<ApiData, "id">):Promise<Pick<ApiData, "appName" | "appId"> | null>;
+    getUnique(payload:Pick<ApiData, "id">):Promise<Pick<ApiData, "appName" | "appId"> | null>;
     createApiData(payload: Omit<ApiData, "id"| "createdAt" | "updatedAt">):Promise<void>;
     updateApiData(payload:Omit<ApiData, "createdAt" | "updatedAt" | "dataId">):Promise<void>;
     destroyApiData(payload:Pick<ApiData, "id">):Promise<void>;
 }
 
 export interface IApiKeyRepository{
-    getUnique({id}:Pick<ApiKey, "id">):Promise<Pick<ApiKey, "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret">>;
+    getUnique({id}:Pick<ApiKey, "id">):Promise<Pick<ApiKey, "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null>;
     createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">):Promise<void>;
     updateApiKey(payload:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">):Promise<void>;
     destroyApiKey(payload: Pick<ApiKey, "id">):Promise<void>;
