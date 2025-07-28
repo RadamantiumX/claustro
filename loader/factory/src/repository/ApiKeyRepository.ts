@@ -2,10 +2,11 @@ import { prisma } from "../config/prismaClient";
 import { ApiKey } from "index";
 
 export class ApiKeyRepository{
-    async getUnique({id}:Pick<ApiKey, "id">){
+    async getUnique(payload:Pick<ApiKey, "id">){
         const unique = await prisma.apiKeys.findUnique({
-            where: {id:id},
+            where: {id:payload.id},
             select: {
+                id: true,
                 apiKey: true,
                 apiKeySecret: true,
                 bearerToken: true,
@@ -14,7 +15,7 @@ export class ApiKeyRepository{
 
             }
         })
-
+        return unique
     }
 
     async createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">){
