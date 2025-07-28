@@ -40,7 +40,7 @@ export interface IDataRepository{
 }
 
 export interface IApiDataRepository{
-    getUnique({id}:Pick<ApiData, "id">):Promise<Pick<ApiData, "appName" | "appId">>;
+    getUnique({id}:Pick<ApiData, "id">):Promise<Pick<ApiData, "appName" | "appId"> | null>;
     createApiData(payload: Omit<ApiData, "id"| "createdAt" | "updatedAt">):Promise<void>;
     updateApiData(payload:Omit<ApiData, "createdAt" | "updatedAt" | "dataId">):Promise<void>;
     destroyApiData(payload:Pick<ApiData, "id">):Promise<void>;
