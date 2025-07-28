@@ -47,7 +47,7 @@ export interface IApiDataRepository{
 }
 
 export interface IApiKeyRepository{
-    getUnique({id}:Pick<ApiKey, "id">):Promise<Pick<ApiKey, "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null>;
+    getUnique(payload:Pick<ApiKey, "id">):Promise<Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null>;
     createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">):Promise<void>;
     updateApiKey(payload:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">):Promise<void>;
     destroyApiKey(payload: Pick<ApiKey, "id">):Promise<void>;
