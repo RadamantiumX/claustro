@@ -1,20 +1,13 @@
 import { trpc } from "../config/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
-import { TRPCError } from '@trpc/server'
+import { authMiddleware } from "./middleware/trpcMiddlware";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
-const authMiddleware = trpc.middleware(({ctx, next})=>{
-  if(!ctx){
-    console.log('no user authorized')
-    throw new TRPCError({ code: 'UNAUTHORIZED' })
-  }
 
-  return next({ ctx })
-})
 
- const protectedProcedure = trpc.procedure.use(authMiddleware)
+const protectedProcedure = trpc.procedure.use(authMiddleware)
 
 export const userColabRouter = trpc.router({
     list: protectedProcedure.query(({ ctx })=>{
