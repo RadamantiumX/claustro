@@ -9,8 +9,27 @@ const protectedProcedure = trpc.procedure.use(authMiddleware)
 
 export const ApiDataRouter = trpc.router({
     selectForId: protectedProcedure.input(apiDataSchema.pick({id:true})).mutation(
-        ({input})=>{
+        ({input}) =>{
             return apiDataServiceInstance.apiData.selectUniqueForId(input)
         }
+    ),
+    create: protectedProcedure.input(apiDataSchema.omit({id:true})).mutation(
+        (({input}) =>{
+            return apiDataServiceInstance.apiData.create(input)
+        }
+        )
+    ),
+    update: protectedProcedure.input(apiDataSchema.omit({dataId:true})).mutation(
+        (({input}) =>{
+            return apiDataServiceInstance.apiData.update(input)
+        }
+        )
+    ),
+    delete: protectedProcedure.input(apiDataSchema.pick({id:true})).mutation(
+        (({input}) =>{
+            return apiDataServiceInstance.apiData.delete(input)
+        }
+
+        )
     )
 })
