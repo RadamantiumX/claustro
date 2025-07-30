@@ -90,7 +90,7 @@ export class DataRepository{
        return
     }
     
-    async updateData(payload:Omit<Datum, "createdAt" | "updatedAt">){
+    async updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">){
       await prisma.data.update({
       where: {
         id: payload.id
@@ -100,7 +100,6 @@ export class DataRepository{
         emailSourcePsw: payload.emailSourcePsw,
         xUser: payload.xUser,
         xPsw: payload.xPsw,
-        userColabId: payload.userColabId,
         updatedAt: timeStampParsed()
       }
     })

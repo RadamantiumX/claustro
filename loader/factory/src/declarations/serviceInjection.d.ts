@@ -35,7 +35,7 @@ export interface IDataRepository{
      getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
      allData():Promise<Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
-     updateData(payload:Omit<Datum, "createdAt" | "updatedAt">):Promise<void>;
+     updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">):Promise<void>;
      destroyData(payload: Pick<Datum, 'id'>):Promise<void>;
 }
 

@@ -13,7 +13,7 @@ export interface DataMethods{
    create: (bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">) => Promise<void>;
    selectUniqueForId: (bodyReq:Pick<Datum, "id">) => Promise<Overload | null>;
    selectUniqueForEmail: (bodyReq:Pick<Datum, "emailSource">) => Promise<Overload | null>;
-   update: (bodyReq:Omit<Datum, "createdAt" | "updatedAt">) => Promise<void>;
+   update: (bodyReq:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">) => Promise<void>;
    delete: (bodyReq:Pick<Datum, 'id'>) => Promise<void>;
 }
 

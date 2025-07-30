@@ -28,7 +28,7 @@ export class DataService{
                 const uniqueForEmail = await this.dataRepository.getForEmailSource(bodyReq)
                 return uniqueForEmail
             },
-            update:async(bodyReq:Omit<Datum, "createdAt" | "updatedAt">)=>{
+            update:async(bodyReq:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">)=>{
                 // TODO: Validations here! 🌍
                 await this.dataRepository.updateData(bodyReq)
                 return
