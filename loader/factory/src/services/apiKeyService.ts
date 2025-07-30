@@ -32,5 +32,7 @@ export class ApiKeyService{
         if(!ApiKeyService.instance){
                     ApiKeyService.instance = new ApiKeyService(new ApiKeyRepository)
                 }
+
+                return ApiKeyService.instance
     }
 }

@@ -37,5 +37,7 @@ export class ApiDataService{
         if(!ApiDataService.instance){
             ApiDataService.instance = new ApiDataService(new ApiDataRepository)
         }
+
+        return ApiDataService.instance
     }
 }
