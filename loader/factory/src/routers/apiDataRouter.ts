@@ -7,7 +7,7 @@ const apiDataServiceInstance = ApiDataService.getInstance()
 
 const protectedProcedure = trpc.procedure.use(authMiddleware)
 
-export const ApiDataRouter = trpc.router({
+export const apiDataRouter = trpc.router({
     selectForId: protectedProcedure.input(apiDataSchema.pick({id:true})).mutation(
         ({input}) =>{
             return apiDataServiceInstance.apiData.selectUniqueForId(input)

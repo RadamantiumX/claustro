@@ -7,7 +7,7 @@ const apiKeyServiceInstance = ApiKeyService.getInstance()
 
 const protectedProcedure = trpc.procedure.use(authMiddleware)
 
-export const ApiKeyRouter = trpc.router({
+export const apiKeyRouter = trpc.router({
     selectForId: protectedProcedure.input(apiKeySchema.pick({id:true})).mutation(
         ({input}) =>{
             return apiKeyServiceInstance.apiKey.selectUniqueForId(input)
