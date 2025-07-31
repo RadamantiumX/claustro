@@ -9,7 +9,8 @@
     "prisma-studio": "cd loader/factory && npx prisma studio",
     "dev-gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx turbo run test",
+    "test:watch": "npx turbo run test:watch",
     "ws-pkg": "node shell/index.js",
     "gen": "cd loader/factory && npx prisma generate"
   },

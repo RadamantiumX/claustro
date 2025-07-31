@@ -35,6 +35,13 @@
   },
   "db:deploy": {
     "cache": false
+  },
+  "test":{
+     "dependsOn": ["^test"]
+  },
+  "test:watch":{
+    "cache": false,
+    "persistent": true
   }
   }
   
