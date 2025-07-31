@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "nodemon --exec ts-node ./src/index.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --skip-generate",
