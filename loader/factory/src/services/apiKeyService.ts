@@ -1,6 +1,7 @@
 import { IApiKeyRepository, ApiKeyMethods, ApiKey } from "index";
 import { ApiKeyRepository } from "../repository/ApiKeyRepository";
 
+
 export class ApiKeyService{
     private static instance:ApiKeyService;
     apiKeyRepository:IApiKeyRepository;
