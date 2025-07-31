@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
+    "test:watch":"vitest --watch",
     "dev": "nodemon --exec ts-node ./src/index.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --skip-generate",
