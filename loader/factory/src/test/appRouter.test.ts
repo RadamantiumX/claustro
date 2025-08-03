@@ -8,7 +8,7 @@ describe("appRouter", ()=>{
     it("should be caller", async ()=>{
         const caller = appRouter.createCaller({});
 
-        const r = await caller.auth.login({username:'asasadsdadasdas', password:"dsdasdasdasddasd", isSuperAdmin: false})
-        expect(r).rejects.toThrow('Username or password is wrong, code: 401')
+        const r = await caller.auth.login({username:'asasadsdadasdas', password:"dsdasdasdasddasd"})
+        expect(r).rejects.toThrow('Missing data')
     })
 })

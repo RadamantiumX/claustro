@@ -18,12 +18,13 @@ export class AuthService{
              login: async (bodyReq: Pick<UserColab, 'username' | 'password'>) => {
             const verifyUser = await this.userColabRepository.getUnique({username: bodyReq.username})
         if(!verifyUser){
-           throw new AppError(
+          /* throw new AppError(
             'Unauthorized',
             401,
             'Username or password is wrong, code: 401',
             false
-           )
+           )*/
+          throw new Error('Missing data')
         }
         const verifyPsw = await bcrypt.compare(
             bodyReq.password,
