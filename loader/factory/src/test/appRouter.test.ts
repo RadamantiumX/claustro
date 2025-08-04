@@ -9,6 +9,6 @@ describe("appRouter", ()=>{
         const caller = appRouter.createCaller({});
 
         const r = await caller.auth.login({username:'asasadsdadasdas', password:"dsdasdasdasddasd"})
-        expect(r).rejects.toThrow('Missing data')
+        expect(r).toThrowError('Missing data')
     })
 })
