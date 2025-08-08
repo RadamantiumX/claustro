@@ -45,8 +45,19 @@ See the next tutorial for more info: https://dusanstam.com/posts/react-express-m
 
 ## PACKAGE INSTALLATION MANAGER
 
-USe the follow command to install any dependency:
+USe the follow command to install any dependency on the WORKFLOW:
 
 ```bash
 pnpm run ws-pkg
+```
+
+## ENV VARIABLES SETTING
+
+The ENV variables is unify, to work on all OS, with the library *cross-env* for example:
+
+```json
+"scripts":{
+   "start": "cross-env NODE_ENV=production node dist/src/index.js"
+}
+
 ```
