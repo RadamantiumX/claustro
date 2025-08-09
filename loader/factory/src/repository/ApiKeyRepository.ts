@@ -1,4 +1,4 @@
-import { prisma } from "../config/prismaClient";
+import prisma from "../config/prismaClient";
 import { ApiKey } from "index";
 
 export class ApiKeyRepository{

@@ -1,5 +1,5 @@
 import { IApiKeyRepository, ApiKeyMethods, ApiKey } from "index";
-import { ApiKeyRepository } from "../repository/ApiKeyRepository";
+import { ApiKeyRepository } from "../repository/apiKeyRepository";
 
 
 export class ApiKeyService{

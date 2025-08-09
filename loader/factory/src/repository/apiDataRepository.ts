@@ -1,5 +1,5 @@
 import { ApiData } from "index";
-import { prisma } from "../config/prismaClient";
+import prisma  from "../config/prismaClient";
 
 export class ApiDataRepository{
     async getUnique(payload:Pick<ApiData, "id">){
