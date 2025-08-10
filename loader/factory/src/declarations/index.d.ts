@@ -1,3 +1,4 @@
+
 export { HttpCode } from './errors';
 export { JWTError } from './errors';
 export { JWTExpiredError } from './errors';
@@ -35,3 +36,6 @@ export { IDataRepository } from './serviceInjection';
 export { IApiDataRepository } from './serviceInjection';
 export { IApiKeyRepository } from './serviceInjection';
 export { Overload } from './serviceInjection';
+
+export { Context } from './mock';
+export { MockContext } from './mock';
