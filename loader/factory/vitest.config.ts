@@ -6,7 +6,8 @@ export default defineConfig({
     includeSource: ['src/**/*.{js, ts}'],
     globals: true,
     environment: 'node',
-    setupFiles: ["test/setup.ts"]
+    setupFiles: ["./src/test/setup.ts"],
+    isolate: false
   },
   define: { 
     'import.meta.vitest': 'undefined', 
