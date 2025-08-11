@@ -1,5 +1,5 @@
-import { UserColabRepository } from "../userColabRepository";
-import { prismaMock } from "../../test/setup";
+import { UserColabRepository } from "../../../repository/userColabRepository";
+import { prismaMock } from "../../setup";
 import { it, vi, expect } from "vitest";
 
 
@@ -20,4 +20,6 @@ it('sould create new user', async () => {
    }
 
    prismaMock.userColab.create.mockResolvedValue(userColab)
+
+   await expect(userColabRepository.createUserColab({username:userColab.username, password: userColab.password})).resolves.toBe(Promise<void>)
 })
