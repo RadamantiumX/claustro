@@ -14,7 +14,7 @@ vi.mock('../config/prismaClient', ()=>{
 
 
 beforeEach(()=>{
-    mockClear(prismaMock)
+    mockReset(prismaMock)
 })
 
 export const prismaMock = prisma as unknown as DeepMockProxy<PrismaClient>
