@@ -1,19 +1,29 @@
+
 import { UserColabRepository } from "../../repository/userColabRepository";
 import { prismaMock } from "../setup";
-import { it, vi, expect, expectTypeOf } from "vitest";
+import { it, vi, expect, expectTypeOf, beforeEach, describe } from "vitest";
+import { mockReset } from "vitest-mock-extended";
 
 
 
 
 
 
-vi.mock('./UserColabRepository', ()=>({
+/*vi.mock('./UserColabRepository', ()=>({
    UserColabRepository: vi.fn().mockImplementation(()=>({
       createUserColab: vi.fn()
    }))
 }))
-const userColabRepository = new UserColabRepository()
-it('should create new userColab', ()=>{
+const userColabRepository = new UserColabRepository(prismaMock)
+*/
+describe('UserColabRepository',()=>{
+  let userColabRepository:UserColabRepository
+
+  beforeEach(()=>{
+   userColabRepository = new UserColabRepository(prismaMock)
+})
+
+it('should create new userColab',async ()=>{
 const mockUserColab = {
     id:'asas',  
     username: 'usecolabmock',
@@ -25,11 +35,22 @@ const mockUserColab = {
     isSuperAdmin: false,
    }
 
-   prismaMock.userColab.create.mockResolvedValue(mockUserColab)
-   userColabRepository.createUserColab({username: mockUserColab.username, password: mockUserColab.password})
-
-   expect(userColabRepository.createUserColab).toHaveBeenCalledTimes(1)
+   prismaMock.userColab.create.mockResolvedValueOnce(mockUserColab)
+   const newUser = await userColabRepository.createUserColab({username: 'usecolabmock', password: 'testingmock123'})
+   
+   expect(newUser).toEqual(undefined)
+   expect(prismaMock.userColab.create).toHaveBeenCalledWith({
+      data: {
+         username: 'usecolabmock',
+         password: 'testingmock123'
+      }
+   })
 })
+})
+
+
+
+
 
 /*it('sould create new user', async () => {
    const spyFn = vi.spyOn(userColabRepository, 'createUserColab')

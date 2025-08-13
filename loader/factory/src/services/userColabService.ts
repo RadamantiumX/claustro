@@ -1,6 +1,6 @@
 import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "index"
 import { UserColabRepository } from "../repository/userColabRepository"
-
+import prisma from "../config/prismaClient"
 
 
 export class UserColabService {
@@ -41,7 +41,7 @@ export class UserColabService {
     static getInstance (){
       
                if(!UserColabService.instance){
-               UserColabService.instance = new UserColabService(new UserColabRepository)
+               UserColabService.instance = new UserColabService(new UserColabRepository(prisma))
                console.log('Service userColab ONLINE')
                
            }

@@ -4,7 +4,7 @@ import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";
-
+import prisma from "../config/prismaClient";
 
 
 // Dependency Injection + Singleton PATTERN
@@ -81,7 +81,7 @@ export class AuthService{
 
    static getInstance (){
        if(!AuthService.instance){
-           AuthService.instance = new AuthService(new UserColabRepository)
+           AuthService.instance = new AuthService(new UserColabRepository(prisma))
            console.log('Service Auth ONLINE')
        }
        return AuthService.instance
