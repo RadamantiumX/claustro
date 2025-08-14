@@ -1,6 +1,6 @@
 import { IDataRepository, DataMethods, Datum } from "index";
 import { DataRepository } from "../repository/dataRepository";
-
+import prisma from "../config/prismaClient";
 
 ///// TODO: adding the methods on definitions ✅
 export class DataService{
@@ -42,7 +42,7 @@ export class DataService{
 
     static getInstance(){
             if(!DataService.instance){
-                       DataService.instance = new DataService(new DataRepository)
+                       DataService.instance = new DataService(new DataRepository(prisma))
                        console.log('Service userColab ONLINE')
                        
                    }

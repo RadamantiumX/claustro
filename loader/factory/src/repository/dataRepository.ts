@@ -1,11 +1,13 @@
 import prisma from "../config/prismaClient";
 import { Datum, Overload } from "index";
 import { timeStampParsed } from "../helper/timeStampParser";
+import { PrismaClient } from '@prisma/client';
 
 
 export class DataRepository{
+    constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
-       const unique = await prisma.data.findUnique({
+       const unique = await this.prismaClient.data.findUnique({
         where:{ id: payload.id },
         select:{
             id: true,
@@ -35,7 +37,7 @@ export class DataRepository{
     }
 
     async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>{
-       const unique = await prisma.data.findUnique({
+       const unique = await this.prismaClient.data.findUnique({
         where:{ emailSource: payload.emailSource },
         select:{
             id: true,
@@ -65,7 +67,7 @@ export class DataRepository{
     }
 
     async allData():Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
-        const allDataRecords = await prisma.data.findMany({
+        const allDataRecords = await this.prismaClient.data.findMany({
             select:{
                 id: true,
                 emailSource: true,
@@ -78,7 +80,7 @@ export class DataRepository{
     }
 
     async createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">){
-       await prisma.data.create({
+       await this.prismaClient.data.create({
         data: {
             emailSource: payload.emailSource,
             emailSourcePsw: payload.emailSourcePsw,
@@ -91,7 +93,7 @@ export class DataRepository{
     }
     
     async updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">){
-      await prisma.data.update({
+      await this.prismaClient.data.update({
       where: {
         id: payload.id
       },
@@ -108,7 +110,7 @@ export class DataRepository{
     }
     
     async destroyData(payload: Pick<Datum, 'id'>){
-       await prisma.data.delete({ where: { id: payload.id } })
+       await this.prismaClient.data.delete({ where: { id: payload.id } })
        return
     }
 }

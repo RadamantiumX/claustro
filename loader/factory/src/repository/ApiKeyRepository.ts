@@ -1,9 +1,10 @@
-import prisma from "../config/prismaClient";
 import { ApiKey } from "index";
+import { PrismaClient } from "@prisma/client";
 
 export class ApiKeyRepository{
+    constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<ApiKey, "id">){
-        const unique = await prisma.apiKeys.findUnique({
+        const unique = await this.prismaClient.apiKeys.findUnique({
             where: {id:payload.id},
             select: {
                 id: true,
@@ -19,7 +20,7 @@ export class ApiKeyRepository{
     }
 
     async createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">){
-         await prisma.apiKeys.create({
+         await this.prismaClient.apiKeys.create({
             data:{
                 apiKey: payload.apiKey,
                 apiKeySecret: payload.apiKeySecret,
@@ -34,7 +35,7 @@ export class ApiKeyRepository{
     }
     
     async updateApiKey(payload:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">){
-        await prisma.apiKeys.update({
+        await this.prismaClient.apiKeys.update({
             where:{ id: payload.id },
             data:{
                 apiKey: payload.apiKey,
@@ -48,7 +49,7 @@ export class ApiKeyRepository{
     }
     
     async destroyApiKey(payload: Pick<ApiKey, "id">){
-         await prisma.apiKeys.delete({ where: { id: payload.id } })
+         await this.prismaClient.apiKeys.delete({ where: { id: payload.id } })
        return
     }
 }

@@ -1,6 +1,6 @@
 import { IApiKeyRepository, ApiKeyMethods, ApiKey } from "index";
 import { ApiKeyRepository } from "../repository/apiKeyRepository";
-
+import prisma from "../config/prismaClient";
 
 export class ApiKeyService{
     private static instance:ApiKeyService;
@@ -31,7 +31,7 @@ export class ApiKeyService{
 
     static getInstance(){
         if(!ApiKeyService.instance){
-                    ApiKeyService.instance = new ApiKeyService(new ApiKeyRepository)
+                    ApiKeyService.instance = new ApiKeyService(new ApiKeyRepository(prisma))
                 }
 
                 return ApiKeyService.instance
