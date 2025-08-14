@@ -1,6 +1,6 @@
 import { IApiDataRepository, ApiDataMethods, ApiData } from "index"
 import { ApiDataRepository } from "../repository/apiDataRepository";
-
+import prisma from "../config/prismaClient";
 
 export class ApiDataService{
     private static instance:ApiDataService
@@ -35,7 +35,7 @@ export class ApiDataService{
 
     static getInstance(){
         if(!ApiDataService.instance){
-            ApiDataService.instance = new ApiDataService(new ApiDataRepository)
+            ApiDataService.instance = new ApiDataService(new ApiDataRepository(prisma))
         }
 
         return ApiDataService.instance

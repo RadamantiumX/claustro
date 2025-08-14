@@ -1,9 +1,11 @@
 import { ApiData } from "index";
 import prisma  from "../config/prismaClient";
-
+import { PrismaClient } from "@prisma/client";
 export class ApiDataRepository{
+
+    constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<ApiData, "id">){
-        const unique = await prisma.apiData.findUnique({
+        const unique = await this.prismaClient.apiData.findUnique({
             where: {id:payload.id},
             select:{
                 appName: true,
@@ -16,7 +18,7 @@ export class ApiDataRepository{
     }
 
     async createApiData(payload: Omit<ApiData, "id"| "createdAt" | "updatedAt">){
-        await prisma.apiData.create({
+        await this.prismaClient.apiData.create({
             data:{
                appName: payload.appName,
                appId: payload.appId,
@@ -28,7 +30,7 @@ export class ApiDataRepository{
     }
     
     async updateApiData(payload:Omit<ApiData, "createdAt" | "updatedAt" | "dataId">){
-       await prisma.apiData.update({
+       await this.prismaClient.apiData.update({
         where:{id:payload.id},
         data:{
              appName: payload.appName,
@@ -40,7 +42,7 @@ export class ApiDataRepository{
     }
     
     async destroyApiData(payload:Pick<ApiData, "id">){
-        await prisma.apiData.delete({ where: { id: payload.id } })
+        await this.prismaClient.apiData.delete({ where: { id: payload.id } })
        return
     }
 }
