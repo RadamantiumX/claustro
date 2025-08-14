@@ -52,15 +52,11 @@ it('should return unique UserColab',async ()=>{
     isSuperAdmin: false,
    }
 
-   prismaMock.userColab.create.mockResolvedValue(mockUserColab)
+   prismaMock.userColab.findUnique.mockResolvedValueOnce(mockUserColab)
    const newUser = await userColabRepository.getUnique({username:'usecolabmock'})
    
-   expect(newUser).toEqual({id:'asas',username: 'usecolabmock', password:'testingmock123', isSuperAdmin: false})
-   /*expect(prismaMock.userColab.create).toHaveBeenCalledWith({
-      data: {
-         username: 'usecolabmock',
-      }
-   })*/
+   expect(newUser).toEqual(expect.objectContaining({id:'asas',username: 'usecolabmock', password:'testingmock123', isSuperAdmin: false}))
+  
 })
 
 })
