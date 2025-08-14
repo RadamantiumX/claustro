@@ -91,6 +91,21 @@ it('should delete UserColab',async ()=>{
       }
    })
 })
+
+it('should update time stamp on login',async ()=>{
+   prismaMock.userColab.delete.mockResolvedValueOnce(mockUserColab)
+   const mockedUser = await userColabRepository.destroyUserColab({id:'asas'})
+
+   expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
+
+   // Mocking Prisma Properties
+   expect(prismaMock.userColab.delete).toHaveBeenCalledWith({
+      where:{
+         id:'asas'
+      }
+   })
+})
+
 })
 
 
