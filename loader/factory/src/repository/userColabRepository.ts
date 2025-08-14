@@ -25,7 +25,7 @@ export class UserColabRepository{
         })
         return
     }
-    async createUserColab(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>{
+    async createUserColab(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>{ // <-- Change to test
         await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,

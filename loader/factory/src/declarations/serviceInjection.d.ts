@@ -22,7 +22,7 @@ export interface Overload{
 export interface IuserColabRepository {
     getUnique({username}:Pick<UserColab, 'username'> ): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
     updateTimestampSignIn(username: Pick<UserColab, "username">): Promise<void>;
-    createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>;
+    createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>; // I change here
     createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;
     getUsersColab(): Promise<UserColabClientResponse>;
     getUserColab(id: Pick<UserColab, 'id'>): Promise<Omit<UserColab, 'password'> | null>;
