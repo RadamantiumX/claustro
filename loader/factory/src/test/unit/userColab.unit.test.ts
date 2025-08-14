@@ -30,9 +30,9 @@ const mockUserColab = {
 it('should create new userColab',async ()=>{
 
    prismaMock.userColab.create.mockResolvedValueOnce(mockUserColab)
-   const newUser = await userColabRepository.createUserColab({username: 'usecolabmock', password: 'testingmock123'})
+   const mockedUser = await userColabRepository.createUserColab({username: 'usecolabmock', password: 'testingmock123'})
    
-   expect(newUser).toEqual(undefined) // <-- Mocking VOID behavior
+   expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
 
    // Mocking Prisma Properties
    expect(prismaMock.userColab.create).toHaveBeenCalledWith({
@@ -45,9 +45,9 @@ it('should create new userColab',async ()=>{
 
 it('should return unique UserColab',async ()=>{
    prismaMock.userColab.findUnique.mockResolvedValueOnce(mockUserColab)
-   const newUser = await userColabRepository.getUnique({username:'usecolabmock'})
+   const mockedUser = await userColabRepository.getUnique({username:'usecolabmock'})
 
-   expect(newUser).toEqual(expect.objectContaining({id:'asas',username: 'usecolabmock', password:'testingmock123', isSuperAdmin: false}))
+   expect(mockedUser).toEqual(expect.objectContaining({id:'asas',username: 'usecolabmock', password:'testingmock123', isSuperAdmin: false}))
 
    // Mocking Prisma Properties
    expect(prismaMock.userColab.findUnique).toHaveBeenCalledWith({
@@ -60,9 +60,9 @@ it('should return unique UserColab',async ()=>{
 
 it('should update UserColab',async ()=>{
    prismaMock.userColab.update.mockResolvedValueOnce(mockUserColab)
-   const newUser = await userColabRepository.updateUserColab({id:'asas',username:'usecolabmock', password:'testingmock123',isSuperAdmin:false})
+   const mockedUser = await userColabRepository.updateUserColab({id:'asas',username:'usecolabmock', password:'testingmock123',isSuperAdmin:false})
 
-   expect(newUser).toEqual(undefined) // <-- Mocking VOID behavior
+   expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
 
    // Mocking Prisma Properties
    expect(prismaMock.userColab.update).toHaveBeenCalledWith({
@@ -78,6 +78,19 @@ it('should update UserColab',async ()=>{
    })
 })
 
+it('should delete UserColab',async ()=>{
+   prismaMock.userColab.delete.mockResolvedValueOnce(mockUserColab)
+   const mockedUser = await userColabRepository.destroyUserColab({id:'asas'})
+
+   expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
+
+   // Mocking Prisma Properties
+   expect(prismaMock.userColab.delete).toHaveBeenCalledWith({
+      where:{
+         id:'asas'
+      }
+   })
+})
 })
 
 
