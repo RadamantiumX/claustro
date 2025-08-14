@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 export class UserColabRepository{
    constructor(private prismaClient:PrismaClient){}
+   
     async getUnique({username}:Pick<UserColab, 'username'>):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
        const unique = await this.prismaClient.userColab.findUnique({
          where:{ username: username },
@@ -73,7 +74,7 @@ export class UserColabRepository{
       where: { id: payload.id },
       data: {
         username: payload.username,
-        password: bcrypt.hashSync(payload.password, 10),
+        password: process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password,
         isSuperAdmin: payload.isSuperAdmin,
         updatedAt: timeStampParsed()
       }
