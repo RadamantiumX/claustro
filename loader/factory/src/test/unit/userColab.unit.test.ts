@@ -1,8 +1,8 @@
 import { UserColabRepository } from "../../repository/userColabRepository";
 import { prismaMock } from "../setup";
-import { it, vi, expect, expectTypeOf, beforeEach, describe } from "vitest";
+import { it, expect, beforeEach, describe } from "vitest";
 import { timeStampParsed } from "../../helper/timeStampParser";
-
+import { mockUserColab } from "../mockedData";
 /**
  * Testing REPOSITORIES FILES
  */
@@ -15,17 +15,7 @@ describe('UserColabRepository',()=>{
    userColabRepository = new UserColabRepository(prismaMock)
 })
 
-// UserColab MOCKED
-const mockUserColab = {
-    id:'asas',  
-    username: 'usecolabmock',
-    email: "user@mock.com",
-    password: 'testingmock123',
-    lastSignIn: new Date(Date.now()),
-    createdAt: new Date(Date.now()),
-    updatedAt: new Date(Date.now()),
-    isSuperAdmin: false,
-   }
+
 
 it('should create new userColab',async ()=>{
 

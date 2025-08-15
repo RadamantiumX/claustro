@@ -1,7 +1,7 @@
 import { ApiDataRepository } from "../../repository/apiDataRepository";
 import { prismaMock } from "../setup";
-import { it, vi, expect, expectTypeOf, beforeEach, describe } from "vitest";
-import { timeStampParsed } from "../../helper/timeStampParser";
+import { it, expect, beforeEach, describe } from "vitest";
+import { mockApiData } from "../mockedData";
 
 /**
  * Testing REPOSITORIES FILES
@@ -15,15 +15,7 @@ describe('ApiDataRepository',()=>{
    apiDataRepository = new ApiDataRepository(prismaMock)
 })
 
-// UserColab MOCKED
-const mockApiData = {
-  id: 1,
-  appName: 'appnamemock',
-  dataId:1,
-  appId: 'apidmock',
-  createdAt: new Date(Date.now()),
-  updatedAt: new Date(Date.now())
-}
+
 
 it('should create new apiData',async ()=>{
 
@@ -47,7 +39,7 @@ it('should return a unique ApiData',async ()=>{
    prismaMock.apiData.findUnique.mockResolvedValueOnce(mockApiData)
    const mockedApiData = await apiDataRepository.getUnique({ id:1 })
    
-   expect(mockedApiData).toEqual(expect.objectContaining({appName:"appnamemock", appId:"apidmock" })) // <-- Mocking VOID behavior
+   expect(mockedApiData).toEqual(expect.objectContaining({appName:"appnamemock", appId:"apidmock" }))
 
    // Mocking Prisma Properties
    expect(prismaMock.apiData.findUnique).toHaveBeenCalledWith({
@@ -76,6 +68,21 @@ it('should update ApiData',async ()=>{
       data:{
          appName: 'appnamemock',
          appId: 'apidmock'
+      }
+   })
+})
+
+it('should delete ApiData',async ()=>{
+
+   prismaMock.apiData.delete.mockResolvedValueOnce(mockApiData)
+   const mockedApiData = await apiDataRepository.destroyApiData({ id: 1 }) // Omit<ApiData, "createdAt" | "updatedAt" | "dataId">
+   
+   expect(mockedApiData).toEqual(undefined) // <-- Mocking VOID behavior
+
+   // Mocking Prisma Properties
+   expect(prismaMock.apiData.delete).toHaveBeenCalledWith({
+      where: {
+         id: 1
       }
    })
 })
