@@ -44,3 +44,22 @@ export const mockData:Datum = {
   createdAt: new Date(Date.now()),
   updatedAt: new Date(Date.now())
 }
+
+export const mockDataNested = {
+  id: 1,
+  emailSource: "mocked@mail.com",
+  xUser: "xusermocked",
+  apiData:{
+    id: 1,
+    appName: "mockedapidata",
+    appId: "mockedappid"
+  },
+  apiKeys:{
+    id: 1,
+    apiKey: "apikeymocked",
+    apiKeySecret: "apikeysecretmocked",
+    bearerToken: "bearertokenmocked",
+    accessToken: "accesstokenmocked",
+    accessTokenSecret: "accesstokensecretmocked"
+  },
+}

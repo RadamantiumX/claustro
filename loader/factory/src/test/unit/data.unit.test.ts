@@ -1,7 +1,7 @@
 import { DataRepository } from "../../repository/dataRepository";
 import { prismaMock } from "../setup";
 import { it, expect, beforeEach, describe } from "vitest";
-import { mockData } from "../mockedData";
+import { mockData, mockDataNested } from "../mockedData";
 
 /**
  * Testing REPOSITORIES FILES
@@ -42,6 +42,42 @@ it('should create new data',async ()=>{
    })
 })
 
+it('should return unique data',async ()=>{
+
+   prismaMock.data.findUnique.mockResolvedValueOnce(mockData)
+   const mockedData = await dataRepository.getUnique({
+            id: mockData.id
+})
+   
+   expect(mockedData).toEqual(mockDataNested) // <-- Mocking VOID behavior
+
+   // Mocking Prisma Properties
+   expect(prismaMock.data.findUnique).toHaveBeenCalledWith({
+      where:{ id: mockData.id },
+        select:{
+            id: true,
+            emailSource:true,
+            xUser: true,
+            apiData: {
+                select: {
+                    id:true,
+                    appName: true,
+                    appId: true
+                }
+            },
+            apiKeys: {
+                select: {
+                    id: true,
+                    apiKey: true,
+                    apiKeySecret: true,
+                    bearerToken: true,
+                    accessToken: true,
+                    accessTokenSecret: true
+                }
+            }
+        }
+   })
+})
 
 
 })
