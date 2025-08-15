@@ -21,7 +21,7 @@ export const mockUserColab:UserColab = {
     isSuperAdmin: false,
    }
 
-export const mockedApiKey:ApiKey = {
+export const mockApiKey:ApiKey = {
   id: 1,
   apiKey: "apikeymocked",
   apiKeySecret: "secretmocked",
@@ -34,7 +34,7 @@ export const mockedApiKey:ApiKey = {
   updatedAt: new Date(Date.now())
 }
 
-export const mockedData:Datum = {
+export const mockData:Datum = {
   id: 1,
   emailSource: "mocked@mail.com",
   emailSourcePsw: "mockedpassword",

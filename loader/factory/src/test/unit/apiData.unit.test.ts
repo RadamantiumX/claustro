@@ -20,16 +20,16 @@ describe('ApiDataRepository',()=>{
 it('should create new apiData',async ()=>{
 
    prismaMock.apiData.create.mockResolvedValueOnce(mockApiData)
-   const mockedApiData = await apiDataRepository.createApiData({appName:'appnamemock',dataId:1,appId:'apidmock'})
+   const mockedApiData = await apiDataRepository.createApiData({appName:mockApiData.appName,dataId:mockApiData.dataId,appId:mockApiData.appId})
    
    expect(mockedApiData).toEqual(undefined) // <-- Mocking VOID behavior
 
    // Mocking Prisma Properties
    expect(prismaMock.apiData.create).toHaveBeenCalledWith({
       data: {
-         appName:'appnamemock',
-         dataId:1,
-         appId:'apidmock'
+         appName:mockApiData.appName,
+         dataId:mockApiData.dataId,
+         appId:mockApiData.appId
       }
    })
 })
