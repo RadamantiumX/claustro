@@ -80,6 +80,26 @@ it('should return unique data',async ()=>{
 })
 
 
+it('should return all data',async ()=>{
+
+   prismaMock.data.findMany.mockResolvedValue([mockData])
+   const mockedData = await dataRepository.allData()
+   expect(mockedData).toEqual([mockData])
+
+   // Mocking Prisma Properties
+   expect(prismaMock.data.findMany).toHaveBeenCalledWith({
+
+      select:{
+                id: true,
+                emailSource: true,
+                xUser: true,
+                userColabId: true, 
+                createdAt: true
+            }
+   })
+})
+
+
 })
 
 
