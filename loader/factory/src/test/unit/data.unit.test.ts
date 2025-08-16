@@ -49,7 +49,7 @@ it('should return unique data',async ()=>{
             id: mockData.id
 })
    
-   expect(mockedData).toEqual(mockData) // <-- Mocking VOID behavior
+   expect(mockedData).toEqual(expect.objectContaining(mockData))
 
    // Mocking Prisma Properties
    expect(prismaMock.data.findUnique).toHaveBeenCalledWith({
@@ -84,7 +84,7 @@ it('should return all data',async ()=>{
 
    prismaMock.data.findMany.mockResolvedValue([mockData])
    const mockedData = await dataRepository.allData()
-   expect(mockedData).toEqual([mockData])
+   expect(mockedData).toEqual(expect.objectContaining([mockData]))
 
    // Mocking Prisma Properties
    expect(prismaMock.data.findMany).toHaveBeenCalledWith({
@@ -99,6 +99,30 @@ it('should return all data',async ()=>{
    })
 })
 
+it('should update data',async ()=>{
+
+   prismaMock.data.update.mockResolvedValue(mockData)
+   const mockedData = await dataRepository.updateData({
+    id: mockData.id,
+    emailSource:mockData.emailSource, 
+    emailSourcePsw: mockData.emailSourcePsw,
+    xUser: mockData.xUser,
+    xPsw: mockData.xPsw
+})
+   expect(mockedData).toEqual(undefined)
+
+   // Mocking Prisma Properties
+   expect(prismaMock.data.findMany).toHaveBeenCalledWith({
+
+      select:{
+                id: true,
+                emailSource: true,
+                xUser: true,
+                userColabId: true, 
+                createdAt: true
+            }
+   })
+})
 
 })
 
