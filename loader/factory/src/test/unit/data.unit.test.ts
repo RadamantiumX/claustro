@@ -49,7 +49,7 @@ it('should return unique data',async ()=>{
             id: mockData.id
 })
    
-   expect(mockedData).toEqual(mockDataNested) // <-- Mocking VOID behavior
+   expect(mockedData).toEqual(mockData) // <-- Mocking VOID behavior
 
    // Mocking Prisma Properties
    expect(prismaMock.data.findUnique).toHaveBeenCalledWith({
