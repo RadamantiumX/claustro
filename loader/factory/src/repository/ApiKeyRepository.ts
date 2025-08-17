@@ -1,5 +1,6 @@
 import { ApiKey } from "index";
 import { PrismaClient } from "@prisma/client";
+import { timeStampParsed } from "../helper/timeStampParser";
 
 export class ApiKeyRepository{
     constructor(private prismaClient:PrismaClient){}
@@ -42,7 +43,8 @@ export class ApiKeyRepository{
                 apiKeySecret: payload.apiKeySecret,
                 bearerToken: payload.bearerToken,
                 accessToken: payload.accessToken,
-                accessTokenSecret: payload.accessTokenSecret
+                accessTokenSecret: payload.accessTokenSecret,
+                updatedAt: timeStampParsed()
             }
         })
         return
