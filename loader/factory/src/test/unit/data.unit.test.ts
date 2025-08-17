@@ -1,7 +1,8 @@
 import { DataRepository } from "../../repository/dataRepository";
 import { prismaMock } from "../setup";
 import { it, expect, beforeEach, describe } from "vitest";
-import { mockData, mockDataNested } from "../mockedData";
+import { mockData } from "../mockedData";
+import { timeStampParsed } from "../../helper/timeStampParser";
 
 /**
  * Testing REPOSITORIES FILES
@@ -112,15 +113,28 @@ it('should update data',async ()=>{
    expect(mockedData).toEqual(undefined)
 
    // Mocking Prisma Properties
-   expect(prismaMock.data.findMany).toHaveBeenCalledWith({
+   expect(prismaMock.data.update).toHaveBeenCalledWith({
+     where:{ id: mockData.id },
+      data:{
+             emailSource:mockData.emailSource, 
+             emailSourcePsw: mockData.emailSourcePsw,
+             xUser: mockData.xUser,
+             xPsw: mockData.xPsw,
+             updatedAt: timeStampParsed()
+          }
+   })
+})
 
-      select:{
-                id: true,
-                emailSource: true,
-                xUser: true,
-                userColabId: true, 
-                createdAt: true
-            }
+it('should delete data',async ()=>{
+
+   prismaMock.data.delete.mockResolvedValue(mockData)
+   const mockedData = await dataRepository.destroyData({ id: mockData.id })
+
+   expect(mockedData).toEqual(undefined)
+
+   // Mocking Prisma Properties
+   expect(prismaMock.data.delete).toHaveBeenCalledWith({
+      where:{ id: mockData.id }
    })
 })
 
