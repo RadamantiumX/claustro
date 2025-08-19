@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
-    "prisma-studio": "cd loader/factory && npx prisma studio",
-    "dev-gen": "pnpm run gen && npx turbo run dev",
+    "pm2:dev": "pm2 start ecosystem.config.js",
+    "prisma:studio": "cd loader/factory && npx prisma studio",
+    "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "npx turbo run test",
     "test:watch": "npx turbo run test:watch",
-    "ws-pkg": "node shell/index.js",
+    "ws:pkg": "node shell/index.js",
     "gen": "cd loader/factory && npx prisma generate"
   },
   "keywords": [],

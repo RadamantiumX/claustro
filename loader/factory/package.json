@@ -8,6 +8,7 @@
     "port": "3000"
   },
   "scripts": {
+    "pm2:dev": "pm2 start ecosystem.config.js",
     "test": "pnpm run test:unit:run && pnpm run test:coverage",
     "test:vitest": "vitest",
     "test:watch": "vitest --watch",
