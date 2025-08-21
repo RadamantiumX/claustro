@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
-    "pm2:dev": "pm2 start ecosystem.config.js",
+    "pm2:dev": "pnpm -F @claustro/loader/factory pm2:dev",
     "prisma:studio": "cd loader/factory && npx prisma studio",
     "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",

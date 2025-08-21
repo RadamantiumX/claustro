@@ -1,6 +1,6 @@
 export const apps = [{
   name: "app",
-  script: './loader/factory/src/index.ts',
+  script: './src/index.ts',
   watch: true
 },
 ];
