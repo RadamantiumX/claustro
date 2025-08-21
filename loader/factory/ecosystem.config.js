@@ -1,6 +1,6 @@
 export const apps = [{
   name: "app",
-  script: './src/index.ts',
+  script: 'src/index.ts',
   watch: true
 },
 ];
