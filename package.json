@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
-    "pm2:dev": "pnpm -F @claustro/loader/factory pm2:dev",
-    "pm2:delete":"pnpm -F @claustro/loader/factor pm2:delete",
+    "pm2:dev": "pnpm --filter factory pm2:dev",
+    "pm2:delete":"pnpm --filter factory pm2:delete",
     "prisma:studio": "cd loader/factory && npx prisma studio",
     "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
