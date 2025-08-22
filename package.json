@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "npx turbo run dev",
     "pm2:dev": "pnpm --filter factory pm2:dev",
+    "pm2:stop":"pnpm --filter factory pm2:stop",
     "pm2:delete":"pnpm --filter factory pm2:delete",
+    "pm2:status": "pnpm --filter factory pm2:status ",
     "prisma:studio": "cd loader/factory && npx prisma studio",
     "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",

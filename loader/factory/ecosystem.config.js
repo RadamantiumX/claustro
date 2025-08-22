@@ -1,8 +1,8 @@
 export const apps = [{
   name: "app",
-  script: 'src/index.ts',
+  script: 'dist/index.js',
   watch: true,
-  interpreter: 'node'
+  interpreter: "node"
 },
 ];
 
