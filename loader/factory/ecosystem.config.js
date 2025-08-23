@@ -1,6 +1,6 @@
 export const apps = [{
   name: "app",
-  script: 'dist/index.js',
+  script: 'dist/src/index.js',
   watch: true,
   interpreter: "node"
 },
