@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
-    "pm2:dev": "pnpm --filter factory pm2:dev",
+    "pm2:start": "pnpm --filter factory pm2:start",
     "pm2:stop":"pnpm --filter factory pm2:stop",
     "pm2:delete":"pnpm --filter factory pm2:delete",
     "pm2:status": "pnpm --filter factory pm2:status ",
