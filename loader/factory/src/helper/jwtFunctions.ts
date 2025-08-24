@@ -1,4 +1,4 @@
-import { DecodedTokenKeys, JWTSign, JWTOptions } from 'index'
+import type {  DecodedTokenKeys, JWTSign, JWTOptions } from '../declarations/index'
 import jwt from '../utils/jwt'
 import { timeStampParsed } from './timeStampParser'
 

@@ -1,13 +1,13 @@
-import {  initTRPC, TRPCError } from '@trpc/server'
+import { initTRPC } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { AuthService } from '../services/authService'
-import { UserColab } from 'index'
+import { type UserColab } from '../declarations/index'
 
 
 
 
 // see the documentation
-export const createContext = async ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
+export const createContext = async ({ req }:trpcExpress.CreateExpressContextOptions) =>{
     // JWT to improve
    const token:any = req.headers.authorization 
    try{

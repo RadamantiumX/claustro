@@ -1,4 +1,4 @@
-import { IApiKeyRepository, ApiKeyMethods, ApiKey } from "index";
+import type { IApiKeyRepository, ApiKeyMethods, ApiKey } from "../declarations/index";
 import { ApiKeyRepository } from "../repository/apiKeyRepository";
 import prisma from "../config/prismaClient";
 

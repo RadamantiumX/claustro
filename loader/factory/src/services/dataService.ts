@@ -1,4 +1,4 @@
-import { IDataRepository, DataMethods, Datum } from "index";
+import type { IDataRepository, DataMethods, Datum } from "../declarations/index";
 import { DataRepository } from "../repository/dataRepository";
 import prisma from "../config/prismaClient";
 

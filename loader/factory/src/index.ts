@@ -31,17 +31,6 @@ app.use(
   })
 )
 app.use(typeScriptError)
-// Custom ERROR HANDLE
-/*app.all('*', (req, res, next) => {
-  const error = new AppError(
-    'Resource not found',
-    404,
-    'Due to the mismatch between the client defnied user and existing users in the database...',
-    false
-  )
-  next(error)
-})*/
-
 
 app.listen(PORT, ()=>{
     console.log(`Server is online: http://localhost:${PORT}`)

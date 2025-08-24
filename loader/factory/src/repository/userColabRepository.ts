@@ -1,5 +1,4 @@
-// import prisma from "../config/prismaClient";
-import { UserColab, UserColabClientResponse } from "index";
+import type { UserColab, UserColabClientResponse } from "../declarations/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 import { PrismaClient } from "@prisma/client";

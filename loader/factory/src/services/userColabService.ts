@@ -1,4 +1,4 @@
-import { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "index"
+import type { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "../declarations/index"
 import { UserColabRepository } from "../repository/userColabRepository"
 import prisma from "../config/prismaClient"
 

@@ -1,5 +1,5 @@
 // Singleton SETUP
-import { mockReset, mockDeep, DeepMockProxy, mockClear } from 'vitest-mock-extended';
+import { mockReset, mockDeep, DeepMockProxy } from 'vitest-mock-extended';
 import { PrismaClient } from '@prisma/client';
 import { vi, beforeEach } from 'vitest';
 import prisma from '../config/prismaClient';

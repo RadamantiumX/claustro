@@ -1,4 +1,4 @@
-import { IApiDataRepository, ApiDataMethods, ApiData } from "index"
+import type { IApiDataRepository, ApiDataMethods, ApiData } from "../declarations/index"
 import { ApiDataRepository } from "../repository/apiDataRepository";
 import prisma from "../config/prismaClient";
 

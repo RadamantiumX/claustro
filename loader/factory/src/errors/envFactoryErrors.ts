@@ -1,4 +1,4 @@
-import { HttpCode } from "index"
+import { type HttpCode } from "../declarations/index"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 import z from 'zod'
 import { TRPCError } from "@trpc/server"
