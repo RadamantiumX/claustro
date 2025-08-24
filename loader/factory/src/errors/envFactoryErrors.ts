@@ -1,7 +1,7 @@
 import { HttpCode } from "index"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 import z from 'zod'
-import { TRPCError } from "@trpc/server/dist"
+import { TRPCError } from "@trpc/server"
 
 class envCustomErrors extends Error{
     public code:HttpCode
