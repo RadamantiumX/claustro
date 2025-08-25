@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-       "erasableSyntaxOnly": false,
+      "erasableSyntaxOnly": false,
       "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
       "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */
       "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
