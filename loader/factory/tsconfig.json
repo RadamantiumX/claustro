@@ -4,6 +4,7 @@
       "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
       "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */
       "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
+      "noEmitOnError": false,
       "module": "CommonJS",  
       "moduleResolution": "node",                              /* Specify what module code is generated. */
       "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
@@ -18,7 +19,8 @@
           "*": ["node_modules/*", "src/declarations/*"]                               /* Skip type checking all .d.ts files. */
     }
   },
-   "include": ["./src/**/*","test/**/*","vitest.config.ts", "vite.config.ts"]
+   "include": ["./src/**/*","test/**/*","vitest.config.ts", "vite.config.ts"],
+   "exclude": ["tsconfig.json"]
   }
 
  
