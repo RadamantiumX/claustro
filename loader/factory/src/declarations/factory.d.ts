@@ -158,6 +158,7 @@ export interface AuthMethods{
             isSuperAdmin: boolean;
         };
         accessToken: string;
+        refreshToken: string;
     }>;
     register: (bodyReq:Pick<UserColab, "username" | "password">)=> Promise<void>;
     verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null>;

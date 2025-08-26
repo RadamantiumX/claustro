@@ -1,10 +1,10 @@
 import { IuserColabRepository, UserColab, AuthMethods } from "index";
-
 import AppError from "../errors/appErrors";
 import bcrypt from 'bcryptjs'
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";
 import prisma from "../config/prismaClient";
+import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
 
 
 // Dependency Injection + Singleton PATTERN
@@ -46,7 +46,13 @@ export class AuthService{
             id: verifyUser.id,
             username: verifyUser.username,
             isSuperAdmin: verifyUser.isSuperAdmin,
-            expiresIn: '1h'
+            expiresIn: A_TOKEN_EXP
+         })
+         const refreshToken = JWTtokenSign({
+            id: verifyUser.id,
+            username: verifyUser.username,
+            isSuperAdmin: verifyUser.isSuperAdmin,
+            expiresIn: R_TOKEN_EXP
          })
         return {
             authData: {
@@ -54,7 +60,8 @@ export class AuthService{
                 username: verifyUser.username,
                 isSuperAdmin: verifyUser.isSuperAdmin
             },
-            accessToken: accessToken
+            accessToken: accessToken,
+            refreshToken: refreshToken
         }
       },
       register: async (bodyReq:Pick<UserColab, "username" | "password">) => {
