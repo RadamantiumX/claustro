@@ -1,6 +1,7 @@
-import type {  DecodedTokenKeys, JWTSign, JWTOptions } from '../declarations/index'
+import type {  DecodedTokenKeys, DecodedStringToken, JWTSign, JWTOptions } from '../declarations/index'
 import jwt from '../utils/jwt'
 import { timeStampParsed } from './timeStampParser'
+import { TOKEN_LIFETIME, UNIX_CURRENT_TIME } from '../const/tokenExpiration'
 
 export const JWTverifyAndDecode = (token: string): DecodedTokenKeys => {
   // Verify the token
@@ -31,4 +32,16 @@ export const JWTtokenSign = ({
     JWTOptions
   )
   return token
+}
+
+export const JWTBlacklist = (
+  refreshTokenCookie: string
+): { isValid: boolean; userColabId: string } => {
+  const decodedRefreshToken: DecodedTokenKeys | DecodedStringToken | any =
+    jwt.verify(refreshTokenCookie)
+
+  return {
+    isValid: !(decodedRefreshToken.iat + TOKEN_LIFETIME < UNIX_CURRENT_TIME),
+    userColabId: decodedRefreshToken.id
+  }
 }
