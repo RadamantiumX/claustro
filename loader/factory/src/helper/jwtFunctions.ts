@@ -36,12 +36,11 @@ export const JWTtokenSign = ({
 
 export const JWTBlacklist = (
   refreshTokenCookie: string
-): { isValid: boolean; userColabId: string } => {
-  const decodedRefreshToken: DecodedTokenKeys | DecodedStringToken | any =
-    jwt.verify(refreshTokenCookie)
+): { expired: boolean; userColabId: string } => {
+  const decodedRefreshToken: DecodedTokenKeys | DecodedStringToken | any = jwt.verify(refreshTokenCookie)
 
   return {
-    isValid: !(decodedRefreshToken.iat + TOKEN_LIFETIME < UNIX_CURRENT_TIME),
+    expired: !(decodedRefreshToken.iat + TOKEN_LIFETIME < UNIX_CURRENT_TIME),
     userColabId: decodedRefreshToken.id
   }
 }
