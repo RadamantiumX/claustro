@@ -4,7 +4,7 @@ import { AuthService } from '../services/authService'
 import { type UserColab } from '../declarations/index'
 
 
-
+// TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
 
 // see the documentation
 export const createContext = async ({ req }:trpcExpress.CreateExpressContextOptions) =>{
