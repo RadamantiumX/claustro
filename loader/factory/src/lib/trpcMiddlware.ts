@@ -1,5 +1,5 @@
 import { TRPCError } from '@trpc/server'
-import { trpc } from '../../config/trpcContext'
+import { trpc } from './trpcContext'
 
 export const authMiddleware = trpc.middleware(({ctx, next})=>{
   if(!ctx){

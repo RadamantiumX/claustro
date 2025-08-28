@@ -1,7 +1,7 @@
-import { trpc } from "../config/trpcContext";
+import { trpc } from "../lib/trpcContext";
 import { ApiKeyService } from "../services/apiKeyService";
 import { apiKeySchema } from "../schemas/zodSchemas/apiKeyValidation";
-import { authMiddleware } from "./middleware/trpcMiddlware";
+import { authMiddleware } from "../lib/trpcMiddlware";
 
 const apiKeyServiceInstance = ApiKeyService.getInstance()
 

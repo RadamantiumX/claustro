@@ -1,7 +1,7 @@
-import { trpc } from "../config/trpcContext";
+import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
 import { dataSchema } from "../schemas/zodSchemas/dataValidation";
-import { authMiddleware } from "./middleware/trpcMiddlware";
+import { authMiddleware } from "../lib/trpcMiddlware";
 
 const dataServiceInstance = DataService.getInstance()
 

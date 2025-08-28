@@ -1,4 +1,4 @@
-import { trpc } from "../config/trpcContext";
+import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 

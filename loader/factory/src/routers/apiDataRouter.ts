@@ -1,7 +1,7 @@
-import { trpc } from "../config/trpcContext";
+import { trpc } from "../lib/trpcContext";
 import { ApiDataService } from "../services/apiDataService";
 import { apiDataSchema } from "../schemas/zodSchemas/apiDataValidation";
-import { authMiddleware } from "./middleware/trpcMiddlware";
+import { authMiddleware } from "../lib/trpcMiddlware";
 
 const apiDataServiceInstance = ApiDataService.getInstance()
 

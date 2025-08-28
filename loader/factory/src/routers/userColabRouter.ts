@@ -1,7 +1,7 @@
-import { trpc } from "../config/trpcContext";
+import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
-import { authMiddleware } from "./middleware/trpcMiddlware";
+import { authMiddleware } from "../lib/trpcMiddlware";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
