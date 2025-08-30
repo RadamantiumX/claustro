@@ -13,7 +13,7 @@ dotenv.config()
 const app:Application = express()
 
 const PORT = 3000
-app.use(cors())
+app.use(cors({credentials:true}))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 

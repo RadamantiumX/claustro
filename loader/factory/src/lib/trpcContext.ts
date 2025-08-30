@@ -4,10 +4,11 @@ import { AuthService } from '../services/authService'
 import { type UserColab } from '../declarations/index'
 
 
+
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
 
 // see the documentation
-export const createContext = async ({ req }:trpcExpress.CreateExpressContextOptions) =>{
+export const createContext = async ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
     // JWT to improve
    const token:any = req.headers.authorization 
    try{
@@ -18,7 +19,7 @@ export const createContext = async ({ req }:trpcExpress.CreateExpressContextOpti
 
     const verifyUser:Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null = await  authServiceInstance.auth.verifyCredentials(token)
 
-    return { user: verifyUser }
+    return { user: verifyUser, res:res }
    }catch(error){
     console.error(error)
    }
