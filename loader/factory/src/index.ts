@@ -7,6 +7,7 @@ import { createContext } from './lib/trpcContext'
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 
 dotenv.config()
 
@@ -16,6 +17,7 @@ const PORT = 3000
 app.use(cors({credentials:true}))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 app.get('/', (req: Request, res: Response, next: NextFunction)=>{
     res.status(200).json({message: 'Server is online on TURBOREPO'})

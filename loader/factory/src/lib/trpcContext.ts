@@ -9,9 +9,10 @@ import { type UserColab } from '../declarations/index'
 
 // see the documentation
 export const createContext = async ({ req, res }:trpcExpress.CreateExpressContextOptions) =>{
+   
+   try{
     // JWT to improve
    const token:any = req.headers.authorization 
-   try{
     if(!token){
         return null
     }
@@ -19,7 +20,7 @@ export const createContext = async ({ req, res }:trpcExpress.CreateExpressContex
 
     const verifyUser:Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null = await  authServiceInstance.auth.verifyCredentials(token)
 
-    return { user: verifyUser, res:res }
+    return { user: verifyUser, req, res }
    }catch(error){
     console.error(error)
    }
