@@ -1,3 +1,4 @@
+import { CreateContextOptions } from './trpc';
 
 export { HttpCode } from './errors';
 export { JWTError } from './errors';
@@ -37,5 +38,8 @@ export { IApiDataRepository } from './serviceInjection';
 export { IApiKeyRepository } from './serviceInjection';
 export { Overload } from './serviceInjection';
 
+export { CreateContextOptions } from './trpc'
+
 export { Context } from './mock';
 export { MockContext } from './mock';
+
