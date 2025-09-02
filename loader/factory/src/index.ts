@@ -3,11 +3,12 @@ import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
 import { jwtErrorMiddleware, typeScriptError } from './errors/middleware/errorMiddleware'
-import { createContext } from './lib/trpcContext'
+import { createContext } from './lib/trpcContext';
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
+
 
 dotenv.config()
 

@@ -10,6 +10,7 @@ const protectedProcedure = trpc.procedure.use(authMiddleware)
 export const dataRouter = trpc.router({
     list: protectedProcedure.query(
         (/*{ctx}*/)=>{
+    
         return dataServiceInstance.data.list()
     }) ,
     create: protectedProcedure.input(dataSchema.omit({id:true})).mutation(
@@ -18,7 +19,7 @@ export const dataRouter = trpc.router({
         }
     ),
     selectForId: protectedProcedure.input(dataSchema.pick({id:true})).mutation(
-        (({input})=>{
+        (({input })=>{
             return dataServiceInstance.data.selectUniqueForId(input)
         }
         )
