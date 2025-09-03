@@ -23,12 +23,7 @@ export const createContext = async ({ req, res, }:trpcExpress.CreateExpressConte
             message: 'You are not authorized from the server'
         })
     }
-     const refreshToken = JWTtokenSign({
-                id: verifiedUser.id,
-                username: verifiedUser.username,
-                isSuperAdmin: verifiedUser.isSuperAdmin,
-                expiresIn: R_TOKEN_EXP
-             })
+
     return { req, res, verifiedUser }
   
 }
