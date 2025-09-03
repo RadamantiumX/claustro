@@ -26,6 +26,7 @@ export { AllRelatedData } from './factory';
 export { RateLimiterRule } from './factory';
 export { AuthMethods } from './factory';
 export { trpcPayload } from './factory';
+export { PayloadRefreshToken } from './factory';
 
 export { UserColabMethods } from './methods';
 export { DataMethods } from './methods';

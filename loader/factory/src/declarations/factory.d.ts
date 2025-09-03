@@ -47,7 +47,7 @@ export interface UserColab {
 
 export interface AuthRefreshToken {
   id: string
-  refreshToken: string[]
+  refreshToken: string
   expiration: Date | null
   userColabId: string
   createdAt: Date
@@ -177,4 +177,9 @@ export interface UserColabMethods{
   select: (id:Pick<UserColab, "id">) => Promise<> ;
   update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
   delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
+}
+
+export interface PayloadRefreshToken{
+   refreshToken: Pick<AuthRefreshToken, 'refreshToken'>;
+   userColabId: Pick<AuthRefreshToken, 'userColabId'>
 }
