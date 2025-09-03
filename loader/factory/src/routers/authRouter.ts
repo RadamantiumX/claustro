@@ -13,9 +13,9 @@ export const authRouter = trpc.router({
         
         authServiceInstance.auth.login(input).then((data)=>{
           ctx.res.cookie('jwt',data.refreshToken) // TODO: complete the data to set TOKEN
-          return data
+          return {data}
         }).catch((error)=>{
-            
+            throw new Error(`Something went wrong: ${error}`) //TODO: Handle the errors
         })
        
     }),
