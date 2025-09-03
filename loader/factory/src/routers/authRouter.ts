@@ -12,7 +12,7 @@ export const authRouter = trpc.router({
     login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{
         
         authServiceInstance.auth.login(input).then((data)=>{
-          ctx.res.cookie('jwt',data.refreshToken) // TODO: complete the data to set TOKEN
+          ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000 }) // TODO: complete the data to set TOKEN
           return {data}
         }).catch((error)=>{
             throw new Error(`Something went wrong: ${error}`) //TODO: Handle the errors
