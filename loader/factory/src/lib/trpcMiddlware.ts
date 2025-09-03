@@ -5,7 +5,7 @@ export const authMiddleware = trpc.middleware(({ctx, next})=>{
   if(!ctx){
     
     console.log('no user authorized')
-    throw new TRPCError({ code: 'UNAUTHORIZED' })
+    throw new TRPCError({ code: 'UNAUTHORIZED', message:'You are not authorized user' })
   }
   return next({ ctx })
 })
