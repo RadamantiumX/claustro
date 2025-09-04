@@ -1,4 +1,5 @@
-import { Datum, ApiData, ApiKey, UserColab, UserColabClientResponse } from "factory";
+import { PayloadRefreshToken } from './factory.d';
+import { Datum, ApiData, ApiKey, UserColab, AuthRefreshToken, UserColabClientResponse, PayloadRefreshToken } from "factory";
 
 export interface Overload{
      id: number;
@@ -51,4 +52,9 @@ export interface IApiKeyRepository{
     createApiKey(payload:Omit<ApiKey, "id" | "updatedAt" | "createdAt">):Promise<void>;
     updateApiKey(payload:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">):Promise<void>;
     destroyApiKey(payload: Pick<ApiKey, "id">):Promise<void>;
+}
+
+export interface IRefreshTokenRepository{
+    createRefeshToken(payload:PayloadRefreshToken):Promise<void>;
+    checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'>>
 }
