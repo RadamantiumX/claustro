@@ -5,7 +5,7 @@ import type { AuthRefreshToken, PayloadRefreshToken } from "../declarations/inde
 export class RefreshTokenRepository {
     constructor(private prismaClient:PrismaClient){}
     
-    async createRefeshToken(payload:PayloadRefreshToken){
+    async createRefeshToken(payload:PayloadRefreshToken):Promise<void>{
         await this.prismaClient.authRefreshToken.create({
             data:{
                 refreshToken: payload.refreshToken,
@@ -14,8 +14,11 @@ export class RefreshTokenRepository {
         })
         return
     }
-    async checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>){
+    async checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
        const getUnique = await this.prismaClient.authRefreshToken.findUnique({ where: {refreshToken: payload.refreshToken} })
-       return { refreshToken: getUnique?.refreshToken, userColabId: getUnique?.userColabId }
+       if(getUnique){
+        return { refreshToken: getUnique?.refreshToken, userColabId: getUnique?.userColabId }
+       }
+       return null
     }
 }
