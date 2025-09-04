@@ -56,5 +56,5 @@ export interface IApiKeyRepository{
 
 export interface IRefreshTokenRepository{
     createRefeshToken(payload:PayloadRefreshToken):Promise<void>;
-    checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'>>
+    checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
 }
