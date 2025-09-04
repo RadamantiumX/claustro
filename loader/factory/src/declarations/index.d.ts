@@ -37,6 +37,7 @@ export { IuserColabRepository } from './serviceInjection';
 export { IDataRepository } from './serviceInjection';
 export { IApiDataRepository } from './serviceInjection';
 export { IApiKeyRepository } from './serviceInjection';
+export { IRefreshTokenRepository } from './serviceInjection';
 export { Overload } from './serviceInjection';
 
 export { CreateContextOptions } from './trpc'
