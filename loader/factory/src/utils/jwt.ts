@@ -10,5 +10,10 @@ export default {
   sign: (payload: IPayload, JWTOptions: jwt.SignOptions) =>
     jwt.sign(payload, SECRET_KEY, JWTOptions),
 
-  verify: (token: string) => jwt.verify(token, SECRET_KEY)
+  verify: (token: string) => jwt.verify(token, SECRET_KEY, async(err, decoded)=>{
+    if(err){
+      console.log('Expired')
+    }
+    return decoded
+  })
 }
