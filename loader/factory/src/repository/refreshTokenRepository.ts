@@ -14,4 +14,7 @@ export class RefreshTokenRepository {
         })
         return
     }
+    async checkSession(payload:PayloadRefreshToken){
+       const getUnique = await this.prismaClient.authRefreshToken.findUnique({ where: {refreshToken: payload.refreshToken} })
+    }
 }
