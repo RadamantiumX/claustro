@@ -1,8 +1,9 @@
-import { IuserColabRepository, UserColab, AuthMethods } from "index";
+import { IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods } from "index";
 import AppError from "../errors/appErrors";
 import bcrypt from "bcryptjs";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";
+import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
 import { EnvFactoryErrors } from "../errors/envFactoryErrors";
@@ -11,15 +12,18 @@ import { EnvFactoryErrors } from "../errors/envFactoryErrors";
 export class AuthService {
   private static instance: AuthService; // Only for instance
   userColabRepository: IuserColabRepository;
+  refreshTokenRepository:IRefreshTokenRepository;
   auth: AuthMethods;
-  private constructor(userColabRepository: IuserColabRepository) {
+  private constructor(userColabRepository: IuserColabRepository, refreshTokenRepository:IRefreshTokenRepository) {
     this.userColabRepository = userColabRepository;
+    this.refreshTokenRepository = refreshTokenRepository; // Adding RT for make unique querys
     this.auth = {
       login: async (bodyReq: Pick<UserColab, "username" | "password">) => {
         try {
           const verifyUser = await this.userColabRepository.getUnique({
             username: bodyReq.username,
           });
+          // TODO: make the token verfication, if the current USER have a token, then, this token must be deleted. Only ONE session for device once.
           if (!verifyUser) {
             throw new AppError(
               "Unauthorized",
@@ -106,7 +110,8 @@ export class AuthService {
 
   static getInstance() {
     if (!AuthService.instance) {
-      AuthService.instance = new AuthService(new UserColabRepository(prisma));
+      // Adding the new RT intance to verification
+      AuthService.instance = new AuthService(new UserColabRepository(prisma), new RefreshTokenRepository(prisma));
       console.log("Service Auth ONLINE");
     }
     return AuthService.instance;
