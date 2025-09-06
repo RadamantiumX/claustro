@@ -44,7 +44,11 @@ export class AuthService {
               false
             );
           }
-
+          const oneDeviceSession = await this.refreshTokenRepository.checkOwner({id:verifyUser.id})
+          if(oneDeviceSession){
+            await this.refreshTokenRepository.deleteRefreshToken({ id:oneDeviceSession.userColabId })
+          }
+        
           await this.userColabRepository.updateTimestampSignIn({
             username: bodyReq.username,
           });
@@ -60,6 +64,7 @@ export class AuthService {
             isSuperAdmin: verifyUser.isSuperAdmin,
             expiresIn: R_TOKEN_EXP,
           });
+          await this.refreshTokenRepository.createRefeshToken({userColabId:verifyUser.id, refreshToken:refreshToken}) // Refresh token for this new session
           return {
             authData: {
               id: verifyUser?.id,
