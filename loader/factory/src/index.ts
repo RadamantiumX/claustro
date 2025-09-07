@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
 import { jwtErrorMiddleware, typeScriptError } from './errors/middleware/errorMiddleware'
-import { blackListJWT } from './middleware/blacklistJWT'
+import { blackListJWT } from './middleware/blackListJWT';
 import { createContext } from './lib/trpcContext';
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
