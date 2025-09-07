@@ -23,7 +23,7 @@ export class AuthService {
           const verifyUser = await this.userColabRepository.getUnique({
             username: bodyReq.username,
           });
-          // TODO: make the token verfication, if the current USER have a token, then, this token must be deleted. Only ONE session for device once.
+          ///// TODO: make the token verfication, if the current USER have a token, then, this token must be deleted. Only ONE session for device once.
           if (!verifyUser) {
             throw new AppError(
               "Unauthorized",
@@ -44,8 +44,13 @@ export class AuthService {
               false
             );
           }
+
+          // The User Session is only available in ONE DEVICE ONCE
           const oneDeviceSession = await this.refreshTokenRepository.checkOwner({id:verifyUser.id})
+
+          // If the record exists
           if(oneDeviceSession){
+            // The other session is dismissed
             await this.refreshTokenRepository.deleteRefreshToken({ id:oneDeviceSession.userColabId })
           }
         
@@ -64,7 +69,10 @@ export class AuthService {
             isSuperAdmin: verifyUser.isSuperAdmin,
             expiresIn: R_TOKEN_EXP,
           });
+
+          // New session REFRESH TOKEN
           await this.refreshTokenRepository.createRefeshToken({userColabId:verifyUser.id, refreshToken:refreshToken}) // Refresh token for this new session
+          
           return {
             authData: {
               id: verifyUser?.id,

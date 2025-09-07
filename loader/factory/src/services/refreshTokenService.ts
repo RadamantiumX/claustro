@@ -2,7 +2,7 @@ import type { IRefreshTokenRepository } from "../declarations/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient"; 
 import { EnvFactoryErrors } from "../errors/envFactoryErrors"
-import { JWTverifyAndDecode } from "../helper/jwtFunctions";
+import { JWTverifyAndDecode, JWTBlacklist } from "../helper/jwtFunctions";
 
 export class RefreshTokenService{
     private static instance:RefreshTokenService
@@ -18,6 +18,19 @@ export class RefreshTokenService{
                     return tokenOwner
                 }catch(error){
                   throw new EnvFactoryErrors()
+                }
+            },
+            blackList: async(refreshToken:string):Promise<void>=>{
+                try{
+                    const { expired } = JWTBlacklist(refreshToken)
+                    if(expired){
+                        const { id } = JWTverifyAndDecode(refreshToken)
+                        await this.refreshTokenRepository.deleteRefreshToken({id:id})
+                        return
+                    }
+                    return
+                }catch(error){
+                throw new EnvFactoryErrors()
                 }
             }
         }
