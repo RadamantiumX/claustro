@@ -2,6 +2,7 @@ import { ApiData, UserColab, ApiKey, UserColabClientResponse } from "factory";
 
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
+  unique: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
   select: (id:Pick<UserColab, "id">) => Promise<> ;
   update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
