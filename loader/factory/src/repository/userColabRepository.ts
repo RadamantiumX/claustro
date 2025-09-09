@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 export class UserColabRepository{
    constructor(private prismaClient:PrismaClient){}
    
-    async getUnique({username}:Pick<UserColab, 'username'>):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
+    async getUniqueUsername({username}:Pick<UserColab, 'username'>):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
        const unique = await this.prismaClient.userColab.findUnique({
          where:{ username: username },
          select: { id: true, username: true, password: true, isSuperAdmin: true }
@@ -15,6 +15,15 @@ export class UserColabRepository{
         
      return unique
        
+    }
+
+    async getUniqueId({id}:Pick<UserColab, 'id'>):Promise<Pick<UserColab, "id" | "username" | "isSuperAdmin"> | null>{
+        const unique = await this.prismaClient.userColab.findUnique({
+         where:{ id: id },
+         select: { id: true, username: true, isSuperAdmin: true }
+       })
+        
+     return unique
     }
 
     async updateTimestampSignIn({username}:Pick<UserColab, "username">):Promise<void>{

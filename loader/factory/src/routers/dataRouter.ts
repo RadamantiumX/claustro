@@ -1,11 +1,11 @@
 import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
 import { dataSchema } from "../schemas/zodSchemas/dataValidation";
-import { authMiddleware } from "../lib/trpcMiddlware";
+import { protectedProcedure } from "../lib/procedure";
 
 const dataServiceInstance = DataService.getInstance()
 
-const protectedProcedure = trpc.procedure.use(authMiddleware)
+
 
 export const dataRouter = trpc.router({
     list: protectedProcedure.query(

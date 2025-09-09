@@ -20,7 +20,7 @@ export class AuthService {
     this.auth = {
       login: async (bodyReq: Pick<UserColab, "username" | "password">) => {
         try {
-          const verifyUser = await this.userColabRepository.getUnique({
+          const verifyUser = await this.userColabRepository.getUniqueUsername({
             username: bodyReq.username,
           });
           ///// TODO: make the token verfication, if the current USER have a token, then, this token must be deleted. Only ONE session for device once.
@@ -88,7 +88,7 @@ export class AuthService {
       },
       register: async (bodyReq: Pick<UserColab, "username" | "password">) => {
         try{
-          const verifyUser = await this.userColabRepository.getUnique({
+          const verifyUser = await this.userColabRepository.getUniqueUsername({
           username: bodyReq.username,
         });
         if (verifyUser) {
@@ -109,7 +109,7 @@ export class AuthService {
       verifyCredentials: async (authHeader: string) => {
         try{
            const { username } = JWTverifyAndDecode(authHeader);
-        const checkUser = await this.userColabRepository.getUnique({
+        const checkUser = await this.userColabRepository.getUniqueUsername({
           username,
         });
         return checkUser;

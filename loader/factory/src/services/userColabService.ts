@@ -20,9 +20,18 @@ export class UserColabService {
                }
                 
             },
+            unique: async(bodyReq:Pick<UserColab, 'id'>)=>{
+               try{
+                  const unique = await this.userColabRepository.getUniqueId({id:bodyReq.id})
+                  return unique
+
+               }catch(error){
+                  throw new EnvFactoryErrors()
+               }
+            },
             create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >):Promise<void> => {
                   try{
-                  const verifyUnique = await this.userColabRepository.getUnique({username:bodyReq.username})
+                  const verifyUnique = await this.userColabRepository.getUniqueUsername({username:bodyReq.username})
                   if(verifyUnique){
                     throw new Error(`The appear on: ${bodyReq.username}`)
                   }

@@ -1,12 +1,13 @@
 import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
+import { publicProcedure } from "../lib/procedure";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/
 // See this issue: https://discord-questions.trpc.io/m/1173620897517666384
 
 const authServiceInstance = AuthService.getInstance()
 
-const publicProcedure = trpc.procedure
+
 
 export const authRouter = trpc.router({
     login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{

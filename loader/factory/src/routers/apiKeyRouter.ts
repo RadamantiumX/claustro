@@ -1,11 +1,11 @@
 import { trpc } from "../lib/trpcContext";
 import { ApiKeyService } from "../services/apiKeyService";
 import { apiKeySchema } from "../schemas/zodSchemas/apiKeyValidation";
-import { authMiddleware } from "../lib/trpcMiddlware";
+import { protectedProcedure } from "../lib/procedure";
 
 const apiKeyServiceInstance = ApiKeyService.getInstance()
 
-const protectedProcedure = trpc.procedure.use(authMiddleware)
+
 
 export const apiKeyRouter = trpc.router({
     selectForId: protectedProcedure.input(apiKeySchema.pick({id:true})).mutation(

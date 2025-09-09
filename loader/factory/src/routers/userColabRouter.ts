@@ -1,13 +1,10 @@
 import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
-import { authMiddleware } from "../lib/trpcMiddlware";
+import { protectedProcedure } from "../lib/procedure";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
-
-
-const protectedProcedure = trpc.procedure.use(authMiddleware)
 
 export const userColabRouter = trpc.router({
     list: protectedProcedure.query(({ ctx })=>{

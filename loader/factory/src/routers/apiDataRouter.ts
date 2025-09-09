@@ -1,11 +1,11 @@
 import { trpc } from "../lib/trpcContext";
 import { ApiDataService } from "../services/apiDataService";
 import { apiDataSchema } from "../schemas/zodSchemas/apiDataValidation";
-import { authMiddleware } from "../lib/trpcMiddlware";
+import { protectedProcedure } from "../lib/procedure";
 
 const apiDataServiceInstance = ApiDataService.getInstance()
 
-const protectedProcedure = trpc.procedure.use(authMiddleware)
+
 
 export const apiDataRouter = trpc.router({
     selectForId: protectedProcedure.input(apiDataSchema.pick({id:true})).mutation(
