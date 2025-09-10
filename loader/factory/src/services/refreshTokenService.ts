@@ -1,4 +1,4 @@
-import type { IRefreshTokenRepository } from "../declarations/index";
+import type { IRefreshTokenRepository, RefreshTokenMethods } from "../declarations/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient"; 
 import { EnvFactoryErrors } from "../errors/envFactoryErrors"
@@ -7,7 +7,7 @@ import { JWTverifyAndDecode, JWTBlacklist } from "../helper/jwtFunctions";
 export class RefreshTokenService{
     private static instance:RefreshTokenService
     refreshTokenRepository:IRefreshTokenRepository;
-    refreshToken
+    refreshToken:RefreshTokenMethods;
     private constructor(refreshTokenRepository:IRefreshTokenRepository){
         this.refreshTokenRepository = refreshTokenRepository;
         this.refreshToken = {
