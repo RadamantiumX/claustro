@@ -1,4 +1,4 @@
-import { ApiData, UserColab, ApiKey, UserColabClientResponse } from "factory";
+import { ApiData, UserColab, ApiKey, UserColabClientResponse, AuthRefreshToken } from "factory";
 
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
@@ -30,4 +30,9 @@ export interface ApiKeyMethods{
    selectUniqueForId:(bodyReq:Pick<ApiKey, "id">)=>Promise<Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null>;
    update:(bodyReq:Omit<ApiKey, "updatedAt" | "createdAt" | "dataId" | "apiDataId">)=>Promise<void>;
    delete:(bodyReq:Pick<ApiKey, "id">)=>Promise<void>;
+}
+
+export interface RefreshTokenMethods{
+   verifyOwner: (refreshToken:string) => Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>;
+   blackList: (refreshToken:string) => Promise<void>;
 }
