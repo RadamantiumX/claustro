@@ -2,6 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { publicProcedure } from "../lib/procedure";
+import { COOKIE_AGE } from "../const/cookieAge";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/
 // See this issue: https://discord-questions.trpc.io/m/1173620897517666384
 
@@ -13,7 +14,7 @@ export const authRouter = trpc.router({
     login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{
         
         authServiceInstance.auth.login(input).then((data)=>{
-          ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000 }) // TODO: complete the data to set TOKEN
+          ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE }) // TODO: complete the data to set TOKEN
           return {data}
         }).catch((error)=>{
             throw new Error(`Something went wrong: ${error}`) //TODO: Handle the errors
