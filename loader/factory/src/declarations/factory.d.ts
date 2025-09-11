@@ -48,7 +48,7 @@ export interface UserColab {
 export interface AuthRefreshToken {
   id: string
   refreshToken: string
-  expiration: Date | null
+  expiration: string | null
   userColabId: string
   createdAt: Date
 }
