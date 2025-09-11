@@ -55,8 +55,7 @@ describe('RefreshTokenRepository',()=>{
             userColabId: mockRefreshToken.userColabId
         })
         expect(mockedData).toEqual(expect.objectContaining(mockRefreshToken))
-    })
-    expect(prismaMock.authRefreshToken.findUnique).toHaveBeenCalledWith({
+        expect(prismaMock.authRefreshToken.findUnique).toHaveBeenCalledWith({
             where:{
                 userColabId: mockRefreshToken.userColabId
             },
@@ -65,4 +64,18 @@ describe('RefreshTokenRepository',()=>{
                 userColabId: true
             }
         })
+    })
+    it('should be deleted a refreshToke', async()=>{
+        prismaMock.authRefreshToken.delete.mockResolvedValueOnce(mockRefreshToken)
+        const mockedData = await refreshTokenRepository.deleteRefreshToken({
+            userColabId: mockRefreshToken.userColabId
+        })
+        expect(mockedData).toEqual(undefined)
+        expect(prismaMock.authRefreshToken.delete).toHaveBeenCalledWith({
+            where:{
+                userColabId: mockRefreshToken.userColabId
+            }
+        })
+    })
+    
 })
