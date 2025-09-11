@@ -1,4 +1,4 @@
-import type { ApiData, UserColab, ApiKey, Datum } from "../declarations/index";
+import type { ApiData, UserColab, ApiKey, Datum, AuthRefreshToken } from "../declarations/index";
 
 
 export const mockApiData:ApiData = {
@@ -43,6 +43,14 @@ export const mockData:Datum = {
   userColabId: "mockedid",
   createdAt: new Date(Date.now()),
   updatedAt: new Date(Date.now())
+}
+
+export const mockRefreshToken:AuthRefreshToken = {
+   id: '11555dsdas45',
+   refreshToken: 'dasdas2654dasd485878asdkl',
+   expiration: null,
+   userColabId:'dsadaskkoolasdas1212das',
+   createdAt: new Date(Date.now())
 }
 
 export const mockDataNested = {
