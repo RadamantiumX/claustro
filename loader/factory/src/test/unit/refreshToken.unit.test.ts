@@ -48,4 +48,21 @@ describe('RefreshTokenRepository',()=>{
             }
         })
     })
+
+    it('should check owner refreshToken', async()=>{
+        prismaMock.authRefreshToken.findUnique.mockResolvedValueOnce(mockRefreshToken)
+        const mockedData = await refreshTokenRepository.checkOwner({
+            userColabId: mockRefreshToken.userColabId
+        })
+        expect(mockedData).toEqual(expect.objectContaining(mockRefreshToken))
+    })
+    expect(prismaMock.authRefreshToken.findUnique).toHaveBeenCalledWith({
+            where:{
+                userColabId: mockRefreshToken.userColabId
+            },
+            select:{
+                refreshToken: true,
+                userColabId: true
+            }
+        })
 })
