@@ -34,5 +34,5 @@ export interface ApiKeyMethods{
 
 export interface RefreshTokenMethods{
    verifyOwner: (refreshToken:string) => Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>;
-   blackList: (refreshToken:string) => Promise<void>;
+   blackList: (refreshToken:string) => Promise<boolean>;
 }

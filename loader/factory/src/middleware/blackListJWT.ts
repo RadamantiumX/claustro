@@ -9,7 +9,11 @@ export const blackListJWT = async (req:Request, res:Response, next:NextFunction)
     try{
         if(cookies !== undefined){
             const rt = cookies.jwt
-            refreshTokenInstance.refreshToken.blackList(rt)
+            const onTime = refreshTokenInstance.refreshToken.blackList(rt)
+            if(!onTime){
+                return
+            }
+            res.status(401).json({ logMessage: 'UNAUTHORIZED' })
             return
         }
         

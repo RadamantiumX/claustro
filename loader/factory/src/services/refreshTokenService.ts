@@ -20,15 +20,15 @@ export class RefreshTokenService{
                   throw new EnvFactoryErrors()
                 }
             },
-            blackList: async(refreshToken:string):Promise<void>=>{
+            blackList: async(refreshToken:string):Promise<boolean>=>{
                 try{
                     const { expired } = JWTBlacklist(refreshToken)
                     if(expired){
                         const { id } = JWTverifyAndDecode(refreshToken)
                         await this.refreshTokenRepository.deleteRefreshToken({userColabId:id})
-                        return
+                        return expired
                     }
-                    return
+                    return expired
                 }catch(error){
                 throw new EnvFactoryErrors()
                 }
