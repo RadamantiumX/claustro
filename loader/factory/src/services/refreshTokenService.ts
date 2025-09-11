@@ -14,7 +14,7 @@ export class RefreshTokenService{
             verifyOwner:async(refreshToken:string)=>{
                 try{
                     const { id } = JWTverifyAndDecode(refreshToken)
-                    const tokenOwner = await this.refreshTokenRepository.checkOwner({id})
+                    const tokenOwner = await this.refreshTokenRepository.checkOwner({userColabId:id})
                     return tokenOwner
                 }catch(error){
                   throw new EnvFactoryErrors()
