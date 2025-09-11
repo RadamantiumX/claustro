@@ -2,6 +2,7 @@
 // For the moment, it's not necessary the DB
 import { PrismaClient, UserColab } from "@prisma/client";
 import type { AuthRefreshToken, PayloadRefreshToken } from "../declarations/index";
+
 export class RefreshTokenRepository {
     constructor(private prismaClient:PrismaClient){}
     
@@ -29,8 +30,8 @@ export class RefreshTokenRepository {
          return null
     }
 
-    async deleteRefreshToken(payload:{id:string}):Promise<void>{
-        await this.prismaClient.authRefreshToken.delete({ where:{ userColabId: payload.id } })
+    async deleteRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<void>{
+        await this.prismaClient.authRefreshToken.delete({ where:{ userColabId: payload.userColabId } })
         return
     }
 }

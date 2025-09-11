@@ -25,7 +25,7 @@ export class RefreshTokenService{
                     const { expired } = JWTBlacklist(refreshToken)
                     if(expired){
                         const { id } = JWTverifyAndDecode(refreshToken)
-                        await this.refreshTokenRepository.deleteRefreshToken({id:id})
+                        await this.refreshTokenRepository.deleteRefreshToken({userColabId:id})
                         return
                     }
                     return

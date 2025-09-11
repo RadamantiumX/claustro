@@ -59,5 +59,5 @@ export interface IRefreshTokenRepository{
     createRefeshToken(payload:PayloadRefreshToken):Promise<void>;
     checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
     checkOwner(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
-    deleteRefreshToken(payload:{id:string}):Promise<void>
+    deleteRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<void>
 }

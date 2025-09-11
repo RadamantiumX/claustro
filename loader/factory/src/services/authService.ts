@@ -51,7 +51,7 @@ export class AuthService {
           // If the record exists
           if(oneDeviceSession){
             // The other session is dismissed
-            await this.refreshTokenRepository.deleteRefreshToken({ id:oneDeviceSession.userColabId })
+            await this.refreshTokenRepository.deleteRefreshToken({ userColabId:oneDeviceSession.userColabId })
           }
         
           await this.userColabRepository.updateTimestampSignIn({
