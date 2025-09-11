@@ -46,7 +46,7 @@ export class AuthService {
           }
 
           // The User Session is only available in ONE DEVICE ONCE
-          const oneDeviceSession = await this.refreshTokenRepository.checkOwner({id:verifyUser.id})
+          const oneDeviceSession = await this.refreshTokenRepository.checkOwner({userColabId:verifyUser.id})
 
           // If the record exists
           if(oneDeviceSession){

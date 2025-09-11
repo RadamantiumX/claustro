@@ -1,6 +1,6 @@
 // TODO: Send to CLIENT the ACCESS TOKEN refreshed
 // For the moment, it's not necessary the DB
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, UserColab } from "@prisma/client";
 import type { AuthRefreshToken, PayloadRefreshToken } from "../declarations/index";
 export class RefreshTokenRepository {
     constructor(private prismaClient:PrismaClient){}
@@ -21,8 +21,8 @@ export class RefreshTokenRepository {
        }
        return null
     }
-    async checkOwner(payload:{id:string}):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
-         const userColabOwner = await this.prismaClient.authRefreshToken.findUnique({ where: {userColabId:payload.id}, select:{ refreshToken:true, userColabId:true } })
+    async checkOwner(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
+         const userColabOwner = await this.prismaClient.authRefreshToken.findUnique({ where: {userColabId:payload.userColabId}, select:{ refreshToken:true, userColabId:true } })
          if(userColabOwner){
             return userColabOwner
          }
