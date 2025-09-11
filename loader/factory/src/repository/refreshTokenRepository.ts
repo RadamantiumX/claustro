@@ -15,9 +15,9 @@ export class RefreshTokenRepository {
         return
     }
     async checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
-       const getUnique = await this.prismaClient.authRefreshToken.findUnique({ where: {refreshToken: payload.refreshToken} })
+       const getUnique = await this.prismaClient.authRefreshToken.findUnique({ where: {refreshToken: payload.refreshToken}, select:{ refreshToken:true, userColabId:true } })
        if(getUnique){
-        return { refreshToken: getUnique?.refreshToken, userColabId: getUnique?.userColabId }
+        return getUnique
        }
        return null
     }
