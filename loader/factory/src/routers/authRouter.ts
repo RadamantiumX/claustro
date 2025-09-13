@@ -12,13 +12,17 @@ const authServiceInstance = AuthService.getInstance()
 
 export const authRouter = trpc.router({
     login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{
-        
-        authServiceInstance.auth.login(input).then((data)=>{
-          ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE }) // TODO: complete the data to set TOKEN
-          return {data}
+        return authServiceInstance.auth.login(input)
+       /* .then((data)=>{
+            ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
+        })*/
+      
+        /*authServiceInstance.auth.login(input).then((data)=>{
+           // TODO: complete the data to set TOKEN
+          return data // Here is the problem
         }).catch((error)=>{
             throw new Error(`Something went wrong: ${error}`) //TODO: Handle the errors
-        })
+        })*/
        
     }),
     register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({input})=>{

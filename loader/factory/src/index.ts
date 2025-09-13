@@ -25,8 +25,8 @@ app.get('/', (req: Request, res: Response, next: NextFunction)=>{
     res.status(200).json({message: 'Server is online on TURBOREPO'})
 })
 
-app.use(jwtErrorMiddleware)
-app.use(blackListJWT)
+ 
+ 
 // tRPC
 app.use(
   '/trpc',
@@ -35,8 +35,9 @@ app.use(
     createContext: createContext
   })
 )
+app.use(blackListJWT)
 app.use(typeScriptError)
-
+app.use(jwtErrorMiddleware)
 app.listen(PORT, ()=>{
     console.log(`Server is online: http://localhost:${PORT}`)
 })
