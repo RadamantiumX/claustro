@@ -83,7 +83,7 @@ export class AuthService {
             refreshToken: refreshToken,
           };
         } catch (error) {
-          throw new EnvFactoryErrors()
+          throw new Error(`This Error: ${error}`)
         }
       },
       register: async (bodyReq: Pick<UserColab, "username" | "password">) => {

@@ -42,6 +42,7 @@ export const useLogin = ():SignInHandler =>{
           // const end = performance.now()
           // const resposeTime = end - start
           // console.log(`${resposeTime} miliseconds`)
+          console.log(data.accessToken)
           setToken(data.accessToken)
           setUser(variables.username)
           setLoading(false)
