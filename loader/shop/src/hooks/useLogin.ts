@@ -3,7 +3,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import type { SignInHandler } from "../types/hooks"
-
+import { useTrpc } from "./useTrpc"
 
 /**
  * - Custom Hook -
@@ -16,7 +16,8 @@ import type { SignInHandler } from "../types/hooks"
  * @returns {SignInHandler}
  */
 export const useLogin = ():SignInHandler =>{
-    const trpc = useTRPC()
+  const { trpcClient } = useTrpc()
+    const trpc = trpcClient
  
   const { setToken, setUser, setLoading, setResponseTime, setBounce } = useStateContext()
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ export const useLogin = ():SignInHandler =>{
     isSuperAdmin: false
   })
   
-  const login = useMutation(trpc.auth.login.mutationOptions())
+  const login = useMutation(trpc.post.auth.login.mutationOptions())
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
     setFormData({...formData, [e.target.name]: e.target.value})
