@@ -15,18 +15,24 @@ export const useTrpc = () => {
                 defaultOptions:{
                     queries: {
                         staleTime: Infinity,
-                        refetchOnWindowFocus: false
+                     
                     }
                 }
             })
     )
 
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [httpBatchLink({ url: 'http://localhost:3000/trpc' ,
-        fetch(url, options){
+        /*fetch(url, options){
             return fetch(url,{
+                ...options,
                 credentials: 'include',
+                headers:{
+                    ...options.headers,
+                    Authorization: ""
+                }
             })
-        }
+        }*/
+
     })] }))
 
     return {
