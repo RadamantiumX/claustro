@@ -10,22 +10,24 @@ import AppError from '../errors/appErrors'
 
 // see the documentation
 export const createContext = async ({ req, res, }:trpcExpress.CreateExpressContextOptions) =>{
-    // TODO: Adding security on "private procedure" middleware
-   const token:any = req.headers.authorization 
-   
- if(!token){
-   // TODO: FIX THIS F*ng PROBLEM DUDE!!!! ⬇️
-      throw new AppError(
-                  "UNAUTHORIZED",
-                  401,
-                  "The token provided is not valid",
-                  false
-                );
+   const token:string | undefined = req.headers.authorization 
+   let user:string | null = null
+ if(token){
+    try{
+        const { username } = JWTverifyAndDecode(token)
+        user = username
+
+    }catch(error){
+         throw new TRPCError({message:'Invalid token', code:'UNAUTHORIZED' })
+    }
+     
     }
  
-    const { username } = JWTverifyAndDecode(token)
-    return { req, res, username }
+    
+    return { req, res, user }
 }
+
+// One of MILLON TESTING 😅
 /*export const createContext = ({
     req,
     res
