@@ -12,10 +12,10 @@ import { TRPCProvider } from "../utils/trpc";
 export const Providers = ({children}: PropsWithChildren):JSX.Element =>{
   const { trpcQueryClient, trpcClient } = useTrpc()
   return(
+    <QueryClientProvider client={trpcQueryClient}>
     <TRPCProvider trpcClient={trpcClient} queryClient={trpcQueryClient}>
-        <QueryClientProvider client={trpcQueryClient}>
             {children}
-        </QueryClientProvider>
     </TRPCProvider>
+    </QueryClientProvider>
   )
 }

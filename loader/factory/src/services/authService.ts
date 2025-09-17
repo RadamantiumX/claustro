@@ -83,7 +83,12 @@ export class AuthService {
             refreshToken: refreshToken,
           };
         } catch (error) {
-          throw new Error(`This Error: ${error}`)
+           throw new AppError(
+            "Bad Request",
+            400,
+            "Provide a different username",
+            false
+          );
         }
       },
       register: async (bodyReq: Pick<UserColab, "username" | "password">) => {
@@ -102,7 +107,12 @@ export class AuthService {
         await this.userColabRepository.createSuperAdmin(bodyReq);
         return;
         }catch(error){
-           throw new EnvFactoryErrors()
+            throw new AppError(
+            "Bad Request",
+            400,
+            "Provide a different username",
+            false
+          );
         }
         
       },

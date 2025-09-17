@@ -3,28 +3,39 @@ import * as trpcExpress from '@trpc/server/adapters/express'
 import { AuthService } from '../services/authService'
 import type {  UserColab, CreateContextOptions } from '../declarations/index'
 import { TRPCError } from '@trpc/server'
-
+import { JWTverifyAndDecode } from '../helper/jwtFunctions'
+import AppError from '../errors/appErrors'
 
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
 
 // see the documentation
-export const createContext = async ({ req, res, }:trpcExpress.CreateExpressContextOptions):Promise<CreateContextOptions> =>{
+export const createContext = async ({ req, res, }:trpcExpress.CreateExpressContextOptions) =>{
     // TODO: Adding security on "private procedure" middleware
    const token:any = req.headers.authorization 
    
-    const authServiceInstance = AuthService.getInstance() // Access to intance
-
-    const verifiedUser:Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null = await  authServiceInstance.auth.verifyCredentials(token)
-    if(!verifiedUser || !token){
-        throw new TRPCError({
-            code: 'UNAUTHORIZED',
-            message: 'You are not authorized from the server'
-        })
+ if(!token){
+   // TODO: FIX THIS F*ng PROBLEM DUDE!!!! ⬇️
+      throw new AppError(
+                  "UNAUTHORIZED",
+                  401,
+                  "The token provided is not valid",
+                  false
+                );
     }
-
-    return { req, res, verifiedUser }
-  
+ 
+    const { username } = JWTverifyAndDecode(token)
+    return { req, res, username }
 }
+/*export const createContext = ({
+    req,
+    res
+}:trpcExpress.CreateExpressContextOptions) => ({})*/
 
 type Context = Awaited<ReturnType< typeof createContext >>// Temporary solving
-export const trpc = initTRPC.context<Context>().create()
+export const trpc = initTRPC.context<Context>().create({
+    // Testing debug
+    errorFormatter({shape, error}){
+        console.error('tRPC ERROR here:', error)
+        return shape
+    }
+})
