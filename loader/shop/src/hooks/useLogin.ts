@@ -37,14 +37,14 @@ export const useLogin = ():SignInHandler =>{
         e.preventDefault()
         // const start = performance.now()
         setLoading(true)
-        console.log(import.meta.env.USERNAME)
+      
     // create.mutate(formData)
       login.mutate(formData,{
         onSuccess: (data, variables)=>{
               // const end = performance.now()
               // const resposeTime = end - start
               // console.log(`${resposeTime} miliseconds`)
-              console.log(data.accessToken)
+            
               setToken(data.accessToken)
               setUser(variables.username)
               setLoading(false)
