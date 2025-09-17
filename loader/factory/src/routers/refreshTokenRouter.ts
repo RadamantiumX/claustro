@@ -20,11 +20,11 @@ export const refreshTokenRouter = trpc.router({
         ctx.res.clearCookie('jwt', { httpOnly: true, secure: true })
         const owner = await refreshTokenInstance.refreshToken.verifyOwner(refreshToken)
         if(!owner){
-            throw new TRPCError({ code: 'UNAUTHORIZED' })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is invalid' })
         }
         const verify = await userColabInstance.userData.unique({id:owner.userColabId})
         if(!verify){
-            throw new TRPCError({ code: 'UNAUTHORIZED' })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted' })
         }
         const newAt = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
         const newRt = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
