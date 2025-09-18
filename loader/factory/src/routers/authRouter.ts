@@ -1,6 +1,7 @@
 import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
+import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
 import { COOKIE_AGE } from "../const/cookieAge";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/
@@ -27,5 +28,13 @@ export const authRouter = trpc.router({
     }),
     register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({input})=>{
         return authServiceInstance.auth.register(input)
+    }),
+    logout: publicProcedure.input(refreshTokenSchema.pick({ userColabId: true })).mutation(({input, ctx})=>{
+        return authServiceInstance.auth.destroySession(input)
+        .then(()=>{
+            ctx.res.clearCookie('jwt', {httpOnly: true, secure:true})
+        }).catch((error)=>{
+            throw new Error('Something went wrong!')
+        })
     })
 })
