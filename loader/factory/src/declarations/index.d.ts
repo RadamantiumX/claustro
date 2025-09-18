@@ -24,7 +24,6 @@ export { ApiKeyClientResponse } from './factory';
 export { DatumClientResponse } from './factory';
 export { AllRelatedData } from './factory';
 export { RateLimiterRule } from './factory';
-export { AuthMethods } from './factory';
 export { trpcPayload } from './factory';
 export { PayloadRefreshToken } from './factory';
 
@@ -32,7 +31,8 @@ export { UserColabMethods } from './methods';
 export { DataMethods } from './methods';
 export { ApiDataMethods } from './methods';
 export { ApiKeyMethods } from './methods';
-export { RefreshTokenMethods } from './methods'
+export { RefreshTokenMethods } from './methods';
+export { AuthMethods } from './methods';
 
 export { IuserColabRepository } from './serviceInjection';
 export { IDataRepository } from './serviceInjection';

@@ -36,3 +36,18 @@ export interface RefreshTokenMethods{
    verifyOwner: (refreshToken:string) => Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>;
    blackList: (refreshToken:string) => Promise<boolean>;
 }
+
+export interface AuthMethods{
+  login: (bodyReq: Pick<UserColab, "username" | "password">) => Promise<{
+        authData: {
+            id: string;
+            username: string;
+            isSuperAdmin: boolean;
+        };
+        accessToken: string;
+        refreshToken: string;
+    }>;
+    register: (bodyReq:Pick<UserColab, "username" | "password">)=> Promise<void>;
+    verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null>;
+    destroySession:(bodyReq:Pick<AuthRefreshToken, "userColabId">) => Promise<void>;
+}

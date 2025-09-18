@@ -150,19 +150,7 @@ export interface RateLimiterRule {
 }
 
 
-export interface AuthMethods{
-  login: (bodyReq: Pick<UserColab, "username" | "password">) => Promise<{
-        authData: {
-            id: string;
-            username: string;
-            isSuperAdmin: boolean;
-        };
-        accessToken: string;
-        refreshToken: string;
-    }>;
-    register: (bodyReq:Pick<UserColab, "username" | "password">)=> Promise<void>;
-    verifyCredentials: (authHeader: string) => Promise<Pick<UserColab, "username" | "password" | "id" | "isSuperAdmin"> | null>;
-}
+
 
 export interface trpcPayload {
     id: string,
