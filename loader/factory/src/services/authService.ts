@@ -1,4 +1,4 @@
-import { IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods } from "index";
+import { IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods, AuthRefreshToken } from "index";
 import AppError from "../errors/appErrors";
 import bcrypt from "bcryptjs";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
@@ -124,10 +124,28 @@ export class AuthService {
         });
         return checkUser;
         }catch(error){
-          throw new EnvFactoryErrors()
+           throw new AppError(
+            "Bad Request",
+            400,
+            "Provide a different username",
+            false
+          );
         }
        
       },
+      destroySession: async(bodyReq:Pick<AuthRefreshToken, 'userColabId'>) =>{
+           try{
+            await this.refreshTokenRepository.deleteRefreshToken(bodyReq)
+            return
+           }catch(error){
+              throw new AppError(
+            "Bad Request",
+            400,
+            "Provide a different username",
+            false
+          );
+           }
+      }
     };
   }
 
