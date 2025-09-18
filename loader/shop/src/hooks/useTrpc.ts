@@ -2,6 +2,7 @@ import { useState } from "react";
 import { httpBatchLink, createTRPCClient } from "@trpc/client";
 import { QueryClient } from "@tanstack/react-query";
 import type { AppRouter } from "../../../factory/src/routers";
+import Cookies from "js-cookie";
 
 // TODO: fixing the context, see the docs
 /**
@@ -22,16 +23,10 @@ export const useTrpc = () => {
     )
 
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [httpBatchLink({ url: 'http://localhost:3000/trpc' ,
-        /*fetch(url, options){
-            return fetch(url,{
-                ...options,
-                credentials: 'include',
                 headers:{
-                    ...options.headers,
-                    Authorization: ""
+                    Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
                 }
-            })
-        }*/
+       
 
     })] }))
 
