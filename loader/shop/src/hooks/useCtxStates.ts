@@ -15,7 +15,7 @@ export const useCtxState = () =>{
     const setToken = (token:string) => {
         _setToken(token)
         if(token){
-            Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 7})
+            Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 1})
         }else{
             Cookies.remove(`${import.meta.env.VITE_ACCESS_TOKEN}`)
         }

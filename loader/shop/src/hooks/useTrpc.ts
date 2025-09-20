@@ -9,6 +9,8 @@ import Cookies from "js-cookie";
  * - Custom Hook -
  * @returns {SignInHandler}
  */
+
+const customFetch = () =>{}
 export const useTrpc = () => {
     const [trpcQueryClient] = useState(
         () => 
@@ -21,11 +23,12 @@ export const useTrpc = () => {
                 }
             })
     )
-
+   
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [httpBatchLink({ url: 'http://localhost:3000/trpc' ,
                 headers:{
                     Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
-                }
+                },
+                fetch:customFetch
        
 
     })] }))
