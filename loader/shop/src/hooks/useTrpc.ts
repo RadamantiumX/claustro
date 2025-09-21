@@ -10,7 +10,9 @@ import Cookies from "js-cookie";
  * @returns {SignInHandler}
  */
 
-const customFetch = () =>{}
+const customFetch = (url:string, options:RequestInit):Promise<Response> =>{
+    const accessToken:string | undefined = import.meta.env.VITE_ACCESS_TOKEN
+}
 export const useTrpc = () => {
     const [trpcQueryClient] = useState(
         () => 
