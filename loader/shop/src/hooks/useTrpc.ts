@@ -10,9 +10,6 @@ import Cookies from "js-cookie";
  * @returns {SignInHandler}
  */
 
-const customFetch = (url:string, options:RequestInit):Promise<Response> =>{
-    const accessToken:string | undefined = import.meta.env.VITE_ACCESS_TOKEN
-}
 export const useTrpc = () => {
     const [trpcQueryClient] = useState(
         () => 
@@ -30,7 +27,7 @@ export const useTrpc = () => {
                 headers:{
                     Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
                 },
-                fetch:customFetch
+                
        
 
     })] }))
