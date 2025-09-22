@@ -26,9 +26,9 @@ export const refreshTokenRouter = trpc.router({
         if(!verify){
             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted' })
         }
-        const newAt = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
-        const newRt = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
-        ctx.res.cookie('jwt', newRt, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
-        return newAt
+        const newAccessToken = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
+        const newRefreshToken = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
+        ctx.res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
+        return newAccessToken
     })
 })
