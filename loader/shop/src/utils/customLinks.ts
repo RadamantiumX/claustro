@@ -1,20 +1,21 @@
 import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
-import { useStateContext } from "../hooks/useCtxStates";
-import { isExpiredToken } from "../helper/tokenExpiration";
+/* import { useStateContext } from "../hooks/useCtxStates";
+import { isExpiredToken } from "../helper/tokenExpiration"; */
+import { observable } from "@trpc/server/observable";
 
 
 // TODO: adding expiration token conditional
 // TODO: trpc custom link sending request to server trpc --> search on google
 
-const accessTokenLink: TRPCLink<AppRouter> = (runtime) => (ctx) =>{
-  return (next) => async (op) =>{
+/*const accessTokenLink: TRPCLink<AppRouter> = () =>{
+  return ({ next, op }) =>{
     const { token, setToken } = useStateContext()
 
     if(token){
         if(isExpiredToken(token)){
           try{
-             const newAccessToken = await runtime.ser
+             const newAccessToken = op.
           }catch(error){
             throw new Error('Error on TOKEN')
           }
@@ -22,7 +23,7 @@ const accessTokenLink: TRPCLink<AppRouter> = (runtime) => (ctx) =>{
     }
 
   }
-}
+}*/
 /**
  * Some CONCEPT
  * import { TRPCLink, Operation, Observable } from '@trpc/client';
@@ -63,3 +64,25 @@ const customFetchLink: TRPCLink<any> = () => {
 //   ],
 // });
  */
+
+export const customLink:TRPCLink<AppRouter>= () =>{
+  return ({next, op}) =>{
+    return observable((observer)=>{
+      console.log('Perf. operation: ', op)
+      const unsubscribe = next(op).subscribe({
+        next(value){
+          console.log('we recibed value', value);
+          observer.next(value)
+        },
+        error(err) {
+          console.log('we received error', err);
+          observer.error(err);
+        },
+        complete() {
+          observer.complete();
+        },
+      })
+      return unsubscribe
+    })
+  }
+}
