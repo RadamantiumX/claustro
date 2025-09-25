@@ -1,9 +1,10 @@
 import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
-/* import { useStateContext } from "../hooks/useCtxStates";
-import { isExpiredToken } from "../helper/tokenExpiration"; */
+import { useStateContext } from "../hooks/useCtxStates";
+import { isExpiredToken } from "../helper/tokenExpiration";
 import { observable } from "@trpc/server/observable";
-
+import { useTRPC } from "./trpc"; // <--- Use this for client fetching to server REFRESH-TOKEN
+import { useQuery } from "@tanstack/react-query";
 
 // TODO: adding expiration token conditional
 // TODO: trpc custom link sending request to server trpc --> search on google
@@ -64,6 +65,33 @@ const customFetchLink: TRPCLink<any> = () => {
 //   ],
 // });
  */
+export const refreshTokenLink:TRPCLink<AppRouter>=()=>{
+  return (runtime) => {
+    return ({ op }) => {
+      return observable((observer)=>{
+        const exec = async () => {
+          const trpc = useTRPC()
+           const { token, setToken } = useStateContext()
+           if(token){
+            if(isExpiredToken(token)){
+              try{
+                const rt = useQuery(trpc.refreshToken.refresh.queryOptions())
+               const refreshTokenServer = rt.data
+               if(refreshTokenServer){
+                setToken(refreshTokenServer)
+               }
+               
+              }catch(error){
+                console.log(error)
+              }
+            }
+           }
+        }
+      })
+    }
+  }
+}
+
 
 export const customLink:TRPCLink<AppRouter>= () =>{
   return ({next, op}) =>{
