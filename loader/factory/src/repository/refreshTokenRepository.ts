@@ -29,6 +29,15 @@ export class RefreshTokenRepository {
          }
          return null
     }
+    async updateRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId' | 'refreshToken'>):Promise<void>{
+        await this.prismaClient.authRefreshToken.update({
+            where:{ userColabId: payload.userColabId },
+            data:{
+                refreshToken: payload.refreshToken
+            }
+        })
+        return
+    }
 
     async deleteRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<void>{
         await this.prismaClient.authRefreshToken.delete({ where:{ userColabId: payload.userColabId } })

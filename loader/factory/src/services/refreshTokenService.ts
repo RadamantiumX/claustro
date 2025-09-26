@@ -1,4 +1,4 @@
-import type { IRefreshTokenRepository, RefreshTokenMethods } from "../declarations/index";
+import type { IRefreshTokenRepository, RefreshTokenMethods, AuthRefreshToken } from "../declarations/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient"; 
 import { EnvFactoryErrors } from "../errors/envFactoryErrors"
@@ -19,6 +19,14 @@ export class RefreshTokenService{
                 }catch(error){
                   throw new EnvFactoryErrors()
                 }
+            },
+            update:async({userColabId, refreshToken}:Pick<AuthRefreshToken, 'userColabId'| 'refreshToken'>)=>{
+               try{
+                 await this.refreshTokenRepository.updateRefreshToken({userColabId, refreshToken})
+                 return
+               }catch(error){
+                throw new Error('Error on Update')
+               }
             },
             blackList: async(refreshToken:string):Promise<boolean>=>{
                 try{
