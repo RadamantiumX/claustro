@@ -58,7 +58,7 @@ export interface IApiKeyRepository{
 export interface IRefreshTokenRepository{
     createRefeshToken(payload:PayloadRefreshToken):Promise<void>;
     checkSession(payload:Pick<AuthRefreshToken, 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
-    checkOwner(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
+    uniqueOwner(payload:Pick<AuthRefreshToken, 'userColabId'| 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>
     updateRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId'|'refreshToken'>):Promise<void>
     deleteRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<void>
 }
