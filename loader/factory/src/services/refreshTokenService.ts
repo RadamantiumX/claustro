@@ -11,10 +11,10 @@ export class RefreshTokenService{
     private constructor(refreshTokenRepository:IRefreshTokenRepository){
         this.refreshTokenRepository = refreshTokenRepository;
         this.refreshToken = {
-            verifyOwner:async(refreshToken:string)=>{
+            verifyOwner:async(bodyReq:Pick<AuthRefreshToken, 'userColabId'| 'refreshToken'>)=>{
                 try{
-                    const { id } = JWTverifyAndDecode(refreshToken)
-                    const tokenOwner = await this.refreshTokenRepository.checkOwner({userColabId:id})
+                    
+                    const tokenOwner = await this.refreshTokenRepository.uniqueOwner({userColabId:bodyReq.userColabId, refreshToken: bodyReq.refreshToken})
                     return tokenOwner
                 }catch(error){
                   throw new EnvFactoryErrors()
