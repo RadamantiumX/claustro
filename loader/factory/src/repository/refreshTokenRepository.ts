@@ -22,8 +22,8 @@ export class RefreshTokenRepository {
        }
        return null
     }
-    async checkOwner(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
-         const userColabOwner = await this.prismaClient.authRefreshToken.findUnique({ where: {userColabId:payload.userColabId}, select:{ refreshToken:true, userColabId:true } })
+    async uniqueOwner(payload:Pick<AuthRefreshToken, 'userColabId' | 'refreshToken'>):Promise<Pick<AuthRefreshToken, 'refreshToken' | 'userColabId'> | null>{
+         const userColabOwner = await this.prismaClient.authRefreshToken.findUnique({ where: {userColabId:payload.userColabId, refreshToken:payload.refreshToken}, select:{ refreshToken:true, userColabId:true } })
          if(userColabOwner){
             return userColabOwner
          }
