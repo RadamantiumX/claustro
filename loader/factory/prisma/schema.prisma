@@ -34,6 +34,7 @@ model AuthRefreshToken {
   userColab UserColab @relation(fields: [userColabId], references: [id], onDelete: Cascade)
   userColabId String @unique
   createdAt DateTime @default(now()) @db.Timestamp() 
+  updatedAt DateTime? @db.Timestamp()
 }
 
 model Data {
