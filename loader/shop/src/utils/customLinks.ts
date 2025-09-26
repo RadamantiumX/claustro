@@ -69,7 +69,7 @@ export const refreshTokenLink:TRPCLink<AppRouter>=()=>{
   return (runtime) => {
     return ({ op }) => {
       return observable((observer)=>{
-        const exec = async () => {
+        const exec =  () => {
           const trpc = useTRPC()
            const { token, setToken } = useStateContext()
            if(token){
