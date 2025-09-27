@@ -1,6 +1,6 @@
 import type { IRefreshTokenRepository, RefreshTokenMethods, AuthRefreshToken } from "../declarations/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
-import prisma from "../config/prismaClient"; 
+import prisma from "../config/prismaClient";
 import { EnvFactoryErrors } from "../errors/envFactoryErrors"
 import { JWTverifyAndDecode, JWTBlacklist } from "../helper/jwtFunctions";
 

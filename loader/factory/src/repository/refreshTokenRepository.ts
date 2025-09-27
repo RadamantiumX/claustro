@@ -1,7 +1,8 @@
 // TODO: Send to CLIENT the ACCESS TOKEN refreshed
 // For the moment, it's not necessary the DB
-import { PrismaClient, UserColab } from "@prisma/client";
+import type { PrismaClient } from "@prisma/client";
 import type { AuthRefreshToken, PayloadRefreshToken } from "../declarations/index";
+import { timeStampParsed } from "../helper/timeStampParser";
 
 export class RefreshTokenRepository {
     constructor(private prismaClient:PrismaClient){}
@@ -30,12 +31,13 @@ export class RefreshTokenRepository {
          return null
     }
     async updateRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId' | 'refreshToken'>):Promise<void>{
-        await this.prismaClient.authRefreshToken.update({
-            where:{ userColabId: payload.userColabId },
-            data:{
-                refreshToken: payload.refreshToken
-            }
-        })
+       await  this.prismaClient.authRefreshToken.update({
+        where: { userColabId: payload.userColabId },
+        data:{
+            refreshToken: payload.refreshToken,
+            updatedAt: timeStampParsed()
+        }
+       })
         return
     }
 
