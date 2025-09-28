@@ -6,7 +6,7 @@ import { UserColabRepository } from "../repository/userColabRepository";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors";
+
 
 // Dependency Injection + Singleton PATTERN
 export class AuthService {
@@ -46,7 +46,7 @@ export class AuthService {
           }
 
           // The User Session is only available in ONE DEVICE ONCE
-          const oneDeviceSession = await this.refreshTokenRepository.checkOwner({userColabId:verifyUser.id})
+          const oneDeviceSession = await this.refreshTokenRepository.uniqueUserColab({userColabId:verifyUser.id})
 
           // If the record exists
           if(oneDeviceSession){

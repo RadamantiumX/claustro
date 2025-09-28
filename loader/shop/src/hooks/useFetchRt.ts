@@ -5,6 +5,17 @@ import { useTRPC } from "../utils/trpc";
 import { isExpiredToken } from "../helper/tokenExpiration";
 import { jwtDecode } from "jwt-decode";
 
+
+export interface JWTPayload {
+  id:string
+  username: string
+  currentDate: string
+  isSuperAdmin: boolean
+}
+export interface DecodedTokenKeys extends JWTPayload {
+  iat: Date | number
+  exp: Date | number
+}
 export const useFetchRt = () => {
     const trpc = useTRPC()
     const { token, setToken } = useStateContext()
@@ -15,11 +26,15 @@ export const useFetchRt = () => {
     if(token){
         if(isExpiredToken(token)){
             try{
-                const decoded = jwtDecode(token)
+                const decoded:JWTPayload = jwtDecode(token)
                 setPayload({
                     userColabId: decoded.id
                 })
-                rt.mutate()
+                rt.mutate(payload,{
+                    onSuccess: (data, variables) =>{
+                        setToken(data.newAccessToken)
+                    }
+                })
 
             }catch(error){
                 console.log(error)

@@ -30,6 +30,17 @@ export class RefreshTokenRepository {
          }
          return null
     }
+    async uniqueUserColab(payload:Pick<AuthRefreshToken, 'userColabId'>):Promise<Pick<AuthRefreshToken,'id' | 'refreshToken' | 'userColabId'>| null>{
+        const uniqueRecord = await this.prismaClient.authRefreshToken.findUnique({
+            where: {userColabId: payload.userColabId},
+            select:{
+                id:true,
+                refreshToken: true,
+                userColabId: true
+            }
+        })
+        return uniqueRecord
+    }
     async updateRefreshToken(payload:Pick<AuthRefreshToken, 'userColabId' | 'refreshToken'>):Promise<void>{
        await  this.prismaClient.authRefreshToken.update({
         where: { userColabId: payload.userColabId },

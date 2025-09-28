@@ -3,7 +3,6 @@ import { AuthService } from "../services/authService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
-import { COOKIE_AGE } from "../const/cookieAge";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/
 // See this issue: https://discord-questions.trpc.io/m/1173620897517666384
 
