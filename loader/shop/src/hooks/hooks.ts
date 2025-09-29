@@ -4,3 +4,4 @@ export { useLogin } from './useLogin';
 export { useLogout } from './useLogout';
 export { useTrpc } from './useTrpc';
 export { useUserMenu } from './useUserMenu';
+export { useFetchRt } from './useFetchRt';

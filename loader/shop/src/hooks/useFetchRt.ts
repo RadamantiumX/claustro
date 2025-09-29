@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useStateContext } from "./useCtxStates";
 import { useMutation } from "@tanstack/react-query";
 import { useTRPC } from "../utils/trpc";
 import { isExpiredToken } from "../helper/tokenExpiration";
@@ -18,12 +17,13 @@ export interface DecodedTokenKeys extends JWTPayload {
 }
 export const useFetchRt = () => {
     const trpc = useTRPC()
-    const { token, setToken } = useStateContext()
+   
     const [ payload, setPayload ] = useState({
         userColabId:''
     })
     const rt = useMutation(trpc.refreshToken.refresh.mutationOptions())
-    if(token){
+    const handleMutation = (token:string) => {
+        if(token){
         if(isExpiredToken(token)){
             try{
                 const decoded:JWTPayload = jwtDecode(token)
@@ -32,8 +32,12 @@ export const useFetchRt = () => {
                 })
                 rt.mutate(payload,{
                     onSuccess: (data, variables) =>{
-                        setToken(data.newAccessToken)
-                    }
+                        console.log(data)
+                        console.log(variables)
+                    },
+                     onError:(error)=>{
+                   console.log(error.data)
+                }
                 })
 
             }catch(error){
@@ -41,4 +45,6 @@ export const useFetchRt = () => {
             }
         }
     }
+    }
+    return { handleMutation }
 }

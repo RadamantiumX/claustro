@@ -1,11 +1,9 @@
 import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
-import { useStateContext } from "../hooks/useCtxStates";
-import { isExpiredToken } from "../helper/tokenExpiration";
 import { observable } from "@trpc/server/observable";
-import { useTRPC } from "./trpc"; // <--- Use this for client fetching to server REFRESH-TOKEN
-import { useMutation } from "@tanstack/react-query";
-import { jwtDecode } from "jwt-decode";
+import { useStateContext, useFetchRt } from "../hooks/hooks";
+
+
 // TODO: adding expiration token conditional
 // TODO: trpc custom link sending request to server trpc --> search on google
 
@@ -66,26 +64,13 @@ const customFetchLink: TRPCLink<any> = () => {
 // });
  */
 export const refreshTokenLink:TRPCLink<AppRouter>=()=>{
+  const { token }:any = useStateContext()
+  const { handleMutation } = useFetchRt()
   return (runtime) => {
     return ({ op }) => {
       return observable((observer)=>{
         const exec =  () => {
-          const trpc = useTRPC()
-           const { token, setToken } = useStateContext()
-           if(token){
-            if(isExpiredToken(token)){
-              try{
-               const decoded:any = jwtDecode(token)
-               const userColabId = decoded.id
-               const rt = useMutation(trpc.refreshToken.refresh.mutationOptions())
-               rt.mutate()
-              
-               
-              }catch(error){
-                console.log(error)
-              }
-            }
-           }
+          handleMutation(token)
         }
       })
     }
@@ -94,6 +79,7 @@ export const refreshTokenLink:TRPCLink<AppRouter>=()=>{
 
 
 export const customLink:TRPCLink<AppRouter>= () =>{
+  const {token} = useStateContext()
   return ({next, op}) =>{
     return observable((observer)=>{
       console.log('Perf. operation: ', op)
