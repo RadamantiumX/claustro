@@ -41,6 +41,7 @@ export const useFetchRt = () => {
                 })
 
             }catch(error){
+                // setToken(null) // Add the the "setToken" param
                 console.log(error)
             }
         }

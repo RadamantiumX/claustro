@@ -27,9 +27,6 @@ export const useTrpc = () => {
                 headers:{
                     Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
                 },
-                
-       
-
     })] }))
 
     return {
