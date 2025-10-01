@@ -11,6 +11,7 @@ import { customLink } from "../utils/customLinks";
  */
 
 export const useTrpc = () => {
+    
     const [trpcQueryClient] = useState(
         () => 
             new QueryClient({
@@ -23,7 +24,7 @@ export const useTrpc = () => {
             })
     )
    
-    const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [customLink,httpBatchLink({ url: 'http://localhost:3000/trpc' ,
+    const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [customLink, httpBatchLink({ url: 'http://localhost:3000/trpc' ,
                 headers:{
                     Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
                 },

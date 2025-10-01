@@ -1,7 +1,7 @@
 import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
 import { observable } from "@trpc/server/observable";
-import { useStateContext, useFetchRt } from "../hooks/hooks";
+import Cookies from "js-cookie";
 
 
 // TODO: adding expiration token conditional
@@ -80,21 +80,27 @@ const customFetchLink: TRPCLink<any> = () => {
 }*/
 
 
-export const customLink:TRPCLink<AppRouter>= (runtime) =>{
-  
+export const customLink:TRPCLink<AppRouter>= () =>{
+ 
+
+ 
   return ({next, op}) =>{
     
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // const {token}:any = useStateContext()
-    // const { handleMutation } = useFetchRt()
-    // handleMutation(token)
+    
     
     return observable((observer)=>{
+      
+      
       console.log('Perf. operation: ', op)
       const unsubscribe = next(op).subscribe({
         next(value){
+          const token = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+          if(!token){
+            console.log('Here is no token')
+          }
           console.log('we recibed value', value);
           observer.next(value)
+          
         },
         error(err) {
           console.log('we received error', err);
@@ -102,8 +108,10 @@ export const customLink:TRPCLink<AppRouter>= (runtime) =>{
         },
         complete() {
           observer.complete();
+          
         },
       })
+      
       return unsubscribe
     })
   }

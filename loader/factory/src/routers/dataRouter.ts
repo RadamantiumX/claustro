@@ -10,8 +10,9 @@ const dataServiceInstance = DataService.getInstance()
 export const dataRouter = trpc.router({
     list: protectedProcedure.query(
         (/*{ctx}*/)=>{
-    
-        return dataServiceInstance.data.list()
+        const allDataList = dataServiceInstance.data.list()
+            return allDataList
+        
     }) ,
     create: protectedProcedure.input(dataSchema.omit({id:true})).mutation(
         ({input})=>{
