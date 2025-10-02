@@ -2,7 +2,7 @@ import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
 import { observable } from "@trpc/server/observable";
 import Cookies from "js-cookie";
-
+import { isExpiredToken } from "../helper/tokenExpiration";
 
 // TODO: adding expiration token conditional
 // TODO: trpc custom link sending request to server trpc --> search on google
@@ -94,9 +94,10 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       console.log('Perf. operation: ', op)
       const unsubscribe = next(op).subscribe({
         next(value){
-          const token = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
-          if(!token){
-            console.log('Here is no token')
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const token:any = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+          if(isExpiredToken(token)){
+            console.log(`The token is expired`)
           }
           console.log('we recibed value', value);
           observer.next(value)
