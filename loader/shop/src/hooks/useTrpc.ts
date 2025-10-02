@@ -10,8 +10,20 @@ import { customLink } from "../utils/customLinks";
  * @returns {SignInHandler}
  */
 
+// Provisory solution ⬇️
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let token:any;
+export const setToken = () => {
+    if(token !== undefined){
+        token = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+        console.log(token)
+        return token
+    }
+    return ''
+}
+
 export const useTrpc = () => {
-    
+
     const [trpcQueryClient] = useState(
         () => 
             new QueryClient({
@@ -26,7 +38,8 @@ export const useTrpc = () => {
    
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [customLink, httpBatchLink({ url: 'http://localhost:3000/trpc' ,
                 headers:{
-                    Authorization: Cookies.get(import.meta.env.VITE_ACCESS_TOKEN) !== undefined ? `Bearer ${Cookies.get(import.meta.env.VITE_ACCESS_TOKEN)}` : ''
+                    
+                    Authorization: setToken()
                 },
     })] }))
 
