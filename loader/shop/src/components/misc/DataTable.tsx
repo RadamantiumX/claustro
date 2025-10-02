@@ -1,10 +1,10 @@
-import Data from '../../assets/mock.json'
 import { TableLink } from '../buttons/TableLink'
 import { Trash, Eye, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
-
+import { useFetchData } from '../../hooks/useFetchData';
 
 export const DataTable = () => {
+   const { data } = useFetchData()
     return(
         <>
         <div className="sm:w-[70%] w-[90%] overflow-hidden rounded-lg border border-slate-200">
@@ -22,16 +22,16 @@ export const DataTable = () => {
       </tr>
     </thead>
     <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
-     {Data?.accounts.length > 0 ? Data?.accounts.map((item, key)=>(
+     {data  !== undefined && data !== null ? data.map((item, key)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
           {item?.id}
         </td>
         <td className="p-3">
-          {item?.email}
+          {item?.emailSource}
         </td>
         <td className="p-3">
-          {item?.xAccount}
+          {item?.xUser}
         </td>
         <td className="flex p-3 gap-2">
           <TableLink><Trash/></TableLink>
