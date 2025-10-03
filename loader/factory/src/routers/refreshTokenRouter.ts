@@ -23,6 +23,10 @@ export const refreshTokenRouter = trpc.router({
         if(!owner){
             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is invalid' })
         }
+        const blackListToken = await refreshTokenInstance.refreshToken.blackList(refreshToken)
+        if(blackListToken){
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is expired' })
+        }
         const verify = await userColabInstance.userData.unique({id:owner.userColabId})
         if(!verify){
             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted' })
