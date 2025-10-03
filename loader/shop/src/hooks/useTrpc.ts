@@ -12,6 +12,7 @@ import { customLink } from "../utils/customLinks";
 
 // Provisory solution ⬇️
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// TODO: Use this for all requests.....
 let token:any;
 export const setToken = () => {
     if(token !== undefined){

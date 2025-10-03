@@ -3,7 +3,9 @@ import type { AppRouter } from "../../../factory/src/routers";
 import { observable } from "@trpc/server/observable";
 import Cookies from "js-cookie";
 import { isExpiredToken } from "../helper/tokenExpiration";
-
+import { refreshClient } from "./trpc";
+import { jwtDecode } from "jwt-decode";
+import type { JwtPayload } from "jwt-decode"
 // TODO: adding expiration token conditional
 // TODO: trpc custom link sending request to server trpc --> search on google
 
@@ -95,12 +97,19 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       const unsubscribe = next(op).subscribe({
         next(value){
           const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
-          if(token !== undefined){
+          const exec = async ()=>{
+            if(token !== undefined){
             if(isExpiredToken(token)){
-            console.log(`The token is expired`)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const decodedToken:JwtPayload | any = jwtDecode(token)
+             const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ userColabId:decodedToken.id })
+             console.log(refreshedAccessToken)
+
           }
           }
-          
+          }
+         
+          exec()
           console.log('we recibed value', value);
           observer.next(value)
           
