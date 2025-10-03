@@ -16,6 +16,7 @@ const userColabInstance = UserColabService.getInstance()
 // Refresh TOKEN route
 export const refreshTokenRouter = trpc.router({
     refresh: protectedProcedure.input(refreshTokenSchema.pick({userColabId: true})).mutation(async({ctx, input})=>{
+        try{
         const cookies =  ctx.req.cookies
         const refreshToken:string = cookies.jwt
         ctx.res.clearCookie('jwt', { httpOnly: true, secure: true })
@@ -38,5 +39,9 @@ export const refreshTokenRouter = trpc.router({
 
         ctx.res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
         return newAccessToken
+        }catch(error){
+            throw new TRPCError({ code: 'BAD_REQUEST', message: `Somenthing went wrong on refreshToken router: ${error}` })
+        }
+       
     })
 })

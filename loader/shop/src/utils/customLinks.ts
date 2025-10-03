@@ -104,7 +104,6 @@ export const customLink:TRPCLink<AppRouter>= () =>{
               const decodedToken:JwtPayload | any = jwtDecode(token)
              const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ userColabId:decodedToken.id })
              console.log(refreshedAccessToken)
-
           }
           }
           }
