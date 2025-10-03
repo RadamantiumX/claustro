@@ -94,11 +94,13 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       console.log('Perf. operation: ', op)
       const unsubscribe = next(op).subscribe({
         next(value){
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const token:any = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
-          if(isExpiredToken(token)){
+          const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+          if(token !== undefined){
+            if(isExpiredToken(token)){
             console.log(`The token is expired`)
           }
+          }
+          
           console.log('we recibed value', value);
           observer.next(value)
           
