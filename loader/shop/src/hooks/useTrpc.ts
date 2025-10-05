@@ -4,6 +4,10 @@ import { QueryClient } from "@tanstack/react-query";
 import type { AppRouter } from "../../../factory/src/routers";
 import { customLink } from "../utils/customLinks";
 import { getToken } from "../helper/cookieHandler";
+import { isExpiredToken } from "../helper/tokenExpiration";
+import Cookies from "js-cookie";
+import { jwtDecode, type JwtPayload } from "jwt-decode";
+import { refreshClient } from "../utils/trpc";
 // TODO: fixing the context, see the docs
 /**
  * - Custom Hook -
@@ -16,6 +20,7 @@ import { getToken } from "../helper/cookieHandler";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 export const useTrpc = () => {
+   //const { setToken } = useStateContext()
 
     const [trpcQueryClient] = useState(
         () => 
@@ -30,10 +35,31 @@ export const useTrpc = () => {
     )
    
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [customLink, httpBatchLink({ url: 'http://localhost:3000/trpc' ,
-                headers:{
+               /* headers:{
                     
                     Authorization: getToken()
-                },
+                },*/
+                async headers (){
+                    const jwtAuthToken = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+    
+                    if(jwtAuthToken !== undefined){
+                       if(isExpiredToken(jwtAuthToken)){
+                        console.log('Starting decode')
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        const decoded:JwtPayload | any = jwtDecode(jwtAuthToken)
+                        console.log(decoded.id)
+                        const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ userColabId:decoded.id })
+                        if(refreshedAccessToken){
+                             console.log('Success on request!!!')
+                       }
+                        console.log(refreshedAccessToken)
+                       }
+                    
+                   }
+                  return {
+                    Authorization: jwtAuthToken || getToken()
+                  }
+                }
     })] }))
 
     return {
