@@ -13,9 +13,18 @@ const authServiceInstance = AuthService.getInstance()
 
 
 export const authRouter = trpc.router({
-    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{
-    
-            return authServiceInstance.auth.login(input)
+    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(async({ input, ctx })=>{
+       
+            const authLogin = await authServiceInstance.auth.login(input)
+               .then((data)=>{
+                 ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
+              }).catch((error)=>{
+                console.log(error)
+              })
+            
+            return authLogin
+        
+            
             // TODO: fix this route!!!
        /* .then((data)=>{
             ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
