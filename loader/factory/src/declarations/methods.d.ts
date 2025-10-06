@@ -2,7 +2,8 @@ import { ApiData, UserColab, ApiKey, UserColabClientResponse, AuthRefreshToken }
 
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
-  unique: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>
+  uniqueForId: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>;
+  uniqueForUsername: (bodyReq:Pick<UserColab, 'username'>) => Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
   select: (id:Pick<UserColab, "id">) => Promise<> ;
   update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
