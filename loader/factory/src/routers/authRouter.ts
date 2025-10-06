@@ -1,5 +1,6 @@
 import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
+import { UserColabService } from "../services/userColabService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
@@ -9,18 +10,14 @@ import { TRPCError } from "@trpc/server/dist";
 // See this issue: https://discord-questions.trpc.io/m/1173620897517666384
 
 const authServiceInstance = AuthService.getInstance()
-
+const userColabInstance = UserColabService.getInstance()
 
 
 export const authRouter = trpc.router({
     login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(async({ input, ctx })=>{
-       
+            
             const authLogin = await authServiceInstance.auth.login(input)
-               .then((data)=>{
-                 ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
-              }).catch((error)=>{
-                console.log(error)
-              })
+            const tokenSign = await userColabInstance.userData.uniqueForUsername({username: input.username})
             
             return authLogin
         

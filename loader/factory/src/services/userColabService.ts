@@ -20,13 +20,21 @@ export class UserColabService {
                }
                 
             },
-            unique: async(bodyReq:Pick<UserColab, 'id'>)=>{
+            uniqueForId: async(bodyReq:Pick<UserColab, 'id'>)=>{
                try{
-                  const unique = await this.userColabRepository.getUniqueId({id:bodyReq.id})
-                  return unique
+                  const foundForId = await this.userColabRepository.getUniqueId({id:bodyReq.id})
+                  return foundForId
 
                }catch(error){
                   throw new EnvFactoryErrors()
+               }
+            },
+            uniqueForUsername:async(bodyReq:Pick<UserColab, 'username'>)=>{
+               try{
+                  const foundForUsername = await this.userColabRepository.getUniqueUsername({username: bodyReq.username})
+                  return foundForUsername
+               }catch(error){
+                  throw new Error()
                }
             },
             create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >):Promise<void> => {
