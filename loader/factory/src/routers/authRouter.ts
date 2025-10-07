@@ -5,7 +5,9 @@ import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
 import { COOKIE_AGE } from "../const/cookieAge";
-import { TRPCError } from "@trpc/server/dist";
+// import { TRPCError } from "@trpc/server/dist";
+import { JWTtokenSign } from "../helper/jwtFunctions";
+import AppError from "../errors/appErrors";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/
 // See this issue: https://discord-questions.trpc.io/m/1173620897517666384
 
@@ -18,10 +20,12 @@ export const authRouter = trpc.router({
             
             const authLogin = await authServiceInstance.auth.login(input)
             const tokenSign = await userColabInstance.userData.uniqueForUsername({username: input.username})
-            
+            if(!tokenSign){
+                throw new AppError('Unautorized',401,'Corrupted credentials', false)
+            }
+            const rtSign = JWTtokenSign({id:tokenSign.id, username: tokenSign.username, isSuperAdmin: tokenSign.isSuperAdmin, expiresIn:'1h'})
+            ctx.res.cookie('jwt', rtSign, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
             return authLogin
-        
-            
             // TODO: fix this route!!!
        /* .then((data)=>{
             ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })

@@ -1,15 +1,13 @@
 import { initTRPC } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
-import { AuthService } from '../services/authService'
-import type {  UserColab, CreateContextOptions } from '../declarations/index'
 import { TRPCError } from '@trpc/server'
 import { JWTverifyAndDecode } from '../helper/jwtFunctions'
-import AppError from '../errors/appErrors'
+import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
-
+// TODO: See this https://github.com/trpc/trpc/discussions/4226 ⚠️
 // see the documentation
-export const createContext = async ({ req, res, }:trpcExpress.CreateExpressContextOptions) =>{
+export const createContext = async ({ req, resHeaders, }:FetchCreateContextFnOptions/*trpcExpress.CreateExpressContextOptions*/) =>{
    const token:string | undefined = req.headers.authorization 
    let user:string | null = null
  if(token){

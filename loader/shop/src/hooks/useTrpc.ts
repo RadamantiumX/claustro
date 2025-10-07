@@ -47,7 +47,7 @@ export const useTrpc = () => {
                         console.log('Starting decode')
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         const decoded:JwtPayload | any = jwtDecode(jwtAuthToken)
-                        console.log(decoded.id)
+                
                         const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ userColabId:decoded.id })
                         if(refreshedAccessToken){
                              console.log('Success on request!!!')
