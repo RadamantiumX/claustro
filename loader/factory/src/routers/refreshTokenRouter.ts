@@ -42,8 +42,8 @@ export const refreshTokenRouter = trpc.router({
         const newRefreshToken = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
 
         await refreshTokenInstance.refreshTokenRepository.updateRefreshToken({userColabId: input.userColabId, refreshToken: newRefreshToken}) // Update the new REFRESH TOKEN
-        ctx.res.clearCookie('jwt', { httpOnly: true, secure: true })
-        ctx.res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
+        ctx.res.clearCookie('jwt', { httpOnly: true, secure: false })
+        ctx.res.cookie('jwt', newRefreshToken, { httpOnly: true, secure: false, maxAge: COOKIE_AGE })
         return newAccessToken
         }catch(error){
             throw new TRPCError({ code: 'BAD_REQUEST', message: `Somenthing went wrong on refreshToken router: ${error}`, cause:error })

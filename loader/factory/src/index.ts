@@ -22,7 +22,8 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.get('/', (req: Request, res: Response, next: NextFunction)=>{
-    res.status(200).json({message: 'Server is online on TURBOREPO'})
+    res.status(200).json({message: 'Server is online on TURBOREPO', Cookies: req.cookies !== null ? req.cookies : 'Not set cookies'})
+    
 })
 
 

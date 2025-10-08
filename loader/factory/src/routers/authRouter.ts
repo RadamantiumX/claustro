@@ -24,7 +24,8 @@ export const authRouter = trpc.router({
                 throw new AppError('Unautorized',401,'Corrupted credentials', false)
             }
             const rtSign = JWTtokenSign({id:tokenSign.id, username: tokenSign.username, isSuperAdmin: tokenSign.isSuperAdmin, expiresIn:'1h'})
-            ctx.res.cookie('jwt', rtSign, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
+            ctx.res.cookie('jwt', rtSign, { httpOnly: true, secure: false, maxAge: COOKIE_AGE })
+          
             return authLogin
             // TODO: fix this route!!!
        /* .then((data)=>{

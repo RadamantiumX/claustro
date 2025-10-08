@@ -4,11 +4,12 @@ import { TRPCError } from '@trpc/server'
 import { JWTverifyAndDecode } from '../helper/jwtFunctions'
 import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 
+
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
 // TODO: See this https://github.com/trpc/trpc/discussions/4226 ⚠️
 // see the documentation
-export const createContext = async ({ req, resHeaders, }:FetchCreateContextFnOptions/*trpcExpress.CreateExpressContextOptions*/) =>{
-   const token:string | undefined = req.headers.authorization 
+export const createContext = async ({  res, req }:trpcExpress.CreateExpressContextOptions) =>{
+   const token:string | undefined = req.headers.authorization
    let user:string | null = null
  if(token){
     try{
