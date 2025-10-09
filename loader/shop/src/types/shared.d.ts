@@ -2,6 +2,7 @@ import { Dispatch, type SetStateAction } from "react";
 export interface StateProps {
     user: null | string | undefined;
     token: null | string | undefined;
+    refreshToken: null | string | undefined;
     over: boolean;
     show: boolean;
     bounce: boolean;
@@ -9,6 +10,7 @@ export interface StateProps {
     responseTime: number;
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
+    setRefreshToken: (token:string | null )=>void; 
     setOver: Dispatch<SetStateAction<boolean>>;
     setShow: Dispatch<SetStateAction<boolean>>;
     setBounce: Dispatch<SetStateAction<boolean>>;

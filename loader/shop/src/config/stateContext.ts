@@ -7,6 +7,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
     {
         user: null,
         token: null,
+        refreshToken: null,
         over: false,
         show: false,
         bounce: false,
@@ -15,6 +16,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
 
         setUser: () => {},
         setToken: () => {},
+        setRefreshToken: ()=>{},
         setOver: ()=>false,
         setShow: ()=>false,
         setBounce: ()=>false,

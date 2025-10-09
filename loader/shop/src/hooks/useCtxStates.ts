@@ -4,8 +4,9 @@ import type { StateProps } from "../types/shared";
 import { StateContext } from "../config/stateContext";
 
 export const useCtxState = () =>{
-     const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
+    const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
+    const [refreshToken, _setRefreshToken] = useState(Cookies.get(`${import.meta.env.VITE_REFRESH_TOKEN}`))
     const [over, setOver] = useState(false)
     const [show, setShow] = useState(false)
     const [bounce, setBounce] = useState(false)
@@ -18,6 +19,15 @@ export const useCtxState = () =>{
             Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 1})
         }else{
             Cookies.remove(`${import.meta.env.VITE_ACCESS_TOKEN}`)
+        }
+    }
+
+    const setRefreshToken = (refreshToken:string) =>{
+        _setRefreshToken(refreshToken)
+        if(refreshToken){
+            Cookies.set(`${import.meta.env.VITE_REFRESH_TOKEN}`,refreshToken, {expires: 1})
+        }else{
+            Cookies.remove(`${import.meta.env.VITE_REFRESH_TOKEN}`)
         }
     }
 
@@ -35,7 +45,7 @@ export const useCtxState = () =>{
     
     }
 
- return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime}
+ return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime, refreshToken, setRefreshToken}
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)
