@@ -24,14 +24,17 @@ export const JWTtokenSign = ({
   username,
   isSuperAdmin,
   expiresIn
-}: JWTSign): string => {
-  const currentDate = timeStampParsed().toString()
+}: JWTSign): string  => {
+ 
+    const currentDate = timeStampParsed().toString()
   const JWTOptions: JWTOptions = { expiresIn: expiresIn, algorithm: 'HS256' }
   const token = jwt.sign(
     { id, username, currentDate, isSuperAdmin },
     JWTOptions
   )
   return token
+  
+  
 }
 
 export const JWTBlacklist = (
