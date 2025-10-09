@@ -19,7 +19,7 @@ export const useLogin = ():SignInHandler =>{
     // const { trpcClient } = useTrpc()
     const trpc = useTRPC()
  
-  const { setToken, setUser, setLoading, setResponseTime, setBounce } = useStateContext()
+  const { setToken, setUser, setLoading, setResponseTime, setBounce, setRefreshToken } = useStateContext()
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -46,6 +46,7 @@ export const useLogin = ():SignInHandler =>{
               // console.log(`${resposeTime} miliseconds`)
             
               setToken(data.accessToken)
+              setRefreshToken(data.refreshToken)
               setUser(variables.username)
               setLoading(false)
               setResponseTime(0)
