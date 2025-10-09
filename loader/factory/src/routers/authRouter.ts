@@ -16,33 +16,8 @@ const userColabInstance = UserColabService.getInstance()
 
 
 export const authRouter = trpc.router({
-    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(async({ input, ctx })=>{
-            
-            const authLogin = await authServiceInstance.auth.login(input)
-            const tokenSign = await userColabInstance.userData.uniqueForUsername({username: input.username})
-            if(!tokenSign){
-                throw new AppError('Unautorized',401,'Corrupted credentials', false)
-            }
-            const rtSign = JWTtokenSign({id:tokenSign.id, username: tokenSign.username, isSuperAdmin: tokenSign.isSuperAdmin, expiresIn:'1h'})
-            ctx.res.cookie('jwt', rtSign, { httpOnly: true, secure: false, maxAge: COOKIE_AGE })
-          
-            return authLogin
-            // TODO: fix this route!!!
-       /* .then((data)=>{
-            ctx.res.cookie('jwt',data.refreshToken, { httpOnly: true, secure: true, maxAge: COOKIE_AGE })
-        }).catch((error)=>{
-            console.log(`Missmatch error on Login router: ${error}`)
-        })*/
-      
-       
-        
-        /*authServiceInstance.auth.login(input).then((data)=>{
-           // TODO: complete the data to set TOKEN
-          return data // Here is the problem
-        }).catch((error)=>{
-            throw new Error(`Something went wrong: ${error}`) //TODO: Handle the errors
-        })*/
-       
+    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input, ctx })=>{
+            return authServiceInstance.auth.login(input)
     }),
     register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({input})=>{
         return authServiceInstance.auth.register(input)
