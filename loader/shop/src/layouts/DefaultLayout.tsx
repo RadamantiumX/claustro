@@ -6,7 +6,7 @@ import { UserMenuBar } from "../components/layoutItems/UserMenuBar"
 import { Footer } from "../components/layoutItems/Footer"
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
-
+import { isExpiredToken } from "../helper/tokenExpiration"
 /**
  * Layout for Default page or Authenticated user
  * @returns {React.ReactNode}
@@ -15,6 +15,12 @@ export default function DefaultLayout():React.ReactNode {
   useCloseBar()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { token }:any = useStateContext()
+  
+  if(token){
+    if(isExpiredToken(token)){
+    console.log('Token is expired')
+  }
+  }
   
   
  
