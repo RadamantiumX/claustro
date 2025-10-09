@@ -10,7 +10,8 @@ export const refreshClient = createTRPCClient<AppRouter>({
       httpBatchLink({
         url: 'http://localhost:3000/trpc',
          headers:{
-                Authorization: getToken()
+                Authorization: getToken(),
+                credentials: 'include'
          },
       }),
       
