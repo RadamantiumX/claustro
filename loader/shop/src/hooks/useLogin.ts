@@ -35,10 +35,9 @@ export const useLogin = ():SignInHandler =>{
   
      try{
         e.preventDefault()
-        // const start = performance.now()
         setLoading(true)
       
-    // create.mutate(formData)
+  
       login.mutate(formData,{
         onSuccess: (data, variables)=>{
               // const end = performance.now()
