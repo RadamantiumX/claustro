@@ -1,9 +1,9 @@
 import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../factory/src/routers";
 import { observable } from "@trpc/server/observable";
-// import Cookies from "js-cookie";
-// import { isExpiredToken } from "../helper/tokenExpiration";
-// import { refreshClient } from "./trpc";
+import Cookies from "js-cookie";
+import { isExpiredToken } from "../helper/tokenExpiration";
+import { refreshClient } from "./trpc";
 // import { jwtDecode } from "jwt-decode";
 // import type { JwtPayload } from "jwt-decode"
 // TODO: adding expiration token conditional
@@ -96,27 +96,52 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       console.log('Perf. operation: ', op)
       const unsubscribe = next(op).subscribe({
         next(value){
-         /* const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+         const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
+      
           const exec = async ()=>{
             if(token !== undefined){
             if(isExpiredToken(token)){
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const decodedToken:JwtPayload | any = jwtDecode(token)
-             const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ userColabId:decodedToken.id })
+              // const decodedToken:JwtPayload | any = jwtDecode(token)
+             const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ refreshToken: refreshToken })
              console.log(refreshedAccessToken)
              
           }
           }
           }
-         */
-          //exec()
+         
+          exec().then((data)=>{
+            console.log(data)
+          }).catch((error)=>{
+            
+            if(error.data?.httpStatus){
+            if(error.data?.httpStatus >= 400 && error.data?.httpStatus < 500){
+              console.log('Tokens must be destroyed!')
+               Cookies.remove('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+               Cookies.remove('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
+          }
+          }
+          })
           console.log('we recibed value', value);
           observer.next(value)
+        
+          
           
         },
         error(err) {
           console.log('we received error', err);
           observer.error(err);
+          console.log(err.data?.httpStatus)
+          if(err.data?.httpStatus){
+            if(err.data?.httpStatus === 400){
+              console.log('Tokens must be destroyed!')
+               Cookies.remove('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+               Cookies.remove('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
+          }
+          }
+          
         },
         complete() {
           observer.complete();

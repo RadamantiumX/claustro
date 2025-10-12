@@ -41,9 +41,9 @@ export const JWTBlacklist = (
   refreshTokenCookie: string
 ): { expired: boolean; userColabId: string } => {
   const decodedRefreshToken: DecodedTokenKeys | DecodedStringToken | any = jwt.verify(refreshTokenCookie)
-
+  const currentTime =  Date.now() /1000
   return {
-    expired: !(decodedRefreshToken.iat + TOKEN_LIFETIME < UNIX_CURRENT_TIME),
+    expired: decodedRefreshToken.exp < currentTime,
     userColabId: decodedRefreshToken.id
   }
 }

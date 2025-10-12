@@ -21,7 +21,12 @@ export const refreshTokenRouter = trpc.router({
 
           if(input.refreshToken === undefined){
             throw new TRPCError({ code:'BAD_REQUEST', message:'The refresh token is missing! first stage' })
-        }
+          }
+
+        const blackListToken = await refreshTokenInstance.refreshToken.blackList(input.refreshToken)
+         if(blackListToken){
+             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is expired' })
+         }
 
         // Decoding ⬇️
         const { id } = JWTverifyAndDecode(input.refreshToken)
@@ -30,21 +35,18 @@ export const refreshTokenRouter = trpc.router({
         if(!owner){
             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Corrupted credentials!' })
         }
-        const blackListToken = await refreshTokenInstance.refreshToken.blackList(input.refreshToken)
-        if(blackListToken){
-            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is expired' })
-        }
+       
         const verify = await userColabInstance.userData.uniqueForId({id:id})
         if(!verify){
             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted' })
         }
-        const newAccessToken:string | null = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
-        const newRefreshToken:string | null = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
-
+        const newAccessToken:string = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
+        const newRefreshToken:string = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
+        
+        // Here the refesh token must be replaced
         await refreshTokenInstance.refreshTokenRepository.updateRefreshToken({userColabId: id, refreshToken: newRefreshToken}) // Update the new REFRESH TOKEN
-        ctx.res.clearCookie('jwtServer', { httpOnly: true, secure: false })
-        ctx.res.cookie('jwtServer', newRefreshToken, { httpOnly: true, secure: false, maxAge: COOKIE_AGE })
-        return {newAccessToken, newRefreshToken}
+       
+        return {newAccessToken:newAccessToken, newRefreshToken:newRefreshToken}
         }catch(error){
             throw new TRPCError({ code: 'BAD_REQUEST', message: `Somenthing went wrong on refreshToken router: ${error}`, cause:error })
         }

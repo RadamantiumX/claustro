@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useTRPC } from "../utils/trpc";
-import { isExpiredToken } from "../helper/tokenExpiration";
-import { jwtDecode } from "jwt-decode";
-
+// import { isExpiredToken } from "../helper/tokenExpiration";
+// import { jwtDecode } from "jwt-decode";
+import { useStateContext } from "./hooks";
 
 export interface JWTPayload {
   id:string
@@ -17,18 +17,20 @@ export interface DecodedTokenKeys extends JWTPayload {
 }
 export const useFetchRt = () => {
     const trpc = useTRPC()
-   
-    const [ payload, setPayload ] = useState({
-        userColabId:''
+    const { refreshToken } = useStateContext()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [ payload, setPayload ]:any = useState({
+        refreshToken:''
     })
+    
     const rt = useMutation(trpc.refreshToken.refresh.mutationOptions())
-    const handleMutation = (token:string) => {
-        if(token){
-        if(isExpiredToken(token)){
+    const handleMutation = () => {
+        
+        
             try{
-                const decoded:JWTPayload = jwtDecode(token)
+                // const decoded:JWTPayload = jwtDecode(token)
                 setPayload({
-                    userColabId: decoded.id
+                    refreshToken: refreshToken
                 })
                 rt.mutate(payload,{
                     onSuccess: (data, variables) =>{
@@ -44,8 +46,8 @@ export const useFetchRt = () => {
                 // setToken(null) // Add the the "setToken" param
                 console.log(error)
             }
-        }
-    }
+        
+    
     }
     return { handleMutation }
 }
