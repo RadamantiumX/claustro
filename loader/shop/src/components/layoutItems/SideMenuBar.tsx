@@ -7,6 +7,7 @@ export const SideMenuBar = ():React.ReactNode => {
     return(
         <aside onMouseOver={()=>setOver(true)}  className={over?`side-menu-display`:'side-menu-hide'}>
           <div title="Close Menu" onClick={()=>setOver(false)} className="hover-close">
+              <button className="text-amber-50 z-50 block">Some Item</button>
                <Close/>
           </div>
         </aside>

@@ -52,11 +52,11 @@ html, body, #root {
     }
     
      .side-menu-display{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out fixed z-20;
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out fixed;
     }
     
     .side-menu-hide{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed z-20;
+      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed;
     }
     .user-menu-display{
       @apply h-auto w-40 transition bg-amber-700 duration-500 delay-300 top-10 right-0 ease-in-out fixed z-20;
