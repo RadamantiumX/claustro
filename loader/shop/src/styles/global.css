@@ -52,11 +52,11 @@ html, body, #root {
     }
     
      .side-menu-display{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 delay-300 ease-in-out fixed z-20;
+      @apply bg-amber-700 h-1/2 mt-12 w-40 transition duration-500 delay-300 ease-in-out fixed z-20;
     }
     
     .side-menu-hide{
-      @apply bg-amber-700 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed z-20;
+      @apply bg-amber-700 mt-12 h-1/2 w-40 transition duration-500 -translate-x-full delay-300 ease-in-out fixed z-20;
     }
     .user-menu-display{
       @apply h-auto w-40 transition bg-amber-700 duration-500 delay-300 top-10 right-0 ease-in-out fixed z-20;
@@ -65,7 +65,7 @@ html, body, #root {
       @apply h-auto w-40 transition -translate-y-full duration-500 delay-300 bg-amber-700 top-10 right-0 ease-in-out fixed z-20;
     }
    .hover-close{
-     @apply flex justify-end m-2 cursor-pointer hover:text-yellow-400;
+     @apply flex justify-end cursor-pointer hover:text-yellow-400 z-60;
    }
    .rotate-chevron{
      @apply rotate-180 ease-in-out duration-500;
