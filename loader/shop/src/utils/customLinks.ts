@@ -107,13 +107,15 @@ export const customLink:TRPCLink<AppRouter>= () =>{
               // const decodedToken:JwtPayload | any = jwtDecode(token)
              const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ refreshToken: refreshToken })
              console.log(refreshedAccessToken)
-             
+              Cookies.set('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7',refreshedAccessToken.newAccessToken,{expires: 1})
+              Cookies.set('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo',refreshedAccessToken.newRefreshToken,{expires: 1})
           }
           }
           }
          
           exec().then((data)=>{
             console.log(data)
+             
           }).catch((error)=>{
             
             if(error.data?.httpStatus){
