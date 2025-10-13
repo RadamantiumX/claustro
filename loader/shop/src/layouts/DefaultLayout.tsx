@@ -6,7 +6,6 @@ import { UserMenuBar } from "../components/layoutItems/UserMenuBar"
 import { Footer } from "../components/layoutItems/Footer"
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
-import { isExpiredToken } from "../helper/tokenExpiration"
 // import { useFetchRt } from "../hooks/useFetchRt"
 /**
  * Layout for Default page or Authenticated user
@@ -16,18 +15,10 @@ export default function DefaultLayout():React.ReactNode {
   useCloseBar()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { token }:any = useStateContext()
- // const { handleMutation } = useFetchRt()
 
- // TODO: check the token here!!!! UPDATE DE VALUES FROM THE TRPC CONTEXT
  
   if(!token){
    return <Navigate to="/signin"/>
-  }else{
-    if(isExpiredToken(token)){
-
-    console.log('Token is expired')
-
-  }
   }
   
   return (

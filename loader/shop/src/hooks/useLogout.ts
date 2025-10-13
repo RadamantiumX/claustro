@@ -10,7 +10,7 @@ import type { LogoutOutput } from "../types/hooks"
  * @returns {SignInHandler}
  */
 export const useLogout = ():LogoutOutput =>{
-const { setToken, setUser, setResponseTime } = useStateContext()
+const { setToken, setUser, setResponseTime, setShow } = useStateContext()
   
     
      const onLogout = () =>{
@@ -18,6 +18,7 @@ const { setToken, setUser, setResponseTime } = useStateContext()
         setTimeout(()=>{
         setToken(null)
         setUser(null)
+        setShow(false)
         Cookies.remove(import.meta.env.VITE_ACCESS_TOKEN)
         Cookies.remove(import.meta.env.VITE_USERNAME)
         
