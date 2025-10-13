@@ -4,7 +4,7 @@ import { tableColumns } from './const';
 import { useFetchData } from '../../hooks/useFetchData';
 
 export const DataTable = () => {
-   const { data } = useFetchData()
+   const { data, loading } = useFetchData()
     return(
         <>
         <div className="sm:w-[70%] w-[90%] overflow-hidden rounded-lg border border-slate-200">
@@ -22,7 +22,7 @@ export const DataTable = () => {
       </tr>
     </thead>
     <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
-     {data  !== undefined && data !== null ? data.map((item, key)=>(
+     {!loading ? {data  !== undefined && data !== null ? data.map((item, key)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
           {item?.id}
@@ -39,7 +39,7 @@ export const DataTable = () => {
           <TableLink><Eye/></TableLink>
         </td>
       </tr>
-     )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}
+     )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}:''}
       
       
     </tbody>
