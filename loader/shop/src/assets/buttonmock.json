@@ -1,0 +1,16 @@
+{
+    "buttons":[
+        {
+            "name": "First Item",
+            "path": "#"
+        },
+         {
+            "name": "Second Item",
+            "path": "#"
+        },
+         {
+            "name": "Third Item",
+            "path": "#"
+        }
+    ]
+}
