@@ -1,7 +1,8 @@
 import React from "react"
 import { useStateContext } from "../../hooks/hooks"
 import { Close } from "../../icons/icons"
-import { CustomLink } from "../buttons/CustomLink"
+import { SideMenuLinks } from "../buttons/SideMenuLinks"
+import buttons from '../../assets/buttonmock.json'
 
 export const SideMenuBar = ():React.ReactNode => {
     const {over, setOver} = useStateContext()
@@ -13,7 +14,10 @@ export const SideMenuBar = ():React.ReactNode => {
              
                <Close/>
           </div>
-          <CustomLink route="#" fontSize="20" inner="Somewere"></CustomLink>
+          {buttons.buttons.map((item, keys)=>(
+            <SideMenuLinks key={keys}>{item.name}</SideMenuLinks>
+          ))}
+            
           </div>
         </aside>
     )
