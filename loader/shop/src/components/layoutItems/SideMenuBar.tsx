@@ -15,7 +15,7 @@ export const SideMenuBar = ():React.ReactNode => {
                <Close/>
           </div>
           {buttons.buttons.map((item, keys)=>(
-            <SideMenuLinks key={keys}>{item.name}</SideMenuLinks>
+            <SideMenuLinks path={item.path} key={keys}>{item.name}</SideMenuLinks>
           ))}
             
           </div>
