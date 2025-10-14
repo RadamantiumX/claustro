@@ -1,5 +1,5 @@
 import { useStateContext } from "../../hooks/useCtxStates"
-import { MenuLinks } from "../buttons/MenuLinks"
+import { UserMenuLinks } from "../buttons/UserMenuLinks"
 import { LogoutButton } from "../buttons/LogoutButton"
 
 
@@ -9,7 +9,7 @@ export const UserMenuBar = () => {
     <div>
         <nav className={!show ? 'user-menu-hide':'user-menu-display'}>
           <div className="p-5 flex flex-col gap-y-5">
-              <MenuLinks>Settings</MenuLinks>
+              <UserMenuLinks>Settings</UserMenuLinks>
               <LogoutButton/>
           </div>
        </nav>

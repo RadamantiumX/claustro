@@ -76,6 +76,9 @@ html, body, #root {
    .link-hover{
     @apply hover:rounded-sm hover:bg-amber-600 focus:outline-2 p-2;
    }
+    .link-underline{
+    @apply hover:underline focus:outline-2 p-2;
+   }
    .input-search-block{
     @apply block w-full h-10 p-4 ps-15 rounded mb-8 italic text-gray-600 bg-amber-100 focus:outline-none text-xl shadow-lg;
    }
