@@ -1,11 +1,11 @@
 {
     "buttons":[
         {
-            "name": "First Item",
+            "name": "Index",
             "path": "#"
         },
          {
-            "name": "Second Item",
+            "name": "Dashboard",
             "path": "#"
         },
          {
