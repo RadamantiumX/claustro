@@ -2,14 +2,14 @@
     "buttons":[
         {
             "name": "Index",
-            "path": "#"
+            "path": "/index"
         },
          {
             "name": "Dashboard",
-            "path": "#"
+            "path": "/dashboard"
         },
          {
-            "name": "Third Item",
+            "name": "Add New Data",
             "path": "#"
         }
     ]
