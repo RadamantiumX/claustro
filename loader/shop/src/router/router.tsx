@@ -5,7 +5,8 @@ import Dashboard from "../pages/default/Dashboard";
 import Index from "../pages/default/Index";
 import GuestLayout from "../layouts/GuestLayout";
 import DefaultLayout from '../layouts/DefaultLayout';
-
+import Add from "../pages/default/Add";
+import UserSettings from "../pages/default/user/UserSettings";
 /**
  * 
  */
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/',
-                element: <Navigate to="/dashboard"/>
+                element: <Navigate to="/index"/>
 
             },
             {
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
             {
                 path: '/index',
                 element: <Index/>
+            },
+            {
+                path:'/add',
+                element: <Add/>
+            },
+            {
+                path:'/settings',
+                element: <UserSettings/>
             }
         ]
     }
