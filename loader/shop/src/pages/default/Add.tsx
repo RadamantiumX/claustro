@@ -1,7 +1,8 @@
 import React from 'react'
-import HeroSection from '../../features/default/dashboard/HeroSection'
+import HeroSection from '../../features/default/add/HeroSection'
 
-export default function Add() {
+
+export default function Add():React.ReactNode {
   return (
     <div className="page-flex">
       <HeroSection/>

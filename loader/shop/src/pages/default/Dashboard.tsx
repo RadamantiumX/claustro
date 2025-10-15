@@ -1,4 +1,6 @@
 import React from "react"
+import HeroSection from "../../features/default/dashboard/HeroSection"
+import DataSection from "../../features/default/dashboard/DataSection"
 /**
  * Dashboard page on Default Layout
  * @returns {React.ReactNode}
@@ -7,11 +9,8 @@ export default function Dashboard():React.ReactNode {
  
   return (
     <div className="page-flex">
-      <div className="flex flex-col h-full">
-          <h1 className="text-red-500">
-            Dashboard
-          </h1>
-      </div>
+      <HeroSection/>
+      <DataSection/>
     </div>
   )
 }
