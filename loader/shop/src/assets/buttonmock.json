@@ -10,7 +10,7 @@
         },
          {
             "name": "Add New Data",
-            "path": "#"
+            "path": "/add"
         }
     ]
 }
