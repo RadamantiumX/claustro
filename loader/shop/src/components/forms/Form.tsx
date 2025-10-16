@@ -1,9 +1,9 @@
 // import { CustomButton } from "../buttons/CustomButton"
 import React from "react"
 import type { FormProps } from "../../types/components"
-import { LoginButton } from "../buttons/LoginButton"
+import { FormButton } from "../buttons/FormButton"
 import { useStateContext } from "../../hooks/useCtxStates"
-import { Loader } from "../../icons/Loader"
+
 /**
  * Form component to reuse anywere on this project, can adapt the qty of inputs
  * 
@@ -13,7 +13,7 @@ import { Loader } from "../../icons/Loader"
  * @param FormPorps.inputs[] --> Array of inputs for this form
  * @returns 
  */
-export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):React.ReactNode => {
+export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs, innerTextButton}):React.ReactNode => {
   const { loading } = useStateContext()
  
     return(
@@ -31,11 +31,9 @@ export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs}):Re
                 disabled={loading}
                 />
               ))}
-              <LoginButton>
-                {// Change inner button content --> State depending
-                  !loading ? <div>Sign In</div> : <div className="flex flex-row items-center gap-x-5"><Loader/> Loading...</div>
-                }
-              </LoginButton>
+              <FormButton loading={loading}>
+                {innerTextButton}
+              </FormButton>
             </form>
         </div>
         </>
