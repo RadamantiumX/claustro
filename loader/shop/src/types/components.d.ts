@@ -24,7 +24,8 @@ export interface FormProps{
             propInput:string;
             placeholder:string;
             value: string;
-        }[]
+        }[],
+    innerTextButton: string     
     
 }
 
