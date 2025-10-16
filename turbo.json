@@ -6,7 +6,7 @@
       "outputs": [
         "dist/**"
       ],
-      "env": ["DATABASE_URL", "VITE_ACCESS_TOKEN", "VITE_USERNAME"],
+      "env": ["DATABASE_URL", "NODE_ENV", "JWT_SECRET", "JWT_REFRESH_SECRET", "VITE_ACCESS_TOKEN", "VITE_REFRESH_TOKEN", "VITE_USERNAME", "TRPC_URL"],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.production.local",
