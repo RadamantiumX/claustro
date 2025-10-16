@@ -4,7 +4,7 @@ import { CustomLink } from "../../../components/buttons/CustomLink"
 import { BasicCard } from "../../../components/cards/BasicCard"
 import { Form } from "../../../components/forms/Form"
 import { useLogin } from "../../../hooks/hooks"
-import Guest from "../../../components/sectionsTemplate/GuestContent"
+import GuestContent from "../../../components/sectionsTemplate/GuestContent"
 
 /**
  * Form for Auth Section on Guest Layout
@@ -13,7 +13,7 @@ import Guest from "../../../components/sectionsTemplate/GuestContent"
 export default function FormSection():React.ReactNode {
   const { handleChange, handleSubmit, formData  } = useLogin()
   return (
-    <Guest>
+    <GuestContent>
           <BasicCard>
               <PageSubTitle title="Sign In to your account"/>
               <Form
@@ -25,6 +25,6 @@ export default function FormSection():React.ReactNode {
              <CustomLink inner="Back" route="/" fontSize=""/>
            </BasicCard>
              
-    </Guest>
+    </GuestContent>
   )
 }
