@@ -24,7 +24,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --skip-generate",
     "db:deploy": "prisma migrate deploy",
-    "build": "tsc",
+    "build": "tsc -b",
     "start": "cross-env NODE_ENV=production node dist/src/index.js",
     "report": "echo API is at $npm_package_config_apiHost on port $npm_package_config_port"
   },
