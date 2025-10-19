@@ -21,5 +21,6 @@
       "src": "loader/client/(.*)",
       "dest": "loader/client/dist/$1"
     }
-  ]
+  ],
+   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
