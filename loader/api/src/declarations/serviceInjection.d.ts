@@ -1,4 +1,4 @@
-import { PayloadRefreshToken } from './factory.d';
+import { PayloadRefreshToken } from './factory';
 import { Datum, ApiData, ApiKey, UserColab, AuthRefreshToken, UserColabClientResponse, PayloadRefreshToken } from "factory";
 
 export interface Overload{

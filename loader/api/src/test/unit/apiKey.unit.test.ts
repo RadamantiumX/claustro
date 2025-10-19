@@ -1,4 +1,4 @@
-import { ApiKeyRepository } from './../../repository/apiKeyRepository';
+import { ApiKeyRepository } from '../../repository/apiKeyRepository';
 import { prismaMock } from "../setup";
 import { it, expect, beforeEach, describe } from "vitest";
 import { mockApiKey } from "../mockedData";

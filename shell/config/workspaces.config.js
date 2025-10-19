@@ -1,12 +1,12 @@
 export const workspaceGroupConfig = [
     {
-            name: 'factory',
-            value: 'factory',
+            name: 'api',
+            value: 'api',
             description: 'Backend'
         },
         {
-            name: 'shop',
-            value: 'shop',
+            name: 'client',
+            value: 'client',
             description: 'Client'
             
         },

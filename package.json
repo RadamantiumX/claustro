@@ -6,17 +6,17 @@
   "type": "module",
   "scripts": {
     "dev": "npx turbo run dev",
-    "pm2:start": "pnpm --filter factory pm2:start",
-    "pm2:stop":"pnpm --filter factory pm2:stop",
-    "pm2:delete":"pnpm --filter factory pm2:delete",
-    "pm2:status": "pnpm --filter factory pm2:status ",
-    "prisma:studio": "cd loader/factory && npx prisma studio",
+    "pm2:start": "pnpm --filter api pm2:start",
+    "pm2:stop":"pnpm --filter api pm2:stop",
+    "pm2:delete":"pnpm --filter api pm2:delete",
+    "pm2:status": "pnpm --filter api pm2:status ",
+    "prisma:studio": "cd loader/api && npx prisma studio",
     "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "npx turbo run test",
     "test:watch": "npx turbo run test:watch",
     "ws:pkg": "node shell/index.js",
-    "gen": "cd loader/factory && npx prisma generate"
+    "gen": "cd loader/api && npx prisma generate"
   },
   "keywords": [],
   "author": "",
