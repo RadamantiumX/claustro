@@ -3,23 +3,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "loader/factory/dist/src/index.js",
+      "src": "loader/api/dist/src/index.js",
       "use": "@vercel/node"
     },
     {
-      "src": "loader/shop/vite.config.js",
+      "src": "loader/client/vite.config.js",
       "use": "@vercel/static-build",
-      "config": { "distDir": "loader/shop/dist" }
+      "config": { "distDir": "loader/client/dist" }
     }
   ],
   "routes": [
     {
-      "src": "loader/factory/(.*)",
-      "dest": "loader/factory/"
+      "src": "loader/api/(.*)",
+      "dest": "loader/api/"
     },
     {
-      "src": "loader/shop/(.*)",
-      "dest": "loader/shop/dist/$1"
+      "src": "loader/client/(.*)",
+      "dest": "loader/client/dist/$1"
     }
   ]
 }
