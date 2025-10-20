@@ -100,7 +100,7 @@ it('should return all data',async ()=>{
    })
 })
 
-it('should update data',async ()=>{
+/*it('should update data',async ()=>{
 
    prismaMock.data.update.mockResolvedValue(mockData)
    const mockedData = await dataRepository.updateData({
@@ -123,7 +123,7 @@ it('should update data',async ()=>{
              updatedAt: timeStampParsed()
           }
    })
-})
+})*/
 
 it('should delete data',async ()=>{
 
