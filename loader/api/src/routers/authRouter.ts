@@ -1,6 +1,5 @@
 import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
-import { UserColabService } from "../services/userColabService";
 import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
