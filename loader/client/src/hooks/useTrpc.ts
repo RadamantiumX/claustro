@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { httpBatchLink, createTRPCClient } from "@trpc/client";
 import { QueryClient } from "@tanstack/react-query";
-import type { AppRouter } from "../../../factory/src/routers";
+import type { AppRouter } from "../../../api/src/routers";
 import { customLink } from "../utils/customLinks";
 import { getToken } from "../helper/cookieHandler";
 // import { isExpiredToken } from "../helper/tokenExpiration";

@@ -38,7 +38,7 @@ export const useFetchRt = () => {
                         console.log(variables)
                     },
                      onError:(error)=>{
-                   console.log(error.data)
+                   console.log(error)
                 }
                 })
 

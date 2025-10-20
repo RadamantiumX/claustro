@@ -1,5 +1,5 @@
 import { createTRPCContext } from '@trpc/tanstack-react-query';
-import type { AppRouter } from '../../../factory/src/routers/index';
+import type { AppRouter } from '../../../api/src/routers/index';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { getToken } from '../helper/cookieHandler';
 

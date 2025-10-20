@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useStateContext } from "./useCtxStates"
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useTRPC } from "../utils/trpc"
@@ -20,7 +21,7 @@ export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  
   const { setToken, setUser, setLoading, setResponseTime, setBounce, setRefreshToken } = useStateContext()
-  const [formData, setFormData] = useState({
+  const [formData, setFormData]:any = useState({
     username: '',
     password: '',
     isSuperAdmin: false
@@ -39,7 +40,7 @@ export const useLogin = ():SignInHandler =>{
       
   
       login.mutate(formData,{
-        onSuccess: (data, variables)=>{
+        onSuccess: (data:any, variables:any)=>{
               // const end = performance.now()
               // const resposeTime = end - start
               // console.log(`${resposeTime} miliseconds`)
@@ -52,7 +53,7 @@ export const useLogin = ():SignInHandler =>{
               setBounce(false)
         },
         onError:(error)=>{
-          console.log(error.data)
+          console.log(error)
         }
       })
       

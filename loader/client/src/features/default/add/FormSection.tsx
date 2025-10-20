@@ -9,6 +9,7 @@ const handleTestChange = () => {
  
 }
 const handleTestSubmit = async (e:FormEvent<HTMLFormElement>):Promise<void> => {
+  console.log(e)
   return
 }
   return (

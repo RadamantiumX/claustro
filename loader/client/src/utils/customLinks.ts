@@ -1,5 +1,5 @@
 import type{ TRPCLink } from "@trpc/client";
-import type { AppRouter } from "../../../factory/src/routers";
+import type { AppRouter } from "../../../api/src/routers";
 import { observable } from "@trpc/server/observable";
 import Cookies from "js-cookie";
 import { isExpiredToken } from "../helper/tokenExpiration";
