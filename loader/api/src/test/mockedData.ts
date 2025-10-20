@@ -50,7 +50,8 @@ export const mockRefreshToken:AuthRefreshToken = {
    refreshToken: 'dasdas2654dasd485878asdkl',
    expiration: null,
    userColabId:'dsadaskkoolasdas1212das',
-   createdAt: new Date(Date.now())
+   createdAt: new Date(Date.now()),
+   updatedAt: null
 }
 
 export const mockDataNested = {

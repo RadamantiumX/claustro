@@ -51,7 +51,7 @@ export interface AuthRefreshToken {
   expiration: string | null
   userColabId: string
   createdAt: Date
-  updatedAt: Date
+  updatedAt: Date | null
 }
 
 export interface PayloadRefreshToken {
