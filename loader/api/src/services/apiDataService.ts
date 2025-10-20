@@ -8,7 +8,7 @@ export class ApiDataService{
     apiData:ApiDataMethods;
 
     private constructor(apiDataRepository:IApiDataRepository){
-        this.apiDataRepository = this.apiDataRepository
+        this.apiDataRepository = apiDataRepository
         this.apiData = {
             create: async(bodyReq:Omit<ApiData, "id"| "createdAt" | "updatedAt">)=>{
                 // TODO: Validations here! 🌍

@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import type { IPayload } from '../declarations/index'
 import jwt from 'jsonwebtoken'
-import { EnvFactoryErrors } from '../errors/envFactoryErrors'
+
 
 
 export const SECRET_KEY:Readonly<string> = process.env.JWT_SECRET || 'secret'

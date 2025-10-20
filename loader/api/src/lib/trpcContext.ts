@@ -2,7 +2,6 @@ import { initTRPC } from '@trpc/server'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { TRPCError } from '@trpc/server'
 import { JWTverifyAndDecode } from '../helper/jwtFunctions'
-import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 
 
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN

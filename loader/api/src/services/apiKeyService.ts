@@ -9,7 +9,7 @@ export class ApiKeyService{
     apiKey:ApiKeyMethods;
 
     private constructor(apiKeyRepository:IApiKeyRepository){
-        this.apiKeyRepository = this.apiKeyRepository;
+        this.apiKeyRepository = apiKeyRepository;
         this.apiKey = {
                   create: async(bodyReq:Omit<ApiKey, "id" | "updatedAt" | "createdAt">)=>{
                     try{

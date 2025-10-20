@@ -1,7 +1,7 @@
 import type {  DecodedTokenKeys, DecodedStringToken, JWTSign, JWTOptions } from '../declarations/index'
 import jwt from '../utils/jwt'
 import { timeStampParsed } from './timeStampParser'
-import { TOKEN_LIFETIME, UNIX_CURRENT_TIME } from '../const/tokenExpiration'
+
 
 export const JWTverifyAndDecode = (token: string): DecodedTokenKeys => {
   // Verify the token

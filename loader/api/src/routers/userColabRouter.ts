@@ -8,7 +8,7 @@ const userColabServiceInstance = UserColabService.getInstance()
 
 export const userColabRouter = trpc.router({
     list: protectedProcedure.query(({ ctx })=>{
-       // console.log(ctx)
+       console.log(ctx)
         
        return userColabServiceInstance.userData.list()
     }),

@@ -5,7 +5,6 @@ import { protectedProcedure } from "../lib/procedure";
 import { TRPCError } from "@trpc/server";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
-import { COOKIE_AGE } from "../const/cookieAge";
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 
 
@@ -16,7 +15,7 @@ const userColabInstance = UserColabService.getInstance()
 
 // Refresh TOKEN route
 export const refreshTokenRouter = trpc.router({
-    refresh: protectedProcedure.input(refreshTokenSchema.pick({refreshToken: true})).mutation(async({ctx, input})=>{
+    refresh: protectedProcedure.input(refreshTokenSchema.pick({refreshToken: true})).mutation(async({input})=>{
         try{
 
           if(input.refreshToken === undefined){
