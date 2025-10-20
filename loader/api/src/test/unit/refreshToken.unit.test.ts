@@ -58,7 +58,8 @@ describe('RefreshTokenRepository',()=>{
         expect(mockedData).toEqual(expect.objectContaining(mockRefreshToken))
         expect(prismaMock.authRefreshToken.findUnique).toHaveBeenCalledWith({
             where:{
-                userColabId: mockRefreshToken.userColabId
+                userColabId: mockRefreshToken.userColabId,
+                refreshToken: mockRefreshToken.refreshToken
             },
             select:{
                 refreshToken: true,
