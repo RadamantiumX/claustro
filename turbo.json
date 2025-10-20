@@ -43,6 +43,7 @@
     "cache": false,
     "persistent": true
   }
-  }
+  },
+  "globalDependencies": ["tsconfig.json"]
   
 }
