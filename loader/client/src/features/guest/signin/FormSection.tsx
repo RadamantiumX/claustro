@@ -19,7 +19,10 @@ export default function FormSection():React.ReactNode {
               <AuthForm
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
-                inputs={[{typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},{typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}]}
+                inputs={[
+                  {typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},
+                  {typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}
+                ]}
                 innerTextButton="Sign In"
                 />
              <CustomLink inner="Back" route="/" fontSize=""/>
