@@ -13,7 +13,7 @@ import { useStateContext } from "../../hooks/useCtxStates"
  * @param FormPorps.inputs[] --> Array of inputs for this form
  * @returns 
  */
-export const Form:React.FC<FormProps> = ({handleSubmit,handleChange, inputs, innerTextButton}):React.ReactNode => {
+export const AuthForm:React.FC<FormProps> = ({handleSubmit,handleChange, inputs, innerTextButton}):React.ReactNode => {
   const { loading } = useStateContext()
  
     return(

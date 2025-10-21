@@ -100,7 +100,9 @@ it('should return all data',async ()=>{
    })
 })
 
-/*it('should update data',async ()=>{
+/*
+⚠️ THIS TEST NEED's SOME FIX!!!!
+it('should update data',async ()=>{
 
    prismaMock.data.update.mockResolvedValue(mockData)
    const mockedData = await dataRepository.updateData({

@@ -32,7 +32,7 @@ html, body, #root {
     .hero-flex-center{
        @apply flex flex-col gap-y-5 h-20 w-full mt-[15%] sm:mt-[5%] items-center;
     }
-    .card-basic{
+    .card-flex{
       @apply flex flex-col items-center p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl;
     }
     .font-large{
