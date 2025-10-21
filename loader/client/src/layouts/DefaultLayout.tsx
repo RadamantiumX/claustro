@@ -29,7 +29,10 @@ export default function DefaultLayout():React.ReactNode {
       <SideMenuBar/>
       <UserMenuBar/>
       <main className="bg-gray-700">
-        <NotificationCard/>
+       
+          <NotificationCard/>
+       
+        
         <Outlet/>
         
       </main>

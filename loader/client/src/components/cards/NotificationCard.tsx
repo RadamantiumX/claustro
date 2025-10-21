@@ -26,13 +26,13 @@ setBar(document.getElementById('bar'))
  },[])*/
 
   return (
-    
-    <div className='bg-amber-50 w-[20%] absolute rounded-sm z-50 p-5'>
+    <div className='flex justify-center'>
+    <div className='flex flex-col items-center bg-amber-50 w-[20%] absolute rounded-sm z-[1000] p-5 mt-10'>
        
        <div id="bar" className={`h-1 z-50`}>Notification card</div>
        <button onClick={actionBtn}>Click</button>
     </div>
-    
+    </div>
    
   )
 }
