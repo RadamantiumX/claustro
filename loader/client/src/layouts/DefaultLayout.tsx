@@ -6,6 +6,7 @@ import { UserMenuBar } from "../components/layoutItems/UserMenuBar"
 import { Footer } from "../components/layoutItems/Footer"
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
+import { NotificationCard } from "../components/cards/NotificationCard"
 // import { useFetchRt } from "../hooks/useFetchRt"
 /**
  * Layout for Default page or Authenticated user
@@ -28,8 +29,11 @@ export default function DefaultLayout():React.ReactNode {
       <SideMenuBar/>
       <UserMenuBar/>
       <main className="bg-gray-700">
+        <NotificationCard/>
         <Outlet/>
+        
       </main>
+
       <Footer/>
       
     </>

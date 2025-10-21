@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormButton } from '../buttons/FormButton'
+import { Plus } from '../../icons/Plus'
 
 const inputs = [
   {
@@ -54,7 +55,7 @@ export const GenericForm = ():React.ReactNode => {
                       id={item.id}
                       name={item.name}
                       placeholder={item.placeholder}
-                      className="w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none border-slate-200 focus:border-blue-500"
+                      className="input-w-full"
                     /> 
                   </div>
                 </div>
@@ -63,7 +64,11 @@ export const GenericForm = ():React.ReactNode => {
                
                
         <FormButton loading={loading}>
-          Add new record
+          <div className='flex flex-row justify-center gap-x-2'>
+            Add new record
+            <Plus/>
+          </div>
+          
         </FormButton>
                
                
