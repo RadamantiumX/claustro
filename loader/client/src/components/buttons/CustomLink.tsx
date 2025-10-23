@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import type { linkProps } from "../../types/components"
 
 
-
 /**
  * Link Component for reuse anywere on this projects
  * 
@@ -13,6 +12,7 @@ import type { linkProps } from "../../types/components"
  * @returns {React.ReactNode }
  */
 export const CustomLink:React.FC<linkProps> = ({inner, route, fontSize}):React.ReactNode => {
+
   return (
     <Link to={route} className={`purple-link ${fontSize}`}>
       {inner} {/* Button inside text */}

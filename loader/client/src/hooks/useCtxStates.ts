@@ -12,7 +12,7 @@ export const useCtxState = () =>{
     const [bounce, setBounce] = useState(false)
     const [loading, setLoading] = useState(false)
     const [responseTime, _setResponseTime] = useState(0)
-
+    const [notification, _setNotification] = useState('')
     const setToken = (token:string) => {
         _setToken(token)
         if(token){
@@ -45,7 +45,14 @@ export const useCtxState = () =>{
     
     }
 
- return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime, refreshToken, setRefreshToken}
+    const setNotification = (message:string) =>{
+        _setNotification(message)
+        setTimeout(()=>{
+            _setNotification('')
+        },5000)
+    }
+
+ return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime, refreshToken, setRefreshToken, notification, setNotification}
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)

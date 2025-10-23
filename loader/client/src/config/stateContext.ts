@@ -13,6 +13,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         bounce: false,
         loading: false,
         responseTime: null,
+        notification: null,
 
         setUser: () => {},
         setToken: () => {},
@@ -21,6 +22,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         setShow: ()=>false,
         setBounce: ()=>false,
         setLoading: ()=>false,
-        setResponseTIme: ()=>{}
+        setResponseTIme: ()=>{},
+        setNotification: ()=>{}
     }
 )

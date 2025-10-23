@@ -8,6 +8,7 @@ export interface StateProps {
     bounce: boolean;
     loading: boolean;
     responseTime: number;
+    notification: string;
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
     setRefreshToken: (token:string | null )=>void; 
@@ -16,4 +17,5 @@ export interface StateProps {
     setBounce: Dispatch<SetStateAction<boolean>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
     setResponseTime: Dispatch<SetStateAction<number>>;
+    setNotification: (notification:string)=>void;
 }
