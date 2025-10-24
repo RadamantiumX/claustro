@@ -7,3 +7,6 @@ export { MagnifyGlass } from './MagnifyGlass';
 export { Edit } from './Edit';
 export { Trash } from './Trash';
 export { Eye } from './Eye';
+export { Home } from './Home';
+export { Dashboard } from './Dashboard';
+export { Plus } from './Plus';

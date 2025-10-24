@@ -15,7 +15,7 @@ import { NotificationCard } from "../components/cards/NotificationCard"
 export default function DefaultLayout():React.ReactNode {
   useCloseBar()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { token, notification, setNotification } = useStateContext()
+  const { token, notification } = useStateContext()
 
  
   if(!token){
@@ -32,7 +32,7 @@ export default function DefaultLayout():React.ReactNode {
         
           {notification?.length !== 0 && <NotificationCard/>}
        
-        <button className="mt-20 cursor-pointer" onClick={()=>setNotification("dsadasdas")}>Click on me</button>
+    
         <Outlet/>
         
       </main>
