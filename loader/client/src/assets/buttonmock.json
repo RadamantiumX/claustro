@@ -2,15 +2,18 @@
     "buttons":[
         {
             "name": "Index",
-            "path": "/index"
+            "path": "/index",
+            "icon": "Home"
         },
          {
             "name": "Dashboard",
-            "path": "/dashboard"
+            "path": "/dashboard",
+            "icon": "Dashboard"
         },
          {
             "name": "Add New Data",
-            "path": "/add"
+            "path": "/add",
+            "icon": "Plus"
         }
     ]
 }
