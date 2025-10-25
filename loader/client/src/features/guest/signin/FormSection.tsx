@@ -11,7 +11,7 @@ import GuestContent from "../../../components/sectionsTemplate/GuestContent"
  * @returns {React.ReactNode}
  */
 export default function FormSection():React.ReactNode {
-  const { handleChange, handleSubmit, formData  } = useLogin()
+  const { handleChange, handleSubmit, formData } = useLogin()
   return (
     <GuestContent>
           <BasicCard>

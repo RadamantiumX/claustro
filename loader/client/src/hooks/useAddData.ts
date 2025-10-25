@@ -1,17 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useStateContext } from "./useCtxStates";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useTRPC } from "../utils/trpc";
 import { useMutation } from "@tanstack/react-query"
+import { jwtDecode } from "jwt-decode";
 
 export const useAddData = () => {
     const trpc = useTRPC()
     const { setLoading, setNotification, token } = useStateContext()
+    const decoded:any = jwtDecode(token ? token : '')
+    
     const [ formData, setFormData ] = useState({
         emailSource:'',
         emailSourcePsw: '',
         xUser:'',
         xPsw:'',
-        userColabId:''
+        userColabId: decoded.id
     })
 
     const saveData = useMutation(trpc.data.create.mutationOptions())
@@ -26,11 +30,19 @@ export const useAddData = () => {
       setLoading(true)
       saveData.mutate(formData, {
         onSuccess: (data, variables)=>{
-          setNotification('Success on Save New Data!')
+          console.log(data)
+          console.log(variables)
+          setNotification('Success: Save New Data! ☑️')
+        },
+        onError: (error)=>{
+            console.log(error)
+            setNotification('Error: Something went wrong!⚠️')
         }
       })
     }catch(error){
         console.log(error)
     }
   }
+
+  return { formData, handleChange, handleSubmit }
 }

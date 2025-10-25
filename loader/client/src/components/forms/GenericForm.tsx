@@ -1,14 +1,16 @@
-import React from 'react'
-import { FormButton } from '../buttons/FormButton'
-import { Plus } from '../../icons/Plus'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
+import { FormButton } from '../buttons/FormButton';
+import { Plus } from '../../icons/Plus';
+import { useStateContext } from '../../hooks/useCtxStates';
+/*
 const inputs = [
   {
     for: "email-source",
     label: "Email Source",
     type: "email",
     id: "email-source",
-    name: "email-source",
+    name: "emailSource",
     placeholder: "user@mail.com",
   },
   {
@@ -16,7 +18,7 @@ const inputs = [
     label: "Email Password",
     type: "text",
     id: "email-password",
-    name: "email-password",
+    name: "emailSourdePsw",
     placeholder: "Insert Email Password",
   },
   {
@@ -24,7 +26,7 @@ const inputs = [
     label: "X Username",
     type: "text",
     id: "x-username",
-    name: "x-username",
+    name: "xUser",
     placeholder: "xusername",
   },
   {
@@ -32,19 +34,19 @@ const inputs = [
     label: "X Password",
     type: "text",
     id: "x-password",
-    name: "x-password",
+    name: "xPsw",
     placeholder: "Insert X Username Password",
   },
-]
+]*/
 
-export const GenericForm = ():React.ReactNode => {
-  const loading = false
+export const GenericForm = ({ handleSubmit, handleChange, inputs, innerTextButton }):React.ReactNode => {
+  const { loading } = useStateContext()
   return (
    <>
       <div className='w-[50%]'>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                <div className='flex flex-col gap-y-4'>
-             {inputs.map((item, index)=>(
+             {inputs.map((item:any, index:any)=>(
               <div key={index}>
                    <label htmlFor={item.for} className='flex flex-row items-center gap-3'>{item.label}<div className="w-[70%]" >
                 </div>
@@ -54,8 +56,11 @@ export const GenericForm = ():React.ReactNode => {
                       type={item.type}
                       id={item.id}
                       name={item.name}
+                      value={item.value}
+                      onChange={handleChange}
                       placeholder={item.placeholder}
                       className="input-w-full"
+                      disabled={loading}
                     /> 
                   </div>
                 </div>
@@ -65,7 +70,7 @@ export const GenericForm = ():React.ReactNode => {
                
         <FormButton loading={loading}>
           <div className='flex flex-row justify-center gap-x-2'>
-            Add new record
+            {innerTextButton}
             <Plus/>
           </div>
           
