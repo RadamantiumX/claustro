@@ -13,14 +13,14 @@ import { useStateContext } from "../../hooks/useCtxStates"
  * @param FormPorps.inputs[] --> Array of inputs for this form
  * @returns 
  */
-export const AuthForm:React.FC<FormProps> = ({handleSubmit,handleChange, inputs, innerTextButton}):React.ReactNode => {
+export const AuthForm:React.FC<Omit<FormProps, 'dataInputs'>> = ({handleSubmit,handleChange, authInputs, innerTextButton}):React.ReactNode => {
   const { loading } = useStateContext()
  
     return(
         <>
         <div className="flex-center">
               <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-              {inputs.map((input, key)=>(
+              {authInputs.map((input, key)=>(
                 <input key={key} className={`input-rounded ${loading ? "opacity-40" : ""}`}
                 id={input.propInput}
                 name={input.propInput} 

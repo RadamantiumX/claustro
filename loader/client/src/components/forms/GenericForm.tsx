@@ -5,14 +5,14 @@ import { Plus } from '../../icons/Plus';
 import { useStateContext } from '../../hooks/useCtxStates';
 import type { FormProps } from '../../types/components';
 
-export const GenericForm:React.FC<FormProps> = ({ handleSubmit, handleChange, inputs, innerTextButton }):React.ReactNode => {
+export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }):React.ReactNode => {
   const { loading } = useStateContext()
   return (
    <>
       <div className='w-[50%]'>
             <form onSubmit={handleSubmit}>
                <div className='flex flex-col gap-y-4'>
-             {inputs.map((item:any, index:any)=>(
+             {dataInputs.map((item, index)=>(
               <div key={index}>
                    <label htmlFor={item.for} className='flex flex-row items-center gap-3'>{item.label}<div className="w-[70%]" >
                 </div>
