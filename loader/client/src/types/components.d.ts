@@ -18,17 +18,23 @@ export interface linkProps extends shareProps{
 export interface FormProps{
     handleSubmit: (e:FormEvent<HTMLFormElement>)=>Promise<void>;
     handleChange: (e:ChangeEvent<HTMLInputElement>)=>void;
-    inputs: 
-        {
-            typeInput: string;
-            propInput:string;
-            placeholder:string;
-            value: string;
-        }[],
-    innerTextButton: string     
-    
+    inputs: AuthInputs[] | DataInputs []
+    innerTextButton: string;
 }
 
 export interface NavBarBtnProp{
     inner:string;
+}
+
+export interface AuthInputs {
+         typeInput: string;
+         propInput:string;
+         placeholder:string;
+         value: string;
+        
+}
+
+export interface DataInputs extends AuthInputs {
+         for: string; 
+         label: string;
 }
