@@ -3,43 +3,9 @@ import React from 'react';
 import { FormButton } from '../buttons/FormButton';
 import { Plus } from '../../icons/Plus';
 import { useStateContext } from '../../hooks/useCtxStates';
-/*
-const inputs = [
-  {
-    for: "email-source",
-    label: "Email Source",
-    type: "email",
-    id: "email-source",
-    name: "emailSource",
-    placeholder: "user@mail.com",
-  },
-  {
-    for: "email-password",
-    label: "Email Password",
-    type: "text",
-    id: "email-password",
-    name: "emailSourdePsw",
-    placeholder: "Insert Email Password",
-  },
-  {
-    for: "x-username",
-    label: "X Username",
-    type: "text",
-    id: "x-username",
-    name: "xUser",
-    placeholder: "xusername",
-  },
-  {
-    for: "x-password",
-    label: "X Password",
-    type: "text",
-    id: "x-password",
-    name: "xPsw",
-    placeholder: "Insert X Username Password",
-  },
-]*/
+import type { FormProps } from '../../types/components';
 
-export const GenericForm = ({ handleSubmit, handleChange, inputs, innerTextButton }):React.ReactNode => {
+export const GenericForm:React.FC<FormProps> = ({ handleSubmit, handleChange, inputs, innerTextButton }):React.ReactNode => {
   const { loading } = useStateContext()
   return (
    <>
@@ -53,9 +19,9 @@ export const GenericForm = ({ handleSubmit, handleChange, inputs, innerTextButto
                 </label>
                  <div className="relative w-full">
                     <input
-                      type={item.type}
-                      id={item.id}
-                      name={item.name}
+                      type={item.typeInput}
+                      id={item.propInput}
+                      name={item.propInput}
                       value={item.value}
                       onChange={handleChange}
                       placeholder={item.placeholder}
