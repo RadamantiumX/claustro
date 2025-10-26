@@ -18,7 +18,8 @@ export interface linkProps extends shareProps{
 export interface FormProps{
     handleSubmit: (e:FormEvent<HTMLFormElement>)=>Promise<void>;
     handleChange: (e:ChangeEvent<HTMLInputElement>)=>void;
-    inputs: AuthInputs[] | DataInputs []
+    authInputs: AuthInputs [];
+    dataInputs: DataInputs [];
     innerTextButton: string;
 }
 
