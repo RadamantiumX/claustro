@@ -14,8 +14,7 @@ import { NotificationCard } from "../components/cards/NotificationCard"
  */
 export default function DefaultLayout():React.ReactNode {
   useCloseBar()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { token, notification, setNotification } = useStateContext()
+  const { token, notification } = useStateContext()
 
  
   if(!token){
@@ -29,7 +28,7 @@ export default function DefaultLayout():React.ReactNode {
       <SideMenuBar/>
       <UserMenuBar/>
       <main className="bg-gray-700">
-          <button className="cursor-pointer mt-20" onClick={()=>{setNotification("Success on save data")}}>Click me</button>
+          {/*<button className="cursor-pointer mt-20" onClick={()=>{setNotification("Success on save data")}}>Click me</button>*/}
           {notification?.length !== 0 && <NotificationCard/>}
        
     
