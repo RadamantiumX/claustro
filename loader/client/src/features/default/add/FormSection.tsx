@@ -1,7 +1,7 @@
 import React from 'react'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { GenericForm } from '../../../components/forms/GenericForm'
-import { useAddData } from '../../../hooks/useAddData'
+import { useAddData } from '../../../hooks/hooks'
 
 export default function FormSection():React.ReactNode {
   const { formData, handleChange, handleSubmit } = useAddData()

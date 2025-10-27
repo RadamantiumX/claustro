@@ -35,9 +35,9 @@ export const DataTable = () => {
           {item?.xUser}
         </td>
         <td className="flex p-3 gap-2">
-          <TableLink><Trash/></TableLink>
-          <TableLink><Edit/></TableLink>
-          <TableLink><Eye/></TableLink>
+          <TableLink to='/index'><Trash/></TableLink>
+          <TableLink to=''><Edit/></TableLink>
+          <TableLink to=''><Eye/></TableLink>
         </td>
       </tr>
      )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}

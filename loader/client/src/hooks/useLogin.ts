@@ -41,10 +41,6 @@ export const useLogin = ():SignInHandler =>{
   
       login.mutate(formData,{
         onSuccess: (data:any, variables:any)=>{
-              // const end = performance.now()
-              // const resposeTime = end - start
-              // console.log(`${resposeTime} miliseconds`)
-            
               setToken(data.accessToken)
               setRefreshToken(data.refreshToken)
               setUser(variables.username)

@@ -1,3 +1,4 @@
+export { useAddData } from './useAddData';
 export { useCtxState, useStateContext } from './useCtxStates';
 export { useCloseBar } from './useCloseBar';
 export { useLogin } from './useLogin';
