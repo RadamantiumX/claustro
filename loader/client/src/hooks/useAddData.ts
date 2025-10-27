@@ -32,10 +32,19 @@ export const useAddData = () => {
         onSuccess: (data, variables)=>{
           console.log(data)
           console.log(variables)
+          setLoading(false)
           setNotification('Success: Save New Data! ☑️')
+          setFormData({
+            emailSource:'',
+            emailSourcePsw: '',
+            xUser:'',
+            xPsw:'',
+            userColabId: ''
+          })
         },
         onError: (error)=>{
             console.log(error)
+            setLoading(false)
             setNotification('Error: Something went wrong!⚠️')
         }
       })
