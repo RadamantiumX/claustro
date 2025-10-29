@@ -28,7 +28,7 @@ export const useTrpc = () => {
                 defaultOptions:{
                     queries: {
                         staleTime: Infinity,
-                     
+                        experimental_prefetchInRender: true
                     }
                 }
             })

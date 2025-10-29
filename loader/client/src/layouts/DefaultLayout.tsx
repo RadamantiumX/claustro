@@ -7,6 +7,7 @@ import { Footer } from "../components/layoutItems/Footer"
 import React from "react"
 import { useCloseBar } from "../hooks/useCloseBar"
 import { NotificationCard } from "../components/cards/NotificationCard"
+// import { ConfirmationCard } from "../components/cards/ConfirmationCard"
 // import { useFetchRt } from "../hooks/useFetchRt"
 /**
  * Layout for Default page or Authenticated user
@@ -27,11 +28,12 @@ export default function DefaultLayout():React.ReactNode {
       <Nav/>
       <SideMenuBar/>
       <UserMenuBar/>
-      <main className="bg-gray-700">
+      {/*<ConfirmationCard/>*/}
+      <main className="bg-gray-700"> {/* Add this style => blur-[2px] pointer-events-none */}
           {/*<button className="cursor-pointer mt-20" onClick={()=>{setNotification("Success on save data")}}>Click me</button>*/}
           {notification?.length !== 0 && <NotificationCard/>}
-       
-    
+          
+         
         <Outlet/>
         
       </main>
