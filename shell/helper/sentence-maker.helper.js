@@ -4,11 +4,11 @@ export function sentenceMaker(folder) {
         case 'root':
             selected = "--workspace-root"
             break;
-         case 'factory':
-            selected = "--filter factory"
+         case 'api':
+            selected = "--filter api"
             break;
-         case 'shop':
-            selected = "--filter shop"
+         case 'client':
+            selected = "--filter client"
             break;
     }
 
