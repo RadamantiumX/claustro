@@ -6,7 +6,7 @@ export const TableLink:React.FC<{children:React.ReactNode, id:number, target:str
   const { handleDelete } = useDelete()
   return (
      <>
-      <Link onClick={target === 'delete'? ()=>handleDelete(id):()=>{}}  to={to}>
+      <Link onClick={target === 'delete'? ()=>{handleDelete(id)}:()=>{}}  to={to}>
       {children}
       </Link>
      </>

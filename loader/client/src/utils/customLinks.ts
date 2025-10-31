@@ -20,7 +20,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
          const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
          const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
-
+        
         // Here evaluates the access token
           const exec = async ()=>{
             if(token !== undefined){
@@ -75,6 +75,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
         },
         complete() {
           observer.complete();
+          
           
         },
       })
