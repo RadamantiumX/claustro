@@ -27,6 +27,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       placeholder={item.placeholder}
                       className="input-w-full"
                       disabled={loading}
+                      required
                     /> 
                   </div>
                 </div>
