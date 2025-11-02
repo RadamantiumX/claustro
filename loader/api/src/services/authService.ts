@@ -86,7 +86,7 @@ export class AuthService {
            throw new AppError(
             "Bad Request",
             400,
-            "Provide a different username",
+            "Login attemp with error",
             false
           );
         }

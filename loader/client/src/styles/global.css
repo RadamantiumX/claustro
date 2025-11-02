@@ -85,6 +85,9 @@ html, body, #root {
    .input-w-full{
     @apply w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none border-slate-200 focus:border-blue-500;
    }
+    .input-w-full-required{
+    @apply w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none border-red-500 focus:border-blue-500;
+   }
    .card-hide{
     @apply flex flex-col items-center w-[20%] fixed rounded-sm z-[1000] p-5 mt-10;
    }

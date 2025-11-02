@@ -16,7 +16,12 @@ export const dataRouter = trpc.router({
     }) ,
     create: protectedProcedure.input(dataSchema.omit({id:true})).mutation(
         ({input})=>{
-            return dataServiceInstance.data.create(input)
+            try{
+                return dataServiceInstance.data.create(input)
+            }catch(error){
+                return error
+            }
+            
         }
     ),
     selectForId: protectedProcedure.input(dataSchema.pick({id:true})).mutation(

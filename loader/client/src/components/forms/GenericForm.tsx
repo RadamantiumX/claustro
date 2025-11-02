@@ -7,6 +7,7 @@ import type { FormProps } from '../../types/components';
 
 export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }):React.ReactNode => {
   const { loading } = useStateContext()
+ 
   return (
    <>
       <div className='w-[50%]'>
@@ -25,9 +26,9 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       value={item.value}
                       onChange={handleChange}
                       placeholder={item.placeholder}
-                      className="input-w-full"
+                      className={"input-w-full"}
                       disabled={loading}
-                      required
+                     
                     /> 
                   </div>
                 </div>

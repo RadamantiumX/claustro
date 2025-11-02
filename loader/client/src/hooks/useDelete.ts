@@ -1,4 +1,4 @@
-
+import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 // import { useStateContext } from "./useCtxStates"
 import { useTRPC } from "../utils/trpc"
@@ -7,9 +7,10 @@ import { useTrpc } from "./useTrpc"
 export const useDelete = () => {
    const { trpcQueryClient } = useTrpc()
   const trpc = useTRPC()
-  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [id, setId]:any = useState(null)
   const deleteRecord = useMutation(trpc.data.delete.mutationOptions()) 
- 
+ /*
   const handleDelete = async (id:number) => {
      try{
         deleteRecord.mutate({id:id},{
@@ -34,5 +35,25 @@ export const useDelete = () => {
      
   }
 
-  return { handleDelete }
+  return { handleDelete }*/
+
+  try{
+    
+      deleteRecord.mutate({id:id}, {
+         onSuccess:async(data, variables)=>{
+             console.log(data)
+             console.log(variables)
+             await trpcQueryClient.invalidateQueries()
+             
+         },
+         onError: (error)=>{
+              console.log(error)
+         }
+      })
+     
+  }catch(error){
+   console.log(error)
+  }
+
+  return {setId}
 }

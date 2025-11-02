@@ -20,11 +20,13 @@ export const useAddData = () => {
 
     const saveData = useMutation(trpc.data.create.mutationOptions())
 
-      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
+  const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
+   
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
   const handleSubmit =async (e:FormEvent<HTMLFormElement>):Promise<void> => {
+    
     try{
       e.preventDefault()
       setLoading(true)
@@ -43,7 +45,9 @@ export const useAddData = () => {
           })
         },
         onError: (error)=>{
-            console.log(error)
+            const parsedError = JSON.parse(error.message)
+            console.log(JSON.parse(error.message))
+            console.log(parsedError[0].code)
             setLoading(false)
             setNotification('Error: Something went wrong!⚠️')
         }
