@@ -38,4 +38,5 @@ export interface AuthInputs {
 export interface DataInputs extends AuthInputs {
          for: string; 
          label: string;
+         
 }

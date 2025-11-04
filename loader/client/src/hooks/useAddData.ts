@@ -4,13 +4,18 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useTRPC } from "../utils/trpc";
 import { useMutation } from "@tanstack/react-query"
 import { jwtDecode } from "jwt-decode";
+import { useFormBlocker } from "./useFormBlocker";
 
 export const useAddData = () => {
     const trpc = useTRPC()
-    const { setLoading, setNotification, token } = useStateContext()
-    const decoded:any = jwtDecode(token ? token : '')
+    const { setLoading, setNotification, token, setInputError, inputError } = useStateContext()
     
-    const [ formData, setFormData ] = useState({
+    const decoded:any = jwtDecode(token ? token : '')
+    const { blocker } = useFormBlocker()
+    
+
+
+    const [ formData, setFormData ]:any = useState({
         emailSource:'',
         emailSourcePsw: '',
         xUser:'',
@@ -29,6 +34,9 @@ export const useAddData = () => {
     
     try{
       e.preventDefault()
+      if(blocker.state === "blocked"){
+        blocker.proceed()
+      }
       setLoading(true)
       saveData.mutate(formData, {
         onSuccess: (data, variables)=>{
@@ -45,17 +53,24 @@ export const useAddData = () => {
           })
         },
         onError: (error)=>{
+            
             const parsedError = JSON.parse(error.message)
-            console.log(JSON.parse(error.message))
-            console.log(parsedError[0].code)
+            console.log(parsedError)
+            parsedError.map((item:any,key:any)=>{
+             console.log(item.message)
+             setInputError([inputError, {message: item.message}])
+            })
+            
             setLoading(false)
             setNotification('Error: Something went wrong!⚠️')
+            
         }
       })
     }catch(error){
         console.log(error)
     }
+   
   }
-
+ 
   return { formData, handleChange, handleSubmit }
 }

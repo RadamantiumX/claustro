@@ -13,6 +13,9 @@ export const useCtxState = () =>{
     const [loading, setLoading] = useState(false)
     const [responseTime, _setResponseTime] = useState(0)
     const [notification, _setNotification] = useState('')
+
+    const [inputError, setInputError] = useState([])
+
     const setToken = (token:string) => {
         _setToken(token)
         if(token){
@@ -52,7 +55,28 @@ export const useCtxState = () =>{
         },5000)
     }
 
- return {user, token, setUser, setToken, over, setOver,show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime, refreshToken, setRefreshToken, notification, setNotification}
+ return { 
+          user, 
+          token, 
+          setUser, 
+          setToken, 
+          over, 
+          setOver, 
+          show, 
+          setShow, 
+          bounce, 
+          setBounce, 
+          loading, 
+          setLoading, 
+          responseTime, 
+          setResponseTime, 
+          refreshToken, 
+          setRefreshToken, 
+          notification, 
+          setNotification, 
+          inputError, 
+          setInputError
+        }
 }
 
 export const useStateContext = ():StateProps => useContext(StateContext)

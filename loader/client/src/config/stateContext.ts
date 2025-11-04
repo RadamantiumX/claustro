@@ -14,6 +14,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         loading: false,
         responseTime: null,
         notification: null,
+        inputError: [],
 
         setUser: () => {},
         setToken: () => {},
@@ -23,6 +24,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         setBounce: ()=>false,
         setLoading: ()=>false,
         setResponseTIme: ()=>{},
-        setNotification: ()=>{}
+        setNotification: ()=>{},
+        setInputError: ()=>{},
     }
 )

@@ -1,13 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { FormButton } from '../buttons/FormButton';
 import { Plus } from '../../icons/Plus';
-import { useStateContext } from '../../hooks/useCtxStates';
+import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 
-export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }):React.ReactNode => {
-  const { loading } = useStateContext()
- 
+
+export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }) => {
+  const { loading, inputError } = useStateContext()
+
+  
+  
   return (
    <>
       <div className='w-[50%]'>
@@ -30,6 +32,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       disabled={loading}
                      
                     /> 
+                    {inputError.length > 0 && <p className='text-red-500 text-[12px]'>Something is wrong!</p>}
                   </div>
                 </div>
              ))}
@@ -43,7 +46,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
           </div>
           
         </FormButton>
-               
+            
                
                </div>
               
