@@ -4,7 +4,7 @@ import { Plus } from '../../icons/Plus';
 import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 
-
+// TODO: make a global state confirmation to confirm exit without complete the form: EXAMPLE: with the context
 export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }) => {
   const { loading, inputError } = useStateContext()
 
