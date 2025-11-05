@@ -2,13 +2,32 @@ import React from 'react'
 import HeroSection from '../../features/default/add/HeroSection'
 import FormSection from '../../features/default/add/FormSection'
 import { ConfirmationCard } from '../../components/cards/ConfirmationCard'
+import { useFormBlocker } from '../../hooks/useFormBlocker'
+import { useStateContext } from '../../hooks/useCtxStates'
 
 export default function Add():React.ReactNode {
+  const { blocker } = useFormBlocker()
+  const { setInputError } = useStateContext()
+
   return (
-    <div className="page-flex">
-      <ConfirmationCard legend='Are you sure?'/>
+    <>
+    {blocker.state === "blocked" ? 
+      <ConfirmationCard 
+        acceptFn={()=>{
+          setInputError([])
+          blocker.proceed()
+        }} 
+        rejectFn={()=>{
+          blocker.reset()
+        }}
+        legend="¿Are you sure?... This form insn't validated. If leave, the information will missed"/>
+      :
+      <></>}
+    <div className={blocker.state === "blocked"? "page-flex pointer-events-none":"page-flex"}>
+      
       <HeroSection/>
       <FormSection/>
     </div>
+    </>
   )
 }
