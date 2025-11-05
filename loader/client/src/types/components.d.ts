@@ -40,3 +40,9 @@ export interface DataInputs extends AuthInputs {
          label: string;
          
 }
+
+export interface CardConfirmProps {
+  legend:string;
+  acceptFn: ()=>void;
+  rejectFn: ()=>void;
+}
