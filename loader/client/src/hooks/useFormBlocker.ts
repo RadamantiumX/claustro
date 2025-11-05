@@ -10,6 +10,6 @@ export const useFormBlocker = () => {
             inputError.length !== 0 &&
             currentLocation.pathname !== nextLocation.pathname
     )
-
+    
     return { blocker }
 }
