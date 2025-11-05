@@ -43,6 +43,7 @@ export const useAddData = () => {
           console.log(data)
           console.log(variables)
           setLoading(false)
+          setInputError([])
           setNotification('Success: Save New Data! ☑️')
           setFormData({
             emailSource:'',
