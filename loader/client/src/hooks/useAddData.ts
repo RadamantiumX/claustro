@@ -54,14 +54,17 @@ export const useAddData = () => {
           })
         },
         onError: (error)=>{
-            
+           
             const parsedError = JSON.parse(error.message)
             console.log(parsedError)
-            parsedError.map((item:any,key:any)=>{
-             console.log(item.message)
-             setInputError([inputError, {message: item.message}])
-            })
-            
+            // parsedError.map((item:any)=>{
+            //  console.log(item.path[0])
+             
+            //  setInputError()
+             
+            // })
+            setInputError(parsedError)
+            console.log(inputError)
             setLoading(false)
             setNotification('Error: Something went wrong!⚠️')
             

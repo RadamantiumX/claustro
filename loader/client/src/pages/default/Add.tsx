@@ -9,6 +9,8 @@ export default function Add():React.ReactNode {
   const { blocker } = useFormBlocker()
   const { setInputError } = useStateContext()
 
+
+
   return (
     <>
     {blocker.state === "blocked" ? 
@@ -23,7 +25,7 @@ export default function Add():React.ReactNode {
         legend="¿Are you sure?... This form insn't validated. If leave, the information will missed"/>
       :
       <></>}
-    <div className={blocker.state === "blocked"? "page-flex pointer-events-none":"page-flex"}>
+    <div className={blocker.state === "blocked"? "page-flex pointer-events-none opacity-5":"page-flex"}>
       
       <HeroSection/>
       <FormSection/>

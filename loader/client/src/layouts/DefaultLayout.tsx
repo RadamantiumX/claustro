@@ -31,7 +31,6 @@ export default function DefaultLayout():React.ReactNode {
       <main className="bg-gray-700"> {/* Add this style => blur-[2px] pointer-events-none */}
           {/*<button className="cursor-pointer mt-20" onClick={()=>{setNotification("Success on save data")}}>Click me</button>*/}
           {notification?.length !== 0 && <NotificationCard/>}
-          {/*<ConfirmationCard/>*/}
          
         <Outlet/>
         

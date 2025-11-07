@@ -3,6 +3,11 @@ import Cookies from "js-cookie";
 import type { StateProps } from "../types/shared";
 import { StateContext } from "../config/stateContext";
 
+export interface ObjParams  {
+    message:string;
+    path:string
+}
+
 export const useCtxState = () =>{
     const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))
@@ -54,6 +59,11 @@ export const useCtxState = () =>{
             _setNotification('')
         },5000)
     }
+
+//    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//    const setInputError = ({obj}:any) =>{
+//        _setInputError([...inputError,...obj])
+//    } 
 
  return { 
           user, 

@@ -44,7 +44,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           }).catch((error)=>{
             
             if(error.data?.httpStatus){
-            if(error.data?.httpStatus >= 400 && error.data?.httpStatus < 500){
+            if(error.data?.httpStatus === 401){
              // console.log('Tokens must be destroyed!')
              // If any error appear, the tokens must be destroy, and the Context State will be null
                Cookies.remove('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
@@ -63,7 +63,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           observer.error(err);
           console.log(err.data?.httpStatus)
           if(err.data?.httpStatus){
-            if(err.data?.httpStatus === 400){
+            if(err.data?.httpStatus === 401){
               // console.log('Tokens must be destroyed!')
              // Here happen the same...
              // If any error appear, the tokens must be destroy, and the Context State will be null

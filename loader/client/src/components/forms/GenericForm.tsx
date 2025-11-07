@@ -4,6 +4,7 @@ import { Plus } from '../../icons/Plus';
 import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 
+
 // TODO: make a global state confirmation to confirm exit without complete the form: EXAMPLE: with the context
 export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }) => {
   const { loading, inputError } = useStateContext()
@@ -15,24 +16,27 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
       <div className='w-[50%]'>
             <form onSubmit={handleSubmit}>
                <div className='flex flex-col gap-y-4'>
-             {dataInputs.map((item, index)=>(
+             {dataInputs.map((data, index)=>(
               <div key={index}>
-                   <label htmlFor={item.for} className='flex flex-row items-center gap-3'>{item.label}<div className="w-[70%]" >
+                   <label htmlFor={data.for} className='flex flex-row items-center gap-3'>{data.label}<div className="w-[70%]" >
                 </div>
                 </label>
                  <div className="relative w-full">
                     <input
-                      type={item.typeInput}
-                      id={item.propInput}
-                      name={item.propInput}
-                      value={item.value}
+                      type={data.typeInput}
+                      id={data.propInput}
+                      name={data.propInput}
+                      value={data.value}
                       onChange={handleChange}
-                      placeholder={item.placeholder}
+                      placeholder={data.placeholder}
                       className={"input-w-full"}
                       disabled={loading}
                      
                     /> 
-                    {inputError.length > 0 && <p className='text-red-500 text-[12px]'>Something is wrong!</p>}
+                    {inputError.length > 0 && inputError.map((input,key)=>(
+                     data.propInput === input.path[0] && 
+                     <p key={key} className='text-red-500 text-[12px]'>{data.value === '' ? 'This field is required!':input.message}</p>
+                    ))}
                   </div>
                 </div>
              ))}
