@@ -16,8 +16,8 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
       <div className='w-[50%]'>
             <form onSubmit={handleSubmit}>
                <div className='flex flex-col gap-y-4'>
-             {dataInputs.map((data, index)=>(
-              <div key={index}>
+             {dataInputs.map((data, key)=>(
+              <div key={key}>
                    <label htmlFor={data.for} className='flex flex-row items-center gap-3'>{data.label}<div className="w-[70%]" >
                 </div>
                 </label>
@@ -29,7 +29,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       value={data.value}
                       onChange={handleChange}
                       placeholder={data.placeholder}
-                      className={"input-w-full"}
+                      className={inputError.length > 0 ? inputError[key].path[0] === data.propInput ? "input-w-full border-red-700": "input-w-full" :"input-w-full"}
                       disabled={loading}
                      
                     /> 
