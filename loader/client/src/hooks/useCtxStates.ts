@@ -27,6 +27,7 @@ export const useCtxState = () =>{
             Cookies.set(`${import.meta.env.VITE_ACCESS_TOKEN}`,token, {expires: 1})
         }else{
             Cookies.remove(`${import.meta.env.VITE_ACCESS_TOKEN}`)
+            _setToken(undefined) // If the code === 401
         }
     }
 
@@ -45,6 +46,7 @@ export const useCtxState = () =>{
             Cookies.set(`${import.meta.env.VITE_USERNAME}`, user,{expires: 7})
         }else{
             Cookies.remove(`${import.meta.env.VITE_USERNAME}`)
+            _setUser(undefined) // If the code === 401 
         }
     }
 
@@ -59,11 +61,6 @@ export const useCtxState = () =>{
             _setNotification('')
         },5000)
     }
-
-//    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//    const setInputError = ({obj}:any) =>{
-//        _setInputError([...inputError,...obj])
-//    } 
 
  return { 
           user, 
