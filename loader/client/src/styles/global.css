@@ -83,7 +83,7 @@ html, body, #root {
     @apply block w-full h-10 p-4 ps-15 rounded mb-8 italic text-gray-600 bg-amber-100 focus:outline-none text-xl shadow-lg;
    }
    .input-w-full{
-    @apply w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none border-slate-200 focus:border-blue-500;
+    @apply w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none focus:border-blue-500;
    }
     .input-w-full-required{
     @apply w-full p-4 pr-12 transition-all bg-transparent border rounded-lg outline-none border-red-500 focus:border-blue-500;
