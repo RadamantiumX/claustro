@@ -19,7 +19,7 @@ export const refreshTokenRouter = trpc.router({
         try{
 
           if(input.refreshToken === undefined){
-            throw new TRPCError({ code:'BAD_REQUEST', message:'The refresh token is missing! first stage' })
+            throw new TRPCError({ code:'UNAUTHORIZED', message:'The refresh token is missing! first stage' })
           }
 
         const blackListToken = await refreshTokenInstance.refreshToken.blackList(input.refreshToken)
@@ -47,7 +47,7 @@ export const refreshTokenRouter = trpc.router({
        
         return {newAccessToken:newAccessToken, newRefreshToken:newRefreshToken}
         }catch(error){
-            throw new TRPCError({ code: 'BAD_REQUEST', message: `Somenthing went wrong on refreshToken router: ${error}`, cause:error })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: `Somenthing went wrong on refreshToken router: ${error}`, cause:error })
         }
        
     })
