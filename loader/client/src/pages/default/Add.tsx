@@ -4,13 +4,13 @@ import FormSection from '../../features/default/add/FormSection'
 import { ConfirmationCard } from '../../components/cards/ConfirmationCard'
 import { useFormBlocker } from '../../hooks/useFormBlocker'
 import { useStateContext } from '../../hooks/useCtxStates'
+import { useReload } from '../../hooks/useReload'
+
 
 export default function Add():React.ReactNode {
   const { blocker } = useFormBlocker()
   const { setInputError } = useStateContext()
-
-
-
+  useReload()
   return (
     <>
     {blocker.state === "blocked" ? 
