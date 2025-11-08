@@ -56,13 +56,7 @@ export const useAddData = () => {
         onError: (error)=>{
            
             const parsedError = JSON.parse(error.message)
-            console.log(parsedError)
-            // parsedError.map((item:any)=>{
-            //  console.log(item.path[0])
-             
-            //  setInputError()
-             
-            // })
+            console.log(parsedError[0].path[0])
             setInputError(parsedError)
             console.log(inputError)
             setLoading(false)
@@ -78,3 +72,20 @@ export const useAddData = () => {
  
   return { formData, handleChange, handleSubmit }
 }
+
+/**
+ * ERROR RESPONSE EXAMPLE:
+ * [
+ *  {
+      code: 'too_small',
+      minimum: 5,
+      type: 'string',
+      inclusive: true,
+      exact: false,
+      message: 'Too short entry',
+      path: [ 'emailSourcePsw' ]
+    }
+   ]
+ * 
+ * 
+ */
