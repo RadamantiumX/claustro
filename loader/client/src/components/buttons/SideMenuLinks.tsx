@@ -5,7 +5,7 @@ export const SideMenuLinks:React.FC<{children:React.ReactNode, path:string}> = (
     
     return(
         <>
-        <Link className="link-underline" to={path}>{children}</Link>
+        <Link reloadDocument className="link-underline" to={path}>{children}</Link>
         </>
     )
 }
