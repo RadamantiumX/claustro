@@ -3,7 +3,7 @@ import { FormButton } from '../buttons/FormButton';
 import { Plus } from '../../icons/Plus';
 import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
-
+import { ErrorInputMessage } from '../misc/ErrorInputMessage';
 
 // TODO: make a global state confirmation to confirm exit without complete the form: EXAMPLE: with the context
 export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }) => {
@@ -33,10 +33,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       disabled={loading}
                      
                     /> 
-                    {inputError.length > 0 && inputError.map((input,key)=>(
-                     data.propInput === input.path[0] && 
-                     <p key={key} className='text-red-500 text-[12px]'>{data.value === '' ? 'This field is required!':input.message}</p>
-                    ))}
+                    {inputError.length > 0 && <ErrorInputMessage inputError={inputError} dataName={data.propInput} dataValue={data.value}/>}
                   </div>
                 </div>
              ))}

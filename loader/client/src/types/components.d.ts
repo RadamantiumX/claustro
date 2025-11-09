@@ -46,3 +46,13 @@ export interface CardConfirmProps {
   acceptFn: ()=>void;
   rejectFn: ()=>void;
 }
+
+export interface ErrorInputResponse {
+      code: string;
+      minimum: number;
+      type: string;
+      inclusive: boolean;
+      exact: boolean;
+      message: string;
+      path: string[]
+}
