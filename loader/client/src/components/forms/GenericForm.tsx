@@ -29,7 +29,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                       value={data.value}
                       onChange={handleChange}
                       placeholder={data.placeholder}
-                      className={inputError.length > 0 ? inputError[key].path[0] === data.propInput ? "input-w-full border-red-700": "input-w-full" :"input-w-full"}
+                      className={inputError.length > 0 && data.value === ''?"input-w-full border-red-500":"input-w-full"}
                       disabled={loading}
                      
                     /> 
