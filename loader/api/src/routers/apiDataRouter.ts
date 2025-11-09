@@ -2,7 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { ApiDataService } from "../services/apiDataService";
 import { apiDataSchema } from "../schemas/zodSchemas/apiDataValidation";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 const apiDataServiceInstance = ApiDataService.getInstance()
 
 

@@ -4,7 +4,7 @@ import { userSchema } from '../schemas/zodSchemas/userColabValidation';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
 //import { COOKIE_AGE } from "../const/cookieAge";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 //import { JWTtokenSign } from "../helper/jwtFunctions";
 //import AppError from "../errors/appErrors";
 // TODO: search some solution with AUTH with LuciaAuth: https://lucia-auth.com/

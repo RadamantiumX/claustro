@@ -2,7 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 
 const userColabServiceInstance = UserColabService.getInstance()
 

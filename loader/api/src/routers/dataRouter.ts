@@ -2,7 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
 import { dataSchema } from "../schemas/zodSchemas/dataValidation";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 
 const dataServiceInstance = DataService.getInstance()
 
