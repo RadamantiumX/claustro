@@ -32,10 +32,14 @@ export const createContext = async ({  res, req }:trpcExpress.CreateExpressConte
 }:trpcExpress.CreateExpressContextOptions) => ({})*/
 
 type Context = Awaited<ReturnType< typeof createContext >>// Temporary solving
-export const trpc = initTRPC.context<Context>().create({
+export const trpc = initTRPC.context<Context>().create(
+    /*{
     // Testing debug
-    errorFormatter({shape, error}){
+   errorFormatter({shape, error}){
         console.error('tRPC ERROR here:', error)
+        throw new TRPCError({code:'UNAUTHORIZED', message:"Some error with the credentials provided"})
         return shape
     }
-})
+}
+    */
+   )

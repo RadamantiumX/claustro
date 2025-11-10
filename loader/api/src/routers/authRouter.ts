@@ -15,7 +15,7 @@ export const authRouter = trpc.router({
           }catch(error){
              throw new TRPCError({
                     code:'UNAUTHORIZED',
-                    message:'An unexpected error occurred, please try again later.',
+                    message:'An error ocurred with the credentials provided',
                     cause: error
                 })
           }

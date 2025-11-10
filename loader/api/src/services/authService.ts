@@ -7,7 +7,7 @@ import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
 
-
+// TODO: Appy "Then - Catch" to each filter to test
 // Dependency Injection + Singleton PATTERN
 export class AuthService {
   private static instance: AuthService; // Only for instance
@@ -32,6 +32,7 @@ export class AuthService {
               false
             );
           }
+
           const verifyPsw = await bcrypt.compare(
             bodyReq.password,
             verifyUser.password
@@ -43,6 +44,8 @@ export class AuthService {
               "Username or password is wrong, code: 401",
               false
             );
+           // throw new Error('Some error on password provided')
+            
           }
 
           // The User Session is only available in ONE DEVICE ONCE
@@ -84,8 +87,8 @@ export class AuthService {
           };
         } catch (error) {
            throw new AppError(
-            "Bad Request",
-            400,
+            "UNAUTHORIZED",
+             401,
             "Login attemp with error",
             false
           );
