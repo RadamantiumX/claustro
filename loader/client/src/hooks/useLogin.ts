@@ -20,7 +20,7 @@ export const useLogin = ():SignInHandler =>{
     // const { trpcClient } = useTrpc()
     const trpc = useTRPC()
  
-  const { setToken, setUser, setLoading, setResponseTime, setBounce, setRefreshToken } = useStateContext()
+  const { setToken, setUser, setLoading, setResponseTime, setBounce, setRefreshToken, inputError, setInputError } = useStateContext()
   const [formData, setFormData]:any = useState({
     username: '',
     password: '',
@@ -49,7 +49,9 @@ export const useLogin = ():SignInHandler =>{
               setBounce(false)
         },
         onError:(error)=>{
-          console.log(error)
+          // This is only for CLIENTE ERROR, INTERNAL
+          console.log(error.message)
+          setLoading(false)
         }
       })
       

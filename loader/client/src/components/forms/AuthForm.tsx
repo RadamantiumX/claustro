@@ -29,6 +29,7 @@ export const AuthForm:React.FC<Omit<FormProps, 'dataInputs'>> = ({handleSubmit,h
                 value={input.value} 
                 onChange={handleChange}
                 disabled={loading}
+                required
                 />
               ))}
               <FormButton loading={loading}>

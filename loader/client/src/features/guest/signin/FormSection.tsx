@@ -5,6 +5,7 @@ import { BasicCard } from "../../../components/cards/BasicCard"
 import { AuthForm } from "../../../components/forms/AuthForm"
 import { useLogin } from "../../../hooks/hooks"
 import GuestContent from "../../../components/sectionsTemplate/GuestContent"
+// import { AuthErrorCard } from "../../../components/cards/AuthErrorCard"
 
 /**
  * Form for Auth Section on Guest Layout
@@ -14,6 +15,7 @@ export default function FormSection():React.ReactNode {
   const { handleChange, handleSubmit, formData } = useLogin()
   return (
     <GuestContent>
+      {/* <AuthErrorCard/> */}
           <BasicCard>
               <PageSubTitle title="Sign In to your account"/>
               <AuthForm
