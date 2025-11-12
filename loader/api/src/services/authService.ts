@@ -1,5 +1,4 @@
 import type {  IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods, AuthRefreshToken } from "../declarations/index";
-import AppError from "../errors/appErrors";
 import bcrypt from "bcryptjs";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";
@@ -29,30 +28,18 @@ export class AuthService {
             username: bodyReq.username,
           })
           ///// TODO: make the token verfication, if the current USER have a token, then, this token must be deleted. Only ONE session for device once.
-         if (!verifyUser) {
+         if (!verifyUser) 
+          {
            throw new Error('Wrong username or password')
-           /* throw new AppError(
-              "Unauthorized",
-              401,
-              "Username or password is wrong, code: 401",
-              false
-            );*/
            }
 
           const verifyPsw = await bcrypt.compare(
             bodyReq.password,
             verifyUser.password
           )
-          if (!verifyPsw) {
-         throw new Error('Wrong username or password')
-           /* throw new AppError(
-              "Unauthorized",
-              401,
-              "Username or password is wrong, code: 401",
-              false
-            );*/
-           // throw new Error('Some error on password provided')
-            
+          if (!verifyPsw) 
+            {
+              throw new Error('Wrong username or password')
            }
 
           // The User Session is only available in ONE DEVICE ONCE
@@ -93,15 +80,7 @@ export class AuthService {
             refreshToken: refreshToken,
           };
        } catch (error) {
-         /* if(error instanceof Prisma.PrismaClientKnownRequestError){
-            console.log(`The error is on service: ${error.code}`)
-            throw envErrorFactory.create(error, 400)
-          }*/
-          // console.log(error)
-          // throw new AppError("Unauthorized", 401, `${error}`,false)
-          // throw envErrorFactory.create(error, 400)
           throw new TRPCError({code:'UNAUTHORIZED', message:`${error}`})
-         
         }
       },
       register: async (bodyReq: Pick<UserColab, "username" | "password">) => {
@@ -110,39 +89,27 @@ export class AuthService {
           username: bodyReq.username,
         });
         if (verifyUser) {
-          throw new AppError(
-            "Bad Request",
-            400,
-            "Provide a different username",
-            false
-          );
+          throw new Error('Username already exists')
         }
         await this.userColabRepository.createSuperAdmin(bodyReq);
         return;
         }catch(error){
-            throw new AppError(
-            "Bad Request",
-            400,
-            "Provide a different username",
-            false
-          );
+            throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
         }
         
       },
       verifyCredentials: async (authHeader: string) => {
         try{
-           const { username } = JWTverifyAndDecode(authHeader);
+        const { username } = JWTverifyAndDecode(authHeader);
         const checkUser = await this.userColabRepository.getUniqueUsername({
           username,
         });
+        if(checkUser){
+          throw new Error('Wrong credentials')
+        }
         return checkUser;
         }catch(error){
-           throw new AppError(
-            "Bad Request",
-            400,
-            "Provide a different username",
-            false
-          );
+           throw new TRPCError({code:'UNAUTHORIZED', message:`${error}`})
         }
        
       },
@@ -151,12 +118,7 @@ export class AuthService {
             await this.refreshTokenRepository.deleteRefreshToken(bodyReq)
             return
            }catch(error){
-              throw new AppError(
-            "Bad Request",
-            400,
-            "Provide a different username",
-            false
-          );
+              throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
            }
       }
     };

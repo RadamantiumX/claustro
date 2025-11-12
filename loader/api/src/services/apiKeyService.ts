@@ -1,7 +1,7 @@
 import type { IApiKeyRepository, ApiKeyMethods, ApiKey } from "../declarations/index";
 import { ApiKeyRepository } from "../repository/apiKeyRepository";
 import prisma from "../config/prismaClient";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors";
+import { TRPCError } from "@trpc/server/dist";
 
 export class ApiKeyService{
     private static instance:ApiKeyService;
@@ -16,16 +16,19 @@ export class ApiKeyService{
                     await this.apiKeyRepository.createApiKey(bodyReq)
                     return
                     }catch(error){
-                      throw new EnvFactoryErrors()
+                      throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                     }
                     
                   },
                   selectUniqueForId: async(bodyReq:Pick<ApiKey, "id">)=>{
                     try{
                     const uniqueForId = await this.apiKeyRepository.getUnique(bodyReq)
+                    if(!uniqueForId){
+                      throw new Error('The request data is missing')
+                    }
                     return uniqueForId
                     }catch(error){
-                      throw new EnvFactoryErrors()
+                       throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                     }
                     
                   },
@@ -34,7 +37,7 @@ export class ApiKeyService{
                     await this.apiKeyRepository.updateApiKey(bodyReq)
                     return
                     }catch(error){
-                     throw new EnvFactoryErrors()
+                     throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                     }
                     
                   },
@@ -43,7 +46,7 @@ export class ApiKeyService{
                     await this.apiKeyRepository.destroyApiKey(bodyReq)
                     return
                     }catch(error){
-                     throw new EnvFactoryErrors()
+                     throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                     }
                     
                   }

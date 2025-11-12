@@ -1,8 +1,8 @@
 import type { IRefreshTokenRepository, RefreshTokenMethods, AuthRefreshToken } from "../declarations/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors"
 import { JWTverifyAndDecode, JWTBlacklist } from "../helper/jwtFunctions";
+import { TRPCError } from "@trpc/server";
 
 export class RefreshTokenService{
     private static instance:RefreshTokenService
@@ -15,9 +15,12 @@ export class RefreshTokenService{
                 try{
                     
                     const tokenOwner = await this.refreshTokenRepository.uniqueOwner({userColabId:bodyReq.userColabId, refreshToken: bodyReq.refreshToken})
+                    if(!tokenOwner){
+                        throw new Error('Wrong credentials provided')
+                    }
                     return tokenOwner
                 }catch(error){
-                  throw new EnvFactoryErrors()
+                  throw new TRPCError({code:'UNAUTHORIZED',message:`${error}`})
                 }
             },
             update:async({userColabId, refreshToken}:Pick<AuthRefreshToken, 'userColabId'| 'refreshToken'>)=>{
@@ -25,7 +28,7 @@ export class RefreshTokenService{
                  await this.refreshTokenRepository.updateRefreshToken({userColabId, refreshToken})
                  return
                }catch(error){
-                throw new Error('Error on Update')
+                 throw new TRPCError({code:'UNAUTHORIZED',message:`Something went wrong!`})
                }
             },
             blackList: async(refreshToken:string):Promise<boolean>=>{
@@ -38,7 +41,7 @@ export class RefreshTokenService{
                     }
                     return expired
                 }catch(error){
-                throw new EnvFactoryErrors()
+                throw new TRPCError({code:'UNAUTHORIZED',message:`Something went wrong!`})
                 }
             }
         }

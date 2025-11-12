@@ -1,7 +1,7 @@
 import type { IApiDataRepository, ApiDataMethods, ApiData } from "../declarations/index"
 import { ApiDataRepository } from "../repository/apiDataRepository";
 import prisma from "../config/prismaClient";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors";
+import { TRPCError } from "@trpc/server";
 export class ApiDataService{
     private static instance:ApiDataService
     apiDataRepository:IApiDataRepository;
@@ -16,16 +16,19 @@ export class ApiDataService{
                   await this.apiDataRepository.createApiData(bodyReq)
                   return
                 }catch(error){
-                throw new EnvFactoryErrors()
+                throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                 }
                 
             },
             selectUniqueForId: async(bodyReq:Pick<ApiData, "id">)=>{
                 try{
-                    const uniqueForId = await this.apiDataRepository.getUnique(bodyReq)
+                const uniqueForId = await this.apiDataRepository.getUnique(bodyReq)
+                if(!uniqueForId){
+                    throw new Error('The request data not exists')
+                }
                 return uniqueForId
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                    throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                 }
                 
             },
@@ -35,7 +38,7 @@ export class ApiDataService{
                 await this.apiDataRepository.updateApiData(bodyReq)
                 return
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                 }
                 
             },
@@ -44,7 +47,7 @@ export class ApiDataService{
                      await this.apiDataRepository.destroyApiData(bodyReq)
                 return
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                     throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                 }
                
             },

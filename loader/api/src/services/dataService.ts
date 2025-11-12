@@ -1,8 +1,7 @@
 import type { IDataRepository, DataMethods, Datum } from "../declarations/index";
 import { DataRepository } from "../repository/dataRepository";
 import prisma from "../config/prismaClient";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors";
-
+import { TRPCError } from "@trpc/server/dist";
 ///// TODO: adding the methods on definitions ✅
 export class DataService{
     private static instance:DataService;
@@ -14,10 +13,10 @@ export class DataService{
         this.data = {
             list:async()=>{
                 try{
-                 const allData = await this.dataRepository.allData()
+                const allData = await this.dataRepository.allData()
                 return allData
                 }catch(error){
-                  throw new EnvFactoryErrors()
+                  throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                 }
                 
             },
@@ -27,25 +26,31 @@ export class DataService{
                 await this.dataRepository.createData(bodyReq)
                 return
                 }catch(error){
-                  throw new EnvFactoryErrors()
+                  throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                 }
                 
             },
             selectUniqueForId:async(bodyReq:Pick<Datum, "id">)=>{
                 try{
                 const uniqueForId = await this.dataRepository.getUnique(bodyReq)
+                if(!uniqueForId){
+                    throw new Error('The request data is not exists')
+                }
                 return uniqueForId
                 }catch(error){
-                 throw new EnvFactoryErrors()
+                 throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                 }
                 
             },
             selectUniqueForEmail:async(bodyReq:Pick<Datum, "emailSource">)=>{
                 try{
                 const uniqueForEmail = await this.dataRepository.getForEmailSource(bodyReq)
+                if(!uniqueForEmail){
+                    throw new Error('The request data is not exists')
+                }
                 return uniqueForEmail
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                   throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                 }
                 
             },
@@ -55,7 +60,7 @@ export class DataService{
                 await this.dataRepository.updateData(bodyReq)
                 return
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                    throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                 }
                 
             },
@@ -64,7 +69,7 @@ export class DataService{
                 await this.dataRepository.destroyData(bodyReq)
                 return
                 }catch(error){
-                    throw new EnvFactoryErrors()
+                    throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                 }
                 
             }
