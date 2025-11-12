@@ -12,6 +12,7 @@ import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation
 const refreshTokenInstance = RefreshTokenService.getInstance()
 const userColabInstance = UserColabService.getInstance()
 
+// TODO: MAKE SIMPLE THIS ROUTER --> APPLY AND HANDLE ERRORS ON SERVICES (id is this posible)
 
 // Refresh TOKEN route
 export const refreshTokenRouter = trpc.router({

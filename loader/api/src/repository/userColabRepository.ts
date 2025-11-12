@@ -8,13 +8,15 @@ export class UserColabRepository{
    constructor(private prismaClient:PrismaClient){}
    
     async getUniqueUsername({username}:Pick<UserColab, 'username'>):Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>{
-      
-       const unique = await this.prismaClient.userColab.findUnique({
+     
+           const unique = await this.prismaClient.userColab.findUnique({
          where:{ username: username },
          select: { id: true, username: true, password: true, isSuperAdmin: true }
        })
         
      return unique
+     
+       
        
     }
 

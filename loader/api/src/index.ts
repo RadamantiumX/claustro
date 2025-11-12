@@ -2,13 +2,12 @@ import express, {Application} from 'express'
 import dotenv from 'dotenv'
 import { Response, Request, NextFunction } from 'express'
 import bodyParser from 'body-parser'
-import { jwtErrorMiddleware, typeScriptError } from './errors/middleware/errorMiddleware'
-import { blackListJWT } from './middleware/blackListJWT';
 import { createContext } from './lib/trpcContext';
 import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
+import AppError from './errors/appErrors';
 
 
 dotenv.config()
@@ -26,11 +25,17 @@ app.get('/', (req: Request, res: Response, next: NextFunction)=>{
     
 })
 
+/*app.all('*', (req:Request, res:Response, next:NextFunction)=>{
+  debugger
+  const error = new AppError(
+    'Resource not found',
+     404,
+    'Due to the mismatch between the client defnied user and existing users in the database...',
+    false
+  )
+  next(error)
+})*/
 
-// app.use(blackListJWT)
-//app.use(typeScriptError)
-// app.use(jwtErrorMiddleware)
-// tRPC
 app.use(
   '/trpc',
   trpcExpress.createExpressMiddleware({

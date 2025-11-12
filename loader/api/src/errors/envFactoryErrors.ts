@@ -5,17 +5,17 @@ import { TRPCError } from "@trpc/server"
 
 class envCustomErrors extends Error{
     public code:HttpCode
-    constructor(message:string){
+    constructor(message:string, code:HttpCode){
       super(message)
       this.name = 'Internal Error'
-      this.code = 500
+      this.code = code
       this.message = 'Something is wrong on the server'
     }
 }
 
 class PrismaErrors extends envCustomErrors{
     constructor(meta:any, code:HttpCode){
-       super(`Prisma Error: The Error appear on target ${meta.target}`)
+       super(`Prisma Error: The Error appear on target ${meta.target}`, code)
        this.code = code
     }
     
@@ -23,14 +23,14 @@ class PrismaErrors extends envCustomErrors{
 
 class ZodErrors extends envCustomErrors{
     constructor( issues:any,code:HttpCode){
-         super(`Zod Error - Validation fail: ${issues.message}`)
+         super(`Zod Error - Validation fail: ${issues.message}`, code)
          this.code = code
     }
 }
 
 class TrpcErrors extends envCustomErrors{
     constructor(message:string, code:HttpCode){
-       super(`TRPC Error: ${message}`)
+       super(`TRPC Error: ${message}`, code)
        this.code = code
     }
 }
