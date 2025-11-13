@@ -23,7 +23,7 @@ const { setToken, setUser, setResponseTime, setShow, setInputError } = useStateC
         setInputError([])
         Cookies.remove(import.meta.env.VITE_ACCESS_TOKEN)
         Cookies.remove(import.meta.env.VITE_USERNAME)
-        
+        Cookies.remove(import.meta.env.VITE_REFRESH_TOKEN)
         }, 2000)
 
         
