@@ -21,6 +21,7 @@ export const useLogin = ():SignInHandler =>{
     const trpc = useTRPC()
  
   const { setToken, setUser, setLoading, setResponseTime, setBounce, setRefreshToken } = useStateContext()
+  const [responseError, setResponseError] = useState('')
   const [formData, setFormData]:any = useState({
     username: '',
     password: '',
@@ -47,9 +48,11 @@ export const useLogin = ():SignInHandler =>{
               setLoading(false)
               setResponseTime(0)
               setBounce(false)
+              setResponseError('')
         },
         onError:(error)=>{
           // This is only for CLIENTE ERROR, INTERNAL <<500>>
+          setResponseError(error.message)
           console.log(error.message)
           setLoading(false)
         }
@@ -62,5 +65,5 @@ export const useLogin = ():SignInHandler =>{
       
   }
   
-  return { formData, handleChange, handleSubmit }
+  return { formData, handleChange, handleSubmit, responseError }
 }
