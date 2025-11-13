@@ -51,9 +51,7 @@ export const useLogin = ():SignInHandler =>{
               setResponseError('')
         },
         onError:(error)=>{
-          // This is only for CLIENTE ERROR, INTERNAL <<500>>
           setResponseError(error.message)
-  
           setLoading(false)
         }
       })
