@@ -1,7 +1,7 @@
 import type { IApiKeyRepository, ApiKeyMethods, ApiKey } from "../declarations/index";
 import { ApiKeyRepository } from "../repository/apiKeyRepository";
 import prisma from "../config/prismaClient";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 
 export class ApiKeyService{
     private static instance:ApiKeyService;

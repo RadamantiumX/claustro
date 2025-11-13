@@ -1,7 +1,7 @@
 import type { IDataRepository, DataMethods, Datum } from "../declarations/index";
 import { DataRepository } from "../repository/dataRepository";
 import prisma from "../config/prismaClient";
-import { TRPCError } from "@trpc/server/dist";
+import { TRPCError } from "@trpc/server";
 ///// TODO: adding the methods on definitions ✅
 export class DataService{
     private static instance:DataService;
