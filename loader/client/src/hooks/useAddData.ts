@@ -51,9 +51,7 @@ export const useAddData =  () => {
           
         },
         onError: (error)=>{
-           
             const parsedError = JSON.parse(error.message)
-            console.log(parsedError[0].path[0])
             setInputError(parsedError)
             console.log(inputError)
             setLoading(false)
