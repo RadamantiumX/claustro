@@ -62,6 +62,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           console.log('we received error', err);
           observer.error(err);
           console.log(err.data?.httpStatus)
+          
           if(err.data?.httpStatus){
             if(err.data?.httpStatus === 401){
               // console.log('Tokens must be destroyed!')

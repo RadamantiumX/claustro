@@ -2,7 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
 import { dataSchema } from "../schemas/zodSchemas/dataValidation";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server";
+
 
 const dataServiceInstance = DataService.getInstance()
 
@@ -15,8 +15,12 @@ export const dataRouter = trpc.router({
     }) ,
     create: protectedProcedure.input(dataSchema.omit({id:true})).mutation(
         ({input})=>{
-   
+              try{
                 return dataServiceInstance.data.create(input)
+              }catch(error){
+                throw new Error('Too many entries')
+              }
+                
 
         }
     ),

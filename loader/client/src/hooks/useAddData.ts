@@ -6,11 +6,11 @@ import { useMutation } from "@tanstack/react-query"
 import { jwtDecode } from "jwt-decode";
 import { useFormBlocker } from "./useFormBlocker";
 
-export const useAddData = () => {
+export const useAddData =  () => {
     const trpc = useTRPC()
     const { setLoading, setNotification, token, setInputError, inputError } = useStateContext()
     
-    const decoded:any = jwtDecode(token ? token : '')
+    const decoded:any = jwtDecode(token ? token : '') // HERE IS THE PRISMA ERROR P2002 
     const { blocker } = useFormBlocker()
     
 
