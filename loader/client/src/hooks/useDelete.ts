@@ -19,7 +19,7 @@ export const useDelete = () => {
           console.log(variables)
           setId(variables)
           await trpcQueryClient.invalidateQueries(trpc.data.list.queryFilter())
-         
+          window.location.reload() // Refresh Page
          },
          onError: (error)=>{
               console.log(error)
@@ -34,10 +34,5 @@ export const useDelete = () => {
      }
      
   }
-
   return { handleDelete, id }
-
-
-
- 
 }

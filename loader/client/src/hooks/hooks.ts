@@ -7,3 +7,5 @@ export { useTrpc } from './useTrpc';
 export { useUserMenu } from './useUserMenu';
 export { useFetchRt } from './useFetchRt';
 export { useDelete } from './useDelete';
+export { useFetchData } from './useFetchData';
+export { useReload } from './useReload';

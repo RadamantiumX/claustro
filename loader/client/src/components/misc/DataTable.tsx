@@ -2,10 +2,12 @@
 import { TableLink } from '../buttons/TableLink'
 import { Trash, Eye, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
-import { useFetchData } from '../../hooks/useFetchData';
+import { useFetchData, useStateContext } from '../../hooks/hooks';
+
 
 export const DataTable = () => {
    const { data }:any = useFetchData()
+   const { loading } = useStateContext()
     return(
         <>
         <div className="sm:w-[70%] w-[90%] overflow-hidden rounded-lg border border-slate-200">
@@ -22,7 +24,7 @@ export const DataTable = () => {
         
       </tr>
     </thead>
-    <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
+    {!loading ? <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
       {data  !== undefined && data !== null ? data.map((item:any, key:any)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
@@ -44,7 +46,7 @@ export const DataTable = () => {
      )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}
       
       
-    </tbody>
+    </tbody>: <tr className="z-[5000] text-2xl flex justify-center">Loading Data...</tr>}
   </table>
 </div>
    
