@@ -4,6 +4,10 @@ import prisma from "../config/prismaClient";
 import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 ///// TODO: adding the methods on definitions ✅
+
+interface Entry{
+  payload: string
+}
 export class DataService{
     private static instance:DataService;
     dataRepository:IDataRepository;
@@ -21,7 +25,7 @@ export class DataService{
                 }
                 
             },
-            search:async(bodyReq:string)=>{
+            search:async(bodyReq:Entry)=>{
                 try{
                   const resultsOfSearch = await this.dataRepository.searchData(bodyReq)
                   return resultsOfSearch

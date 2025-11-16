@@ -1,5 +1,8 @@
 import { ApiData, UserColab, ApiKey, UserColabClientResponse, AuthRefreshToken } from "factory";
 
+interface Entry{
+  payload: string
+}
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
   uniqueForId: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>;
@@ -12,7 +15,7 @@ export interface UserColabMethods{
 
 export interface DataMethods{
    list: () => Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
-   search:(bodyReq:string)=>Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
+   search:(bodyReq:Entry)=>Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
    create: (bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">) => Promise<void>;
    selectUniqueForId: (bodyReq:Pick<Datum, "id">) => Promise<Overload | null>;
    selectUniqueForEmail: (bodyReq:Pick<Datum, "emailSource">) => Promise<Overload | null>;

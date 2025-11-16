@@ -1,6 +1,9 @@
 import { PayloadRefreshToken } from './factory';
 import { Datum, ApiData, ApiKey, UserColab, AuthRefreshToken, UserColabClientResponse, PayloadRefreshToken } from "factory";
 
+export interface Entry{
+  payload: string
+}
 export interface Overload{
      id: number;
   emailSource: string;
@@ -34,7 +37,7 @@ export interface IuserColabRepository {
 
 export interface IDataRepository{
      getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
-     searchData(payload:string):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
+     searchData({payload}:Entry):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
      getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
      allData():Promise<Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;

@@ -3,7 +3,9 @@ import type { Datum, Overload } from "../declarations/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
-
+interface Entry{
+  payload: string
+}
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
@@ -35,12 +37,12 @@ export class DataRepository{
 
     return unique
     }
-   async searchData(payload:string):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
+   async searchData({payload}:Entry):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
       const dataSearched = await this.prismaClient.data.findMany({
         where:{
             OR:[
-                { emailSource: { startsWith: payload } },
-                { xUser:{ startsWith: payload } }
+                { emailSource: { startsWith:payload} },
+                { xUser:{ startsWith:payload } }
             ]
         },
         select:{

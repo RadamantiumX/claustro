@@ -7,7 +7,7 @@ import { z } from 'zod';
 const dataServiceInstance = DataService.getInstance()
 
 const searchInputs = z.object({
-    searchReq: z.string()
+    payload: z.string()
 })
 
 export const dataRouter = trpc.router({
@@ -26,7 +26,7 @@ export const dataRouter = trpc.router({
 
         }
     ),
-    search: protectedProcedure.input(searchInputs.pick({searchReq:true})).mutation(({input})=>{
+    search: protectedProcedure.input(searchInputs.pick({payload:true})).mutation(({input})=>{
         try{
             return dataServiceInstance.data.search(input) // TODO: change to OBJECT on service and repository
         }catch(error){
