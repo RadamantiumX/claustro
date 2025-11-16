@@ -34,6 +34,7 @@ export interface IuserColabRepository {
 
 export interface IDataRepository{
      getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
+     searchData(payload:string):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
      getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
      allData():Promise<Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
