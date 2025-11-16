@@ -21,6 +21,14 @@ export class DataService{
                 }
                 
             },
+            search:async(bodyReq:string)=>{
+                try{
+                  const resultsOfSearch = await this.dataRepository.searchData(bodyReq)
+                  return resultsOfSearch
+                }catch(error){
+                throw new TRPCError({ code:'BAD_REQUEST', message:`${error}` })
+                }
+            },
             create:async(bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>=>{
                 // TODO: Validations here! 🌍
                 try{

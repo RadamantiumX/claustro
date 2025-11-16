@@ -1,3 +1,4 @@
+import { match } from "assert";
 import type { Datum, Overload } from "../declarations/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
@@ -34,7 +35,23 @@ export class DataRepository{
 
     return unique
     }
+   async searchData(payload:string):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
+      const dataSearched = await this.prismaClient.data.findMany({
+        where:{
+            OR:[
+                { emailSource: { startsWith: payload } },
+                { xUser:{ startsWith: payload } }
+            ]
+        },
+        select:{
+            id:true,
+            emailSource:true,
+            xUser:true
+        }
+      })
 
+      return dataSearched
+   }
     async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>{
        const unique = await this.prismaClient.data.findUnique({
         where:{ emailSource: payload.emailSource },
@@ -64,7 +81,7 @@ export class DataRepository{
 
     return unique
     }
-
+   
     async allData():Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
         const allDataRecords = await this.prismaClient.data.findMany({
             select:{
