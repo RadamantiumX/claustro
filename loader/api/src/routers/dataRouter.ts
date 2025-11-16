@@ -2,11 +2,13 @@ import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
 import { dataSchema } from "../schemas/zodSchemas/dataValidation";
 import { protectedProcedure } from "../lib/procedure";
-
+import { z } from 'zod';
 
 const dataServiceInstance = DataService.getInstance()
 
-
+const searchInputs = z.object({
+    searchReq: z.string()
+})
 
 export const dataRouter = trpc.router({
     list: protectedProcedure.query(
@@ -24,6 +26,13 @@ export const dataRouter = trpc.router({
 
         }
     ),
+    search: protectedProcedure.input(searchInputs.pick({searchReq:true})).mutation(({input})=>{
+        try{
+            return dataServiceInstance.data.search(input) // TODO: change to OBJECT on service and repository
+        }catch(error){
+            throw new Error('Too many requests')
+        }
+    }),
     selectForId: protectedProcedure.input(dataSchema.pick({id:true})).mutation(
         (({input })=>{
 
