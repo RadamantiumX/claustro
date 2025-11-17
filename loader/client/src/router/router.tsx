@@ -7,6 +7,7 @@ import GuestLayout from "../layouts/GuestLayout";
 import DefaultLayout from '../layouts/DefaultLayout';
 import Add from "../pages/default/Add";
 import UserSettings from "../pages/default/user/UserSettings";
+import Search from "../pages/default/Search";
 /**
  * 
  */
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path:'/settings',
                 element: <UserSettings/>
+            },
+            {
+                path:'/search',
+                element:<Search/>
             }
         ]
     }
