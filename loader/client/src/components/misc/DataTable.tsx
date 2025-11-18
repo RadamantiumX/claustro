@@ -3,14 +3,18 @@ import { TableLink } from '../buttons/TableLink'
 import { Trash, Eye, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
 import { useFetchData, useStateContext } from '../../hooks/hooks';
+import React from 'react';
 
 
-export const DataTable = () => {
-   const { data }:any = useFetchData()
+export const DataTable:React.FC<{query:string | null}> = ({query}):React.ReactNode => {
+   const { data }:any = useFetchData(query)
    const { loading } = useStateContext()
+   
+  
     return(
         <>
         <div className="sm:w-[70%] w-[90%] overflow-hidden rounded-lg border border-slate-200">
+          
   <table className="w-full">
     <thead className="border-b border-slate-200 bg-slate-100 text-sm font-medium text-slate-600 dark:bg-slate-900">
       <tr>

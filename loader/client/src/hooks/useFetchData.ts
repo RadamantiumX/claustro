@@ -1,18 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { useTRPC } from "../utils/trpc";
-// import { useState } from "react";
-import { useStateContext } from "./useCtxStates";
+import { useState } from "react";
 
-export const useFetchData = () => {
-   // const [data, setData]:any = useState()
+// TODO: finish this mutation
+export const useFetchData = (query: string | null) => {
+    const [ searchData, setSearchData ]:any = useState()
     const trpc = useTRPC()
-    const { setLoading } = useStateContext()
-    const allData = useQuery(trpc.data.list.queryOptions())
-    if(allData.isPending){
-      
-        setLoading(true)
+    if(query){
+      const searchQuery = useMutation(trpc.data.create.mutationOptions())
+      searchQuery.mutate(query,{
+        onSuccess: (data, variables)=>{
+           setSearchData(data)
+        },
+        onError:(error) =>{
+          console.log(error)
+        }
+      })
     }
-   setLoading(false) 
+    const allData = useQuery(trpc.data.list.queryOptions())
+   
    const data = allData.data
-  return {data}
+  return {data, searchData}
 }
