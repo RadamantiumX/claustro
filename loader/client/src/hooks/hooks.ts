@@ -9,4 +9,4 @@ export { useFetchRt } from './useFetchRt';
 export { useDelete } from './useDelete';
 export { useFetchData } from './useFetchData';
 export { useReload } from './useReload';
-export { useSearchData } from './useSearchData'
+export { useGetParams } from './useGetParams'

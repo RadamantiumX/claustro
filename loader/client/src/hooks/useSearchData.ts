@@ -1,8 +1,5 @@
-import { useSearchParams } from "react-router-dom"
 
+// TODO make a search data mutation here!
 export const useSearchData = () => {
-  const [searchParams] = useSearchParams()
-  const searchP = searchParams.get('search')
-  console.log(searchP)
-  return { searchP }
+   
 }

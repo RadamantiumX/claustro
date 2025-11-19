@@ -7,7 +7,7 @@ import React from 'react';
 
 
 export const DataTable:React.FC<{query:string | null}> = ({query}):React.ReactNode => {
-   const { data }:any = useFetchData(query)
+   const { data }:any = useFetchData()
    const { loading } = useStateContext()
    
   

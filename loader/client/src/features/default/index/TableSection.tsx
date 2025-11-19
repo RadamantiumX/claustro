@@ -2,10 +2,10 @@ import React from 'react'
 import { DataTable } from '../../../components/misc/DataTable'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { SearchQuery } from '../../../components/misc/SearchQuery'
-import { useSearchData } from '../../../hooks/useSearchData'
+import { useGetParams } from '../../../hooks/useGetParams'
 
 export default function TableSection():React.ReactNode {
-  const { searchP } = useSearchData()
+  const { searchP } = useGetParams()
   return (
     <>
     <DefaultContent>
