@@ -1,27 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MagnifyGlass } from '../../icons/icons'
-import { useSearchParams } from 'react-router-dom'
+
+import { useSearchData } from '../../hooks/hooks';
 
 export const SearchForm = ():React.ReactNode => {
-   const [inputValue, setInputValue] = useState('')
-  
-   const [searchParams, setSearchParams] = useSearchParams()
-   // TODO: change the TYPE EVENT ⬇️
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-   const handleEnter = (e:any) =>{
-      
-      if(e.key === 'Enter' && inputValue !== ''){
-         console.log(searchParams)
-         e.preventDefault()
-         console.log(`Your search: ${inputValue}`)
-         setSearchParams({search:inputValue})
-         
-      }
-     
-   }
 
-   
-
+   const {  setInputValue, handleEnter } = useSearchData()
   return (
    <>
       <form >

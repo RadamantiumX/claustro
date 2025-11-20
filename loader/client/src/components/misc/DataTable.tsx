@@ -2,14 +2,14 @@
 import { TableLink } from '../buttons/TableLink'
 import { Trash, Eye, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
-import { useFetchData, useStateContext } from '../../hooks/hooks';
+import { useFetchData, useStateContext, useSearchData } from '../../hooks/hooks';
 import React from 'react';
 
 
-export const DataTable:React.FC<{query:string | null}> = ({query}):React.ReactNode => {
+export const DataTable = ():React.ReactNode => {
    const { data }:any = useFetchData()
    const { loading } = useStateContext()
-   
+  const { searchData } = useSearchData()
   
     return(
         <>
@@ -29,25 +29,43 @@ export const DataTable:React.FC<{query:string | null}> = ({query}):React.ReactNo
       </tr>
     </thead>
     {!loading ? <tbody className="group text-sm bg-gray-500 text-slate-800 dark:text-white">
-      {data  !== undefined && data !== null ? data.map((item:any, key:any)=>(
+      {data  !== undefined && data !== null ? data.map((d:any, key:any)=>(
       <tr key={key} className="border-b border-slate-200 last:border-0">
         <td className="p-3">
-          {item?.id}
+          {d?.id}
         </td>
         <td className="p-3">
-          {item?.emailSource}
+          {d?.emailSource}
         </td>
         <td className="p-3">
-          {item?.xUser}
+          {d?.xUser}
         </td>
         <td className="flex p-3 gap-2">
           
-          <TableLink id={item.id} target="delete" to='/index'><Trash/></TableLink>
-          <TableLink id={item.id} target="edit" to=''><Edit/></TableLink>
-          <TableLink id={item.id} target="select" to=''><Eye/></TableLink>
+          <TableLink id={d.id} target="delete" to='/index'><Trash/></TableLink>
+          <TableLink id={d.id} target="edit" to=''><Edit/></TableLink>
+          <TableLink id={d.id} target="select" to=''><Eye/></TableLink>
         </td>
       </tr>
-     )): <tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}
+     )): searchData.length !== 0 ?  searchData.map((s:any, key:any)=>(
+      <tr key={key} className="border-b border-slate-200 last:border-0">
+        <td className="p-3">
+          {s?.id}
+        </td>
+        <td className="p-3">
+          {s?.emailSource}
+        </td>
+        <td className="p-3">
+          {s?.xUser}
+        </td>
+        <td className="flex p-3 gap-2">
+          
+          <TableLink id={s.id} target="delete" to='/index'><Trash/></TableLink>
+          <TableLink id={s.id} target="edit" to=''><Edit/></TableLink>
+          <TableLink id={s.id} target="select" to=''><Eye/></TableLink>
+        </td>
+      </tr>
+     )) :<tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}
       
       
     </tbody>: <tr className="z-[5000] text-2xl flex justify-center">Loading Data...</tr>}
