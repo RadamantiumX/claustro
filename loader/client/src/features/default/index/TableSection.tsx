@@ -10,7 +10,7 @@ export default function TableSection():React.ReactNode {
     <>
     <DefaultContent>
       {searchP !== null && <SearchQuery query={searchP}/>}
-        <DataTable query={searchP}/>
+        <DataTable/>
      </DefaultContent>
     </>
   )
