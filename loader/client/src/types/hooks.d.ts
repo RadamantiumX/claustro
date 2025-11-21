@@ -12,3 +12,11 @@ export interface SignInHandler{
 export interface LogoutOutput {
     onLogout:()=>void
 }
+
+export interface DataResource {
+         id: number,
+         emailSource: string,
+         xUser: string,
+         userColabId: string, 
+         createdAt: Date
+}

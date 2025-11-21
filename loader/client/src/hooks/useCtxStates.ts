@@ -19,6 +19,8 @@ export const useCtxState = () =>{
     const [responseTime, _setResponseTime] = useState(0)
     const [notification, _setNotification] = useState('')
 
+    const [data, setData] = useState([])
+
     const [inputError, setInputError] = useState([])
 
     const setToken = (token:string) => {
@@ -82,7 +84,9 @@ export const useCtxState = () =>{
           notification, 
           setNotification, 
           inputError, 
-          setInputError
+          setInputError,
+          data,
+          setData
         }
 }
 
