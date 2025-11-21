@@ -48,7 +48,9 @@ export class DataRepository{
         select:{
             id:true,
             emailSource:true,
-            xUser:true
+            xUser:true,
+            userColabId: true,
+            createdAt: true
         }
       })
 

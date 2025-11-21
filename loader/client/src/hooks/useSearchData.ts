@@ -27,8 +27,9 @@ export const useSearchData = () => {
         search.mutate({ payload:inputValue },{
             onSuccess:(data, variables)=>{
               console.log(data)
+              console.log(data?.length)
               console.log(variables)
-              setSearchData(data)
+              setSearchData([...searchData,data])
             },
             onError:(error)=>{
                 console.log(error)
