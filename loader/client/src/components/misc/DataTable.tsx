@@ -2,14 +2,11 @@
 import { TableLink } from '../buttons/TableLink'
 import { Trash, Eye, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
-import { useFetchData, useStateContext, useSearchData } from '../../hooks/hooks';
 import React from 'react';
 
 
 export const DataTable:React.FC<{arrayData:any[]}> = ({arrayData}):React.ReactNode => {
-  //  const { data } = useFetchData()
-  //  const { loading } = useStateContext()
-  //  const { searchData } = useSearchData()
+ 
   
     return(
         <>
