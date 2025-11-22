@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, type SetStateAction } from "react";
-import type { DataResource } from "./hooks";
+// import type { DataResource } from "./hooks";
 export interface StateProps {
     user: null | string | undefined;
     token: null | string | undefined;
@@ -12,7 +12,7 @@ export interface StateProps {
     responseTime: number;
     notification: string;
     inputError: any[];
-    data: DataResource[];
+    data: any[];
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
     setRefreshToken: (token:string | null )=>void; 
@@ -23,5 +23,5 @@ export interface StateProps {
     setResponseTime: Dispatch<SetStateAction<number>>;
     setNotification: (notification:string)=>void;
     setInputError:Dispatch<SetStateAction<any[]>>;
-    setData: Dispatch<SetStateAction<DataResource[]>>
+    setData: Dispatch<SetStateAction<any[]>>;
 }
