@@ -1,4 +1,4 @@
-import { type HttpCode } from "../declarations/index"
+import { type HttpCode } from "../types/index"
 import { Prisma } from "@prisma/client"
 import z from 'zod'
 import { TRPCError } from "@trpc/server"

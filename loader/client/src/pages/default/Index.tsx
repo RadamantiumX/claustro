@@ -14,15 +14,15 @@ export default function Index():React.ReactNode {
  const entries = performance.getEntriesByType("navigation")[0]
  console.log(entries.type)
   useEffect(()=>{
-  setTypeNav(entries.type)  
-  if(typeNav ===  'reload'){
-    navigate(location.pathname, {replace:true})
-    setTypeNav()
-  }  
+  // setTypeNav(entries.type)  
+  // if(typeNav ===  'reload'){
+  //   navigate(location.pathname, {replace:true})
    
+  // }  
+  
   },[location.search, location.pathname, navigate])
   return (
-    <div className="page-flex">
+    <div onReset={()=>{navigate(location.pathname, {replace:true})}} className="page-flex">
       <HeroSection/>
       <TableSection/>
     </div>

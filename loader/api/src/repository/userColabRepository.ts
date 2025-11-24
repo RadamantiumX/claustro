@@ -1,4 +1,4 @@
-import type { UserColab, UserColabClientResponse } from "../declarations/index";
+import type { UserColab, UserColabClientResponse } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 import { PrismaClient } from "@prisma/client";

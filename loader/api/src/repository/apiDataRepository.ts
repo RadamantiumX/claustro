@@ -1,4 +1,4 @@
-import { type ApiData } from "../declarations/index";
+import { type ApiData } from "../types/index";
 import { PrismaClient } from "@prisma/client";
 export class ApiDataRepository{
 

@@ -17,7 +17,7 @@
         "baseUrl": ".",
         "allowSyntheticDefaultImports": true,
         "paths": {
-          "*": ["node_modules/*", "src/declarations/*"]                               /* Skip type checking all .d.ts files. */
+          "*": ["node_modules/*", "src/types/*"]                               /* Skip type checking all .d.ts files. */
     }
   },
    "include": ["./src/**/*","test/**/*","vitest.config.ts", "vite.config.ts"],

@@ -1,4 +1,4 @@
-import type {  IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods, AuthRefreshToken } from "../declarations/index";
+import type {  IuserColabRepository, IRefreshTokenRepository, UserColab, AuthMethods, AuthRefreshToken } from "../types/index";
 import bcrypt from "bcryptjs";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { UserColabRepository } from "../repository/userColabRepository";

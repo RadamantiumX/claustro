@@ -1,4 +1,4 @@
-import { type HttpCode } from "../declarations/index";
+import { type HttpCode } from "../types/index";
 
 
  // See more about factory pattern: https://medium.com/@robinviktorsson/a-guide-to-the-factory-design-pattern-in-typescript-and-node-js-with-practical-examples-7390f20f25e7

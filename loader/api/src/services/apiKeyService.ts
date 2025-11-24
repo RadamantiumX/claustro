@@ -1,4 +1,4 @@
-import type { IApiKeyRepository, ApiKeyMethods, ApiKey } from "../declarations/index";
+import type { IApiKeyRepository, ApiKeyMethods, ApiKey } from "../types/index";
 import { ApiKeyRepository } from "../repository/apiKeyRepository";
 import prisma from "../config/prismaClient";
 import { TRPCError } from "@trpc/server";

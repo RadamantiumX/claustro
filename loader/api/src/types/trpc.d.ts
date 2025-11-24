@@ -1,5 +1,5 @@
 import * as trpcExpress from '@trpc/server/adapters/express'
-import type { UserColab } from 'factory';
+import type { UserColab } from 'src/types/factory';
 
 export interface CreateContextOptions {
     req: trpcExpress.CreateExpressContextOptions['req'];

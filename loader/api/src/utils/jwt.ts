@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import type { IPayload } from '../declarations/index'
+import type { IPayload } from '../types/index'
 import jwt from 'jsonwebtoken'
 
 

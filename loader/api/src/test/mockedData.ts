@@ -1,4 +1,4 @@
-import type { ApiData, UserColab, ApiKey, Datum, AuthRefreshToken } from "../declarations/index";
+import type { ApiData, UserColab, ApiKey, Datum, AuthRefreshToken } from "../types/index";
 
 
 export const mockApiData:ApiData = {

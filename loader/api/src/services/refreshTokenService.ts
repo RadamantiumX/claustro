@@ -1,4 +1,4 @@
-import type { IRefreshTokenRepository, RefreshTokenMethods, AuthRefreshToken } from "../declarations/index";
+import type { IRefreshTokenRepository, RefreshTokenMethods, AuthRefreshToken } from "../types/index";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
 import { JWTverifyAndDecode, JWTBlacklist } from "../helper/jwtFunctions";

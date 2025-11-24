@@ -1,4 +1,4 @@
-import type { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "../declarations/index"
+import type { IuserColabRepository, UserColab, UserColabClientResponse, UserColabMethods } from "../types/index"
 import { UserColabRepository } from "../repository/userColabRepository"
 import prisma from "../config/prismaClient"
 import { TRPCError } from "@trpc/server";

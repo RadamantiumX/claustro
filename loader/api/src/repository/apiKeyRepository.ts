@@ -1,4 +1,4 @@
-import { type ApiKey } from "../declarations/index";
+import { type ApiKey } from "../types/index";
 import { PrismaClient } from "@prisma/client";
 import { timeStampParsed } from "../helper/timeStampParser";
 

@@ -1,4 +1,4 @@
-import type { IApiDataRepository, ApiDataMethods, ApiData } from "../declarations/index"
+import type { IApiDataRepository, ApiDataMethods, ApiData } from "../types/index"
 import { ApiDataRepository } from "../repository/apiDataRepository";
 import prisma from "../config/prismaClient";
 import { TRPCError } from "@trpc/server";
