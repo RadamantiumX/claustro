@@ -81,10 +81,10 @@ it('should return unique data',async ()=>{
 })
 
 
-it('should return all data',async ()=>{
+it('should return all data on page 1',async ()=>{
 
    prismaMock.data.findMany.mockResolvedValue([mockData])
-   const mockedData = await dataRepository.allData()
+   const mockedData = await dataRepository.allData({page:1, pageSize:5})
    expect(mockedData).toEqual(expect.objectContaining([mockData]))
 
    // Mocking Prisma Properties

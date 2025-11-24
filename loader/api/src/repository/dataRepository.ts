@@ -1,5 +1,5 @@
 import { match } from "assert";
-import type { Datum, Overload } from "../declarations/index";
+import type { Datum, Overload } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
@@ -86,7 +86,7 @@ export class DataRepository{
     return unique
     }
    
-    async allData():Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
+    async allData(payload:{page:number, pageSize:number}):Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
         const allDataRecords = await this.prismaClient.data.findMany({
             select:{
                 id: true,

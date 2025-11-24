@@ -10,11 +10,21 @@ const searchInputs = z.object({
     payload: z.string()
 })
 
+const paginationContent = z.object({
+    page: z.number({message: 'Incorrect parameter'}),
+    pageSize: z.number({message: 'Incorrect parameter'})
+})
+
 export const dataRouter = trpc.router({
-    list: protectedProcedure.query(
-        (/*{ctx}*/)=>{
-           return dataServiceInstance.data.list()
-    }) ,
+    list: protectedProcedure.input(paginationContent).mutation(
+        ({input})=>{
+           try{
+             return dataServiceInstance.data.list(input)
+           }catch(error){
+            throw new Error('Too many requests')
+           }
+        }
+    ) ,
     create: protectedProcedure.input(dataSchema.omit({id:true})).mutation(
         ({input})=>{
               try{

@@ -1,4 +1,4 @@
-import type { IDataRepository, DataMethods, Datum } from "../declarations/index";
+import type { IDataRepository, DataMethods, Datum } from "../types/index";
 import { DataRepository } from "../repository/dataRepository";
 import prisma from "../config/prismaClient";
 import { TRPCError } from "@trpc/server";
@@ -16,9 +16,9 @@ export class DataService{
     private constructor(dataRepository:IDataRepository){
         this.dataRepository = dataRepository
         this.data = {
-            list:async()=>{
+            list:async(bodyReq:{page:number, pageSize:number})=>{
                 try{
-                const allData = await this.dataRepository.allData()
+                const allData = await this.dataRepository.allData(bodyReq)
                 return allData
                 }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
