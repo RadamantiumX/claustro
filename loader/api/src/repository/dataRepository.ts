@@ -87,7 +87,10 @@ export class DataRepository{
     }
    
     async allData(payload:{page:number, pageSize:number}):Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
+        // Only "pageSize" number of records for page
         const allDataRecords = await this.prismaClient.data.findMany({
+            skip:(payload.page - 1) * payload.pageSize,
+            take:payload.pageSize,
             select:{
                 id: true,
                 emailSource: true,
