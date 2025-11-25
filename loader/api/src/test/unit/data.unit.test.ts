@@ -2,7 +2,7 @@ import { DataRepository } from "../../repository/dataRepository";
 import { prismaMock } from "../setup";
 import { it, expect, beforeEach, describe } from "vitest";
 import { mockData } from "../mockedData";
-import { timeStampParsed } from "../../helper/timeStampParser";
+
 
 /**
  * Testing REPOSITORIES FILES
@@ -89,7 +89,8 @@ it('should return all data on page 1',async ()=>{
 
    // Mocking Prisma Properties
    expect(prismaMock.data.findMany).toHaveBeenCalledWith({
-
+      skip:(1 - 1) * 10,
+      take: 10,
       select:{
                 id: true,
                 emailSource: true,
