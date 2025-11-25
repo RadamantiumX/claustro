@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight } from '../../icons/icons';
+import { useSearchParams } from 'react-router-dom';
 
 export const Paginator = ():React.ReactNode => {
+  const [  ]
+  const pages = 10
   return (
     <>
       <nav>
