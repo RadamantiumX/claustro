@@ -19,13 +19,13 @@ export class DataService{
             list:async(bodyReq:{page:number, pageSize:number})=>{
                 try{
                 const allData = await this.dataRepository.allData(bodyReq)
-                return allData
+                return {data:allData.data, count: allData.count}
                 }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
                 }
                 
             },
-            search:async(bodyReq:Entry)=>{
+            search:async(bodyReq:{entry:string,page:number, pageSize:number })=>{
                 try{
                   const resultsOfSearch = await this.dataRepository.searchData(bodyReq)
                   return resultsOfSearch
