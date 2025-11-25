@@ -37,9 +37,9 @@ export interface IuserColabRepository {
 
 export interface IDataRepository{
      getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
-     searchData({payload}:Entry):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
+     searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
      getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
-     allData(payload:{page:number, pageSize:number}):Promise<Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
+     allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">):Promise<void>;
      destroyData(payload: Pick<Datum, 'id'>):Promise<void>;

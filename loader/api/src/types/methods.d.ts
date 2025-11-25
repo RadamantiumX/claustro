@@ -14,8 +14,8 @@ export interface UserColabMethods{
 }
 
 export interface DataMethods{
-   list: (bodyReq:{page:number, pageSize:number}) => Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>;
-   search:(bodyReq:Entry)=>Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
+   list: (bodyReq:{page:number, pageSize:number}) => Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number |null}>;
+   search:(bodyReq:{entry:string, page:number, pageSize:number})=>Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
    create: (bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">) => Promise<void>;
    selectUniqueForId: (bodyReq:Pick<Datum, "id">) => Promise<Overload | null>;
    selectUniqueForEmail: (bodyReq:Pick<Datum, "emailSource">) => Promise<Overload | null>;
