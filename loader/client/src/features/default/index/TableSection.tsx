@@ -3,6 +3,7 @@ import { DataTable } from '../../../components/misc/DataTable'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { SearchQuery } from '../../../components/misc/SearchQuery'
 import { useGetParams, useStateContext, useFetchData } from '../../../hooks/hooks'
+import { Paginator } from '../../../components/misc/Paginator';
 
 export default function TableSection():React.ReactNode {
   const { searchP } = useGetParams()
@@ -14,6 +15,7 @@ export default function TableSection():React.ReactNode {
     <DefaultContent>
       {searchP !== null && <SearchQuery query={searchP}/>}
         <DataTable arrayData={data}/>
+        <Paginator/>
     </DefaultContent>
     </>
   )
