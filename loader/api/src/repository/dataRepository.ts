@@ -3,9 +3,7 @@ import type { Datum, Overload } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
-interface Entry{
-  payload: string
-}
+
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
@@ -37,12 +35,14 @@ export class DataRepository{
 
     return unique
     }
-   async searchData({payload}:Entry):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
+   async searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
       const dataSearched = await this.prismaClient.data.findMany({
+        skip:(payload.page - 1) * payload.pageSize,
+        take:payload.pageSize,
         where:{
             OR:[
-                { emailSource: { startsWith:payload} },
-                { xUser:{ startsWith:payload } }
+                { emailSource: { startsWith:payload.entry} },
+                { xUser:{ startsWith:payload.entry } }
             ]
         },
         select:{
@@ -53,6 +53,7 @@ export class DataRepository{
             createdAt: true
         }
       })
+
 
       return dataSearched
    }
@@ -86,7 +87,7 @@ export class DataRepository{
     return unique
     }
    
-    async allData(payload:{page:number, pageSize:number}):Promise<Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null>{
+    async allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>{
         // Only "pageSize" number of records for page
         const allDataRecords = await this.prismaClient.data.findMany({
             skip:(payload.page - 1) * payload.pageSize,
@@ -99,7 +100,8 @@ export class DataRepository{
                 createdAt: true
             }
         })
-        return allDataRecords
+        const count = await this.prismaClient.data.count()
+        return {data:allDataRecords, count:count}
     }
 
     async createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">){
