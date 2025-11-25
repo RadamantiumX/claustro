@@ -1,22 +1,13 @@
 import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
-import { dataSchema } from "../schemas/zodSchemas/dataValidation";
+import { dataSchema, metaSchema } from "../schemas/zodSchemas/dataValidation";
 import { protectedProcedure } from "../lib/procedure";
 import { z } from 'zod';
 
 const dataServiceInstance = DataService.getInstance()
 
-const searchInputs = z.object({
-    payload: z.string()
-})
-
-const paginationContent = z.object({
-    page: z.number({message: 'Incorrect parameter'}),
-    pageSize: z.number({message: 'Incorrect parameter'})
-})
-
 export const dataRouter = trpc.router({
-    list: protectedProcedure.input(paginationContent).mutation(
+    list: protectedProcedure.input(metaSchema.omit({entry:true})).mutation(
         ({input})=>{
            try{
              return dataServiceInstance.data.list(input)
@@ -36,7 +27,7 @@ export const dataRouter = trpc.router({
 
         }
     ),
-    search: protectedProcedure.input(searchInputs.pick({payload:true})).mutation(({input})=>{
+    search: protectedProcedure.input(metaSchema).mutation(({input})=>{
         try{
             return dataServiceInstance.data.search(input) // TODO: change to OBJECT on service and repository
         }catch(error){

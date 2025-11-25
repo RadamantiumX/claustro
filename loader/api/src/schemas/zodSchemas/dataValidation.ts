@@ -12,3 +12,9 @@ export const dataSchema = z
   })
   .required()
 
+export const metaSchema = z.object({
+    entry: z.string({message:"Enter a valid query"}),
+    page: z.number({ message:"Incorrect parameter" }),
+    pageSize: z.number({ message:"Incorrect parameter" })
+})
+
