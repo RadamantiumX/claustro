@@ -10,3 +10,5 @@ export { Eye } from './Eye';
 export { Home } from './Home';
 export { Dashboard } from './Dashboard';
 export { Plus } from './Plus';
+export { ChevronLeft } from './ChevronLeft';
+export { ChevronRight } from './ChevronRight';
