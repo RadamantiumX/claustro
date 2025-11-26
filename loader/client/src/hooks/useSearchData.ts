@@ -27,7 +27,7 @@ export const useSearchData = () => {
          setSearchParams({search:inputValue})
          
          try{
-        search.mutate({ payload:inputValue },{
+        search.mutate({ entry:inputValue, page:1, pageSize:5 },{
             onSuccess:(data:any, variables)=>{
               console.log(data)
               console.log(data?.length)
