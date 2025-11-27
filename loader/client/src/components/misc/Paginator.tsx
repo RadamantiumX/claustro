@@ -14,14 +14,16 @@ export const Paginator = ():React.ReactNode => {
   const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
 
   useEffect(()=>{
+    if(searchParams.get("page") === (start + 1).toString() && searchParams.get("page") !== "1"){
+        setStart( start-2)
+        setEnd(end-2)
+    }
+
     if(searchParams.get("page") === end.toString() && searchParams.get("page") !== arrayPages.length.toString()){
       setStart( start+2)
       setEnd(end+2)
     }
-    // if(searchParams.get("page") === end.toString() || searchParams.get("page") !== "1"){
-    //   setStart( start - 2)
-    //   setEnd(end - 2)
-    // }
+     
   },[start, end, searchParams])
 
   return (
