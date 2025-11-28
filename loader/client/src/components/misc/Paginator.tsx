@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 
 export const Paginator = ():React.ReactNode => {
   const [ searchParams, setSearchParams ] = useSearchParams()
-  const [ currentPage, setCurrentPage ]:any = useState()
+  const [ currentPage, setCurrentPage ] = useState("1")
   const[start, setStart] = useState(0)
   const[end, setEnd] = useState(5)
   const pageSize = 5
@@ -13,7 +13,18 @@ export const Paginator = ():React.ReactNode => {
   // ARRAY GENERATED --> Upper round number length
   const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
 
+  const handleChangePage = (chevronControl:string) =>{
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     const currentParam:string | any = searchParams.get("page")
+     if(chevronControl === "next" && searchParams.get("page") !== null){
+       const numParam = parseInt(currentParam) + 1
+      setSearchParams(numParam.toString())
+      setCurrentPage(numParam.toString())
+     }
+  }
+
   useEffect(()=>{
+    setSearchParams({page:searchParams.get("page") || "1"})
     if(searchParams.get("page") === (start + 1).toString() && searchParams.get("page") !== "1"){
         setStart( start-2)
         setEnd(end-2)
@@ -24,7 +35,7 @@ export const Paginator = ():React.ReactNode => {
       setEnd(end+2)
     }
      
-  },[start, end, searchParams])
+  },[start, end, searchParams, currentPage])
 
   return (
     <>
@@ -36,7 +47,7 @@ export const Paginator = ():React.ReactNode => {
             ))}
             
            
-            {searchParams.get("page") !== arrayPages.length.toString() && <button className='hover:text-amber-600 cursor-pointer'><ChevronRight/></button>}
+            {searchParams.get("page") !== arrayPages.length.toString() && <button onClick={()=>handleChangePage("next")} className='hover:text-amber-600 cursor-pointer'><ChevronRight/></button>}
         </div>
       </nav>
     </>

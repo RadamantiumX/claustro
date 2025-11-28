@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/',
-                element: <Navigate to="/index"/>
+                element: <Navigate to="/dashboard"/>
 
             },
             {
