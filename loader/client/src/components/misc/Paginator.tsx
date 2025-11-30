@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from '../../icons/icons';
 import { useSearchParams } from 'react-router-dom';
 
 export const Paginator = ():React.ReactNode => {
-  const [ searchParams, setSearchParams ] = useSearchParams()
-  const [ currentPage, setCurrentPage ] = useState("1")
-  const[start, setStart] = useState(0)
-  const[end, setEnd] = useState(5)
+  const [ searchParams, setSearchParams ]:any = useSearchParams()
+  const [ currentPage, setCurrentPage ]:any = useState(1)
+  const[start, setStart] = useState(currentPage - 1)
+  const[end, setEnd] = useState(currentPage + 4)
   const pageSize = 5
   const totalRecords = 125
 
@@ -22,9 +23,16 @@ export const Paginator = ():React.ReactNode => {
       setCurrentPage(numParam.toString())
      }
   }
-
+  const handleChangeState = (item:string) => {
+    setSearchParams({page:item.toString()}); 
+    
+  }
   useEffect(()=>{
-    setSearchParams({page:searchParams.get("page") || "1"})
+    const numPage = parseInt(searchParams.get("page")) || 1
+    setSearchParams({page:currentPage.toString()})
+    setCurrentPage(numPage)
+   
+    
     if(searchParams.get("page") === (start + 1).toString() && searchParams.get("page") !== "1"){
         setStart( start-2)
         setEnd(end-2)
@@ -34,7 +42,12 @@ export const Paginator = ():React.ReactNode => {
       setStart( start+2)
       setEnd(end+2)
     }
-     
+
+    
+  
+     console.log(currentPage)
+     console.log(start)
+     console.log(end)
   },[start, end, searchParams, currentPage])
 
   return (
@@ -43,7 +56,7 @@ export const Paginator = ():React.ReactNode => {
         <div className='flex flex-row gap-2'>
             {searchParams.get("page") !== "1" && <button className='hover:text-amber-600 cursor-pointer'><ChevronLeft/></button>}
             {arrayPages.slice(start,end).map((item, key)=>(
-              <button key={key} onFocus={()=>setCurrentPage(item.toString())} onClick={()=>setSearchParams({page:item.toString()})} className={`text-2xl cursor-pointer hover:text-amber-600 focus:text-amber-600 active:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
+              <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
             
            
