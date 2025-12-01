@@ -4,14 +4,17 @@ import { ChevronLeft, ChevronRight } from '../../icons/icons';
 import { useSearchParams } from 'react-router-dom';
 
 export const Paginator = ():React.ReactNode => {
-  const [ searchParams, setSearchParams ]:any = useSearchParams()
-  const [ currentPage, setCurrentPage ]:any = useState(1)
-  const[start, setStart] = useState(currentPage - 1)
-  const[end, setEnd] = useState(currentPage + 4)
   const pageSize = 5
   const totalRecords = 125
 
+  const [ searchParams, setSearchParams ]:any = useSearchParams()
+  const [ currentPage, setCurrentPage ]:any = useState(1)
+  
+  const end = (currentPage * pageSize) /pageSize + pageSize - 1
+  const start = end - pageSize
+
   // ARRAY GENERATED --> Upper round number length
+  // Instead use "ceil()", but this works too
   const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
 
   const handleChangePage = (chevronControl:string) =>{
@@ -27,28 +30,13 @@ export const Paginator = ():React.ReactNode => {
     setSearchParams({page:item.toString()}); 
     
   }
+
+
   useEffect(()=>{
     const numPage = parseInt(searchParams.get("page")) || 1
     setSearchParams({page:currentPage.toString()})
     setCurrentPage(numPage)
-   
-    
-    if(searchParams.get("page") === (start + 1).toString() && searchParams.get("page") !== "1"){
-        setStart( start-2)
-        setEnd(end-2)
-    }
-
-    if(searchParams.get("page") === end.toString() && searchParams.get("page") !== arrayPages.length.toString()){
-      setStart( start+2)
-      setEnd(end+2)
-    }
-
-    
-  
-     console.log(currentPage)
-     console.log(start)
-     console.log(end)
-  },[start, end, searchParams, currentPage])
+  },[searchParams, currentPage])
 
   return (
     <>
