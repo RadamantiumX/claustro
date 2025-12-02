@@ -12,3 +12,4 @@ export { Dashboard } from './Dashboard';
 export { Plus } from './Plus';
 export { ChevronLeft } from './ChevronLeft';
 export { ChevronRight } from './ChevronRight';
+export { Dots } from './Dots';
