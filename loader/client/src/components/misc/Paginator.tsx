@@ -10,9 +10,8 @@ export const Paginator = ():React.ReactNode => {
   const [ searchParams, setSearchParams ]:any = useSearchParams()
   const [ currentPage, setCurrentPage ] = useState(1)
   const [start, setStart] = useState(0)
-  const [end, setEnd] = useState(5)
-  const [startPrev, setStartPrev] = useState(0)
-  const [endPrev, setEndPrev] = useState(0)
+  const [end, setEnd] = useState(pageSize)
+
   // const end = (currentPage * pageSize) /pageSize + pageSize - 1
   // const start = end - pageSize
 
@@ -20,20 +19,17 @@ export const Paginator = ():React.ReactNode => {
   // Instead use "ceil()", but this works too
   const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
 
-  const handleChangePage = (chevronControl:string) =>{
+  const handleChangePage = (chevronCntl:string) =>{
+    if(chevronCntl === "prev"){
+      setSearchParams({page: (currentPage - 1).toString()})
+    }else{
+      setSearchParams({page: (currentPage + 1).toString()})
+    }
+     
     
-     if(chevronControl === "next"){
-      setCurrentPage(+1)
-     }else{
-       setCurrentPage(-1)
-     }
   }
 
   const handleChangeState = (item:string) => {
-    // if(item === "1"){
-    //   setStart(0)
-    //   setEnd(5)
-    // }
     setSearchParams({page:item.toString()}); 
     
   }
@@ -63,10 +59,14 @@ export const Paginator = ():React.ReactNode => {
         <div className='flex flex-row gap-2'>
             
             {searchParams.get("page") !== "1" && <button onClick={()=>handleChangePage("prev")}  className='hover:text-amber-600 cursor-pointer'><ChevronLeft/></button>}
-            {currentPage > 1 && arrayPages.slice(0,currentPage > 2 ? 2 : 1 ).map((item, key)=>(
+
+            {/* Initial pages: Only page 1 & 2 */
+            currentPage > 1 && arrayPages.slice(0,currentPage > 2 ? 2 : 1 ).map((item, key)=>(
               <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
-            {currentPage > 4 && <button><Dots/></button>}
+
+            {/* Appear on  */
+            currentPage > 4 && <button><Dots/></button>}
             {currentPage > 3 && arrayPages.slice((start - 1),(start)).map((item, key)=>(
               <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
