@@ -63,7 +63,7 @@ export const Paginator = ():React.ReactNode => {
         <div className='flex flex-row gap-2'>
             
             {searchParams.get("page") !== "1" && <button onClick={()=>handleChangePage("prev")}  className='hover:text-amber-600 cursor-pointer'><ChevronLeft/></button>}
-            {currentPage >= 3 && arrayPages.slice(0,2).map((item, key)=>(
+            {currentPage > 1 && arrayPages.slice(0,currentPage > 2 ? 2 : 1 ).map((item, key)=>(
               <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
             {currentPage > 4 && <button><Dots/></button>}
