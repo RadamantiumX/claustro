@@ -15,7 +15,7 @@ export default function TableSection():React.ReactNode {
     <DefaultContent>
       {searchP !== null && <SearchQuery query={searchP}/>}
         <DataTable arrayData={data}/>
-        <Paginator/>
+        <Paginator pageSize={5} totalPages={150}/>
     </DefaultContent>
     </>
   )

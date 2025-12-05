@@ -1,81 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ChevronLeft, ChevronRight, Dots } from '../../icons/icons';
-import { useSearchParams } from 'react-router-dom';
+import { usePagination } from '../../hooks/hooks';
 
-export const Paginator = ():React.ReactNode => {
-  const pageSize = 5
-  const totalRecords = 140
-
-  const [ searchParams, setSearchParams ]:any = useSearchParams()
-  const [ currentPage, setCurrentPage ] = useState(1)
-  const [start, setStart] = useState(0)
-  const [end, setEnd] = useState(pageSize)
-
-  // const end = (currentPage * pageSize) /pageSize + pageSize - 1
-  // const start = end - pageSize
-
-  // ARRAY GENERATED --> Upper round number length
-  // Instead use "ceil()", but this works too
-  const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
-
-  const handleChangePage = (chevronCntl:string) =>{
-    if(chevronCntl === "prev"){
-      setSearchParams({page: (currentPage - 1).toString()})
-    }else{
-      setSearchParams({page: (currentPage + 1).toString()})
-    }
-     
-    
-  }
-
-  const handleChangeState = (item:string) => {
-    setSearchParams({page:item.toString()}); 
-    
-  }
-
-
-  useEffect(()=>{
-    
-    if(currentPage <= 5){
-      setEnd(5)
-      setStart(0)
-    }
-    
-   
-      setEnd((currentPage * pageSize)/ pageSize + pageSize -1)
-      setStart(end - pageSize)
-    
-    
-
-    const numPage = parseInt(searchParams.get("page")) || 1
-    setSearchParams({page:currentPage.toString()})
-    setCurrentPage(numPage)
-  },[searchParams, currentPage, start, end])
+export const Paginator:React.FC<{pageSize:number, totalPages:number}> = ({pageSize, totalPages}):React.ReactNode => {
+  
+  const {currentPage, arrayPages, handleChangePage, handleChangeState, end, start } = usePagination(pageSize, totalPages)
  
   return (
     <>
       <nav>
         <div className='flex flex-row gap-2'>
             
-            {searchParams.get("page") !== "1" && <button onClick={()=>handleChangePage("prev")}  className='hover:text-amber-600 cursor-pointer'><ChevronLeft/></button>}
+            {currentPage !== 1 && <button onClick={()=>handleChangePage("prev")}  className='hover:text-amber-600 cursor-pointer'><ChevronLeft/></button>}
 
             {/* Initial pages: Only page 1 & 2 */
             currentPage > 1 && arrayPages.slice(0,currentPage > 2 ? 2 : 1 ).map((item, key)=>(
-              <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
+              <button key={key}  onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item === currentPage && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
 
-            {/* Appear on  */
+            {/* Appear on several pages forward⬇️ */
             currentPage > 4 && <button><Dots/></button>}
             {currentPage > 3 && arrayPages.slice((start - 1),(start)).map((item, key)=>(
-              <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
+              <button key={key} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item === currentPage && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
-            {arrayPages.slice(start,end).map((item, key)=>(
-              <button key={key} onFocus={()=>setCurrentPage(searchParams.get("page"))} onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item.toString() === searchParams.get("page") && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
+
+            {/* Sliced pages */
+            arrayPages.slice(start,end).map((item, key)=>(
+              <button key={key}  onClick={()=>handleChangeState(item.toString())} className={`text-2xl cursor-pointer hover:text-amber-600 visited:text-amber-600 ${item === currentPage && 'border rounded-sm border-amber-600 px-2 py-[1px]'}`}>{item}</button>
             ))}
             
-           {/* <button><Dots/></button>*/}
-            {searchParams.get("page") !== arrayPages.length.toString() && <button onClick={()=>handleChangePage("next")} className='hover:text-amber-600 cursor-pointer'><ChevronRight/></button>}
+        
+            {currentPage !== arrayPages.length && <button onClick={()=>handleChangePage("next")} className='hover:text-amber-600 cursor-pointer'><ChevronRight/></button>}
         </div>
       </nav>
     </>
