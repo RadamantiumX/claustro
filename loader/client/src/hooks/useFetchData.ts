@@ -7,7 +7,7 @@ import { useEffect } from "react";
 // TODO: finish this mutation
 export const useFetchData = () => {
     const trpc = useTRPC()
-    const { setData }:any = useStateContext()
+    const { setData, setCount }:any = useStateContext()
     
     const queryRequest = useMutation(trpc.data.list.mutationOptions())
     useEffect(()=>{
@@ -17,6 +17,7 @@ export const useFetchData = () => {
             console.log(variables)
             console.log(data)
             setData(data.data)
+            setCount(data.count)
         },
         onError:(error)=>{
           console.log(error)

@@ -20,6 +20,7 @@ export const useCtxState = () =>{
     const [notification, _setNotification] = useState('')
 
     const [data, setData] = useState([])
+    const [count, setCount] = useState(0)
 
     const [inputError, setInputError] = useState([])
 
@@ -86,7 +87,9 @@ export const useCtxState = () =>{
           inputError, 
           setInputError,
           data,
-          setData
+          setData,
+          count,
+          setCount
         }
 }
 

@@ -7,7 +7,7 @@ import { Paginator } from '../../../components/misc/Paginator';
 
 export default function TableSection():React.ReactNode {
   const { searchP } = useGetParams()
-  const { data } = useStateContext()
+  const { data, count } = useStateContext()
   useFetchData()
 
   return (
@@ -15,7 +15,7 @@ export default function TableSection():React.ReactNode {
     <DefaultContent>
       {searchP !== null && <SearchQuery query={searchP}/>}
         <DataTable arrayData={data}/>
-        <Paginator pageSize={5} totalPages={150}/>
+        <Paginator pageSize={5} totalPages={count}/>
     </DefaultContent>
     </>
   )

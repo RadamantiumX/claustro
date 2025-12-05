@@ -13,6 +13,7 @@ export interface StateProps {
     notification: string;
     inputError: any[];
     data: any[];
+    count: number;
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
     setRefreshToken: (token:string | null )=>void; 
@@ -24,4 +25,5 @@ export interface StateProps {
     setNotification: (notification:string)=>void;
     setInputError:Dispatch<SetStateAction<any[]>>;
     setData: Dispatch<SetStateAction<any[]>>;
+    setCount: Dispatch<SetStateAction<number>>
 }

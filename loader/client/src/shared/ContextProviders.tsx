@@ -10,7 +10,32 @@ import { StateContext } from "../config/stateContext";
  * @returns {JSX.Element}
  */
 export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JSX.Element => {
-   const {user, token, refreshToken, notification, setNotification, setRefreshToken, setUser, setToken, over, setOver, show, setShow, bounce, setBounce, loading, setLoading, responseTime, setResponseTime, inputError, setInputError, data, setData} = useCtxState()
+   const {
+          user, 
+          token, 
+          refreshToken, 
+          notification, 
+          setNotification, 
+          setRefreshToken, 
+          setUser, 
+          setToken, 
+          over, 
+          setOver, 
+          show, 
+          setShow, 
+          bounce, 
+          setBounce, 
+          loading, 
+          setLoading, 
+          responseTime, 
+          setResponseTime, 
+          inputError, 
+          setInputError, 
+          data, 
+          setData, 
+          count, 
+          setCount
+        } = useCtxState()
 
     return (
         <StateContext.Provider
@@ -26,6 +51,7 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
             notification,
             inputError,
             data,
+            count,
             setUser,
             setToken,
             setRefreshToken,
@@ -36,7 +62,8 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
             setResponseTime,
             setNotification,
             setInputError,
-            setData
+            setData,
+            setCount
          }}
         >
             {children}
