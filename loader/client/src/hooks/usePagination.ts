@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
+
+// Fix the search PARAMS with the REACT ROUTER DOCS: https://reactrouter.com/api/hooks/useSearchParams
 export const usePagination = (pageSize:number, totalRecords:number) => {
    const [ searchParams, setSearchParams ]:any = useSearchParams()
   const [ currentPage, setCurrentPage ] = useState(1)

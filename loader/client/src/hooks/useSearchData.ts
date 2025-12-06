@@ -21,6 +21,7 @@ export const useSearchData = () => {
    const handleEnter = (e:any) =>{
       
       if(e.key === 'Enter' && inputValue !== ''){
+         setSearchParams({})
          console.log(searchParams)
          e.preventDefault()
          console.log(`Your search: ${inputValue}`)
