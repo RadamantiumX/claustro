@@ -21,6 +21,7 @@ export const useCtxState = () =>{
 
     const [data, setData] = useState([])
     const [count, setCount] = useState(0)
+    const [arrayParams, setArrayParams] = useState([])
 
     const [inputError, setInputError] = useState([])
 
@@ -89,7 +90,9 @@ export const useCtxState = () =>{
           data,
           setData,
           count,
-          setCount
+          setCount,
+          arrayParams,
+          setArrayParams
         }
 }
 

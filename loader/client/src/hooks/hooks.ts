@@ -12,3 +12,4 @@ export { useReload } from './useReload';
 export { useGetParams } from './useGetParams';
 export { useSearchData } from './useSearchData';
 export { usePagination } from './usePagination';
+export {useSetParams} from './useSetParams';

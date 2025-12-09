@@ -17,6 +17,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         inputError: [],
         data:[],
         count:null,
+        arrayParams:[],
 
         setUser: () => {},
         setToken: () => {},
@@ -29,6 +30,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         setNotification: ()=>{},
         setInputError: ()=>{},
         setData:()=>{},
-        setCount:()=>{}
+        setCount:()=>{},
+        setArrayParams:()=>{}
     }
 )

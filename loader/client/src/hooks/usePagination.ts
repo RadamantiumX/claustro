@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useStateContext } from './useCtxStates'
 
 
 // Fix the search PARAMS with the REACT ROUTER DOCS: https://reactrouter.com/api/hooks/useSearchParams
@@ -9,6 +10,7 @@ export const usePagination = (pageSize:number, totalRecords:number) => {
   const [ currentPage, setCurrentPage ] = useState(1)
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(pageSize)
+  const { setArrayParams, arrayParams } = useStateContext()
 
   const arrayPages = Array.from({length: Math.floor(totalRecords/pageSize) + 1}, (_, i)=> i + 1)
 
@@ -42,9 +44,13 @@ export const usePagination = (pageSize:number, totalRecords:number) => {
     
 
     const numPage = parseInt(searchParams.get("page")) || 1
-    setSearchParams({page:currentPage.toString()})
+    // setSearchParams({page:currentPage.toString()})
     setCurrentPage(numPage)
-  },[searchParams, currentPage, start, end])
+  },[searchParams, currentPage, start, end, arrayParams])
+
+  useMemo(()=>{
+    setArrayParams([...arrayParams,["page", currentPage.toString()]])
+  },[])
 
   return { currentPage, arrayPages, handleChangePage, handleChangeState, end, start }
 }

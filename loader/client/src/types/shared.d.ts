@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, type SetStateAction } from "react";
 // import type { DataResource } from "./hooks";
+
+export type ParamTuple = [string, string]
 export interface StateProps {
     user: null | string | undefined;
     token: null | string | undefined;
@@ -14,6 +16,7 @@ export interface StateProps {
     inputError: any[];
     data: any[];
     count: number;
+    arrayParams: ParamTuple[];
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
     setRefreshToken: (token:string | null )=>void; 
@@ -26,4 +29,5 @@ export interface StateProps {
     setInputError:Dispatch<SetStateAction<any[]>>;
     setData: Dispatch<SetStateAction<any[]>>;
     setCount: Dispatch<SetStateAction<number>>
+    setArrayParams:Dispatch<SetStateAction<ParamTuple[]>>;
 }
