@@ -54,7 +54,7 @@ const router = createBrowserRouter([
                 element: <Add/>
             },
             {
-                path:'/settings',
+                path:'/settings/:username',
                 element: <UserSettings/>
             },
             {
