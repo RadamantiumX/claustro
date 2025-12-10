@@ -24,6 +24,7 @@ export const useCtxState = () =>{
     const [arrayParams, setArrayParams] = useState([])
 
     const [inputError, setInputError] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
 
     const setToken = (token:string) => {
         _setToken(token)
@@ -92,7 +93,9 @@ export const useCtxState = () =>{
           count,
           setCount,
           arrayParams,
-          setArrayParams
+          setArrayParams,
+          currentPage,
+          setCurrentPage
         }
 }
 

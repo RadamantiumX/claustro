@@ -1,11 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { ChevronLeft, ChevronRight, Dots } from '../../icons/icons';
-import { usePagination } from '../../hooks/hooks';
+import type { PaginationProps } from '../../types/components';
 
-export const Paginator:React.FC<{pageSize:number, totalPages:number}> = ({pageSize, totalPages}):React.ReactNode => {
+
+
+export const Paginator:React.FC<PaginationProps> = ({
+  currentPage,
+  arrayPages,
+  handleChangePage,
+  handleChangeState,
+  end,
+  start
+}):React.ReactNode => {
   
-  const {currentPage, arrayPages, handleChangePage, handleChangeState, end, start } = usePagination(pageSize, totalPages)
+  
  
   return (
     <>

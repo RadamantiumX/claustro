@@ -8,32 +8,7 @@ export const SearchForm = ():React.ReactNode => {
    const { data } = useStateContext()
    const [show, setShow] = useState(false)
    const {  setInputValue, handleEnter } = useSearchData()
-   // const dataMap = [
-   //    "testlin@mailer.com",
-   //    "testlin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   //    "lin@mailer.com",
-   // ]
+ 
   return (
    <>
       <form >

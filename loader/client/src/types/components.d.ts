@@ -56,3 +56,12 @@ export interface ErrorInputResponse {
       message: string;
       path: string[]
 }
+
+export interface PaginationProps {
+  currentPage: number;
+  arrayPages: number[]
+  handleChangePage:(chevronCntl:string)=>void;
+  handleChangeState:(item:string)=>void;
+  end:number;
+  start:number
+}

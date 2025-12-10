@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
+import { useStateContext } from './useCtxStates'
 
 
 // Fix the search PARAMS with the REACT ROUTER DOCS: https://reactrouter.com/api/hooks/useSearchParams
 export const usePagination = (pageSize:number, totalRecords:number) => {
    const [ searchParams, setSearchParams ]:any = useSearchParams()
-  const [ currentPage, setCurrentPage ] = useState(1)
+  const { currentPage, setCurrentPage}  = useStateContext()
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(pageSize)
 
@@ -25,8 +25,8 @@ export const usePagination = (pageSize:number, totalRecords:number) => {
   }
 
   const handleChangeState = (item:string) => {
-    // setSearchParams({page:item.toString()}); 
-     setSearchParams([...searchParams, ["page", item.toString()]])
+     setSearchParams({page:item.toString()}); 
+    
   }
 
 
@@ -44,12 +44,12 @@ export const usePagination = (pageSize:number, totalRecords:number) => {
    
 
     const numPage = parseInt(searchParams.get("page")) || 1
-    // setSearchParams({page:currentPage.toString()})
-    setSearchParams([...searchParams, ["page", currentPage.toString()]])
+    setSearchParams({page:currentPage.toString()})
+    
     setCurrentPage(numPage)
   },[searchParams, currentPage, start, end])
 
 
 
-  return { currentPage, arrayPages, handleChangePage, handleChangeState, end, start }
+  return { arrayPages, handleChangePage, handleChangeState, end, start }
 }

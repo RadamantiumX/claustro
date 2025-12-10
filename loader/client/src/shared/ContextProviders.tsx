@@ -36,7 +36,9 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
           count, 
           setCount,
           arrayParams,
-          setArrayParams
+          setArrayParams,
+          currentPage,
+          setCurrentPage
         } = useCtxState()
 
     return (
@@ -55,6 +57,7 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
             data,
             count,
             arrayParams,
+            currentPage,
             setUser,
             setToken,
             setRefreshToken,
@@ -67,7 +70,8 @@ export const ContextProvider:React.FC<{children: ReactNode}> = ({ children }):JS
             setInputError,
             setData,
             setCount,
-            setArrayParams
+            setArrayParams,
+            setCurrentPage
          }}
         >
             {children}

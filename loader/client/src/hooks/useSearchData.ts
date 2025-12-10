@@ -3,7 +3,6 @@ import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import { useStateContext } from "./useCtxStates"
 
 
 // TODO make a search data mutation here!
@@ -13,7 +12,7 @@ export const useSearchData = () => {
    const [ searchData, setSearchData ]:any = useState([])
    const [inputValue, setInputValue] = useState('')
    const [searchParams, setSearchParams] = useSearchParams()
-   const { setData } = useStateContext()
+
   
 
    // TODO: change the TYPE EVENT ⬇️
@@ -33,7 +32,7 @@ export const useSearchData = () => {
               console.log(data)
               console.log(data?.length)
               console.log(variables)
-              setData(data)
+              searchData(data)
             },
             onError:(error)=>{
                 console.log(error)

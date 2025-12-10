@@ -18,7 +18,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         data:[],
         count:null,
         arrayParams:[],
-
+        currentPage:1,
         setUser: () => {},
         setToken: () => {},
         setRefreshToken: ()=>{},
@@ -31,6 +31,7 @@ export const StateContext:React.Context<StateProps> | any = createContext(
         setInputError: ()=>{},
         setData:()=>{},
         setCount:()=>{},
-        setArrayParams:()=>{}
+        setArrayParams:()=>{},
+        setCurrentPage:()=>{}
     }
 )

@@ -17,6 +17,7 @@ export interface StateProps {
     data: any[];
     count: number;
     arrayParams: ParamTuple[];
+    currentPage: number;
     setUser: (user:string | undefined | null)=>void;
     setToken: (token:string | null )=>void; 
     setRefreshToken: (token:string | null )=>void; 
@@ -30,4 +31,5 @@ export interface StateProps {
     setData: Dispatch<SetStateAction<any[]>>;
     setCount: Dispatch<SetStateAction<number>>
     setArrayParams:Dispatch<SetStateAction<ParamTuple[]>>;
+    setCurrentPage:Dispatch<SetStateAction<number>>;
 }
