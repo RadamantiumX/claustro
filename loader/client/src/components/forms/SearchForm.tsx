@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import { MagnifyGlass } from '../../icons/icons'
 
 import { useSearchData } from '../../hooks/hooks';
-import { useStateContext } from '../../hooks/hooks';
 
 export const SearchForm = ():React.ReactNode => {
-   const { data } = useStateContext()
+ 
    const [show, setShow] = useState(false)
-   const {  setInputValue, handleEnter } = useSearchData()
+   const {  setInputValue, handleEnter,searchData, setSearchData, loading, inputValue } = useSearchData()
  
   return (
    <>
@@ -18,10 +18,11 @@ export const SearchForm = ():React.ReactNode => {
               <input onFocus={()=>setShow(true)} onBlur={()=>{setShow(false)}}  required id="myInput" onKeyDown={handleEnter} onChange={(e)=>setInputValue(e.target.value)} type="search" className='input-search-block' placeholder='Search Record' title="Record searcher"/>
              {
              show &&<div className='abolute top-0 w-[100%] mt-[-0.2%] bg-amber-300 p-2 max-h-50 overflow-y-auto'>
-               <p>Results of the query...</p>
+              { loading && <p>Loading results of the query...</p>}
+              { searchData.length !== 0 ?  <p>Results of {inputValue}</p>: <p>Search Something...</p>}
                <div className='flex flex-col'>
                  {
-                  data.map((d)=>(
+                  searchData.map((d:any)=>(
                       <p>
                         {d.emailSource}
                       </p>

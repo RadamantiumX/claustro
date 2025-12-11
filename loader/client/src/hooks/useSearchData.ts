@@ -2,7 +2,7 @@
 import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-import { useSearchParams } from "react-router-dom"
+
 
 
 // TODO make a search data mutation here!
@@ -11,7 +11,7 @@ export const useSearchData = () => {
    const search = useMutation(trpc.data.search.mutationOptions())
    const [ searchData, setSearchData ]:any = useState([])
    const [inputValue, setInputValue] = useState('')
-   const [searchParams, setSearchParams] = useSearchParams()
+  const [loading,setLoading] = useState(false)
 
   
 
@@ -20,11 +20,11 @@ export const useSearchData = () => {
    const handleEnter = (e:any) =>{
       
       if(e.key === 'Enter' && inputValue !== ''){
-         setSearchParams({})
-         console.log(searchParams)
+        setLoading(true)
+      
          e.preventDefault()
          console.log(`Your search: ${inputValue}`)
-         setSearchParams({search:inputValue})
+        
          
          try{
         search.mutate({ entry:inputValue, page:1, pageSize:5 },{
@@ -32,7 +32,8 @@ export const useSearchData = () => {
               console.log(data)
               console.log(data?.length)
               console.log(variables)
-              searchData(data)
+              setSearchData(data)
+              setLoading(false)
             },
             onError:(error)=>{
                 console.log(error)
@@ -49,5 +50,5 @@ export const useSearchData = () => {
 
 
 
- return { searchData, setSearchData, handleEnter, setInputValue, inputValue }
+ return { searchData, setSearchData, handleEnter, setInputValue, inputValue, loading }
 }

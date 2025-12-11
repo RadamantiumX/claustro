@@ -9,10 +9,12 @@ export const useFetchData = (page:number) => {
     const trpc = useTRPC()
     // const { setData, setCount }:any = useStateContext()
     const [fetchData, setFetchData]:any = useState([])
-    const [responseCount, setResponseCount]:any = useState(0)
     
+    const [responseCount, setResponseCount]:any = useState(0)
+    console.log(page)
     const queryRequest = useMutation(trpc.data.list.mutationOptions())
     useEffect(()=>{
+   
         try{
       queryRequest.mutate({page:page, pageSize:5},{
         onSuccess:(data, variables)=>{
@@ -23,12 +25,13 @@ export const useFetchData = (page:number) => {
         },
         onError:(error)=>{
           console.log(error)
-        }
+        },
+        
       })
     }catch(error){
       console.log(error)
     }
-    },[])
+    },[page])
     
 
    return {fetchData, responseCount}
