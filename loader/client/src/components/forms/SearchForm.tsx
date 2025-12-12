@@ -4,6 +4,8 @@ import { MagnifyGlass } from '../../icons/icons'
 
 import { useSearchData } from '../../hooks/hooks';
 
+// TODO: move this component outside from the layout
+
 export const SearchForm = ():React.ReactNode => {
  
    const [show, setShow] = useState(false)
@@ -11,7 +13,7 @@ export const SearchForm = ():React.ReactNode => {
  
   return (
    <>
-      <form >
+      <form className='pointer-events-auto z-[1000] !blur-none'>
          <div className='relative h-full flex justify-center items-center flex-col'>
              <div className='absolute flex flex-col it start-0 inset-y-2 ps-2 text-gray-900'><MagnifyGlass/></div>
           
