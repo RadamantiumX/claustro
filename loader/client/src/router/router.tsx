@@ -8,6 +8,7 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import Add from "../pages/default/Add";
 import UserSettings from "../pages/default/user/UserSettings";
 import Search from "../pages/default/Search";
+import Record from "../pages/default/index/Record";
 /**
  * 
  */
@@ -47,7 +48,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/index',
-                element: <Index/>
+                Component: Index,
+                children: [
+                    {
+                        path:"/index/record/:id",
+                        element: <Record/>
+                    }
+                ]
             },
             {
                 path:'/add',

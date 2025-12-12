@@ -7,7 +7,7 @@ export default function HeroSection() {
     <>
      <HeroDefault>
        <PageTitle title="Accounts Data"/>
-       <SearchInput/>
+      <SearchInput/>
      </HeroDefault>
     </>
   )

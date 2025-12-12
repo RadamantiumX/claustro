@@ -2,21 +2,29 @@
 import { useTRPC } from "../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-
+import { useStateContext } from "./useCtxStates"
 
 
 // TODO make a search data mutation here!
 export const useSearchData = () => {
    const trpc = useTRPC()
+   const { setNotification } = useStateContext()
    const search = useMutation(trpc.data.search.mutationOptions())
    const [ searchData, setSearchData ]:any = useState([])
+   const [show, setShow] = useState(false)
    const [inputValue, setInputValue] = useState('')
-  const [loading,setLoading] = useState(false)
+   const [loading,setLoading] = useState(false)
 
   
 
    // TODO: change the TYPE EVENT ⬇️
    
+   const handleBlur = () => {
+      setShow(false)
+      setInputValue('')
+      setSearchData([])
+   }
+
    const handleEnter = (e:any) =>{
       
       if(e.key === 'Enter' && inputValue !== ''){
@@ -30,7 +38,8 @@ export const useSearchData = () => {
         search.mutate({ entry:inputValue, page:1, pageSize:5 },{
             onSuccess:(data:any, variables)=>{
               console.log(data)
-              console.log(data?.length)
+              if(data.length === 0) setNotification('No results founded')
+          
               console.log(variables)
               setSearchData(data)
               setLoading(false)
@@ -50,5 +59,5 @@ export const useSearchData = () => {
 
 
 
- return { searchData, setSearchData, handleEnter, setInputValue, inputValue, loading }
+ return { searchData, setSearchData, handleEnter, handleBlur, setInputValue, inputValue, loading, setShow, show }
 }

@@ -23,7 +23,8 @@ export default function DefaultLayout():React.ReactNode {
   
   return (
     <>
-   <div className="pointer-events-none blur-sm">
+    
+   
       <Nav/>
       <SideMenuBar/>
       <UserMenuBar/>
@@ -35,9 +36,9 @@ export default function DefaultLayout():React.ReactNode {
         <Outlet/>
         
       </main>
-
+       
       <Footer/>
-      </div>
+      
     </>
   )
 }
