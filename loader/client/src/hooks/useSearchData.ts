@@ -19,12 +19,12 @@ export const useSearchData = () => {
 
    // TODO: change the TYPE EVENT ⬇️
    
-   const handleBlur = () => {
+   const handleClose = () => {
       setShow(false)
       setInputValue('')
       setSearchData([])
    }
-
+ 
    const handleEnter = (e:any) =>{
       
       if(e.key === 'Enter' && inputValue !== ''){
@@ -59,5 +59,5 @@ export const useSearchData = () => {
 
 
 
- return { searchData, setSearchData, handleEnter, handleBlur, setInputValue, inputValue, loading, setShow, show }
+ return { searchData, setSearchData, handleEnter, handleClose, setInputValue, inputValue, loading, setShow, show }
 }

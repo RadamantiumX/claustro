@@ -39,22 +39,18 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Navigate to="/dashboard"/>
-
             },
             {
                 path: '/dashboard',
                 element:<Dashboard/>,
-            
             },
             {
                 path: '/index',
-                Component: Index,
-                children: [
-                    {
-                        path:"/index/record/:id",
-                        element: <Record/>
-                    }
-                ]
+                element:<Index/>
+            },
+            {
+                path:"/index/record",
+                element:<Record/>
             },
             {
                 path:'/add',
