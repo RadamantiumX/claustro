@@ -20,13 +20,13 @@ export const SearchForm = ():React.ReactNode => {
               { loading ? <p>Loading results of the query...</p> : 
               <div className='flex flex-row gap-2'>
                 <p>Search Something...</p>
-                 <button className='cursor-pointer' onClick={handleClose} title='Close'><Close/></button>
+                 <button className='cursor-pointer hover:text-red-500' onClick={handleClose} title='Close Search Query'><Close/></button>
               </div>}
-              { searchData.length !== 0 && <p>Results of {inputValue}</p>}
+              { searchData.length !== 0 && <p>Results of query <span className='font-bold'>"{inputValue.toLocaleUpperCase()}"</span></p>}
                <div className='flex flex-col'>
                  {
                   searchData.map((d:any)=>(
-                      <Link className='cursor-pointer' to={`/index/record/`}>
+                      <Link className='cursor-pointer hover:text-red-500 hover:underline' to={`/index/record/${d.id}`}>
                         {d.emailSource}
                       </Link>
                   ))

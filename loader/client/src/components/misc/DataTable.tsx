@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TableLink } from '../buttons/TableLink'
-import { Trash, Eye, Edit } from '../../icons/icons';
+import { Trash, Edit } from '../../icons/icons';
 import { tableColumns } from './const';
 import React from 'react';
 
@@ -40,8 +40,8 @@ export const DataTable:React.FC<{arrayData:any[]}> = ({arrayData}):React.ReactNo
         <td className="flex p-3 gap-2">
           
           <TableLink id={d.id} target="delete" to='/index'><Trash/></TableLink>
-          <TableLink id={d.id} target="edit" to=''><Edit/></TableLink>
-          <TableLink id={d.id} target="select" to=''><Eye/></TableLink>
+          <TableLink id={d.id} target="edit" to={`/index/record/${d.id}`}><Edit/></TableLink>
+          
         </td>
       </tr>
      )):<tr className="border-b border-slate-200 last:border-0 collapse">No Content</tr>}

@@ -49,7 +49,7 @@ const router = createBrowserRouter([
                 element:<Index/>
             },
             {
-                path:"/index/record",
+                path:"/index/record/:id",
                 element:<Record/>
             },
             {
