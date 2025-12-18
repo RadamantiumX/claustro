@@ -32,3 +32,18 @@ export const DATA_INPUTS = [
     value: ""
   },
 ]
+
+export const SIGNIN_INPUTS = [
+                  {
+                    typeInput:"text", 
+                    propInput:"username", 
+                    value: "", 
+                    placeholder:"Username"
+                  },
+                  {
+                    typeInput: "password", 
+                    propInput:"password",
+                    value: "", 
+                    placeholder: "Password"
+                  }
+                ]

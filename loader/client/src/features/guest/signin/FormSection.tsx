@@ -3,9 +3,10 @@ import { PageSubTitle } from "../../../components/headers/PageSubTitle"
 import { CustomLink } from "../../../components/buttons/CustomLink"
 import { BasicCard } from "../../../components/cards/BasicCard"
 import { AuthForm } from "../../../components/forms/AuthForm"
-import { useLogin } from "../../../hooks/hooks"
+import { useLogin, useFormInputs } from "../../../hooks/hooks"
 import GuestContent from "../../../components/sectionsTemplate/GuestContent"
 import { AuthErrorCard } from "../../../components/cards/AuthErrorCard"
+import { SIGNIN_INPUTS } from "../../../utils/const"
 
 /**
  * Form for Auth Section on Guest Layout
@@ -13,6 +14,7 @@ import { AuthErrorCard } from "../../../components/cards/AuthErrorCard"
  */
 export default function FormSection():React.ReactNode {
   const { handleChange, handleSubmit, formData, responseError } = useLogin()
+  const { formInputs } = useFormInputs(SIGNIN_INPUTS, formData)
   return (
     <GuestContent>
       {responseError && <AuthErrorCard message={responseError}/> }
@@ -21,10 +23,7 @@ export default function FormSection():React.ReactNode {
               <AuthForm
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
-                authInputs={[
-                  {typeInput:"text", propInput:"username", value: formData.username, placeholder:"Username"},
-                  {typeInput: "password", propInput:"password",value: formData.password, placeholder: "Password"}
-                ]}
+                authInputs={formInputs}
                 innerTextButton="Sign In"
                 />
              <CustomLink inner="Back" route="/" fontSize=""/>

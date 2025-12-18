@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ChangeEvent } from 'react';
 import { shareProps } from './components.d';
 export type btn = "submit" | "reset" | "button" | undefined
@@ -19,7 +20,7 @@ export interface FormProps{
     handleSubmit: (e:FormEvent<HTMLFormElement>)=>Promise<void>;
     handleChange: (e:ChangeEvent<HTMLInputElement>)=>void;
     authInputs: AuthInputs [];
-    dataInputs: DataInputs [];
+    dataInputs: DataInputs [] | any[];
     innerTextButton: string;
 }
 

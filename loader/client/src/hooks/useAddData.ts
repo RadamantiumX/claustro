@@ -5,18 +5,11 @@ import { useTRPC } from "../utils/trpc";
 import { useMutation } from "@tanstack/react-query"
 import { jwtDecode } from "jwt-decode";
 import { useFormBlocker } from "./useFormBlocker";
-
+import type { FormDataAddData } from "../types/hooks";
 
 /**
  * TODO:  REUSE THIS HOOK!!! 
  * */
-export interface FormData {
-        emailSource:string;
-        emailSourcePsw: string;
-        xUser:string;
-        xPsw:string;
-        userColabId: string;
-}
 
 export const useAddData =  () => {
     const trpc = useTRPC()
@@ -24,7 +17,7 @@ export const useAddData =  () => {
    
     const decoded:any = jwtDecode(token ? token : '') // HERE IS THE PRISMA ERROR P2002 
     const { blocker } = useFormBlocker()
-    const [ formData, setFormData ] = useState<FormData>({
+    const [ formData, setFormData ] = useState<FormDataAddData>({
         emailSource:'',
         emailSourcePsw: '',
         xUser:'',

@@ -1,17 +1,10 @@
 import { useState, useMemo } from "react";
-import type { FormData } from "./useAddData";
-export interface InputArray {
-    for: string;
-    label: string;
-    typeInput: string;
-    propInput: string;
-    placeholder: string;
-    value: string;
-}
+import type { FormDataAddData } from "../types/hooks";
+import type { FormDataSignIn } from "../types/hooks";
+import type { InputArray } from "../types/hooks";
 
 
-
-export const useFormInputs = (inputsArray:InputArray[], formData:FormData) => {
+export const useFormInputs = (inputsArray:InputArray[] | Omit<InputArray, "for"| "label">[], formData:FormDataAddData | FormDataSignIn) => {
    const [formInputs, setFormInputs] = useState(inputsArray)
   
    useMemo(()=>{
