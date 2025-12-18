@@ -10,13 +10,21 @@ import { useFormBlocker } from "./useFormBlocker";
 /**
  * TODO:  REUSE THIS HOOK!!! 
  * */
+export interface FormData {
+        emailSource:string;
+        emailSourcePsw: string;
+        xUser:string;
+        xPsw:string;
+        userColabId: string;
+}
+
 export const useAddData =  () => {
     const trpc = useTRPC()
     const { setLoading, setNotification, token, setInputError, inputError } = useStateContext()
    
     const decoded:any = jwtDecode(token ? token : '') // HERE IS THE PRISMA ERROR P2002 
     const { blocker } = useFormBlocker()
-    const [ formData, setFormData ]:any = useState({
+    const [ formData, setFormData ] = useState<FormData>({
         emailSource:'',
         emailSourcePsw: '',
         xUser:'',
@@ -37,7 +45,7 @@ export const useAddData =  () => {
       
         e.preventDefault()
       
-      
+      // Form incomplete or invalid
       if(blocker.state === "blocked"){
         blocker.proceed()
       }

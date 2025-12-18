@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import type { FormData } from "./useAddData";
 export interface InputArray {
     for: string;
     label: string;
@@ -11,19 +11,20 @@ export interface InputArray {
 
 
 
-export const useFormInputs = (inputsArray:InputArray[]) => {
+export const useFormInputs = (inputsArray:InputArray[], formData:FormData) => {
    const [formInputs, setFormInputs] = useState(inputsArray)
-   const formData = {
-    value1: "value1",
-    value2: "value2",
-    value3: "value3",
-    value4: "value4",
-    value5: "value5",
-   }
-//    useEffect(()=>{
-//     formInputs.map((item, key)=>{
-//            setFormInputs([...formInputs, {item.value: }])
-//     })
-//    },
-// [formInputs])
+  
+   useEffect(()=>{
+  
+    formInputs.map((data, index) =>{
+        console.log(data)
+        console.log(Object.values(formData)[index])
+        Object.assign(data, {value: Object.values(formData)[index]})
+     })
+     setFormInputs(formInputs)
+     console.log(formInputs)
+    },
+ [])
+
+ return { formInputs }
 }

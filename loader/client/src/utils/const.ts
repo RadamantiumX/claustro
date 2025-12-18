@@ -1,4 +1,4 @@
-export const ADD_DATA_INPUTS = [
+export const DATA_INPUTS = [
   {
     for: "email-source",
     label: "Email Source",
