@@ -15,7 +15,7 @@ export const useAddData =  () => {
     const trpc = useTRPC()
     const { setLoading, setNotification, token, setInputError, inputError } = useStateContext()
    
-    const decoded:any = jwtDecode(token ? token : '') // HERE IS THE PRISMA ERROR P2002 
+    const decoded:any = jwtDecode(token ? token : '') // <-- HERE IS THE PRISMA ERROR P2002 
     const { blocker } = useFormBlocker()
     const [ formData, setFormData ] = useState<FormDataAddData>({
         emailSource:'',

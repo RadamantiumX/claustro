@@ -5,6 +5,12 @@ import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 import { ErrorInputMessage } from '../misc/ErrorInputMessage';
 
+
+/**
+ * Use this for all the forms, auto-generate fields
+ * @param param0 
+ * @returns 
+ */
 // TODO: make a global state confirmation to confirm exit without complete the form: EXAMPLE: with the context
 export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubmit, handleChange, dataInputs, innerTextButton }) => {
   const { loading, inputError } = useStateContext()
