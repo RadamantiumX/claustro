@@ -14,3 +14,4 @@ export { useSearchData } from './useSearchData';
 export { usePagination } from './usePagination';
 export { useSetParams } from './useSetParams';
 export { useFormInputs } from './useFormInputs';
+export { useFetchUniqueData } from './useFetchUniqueData';
