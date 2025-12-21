@@ -12,11 +12,11 @@ export const useFetchData = (page:number) => {
     
     const [responseCount, setResponseCount]:any = useState(0)
     console.log(page)
-    const queryRequest = useMutation(trpc.data.list.mutationOptions())
+    const mutationRq = useMutation(trpc.data.list.mutationOptions())
     useEffect(()=>{
    
         try{
-      queryRequest.mutate({page:page, pageSize:5},{
+      mutationRq.mutate({page:page, pageSize:5},{
         onSuccess:(data, variables)=>{
             console.log(variables)
             console.log(data)
