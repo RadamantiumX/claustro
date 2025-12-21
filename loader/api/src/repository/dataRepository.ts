@@ -1,18 +1,20 @@
-import { match } from "assert";
-import type { Datum, Overload } from "../types/index";
+import type { Datum, CascadeData } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
+// TODO Fix types
 
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
-    async getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>{
-       const unique = await this.prismaClient.data.findUnique({
+    async getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>{
+       const unique:any = await this.prismaClient.data.findUnique({
         where:{ id: payload.id },
         select:{
             id: true,
             emailSource:true,
+            emailSourcePsw:true,
             xUser: true,
+            xPsw:true,
             apiData: {
                 select: {
                     id:true,
@@ -33,7 +35,17 @@ export class DataRepository{
         }
     })
 
-    return unique
+    return { 
+               data: { 
+                 id: unique?.id, 
+                 emailSource: unique?.emailSource, 
+                 emailSourcePsw: unique?.emailSourcePsw, 
+                 xUser: unique?.xUser, 
+                 xPsw: unique?.xPsw 
+                }, 
+                apiData: unique.apiData,
+                apiKeys: unique.apiKeys 
+            }
     }
    async searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
       const dataSearched = await this.prismaClient.data.findMany({
@@ -57,13 +69,15 @@ export class DataRepository{
 
       return dataSearched
    }
-    async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>{
-       const unique = await this.prismaClient.data.findUnique({
+    async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<CascadeData | null>{
+       const unique:any = await this.prismaClient.data.findUnique({
         where:{ emailSource: payload.emailSource },
         select:{
             id: true,
             emailSource:true,
+            emailSourcePsw:true,
             xUser: true,
+            xPsw:true,
             apiData: {
                 select: {
                     id:true,
@@ -84,7 +98,17 @@ export class DataRepository{
         }
     })
 
-    return unique
+    return { 
+               data: { 
+                 id: unique?.id, 
+                 emailSource: unique?.emailSource, 
+                 emailSourcePsw: unique?.emailSourcePsw, 
+                 xUser: unique?.xUser, 
+                 xPsw: unique?.xPsw 
+                }, 
+                apiData: unique.apiData,
+                apiKeys: unique.apiKeys 
+            }
     }
    
     async allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>{

@@ -4,24 +4,30 @@ import { Datum, ApiData, ApiKey, UserColab, AuthRefreshToken, UserColabClientRes
 export interface Entry{
   payload: string
 }
-export interface Overload{
-     id: number;
-  emailSource: string;
-  xUser: string;
+export interface CascadeData{
+  data:{
+    id: number | any;
+    emailSource: string | any;
+    emailSourcePsw:string | any;
+    xUser: string | any;
+    xPsw: string | any;
+  },
   apiData: {
     id:number;
-    appName:string;
+    appName:string ;
     appId: string;
   } | null;
   apiKeys: {
-    id: number;
-    apiKey: string;
-    apiKeySecret: string;
-    bearerToken: string;
-    accessToken: string;
-    accessTokenSecret: string;
+    id: number | any;
+    apiKey: string | any;
+    apiKeySecret: string | any;
+    bearerToken: string | any;
+    accessToken: string | any;
+    accessTokenSecret: string | any;
   } | null;
 }
+
+
 
 export interface IuserColabRepository {
     getUniqueUsername({username}:Pick<UserColab, 'username'> ): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
@@ -36,9 +42,9 @@ export interface IuserColabRepository {
 }
 
 export interface IDataRepository{
-     getUnique(payload:Pick<Datum, "id">):Promise<Overload | null>;
+     getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>;
      searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
-     getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<Overload | null>;
+     getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<CascadeData | null>;
      allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">):Promise<void>;

@@ -16,6 +16,7 @@ export const useFetchUniqueData = () => {
       onSuccess:(data, variables)=>{
          console.log(data)
          console.log(variables)
+         setRelatedData(data)
       },
       onError:(error)=>{
          console.log(error)
