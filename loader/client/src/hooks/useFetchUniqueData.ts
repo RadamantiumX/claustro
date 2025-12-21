@@ -7,7 +7,10 @@ import { useState, useEffect } from "react";
 export const useFetchUniqueData = () => {
    const trpc = useTRPC()
    const params:any = useParams()
-   const [relatedData, setRelatedData] = useState([])
+   const [data, setData] = useState()
+   const [apiKeys, setApiKeys] = useState()
+   const [apiData, setApiData] = useState()
+
    const mutationRq = useMutation(trpc.data.selectForId.mutationOptions())
    console.log(params.id)
    useEffect(()=>{
@@ -15,8 +18,13 @@ export const useFetchUniqueData = () => {
       mutationRq.mutate({id:parseInt(params.id)},{
       onSuccess:(data, variables)=>{
          console.log(data)
+         console.log(data.data)
+         console.log(data.apiKeys)
+         console.log(data.apiData)
          console.log(variables)
-         setRelatedData(data)
+         setData(data.data)
+         setApiData(data.apiData)
+         setApiKeys(data.apiKeys)
       },
       onError:(error)=>{
          console.log(error)
@@ -28,5 +36,5 @@ export const useFetchUniqueData = () => {
    },[])
   
 
-   return { relatedData }
+   return { data, apiKeys, apiData }
 }
