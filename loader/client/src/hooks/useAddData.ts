@@ -7,9 +7,8 @@ import { jwtDecode } from "jwt-decode";
 import { useFormBlocker } from "./useFormBlocker";
 import type { FormDataAddData } from "../types/hooks";
 
-/**
- * TODO:  REUSE THIS HOOK!!! 
- * */
+// TODO: REUSE THIS HOOK!!! 
+
 
 export const useAddData =  () => {
     const trpc = useTRPC()
@@ -17,7 +16,7 @@ export const useAddData =  () => {
    
     const decoded:any = jwtDecode(token ? token : '') // <-- HERE IS THE PRISMA ERROR P2002 
     const { blocker } = useFormBlocker()
-    const [ formData, setFormData ] = useState<FormDataAddData>({
+    const [ formData, setFormData ] = useState<Omit<FormDataAddData, "id">>({
         emailSource:'',
         emailSourcePsw: '',
         xUser:'',

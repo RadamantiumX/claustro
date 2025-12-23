@@ -34,6 +34,7 @@ export interface None {
 }
 
 export interface FormDataAddData {
+        id: number;
         emailSource:string;
         emailSourcePsw: string;
         xUser:string;

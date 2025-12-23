@@ -9,7 +9,7 @@ import type { InputArray } from "../types/hooks";
  * @param formData All the fields values 
  * @returns Array with custom fields + All the fields values 
  */
-export const useFormInputs = (inputsArray:InputArray[] | Omit<InputArray, "for"| "label">[], formData:FormDataAddData | FormDataSignIn) => {
+export const useFormInputs = (inputsArray:InputArray[] | Omit<InputArray, "for"| "label">[], formData:Omit<FormDataAddData, "id">  | Omit<FormDataAddData, "userColabId"> |FormDataSignIn) => {
    const [formInputs, setFormInputs] = useState(inputsArray)
   
    useMemo(()=>{

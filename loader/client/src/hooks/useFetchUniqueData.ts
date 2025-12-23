@@ -3,11 +3,12 @@ import { useTRPC } from "../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import type { DataValues } from "./useModifyData";
 
 export const useFetchUniqueData = () => {
    const trpc = useTRPC()
    const params:any = useParams()
-   const [data, setData] = useState()
+   const [data, setData] = useState<DataValues>()
    const [apiKeys, setApiKeys] = useState()
    const [apiData, setApiData] = useState()
 
