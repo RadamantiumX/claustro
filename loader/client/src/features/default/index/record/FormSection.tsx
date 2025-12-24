@@ -7,14 +7,17 @@ import { useModifyData } from '../../../../hooks/useModifyData';
 import { DATA_INPUTS } from '../../../../utils/const';
 
 // TODO: take the example of FORMSECTION ADD
+// TODO: Try with conditionals
 export default function FormSection():React.ReactNode {
   const { data }:any = useFetchUniqueData()
-  const { handleChange, handleSubmit, formData } = useModifyData(data)
-  const { formInputs } = useFormInputs(DATA_INPUTS, formData)
-
-  return (
+  
+    const { handleChange, handleSubmit, formData } = useModifyData(data)
+    const { formInputs } = useFormInputs(DATA_INPUTS, formData)
+    return (
     <DefaultContent>
-        <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update record'/>
+      
+        {data !== undefined && <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update record'/>}
     </DefaultContent>
   )
+
 }

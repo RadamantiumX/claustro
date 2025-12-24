@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useStateContext } from "./useCtxStates";
 import { useTRPC } from "../utils/trpc";
@@ -12,10 +13,11 @@ export interface DataValues {
     xPsw: string;
 }
 
-export const useModifyData = (dataValues:DataValues) => {
+export const useModifyData = (dataValues:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
+  
     const [ formData, setFormData ] = useState({
         id: dataValues.id,
         emailSource: dataValues.emailSource,
@@ -23,7 +25,7 @@ export const useModifyData = (dataValues:DataValues) => {
         xUser: dataValues.xUser,
         xPsw: dataValues.xPsw
     })
-
+   
     const updateData = useMutation(trpc.data.update.mutationOptions())
 
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
@@ -69,4 +71,5 @@ export const useModifyData = (dataValues:DataValues) => {
       }
 
       return { formData, handleChange, handleSubmit }
+    
 }

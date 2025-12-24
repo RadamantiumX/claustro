@@ -28,7 +28,7 @@ export const useTrpc = () => {
                 defaultOptions:{
                     queries: {
                         staleTime: 1,
-                    
+                        retry:true
                     }
                 }
             })

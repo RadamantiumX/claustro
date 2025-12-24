@@ -14,16 +14,17 @@ export const useFetchUniqueData = () => {
 
    const mutationRq = useMutation(trpc.data.selectForId.mutationOptions())
    console.log(params.id)
-   useEffect(()=>{
-       try{
-      mutationRq.mutate({id:parseInt(params.id)},{
-      onSuccess:(data, variables)=>{
+
+   const handleFn = async() =>{
+      try{
+     await mutationRq.mutate({id:parseInt(params.id)},{
+      onSuccess:async(data, variables)=>{
          console.log(data)
          console.log(data.data)
          console.log(data.apiKeys)
          console.log(data.apiData)
          console.log(variables)
-         setData(data.data)
+        await setData(data.data)
          setApiData(data.apiData)
          setApiKeys(data.apiKeys)
       },
@@ -34,7 +35,11 @@ export const useFetchUniqueData = () => {
    }catch(error){
      console.log(error)
    }
-   },[])
+      }
+   useEffect(()=>{
+      handleFn()
+       
+   },[params])
   
 
    return { data, apiKeys, apiData }
