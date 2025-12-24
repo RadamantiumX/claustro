@@ -9,7 +9,7 @@ export default function TableSection():React.ReactNode {
 const {currentPage} = useStateContext()
 const{ fetchData, responseCount } = useFetchData(currentPage)
 const {arrayPages, handleChangePage, handleChangeState, end, start } = usePagination(5, responseCount)
-console.log(currentPage)
+
   return (
     <>
     <DefaultContent>

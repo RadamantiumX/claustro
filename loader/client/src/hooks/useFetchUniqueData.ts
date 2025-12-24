@@ -17,14 +17,14 @@ export const useFetchUniqueData = () => {
 
    const handleFn = async() =>{
       try{
-     await mutationRq.mutate({id:parseInt(params.id)},{
-      onSuccess:async(data, variables)=>{
+      mutationRq.mutate({id:parseInt(params.id)},{
+      onSuccess:(data, variables)=>{
          console.log(data)
          console.log(data.data)
          console.log(data.apiKeys)
          console.log(data.apiData)
          console.log(variables)
-        await setData(data.data)
+        setData(data.data)
          setApiData(data.apiData)
          setApiKeys(data.apiKeys)
       },
