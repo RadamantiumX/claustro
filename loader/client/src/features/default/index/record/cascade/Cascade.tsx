@@ -5,6 +5,13 @@ import { useFormInputs } from '../../../../../hooks/hooks'
 import { useModifyData } from '../../../../../hooks/useModifyData'
 import { DATA_INPUTS } from '../../../../../utils/const'
 
+// interface Data {
+//   id: number,
+//   emailSource: string;
+//   emailSourcePsw: string;
+//   xUser: string;
+//   xPsw: string;
+// }
 export default function Cascade(data:any):React.ReactNode {
      const { handleChange, handleSubmit, formData } = useModifyData(data)
      const { formInputs } = useFormInputs(DATA_INPUTS, formData)

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, useMemo, type ChangeEvent, type FormEvent } from "react";
 import { useStateContext } from "./useCtxStates";
 import { useTRPC } from "../utils/trpc";
 import { useFormBlocker } from "./useFormBlocker";
@@ -17,15 +17,25 @@ export const useModifyData = (dataValues:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
-  
+    console.log(dataValues.data)
+    // TODO: The id is wrong Field!!
     const [ formData, setFormData ] = useState({
-        id: dataValues.id,
-        emailSource: dataValues.emailSource,
-        emailSourcePsw: dataValues.emailSourcePsw,
-        xUser: dataValues.xUser,
-        xPsw: dataValues.xPsw
+        emailSource: "",
+        emailSourcePsw: "",
+        xUser: "",
+        xPsw: "",
+        id: 0,
     })
    
+   useMemo(()=>{
+    setFormData({
+      emailSource: dataValues.data.emailSource,
+      emailSourcePsw: dataValues.data.emailSourcePsw,
+      xUser: dataValues.data.xUser,
+      xPsw: dataValues.data.xPsw,
+      id: dataValues.data.id
+    })
+   },[])
     const updateData = useMutation(trpc.data.update.mutationOptions())
 
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
