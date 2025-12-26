@@ -3,7 +3,7 @@ import { useTRPC } from "../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import type { DataValues } from "./useModifyData";
+import type { DataValues } from "../types/hooks";
 
 export const useFetchUniqueData = () => {
    const trpc = useTRPC()

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormButton } from '../buttons/FormButton';
-import { Plus } from '../../icons/Plus';
+import { Plus } from '../../icons/elements/Plus';
 import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 import { ErrorInputMessage } from '../misc/ErrorInputMessage';

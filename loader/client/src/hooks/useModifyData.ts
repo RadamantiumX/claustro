@@ -4,14 +4,7 @@ import { useStateContext } from "./useCtxStates";
 import { useTRPC } from "../utils/trpc";
 import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
-
-export interface DataValues {
-    id: number;
-    emailSource: string;
-    emailSourcePsw: string;
-    xUser: string;
-    xPsw: string;
-}
+import type { DataValues } from "../types/hooks";
 
 export const useModifyData = (dataValues:DataValues | any) => {
     const trpc = useTRPC()

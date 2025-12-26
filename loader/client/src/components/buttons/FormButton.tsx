@@ -1,5 +1,5 @@
 import React from "react"
-import { Loader } from "../../icons/Loader"
+import { Loader } from "../../icons/elements/Loader"
 
 
 export const FormButton:React.FC<{children:React.ReactNode, loading:boolean}> = ({children, loading}) =>{

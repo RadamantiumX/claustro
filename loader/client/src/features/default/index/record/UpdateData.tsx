@@ -16,11 +16,9 @@ import Cascade from './cascade/Cascade';
 // TODO: Try with conditionals
 export default function UpdateData():React.ReactNode {
   const { data } = useFetchUniqueData()
-  console.log(data)
- 
     return (
     <DefaultContent>
-        {data !== undefined && <div>The Id is:{data.id}</div>}
+      
         {data !== undefined && <Cascade data={data}/>}
     </DefaultContent>
   )

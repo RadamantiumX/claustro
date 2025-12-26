@@ -47,3 +47,11 @@ export interface FormDataSignIn{
     password: string;
     isSuperAdmin:boolean;
 }
+
+export interface DataValues {
+    id: number;
+    emailSource: string;
+    emailSourcePsw: string;
+    xUser: string;
+    xPsw: string;
+}

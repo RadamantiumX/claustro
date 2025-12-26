@@ -17,7 +17,7 @@ export default function Cascade(data:any):React.ReactNode {
      const { formInputs } = useFormInputs(DATA_INPUTS, formData)
   return (
     <>
-     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update record'/>
+     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Data'/>
     </>
   )
 }

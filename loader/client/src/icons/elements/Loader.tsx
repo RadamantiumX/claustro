@@ -1,4 +1,4 @@
-import { useStateContext } from "../hooks/hooks"
+import { useStateContext } from "../../hooks/hooks"
 
 export const Loader = () =>{
     const { loading } = useStateContext()
