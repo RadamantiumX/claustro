@@ -6,28 +6,21 @@ import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
 import type { DataValues } from "../types/hooks";
 
+
+// TODO: reuse this hook on the updated records and the related data
 export const useModifyData = (dataValues:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
     console.log(dataValues.data)
     // TODO: The id is wrong Field!!
-    const [ formData, setFormData ] = useState({
-        emailSource: "",
-        emailSourcePsw: "",
-        xUser: "",
-        xPsw: "",
-        id: 0,
-    })
-   
+    const [ formData, setFormData ]:any = useState({})
+    
    useMemo(()=>{
-    setFormData({
-      emailSource: dataValues.data.emailSource,
-      emailSourcePsw: dataValues.data.emailSourcePsw,
-      xUser: dataValues.data.xUser,
-      xPsw: dataValues.data.xPsw,
-      id: dataValues.data.id
-    })
+    // Change the first element of the Object to the last position
+    const { id,...rest } = dataValues.data // Destructuring The Object Param
+    const modifyObject = {...rest, id} // Adding on the last position
+    setFormData(modifyObject)
    },[])
     const updateData = useMutation(trpc.data.update.mutationOptions())
 

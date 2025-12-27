@@ -4,7 +4,7 @@ import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
 import { useModifyData } from '../../../../../hooks/useModifyData'
 import { DATA_INPUTS } from '../../../../../utils/const'
-
+import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 // interface Data {
 //   id: number,
 //   emailSource: string;
@@ -12,12 +12,15 @@ import { DATA_INPUTS } from '../../../../../utils/const'
 //   xUser: string;
 //   xPsw: string;
 // }
-export default function Cascade(data:any):React.ReactNode {
+export default function DataUpdate(data:any):React.ReactNode {
      const { handleChange, handleSubmit, formData } = useModifyData(data)
      const { formInputs } = useFormInputs(DATA_INPUTS, formData)
   return (
     <>
+    
+    <PageSubTitle title='Data Update'/>
      <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Data'/>
+     
     </>
   )
 }

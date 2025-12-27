@@ -3,7 +3,7 @@ import React from 'react'
 import DefaultContent from '../../../../components/sectionsTemplate/DefaultContent'
 import { useFetchUniqueData} from '../../../../hooks/hooks';
 
-import Cascade from './cascade/Cascade';
+import DataUpdate from './cascade/DataUpdate';
 
 // interface Data {
 //   id: number,
@@ -16,10 +16,12 @@ import Cascade from './cascade/Cascade';
 // TODO: Try with conditionals
 export default function UpdateData():React.ReactNode {
   const { data } = useFetchUniqueData()
+  console.log(data)
     return (
     <DefaultContent>
       
-        {data !== undefined && <Cascade data={data}/>}
+        {data !== undefined && <DataUpdate data={data}/>}
+        {data !== undefined && <DataUpdate data={data}/>}
     </DefaultContent>
   )
 
