@@ -1,6 +1,6 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import type { JSX, PropsWithChildren } from "react";
-import { useTrpc } from "../hooks/useTrpc";
+import { useTrpc } from "../hooks/custom/useTrpc";
 import { TRPCProvider } from "../utils/trpc";
 
 /**

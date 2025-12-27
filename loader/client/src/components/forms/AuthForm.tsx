@@ -2,7 +2,7 @@
 import React from "react"
 import type { FormProps } from "../../types/components"
 import { FormButton } from "../buttons/FormButton"
-import { useStateContext } from "../../hooks/useCtxStates"
+import { useStateContext } from "../../hooks/custom/useCtxStates"
 
 /**
  * Form component to reuse anywere on this project, can adapt the qty of inputs

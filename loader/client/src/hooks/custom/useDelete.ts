@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 // import { useStateContext } from "./useCtxStates"
-import { useTRPC } from "../utils/trpc"
+import { useTRPC } from "../../utils/trpc"
 
 // TODO: change to setStateAction instead functions => EXAMPLE: setId(id) > DELETE
 export const useDelete = () => {

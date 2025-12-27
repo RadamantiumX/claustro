@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Cookies from "js-cookie";
-import type { StateProps } from "../types/shared";
-import { StateContext } from "../config/stateContext";
+import type { StateProps } from "../../types/shared";
+import { StateContext } from "../../config/stateContext";
 
 export interface ObjParams  {
     message:string;

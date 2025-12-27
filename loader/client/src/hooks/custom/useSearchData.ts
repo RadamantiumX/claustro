@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useTRPC } from "../utils/trpc"
+import { useTRPC } from "../../utils/trpc"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { useStateContext } from "./useCtxStates"

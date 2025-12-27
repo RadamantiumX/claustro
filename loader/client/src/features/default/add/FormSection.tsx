@@ -2,7 +2,7 @@ import React from 'react'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { GenericForm } from '../../../components/forms/GenericForm'
 import { useAddData } from '../../../hooks/hooks'
-import { useFormInputs } from '../../../hooks/useFormInputs'
+import { useFormInputs } from '../../../hooks/custom/useFormInputs'
 import { DATA_INPUTS } from '../../../utils/const'
 
 export default function FormSection():React.ReactNode {

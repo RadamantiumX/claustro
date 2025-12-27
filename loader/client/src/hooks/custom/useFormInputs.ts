@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
-import type { FormDataAddData } from "../types/hooks";
-import type { FormDataSignIn } from "../types/hooks";
-import type { InputArray } from "../types/hooks";
+import type { FormDataAddData } from "../../types/hooks";
+import type { FormDataSignIn } from "../../types/hooks";
+import type { InputArray } from "../../types/hooks";
 
 /**
  * Inputs fields generation with Array fields CONSTANTS

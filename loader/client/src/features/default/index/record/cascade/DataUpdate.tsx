@@ -2,7 +2,7 @@
 import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
-import { useModifyData } from '../../../../../hooks/useModifyData'
+import { useModifyData } from '../../../../../hooks/custom/useModifyData'
 import { DATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 // interface Data {

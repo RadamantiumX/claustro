@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useMemo, type ChangeEvent, type FormEvent } from "react";
 import { useStateContext } from "./useCtxStates";
-import { useTRPC } from "../utils/trpc";
+import { useTRPC } from "../../utils/trpc";
 import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
-import type { DataValues } from "../types/hooks";
+import type { DataValues } from "../../types/hooks";
 
 
 // TODO: reuse this hook on the updated records and the related data
@@ -13,7 +13,7 @@ export const useModifyData = (dataValues:DataValues | any) => {
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
     console.log(dataValues.data)
-    // TODO: The id is wrong Field!!
+   
     const [ formData, setFormData ]:any = useState({})
     
    useMemo(()=>{
@@ -22,19 +22,22 @@ export const useModifyData = (dataValues:DataValues | any) => {
     const modifyObject = {...rest, id} // Adding on the last position
     setFormData(modifyObject)
    },[])
+
+    // TRPc Mutation Hook 🪝
     const updateData = useMutation(trpc.data.update.mutationOptions())
 
+     // Change Event 🛠️
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
-        
         setFormData({...formData, [e.target.name]: e.target.value})
       }
 
+     // Submit Event 📨📩
       const handleSubmit = async (e:FormEvent<HTMLFormElement>):Promise<void> =>{
          try{
       
         e.preventDefault()
       
-      // Form incomplete or invalid
+      // Form incomplete or invalid ⛔
       if(blocker.state === "blocked"){
         blocker.proceed()
       }

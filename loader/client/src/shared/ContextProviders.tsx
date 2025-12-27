@@ -1,5 +1,5 @@
 import React,{ type JSX, type ReactNode } from "react";
-import { useCtxState } from "../hooks/useCtxStates";
+import { useCtxState } from "../hooks/custom/useCtxStates";
 import { StateContext } from "../config/stateContext";
 
 

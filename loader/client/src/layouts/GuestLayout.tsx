@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom"
-import { useStateContext } from "../hooks/useCtxStates"
+import { useStateContext } from "../hooks/custom/useCtxStates"
 import { Footer } from "../components/layoutItems/Footer"
 
 /**

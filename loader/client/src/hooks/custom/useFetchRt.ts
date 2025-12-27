@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useTRPC } from "../utils/trpc";
+import { useTRPC } from "../../utils/trpc";
 // import { isExpiredToken } from "../helper/tokenExpiration";
 // import { jwtDecode } from "jwt-decode";
-import { useStateContext } from "./hooks";
+import { useStateContext } from "../hooks";
 
 export interface JWTPayload {
   id:string

@@ -1,4 +1,4 @@
-import { useStateContext } from "../../hooks/useCtxStates"
+import { useStateContext } from "../../hooks/custom/useCtxStates"
 
 export const NotificationCard = () => {
   const {notification} = useStateContext()

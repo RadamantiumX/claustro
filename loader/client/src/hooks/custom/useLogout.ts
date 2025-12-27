@@ -1,6 +1,6 @@
 import { useStateContext } from "./useCtxStates"
 import Cookies from "js-cookie"
-import type { LogoutOutput } from "../types/hooks"
+import type { LogoutOutput } from "../../types/hooks"
 
 /**
  * - Custom Hook -

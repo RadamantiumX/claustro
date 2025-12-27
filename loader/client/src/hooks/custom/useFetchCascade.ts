@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useTRPC } from "../utils/trpc";
+import { useTRPC } from "../../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import type { DataValues } from "../types/hooks";
+import type { DataValues } from "../../types/hooks";
 
-export const useFetchUniqueData = () => {
+export const useFetchCascade = () => {
    const trpc = useTRPC()
    const params:any = useParams()
    const [data, setData] = useState<DataValues>()

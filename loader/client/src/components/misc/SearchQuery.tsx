@@ -1,7 +1,7 @@
 import React from 'react'
 import { Close } from '../../icons/icons';
 import { Link } from 'react-router-dom';
-import { useSearchData } from '../../hooks/useSearchData';
+import { useSearchData } from '../../hooks/custom/useSearchData';
 
 export const SearchQuery:React.FC<{query:string | null}> = ({query}) => {
   const { setSearchData } = useSearchData()
