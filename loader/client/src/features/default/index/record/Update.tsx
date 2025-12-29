@@ -14,7 +14,7 @@ import DataUpdate from './cascade/DataUpdate';
 // }
 // TODO: take the example of FORMSECTION ADD
 // TODO: Try with conditionals
-export default function UpdateData():React.ReactNode {
+export default function Update():React.ReactNode {
   const { data } = useFetchCascade()
   console.log(data)
     return (

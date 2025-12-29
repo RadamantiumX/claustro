@@ -8,22 +8,22 @@ import type { DataValues } from "../../types/hooks";
 
 
 // TODO: reuse this hook on the updated records and the related data
-export const useModifyData = (dataValues:DataValues | any) => {
+export const useModifyData = (values:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
-    console.log(dataValues.data)
+    
    
     const [ formData, setFormData ]:any = useState({})
     
    useMemo(()=>{
     // Change the first element of the Object to the last position
-    const { id,...rest } = dataValues.data // Destructuring The Object Param
+    const { id,...rest } = values.data // Destructuring The Object Param
     const modifyObject = {...rest, id} // Adding on the last position
     setFormData(modifyObject)
    },[])
-
-    // TRPc Mutation Hook 🪝
+   
+    // TRPc Mutation Hook🪝
     const updateData = useMutation(trpc.data.update.mutationOptions())
 
      // Change Event 🛠️
