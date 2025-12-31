@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useMemo, type ChangeEvent, type FormEvent } from "react";
+import { type ChangeEvent, type FormEvent } from "react";
 import { useStateContext } from "./useCtxStates";
 import { useTRPC } from "../../utils/trpc";
 import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
 import type { DataValues } from "../../types/hooks";
-
+import { useFormData } from "./useFormData";
 
 // TODO: reuse this hook on the updated records and the related data
 export const useModifyData = (values:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
-  
+   const { formData, setFormData } = useFormData(values)
    
-  const [ formData, setFormData ]:any = useState({})
+  // const [ formData, setFormData ]:any = useState({})
     
-  useMemo(()=>{
-    // Change the first element of the Object to the last position
-    // const { id,...rest } = values.data // Destructuring The Object Param
-    // const modifyObject = {...rest, id} // Adding on the last position
-    setFormData(values)
-    },[])
-   
+  // useMemo(()=>{
+  //   // Change the first element of the Object to the last position
+  //   // const { id,...rest } = values.data // Destructuring The Object Param
+  //   // const modifyObject = {...rest, id} // Adding on the last position
+  //   setFormData(values)
+  //   },[])
+  //  console.log(formData)
     // TRPc Mutation Hook🪝
     const updateData = useMutation(trpc.data.update.mutationOptions())
 

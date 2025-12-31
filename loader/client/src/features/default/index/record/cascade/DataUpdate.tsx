@@ -13,7 +13,7 @@ import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 //   xPsw: string;
 // }
 export default function DataUpdate(data:any):React.ReactNode {
-     const { handleChange, handleSubmit, formData } = useModifyData(data)
+     const { handleChange, handleSubmit, formData } = useModifyData(data.data)
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
     <>
