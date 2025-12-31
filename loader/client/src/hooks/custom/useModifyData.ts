@@ -12,16 +12,16 @@ export const useModifyData = (values:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     const { blocker } = useFormBlocker()
-    
+  
    
-    const [ formData, setFormData ]:any = useState({})
+  const [ formData, setFormData ]:any = useState({})
     
-   useMemo(()=>{
+  useMemo(()=>{
     // Change the first element of the Object to the last position
-    const { id,...rest } = values.data // Destructuring The Object Param
-    const modifyObject = {...rest, id} // Adding on the last position
-    setFormData(modifyObject)
-   },[])
+    // const { id,...rest } = values.data // Destructuring The Object Param
+    // const modifyObject = {...rest, id} // Adding on the last position
+    setFormData(values)
+    },[])
    
     // TRPc Mutation Hook🪝
     const updateData = useMutation(trpc.data.update.mutationOptions())
