@@ -10,7 +10,7 @@ export const useFormData = <T>(values:T) =>{
 useMemo(()=>{
     setFormData(values)
    },[])
-   console.log(formData)
+   
    return { formData, setFormData }
 }
 

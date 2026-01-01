@@ -5,18 +5,10 @@ import { useFetchCascade} from '../../../../hooks/hooks';
 
 import DataUpdate from './cascade/DataUpdate';
 
-// interface Data {
-//   id: number,
-//   emailSource: string;
-//   emailSourcePsw: string;
-//   xUser: string;
-//   xPsw: string;
-// }
-// TODO: take the example of FORMSECTION ADD
-// TODO: Try with conditionals
+
 export default function Update():React.ReactNode {
   const { data } = useFetchCascade()
-  console.log(data)
+  
     return (
     <DefaultContent>
       
