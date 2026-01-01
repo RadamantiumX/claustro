@@ -8,6 +8,7 @@ import type { DataValues } from "../../types/hooks";
 import { useFormData } from "./useFormData";
 
 // TODO: reuse this hook on the updated records and the related data
+// TODO: Try to REUSE mutation with inferring types
 export const useModifyData = (values:DataValues | any) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
