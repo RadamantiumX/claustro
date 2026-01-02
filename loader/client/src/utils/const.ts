@@ -96,3 +96,33 @@ export const SIGNIN_INPUTS = [
                     placeholder: "Password"
                   }
                 ]
+
+/**
+ * Data Get Unique (ID) RESPONSE:
+ *  select:{
+            id: true,
+            emailSource:true,
+            emailSourcePsw:true,
+            xUser: true,
+            xPsw:true,
+            apiData: {
+                select: {
+                    id:true,
+                    appName: true,
+                    appId: true
+                }
+            },
+            apiKeys: {
+                select: {
+                    id: true,
+                    apiKey: true,
+                    apiKeySecret: true,
+                    bearerToken: true,
+                    accessToken: true,
+                    accessTokenSecret: true
+                }
+            }
+        }
+ * 
+ * 
+ *  */

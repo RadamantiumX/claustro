@@ -6,16 +6,21 @@ import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
 import type { DataValues } from "../../types/hooks";
 import { useFormData } from "./useFormData";
+// import type { RouterInput } from "../../utils/trpc";
+
+
+
+
 
 // TODO: reuse this hook on the updated records and the related data
 // TODO: Try to REUSE mutation with inferring types
-export const useModifyData = (values:DataValues | any) => {
+export const useModifyData = <T>(values:T) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
 
     // Customs hooks 🪝
     const { blocker } = useFormBlocker()
-    const { formData, setFormData } = useFormData(values)
+    const { formData, setFormData } = useFormData(values as DataValues)
    
     const updateData = useMutation(trpc.data.update.mutationOptions())
 
@@ -41,7 +46,7 @@ export const useModifyData = (values:DataValues | any) => {
           console.log(variables)
           setLoading(false)
           setInputError([])
-          setNotification('Success: Save New Data! ☑️')
+          setNotification('Success: Save Update Data! ☑️')
           setTimeout(()=>{
             window.location.reload()
           },1000)
