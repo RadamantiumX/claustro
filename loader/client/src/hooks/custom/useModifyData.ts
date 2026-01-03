@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type ChangeEvent, type FormEvent } from "react";
 import { useStateContext } from "./useCtxStates";
-import { useTRPC } from "../../utils/trpc";
+import { useTRPC } from '../../utils/trpc';
 import { useFormBlocker } from "./useFormBlocker";
 import { useMutation } from "@tanstack/react-query";
 import type { DataValues } from "../../types/hooks";
 import { useFormData } from "./useFormData";
-// import type { RouterInput } from "../../utils/trpc";
-
-
+import { useMutateHandler } from "./useMutateHandler";
 
 
 
@@ -17,12 +15,12 @@ import { useFormData } from "./useFormData";
 export const useModifyData = <T>(values:T) => {
     const trpc = useTRPC()
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
-
+    
     // Customs hooks 🪝
     const { blocker } = useFormBlocker()
-    const { formData, setFormData } = useFormData(values as DataValues)
-   
-    const updateData = useMutation(trpc.data.update.mutationOptions())
+    const { formData, setFormData } = useFormData(values as T)
+    const { inputMutation } = useMutateHandler("data", "update")
+     const updateData = useMutation(trpc.data.update.mutationOptions())
 
      // Change Event 🛠️
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
@@ -40,7 +38,7 @@ export const useModifyData = <T>(values:T) => {
         blocker.proceed()
       }
       setLoading(true)
-      updateData.mutate(formData, {
+      inputMutation.mutate(formData, {
         onSuccess: (data, variables)=>{
           console.log(data)
           console.log(variables)

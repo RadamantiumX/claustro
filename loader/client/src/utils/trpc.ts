@@ -4,6 +4,7 @@ import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { getToken } from '../helper/cookieHandler';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
+// For all use
 export type RouterInput = inferRouterInputs<AppRouter>
 export type RouterOutput = inferRouterOutputs<AppRouter>
 
