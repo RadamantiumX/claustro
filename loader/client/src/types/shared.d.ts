@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, type SetStateAction } from "react";
 // import type { DataResource } from "./hooks";
+import type { RouterInput, RouterOutput } from "../utils/trpc";
 
 export type ParamTuple = [string, string]
 export interface StateProps {
@@ -33,3 +34,44 @@ export interface StateProps {
     setArrayParams:Dispatch<SetStateAction<ParamTuple[]>>;
     setCurrentPage:Dispatch<SetStateAction<number>>;
 }
+
+// TODO: Adding all TRPC types INPUT & OUTPUT
+
+// Inputs
+export type DataListInput = RouterInput['data']['list']
+export type DataCreateInput = RouterInput['data']['create']
+export type DataSearchInput = RouterInput['data']['search']
+export type DataSelectForIdInput = RouterInput['data']['selectForId']
+export type DataSelectFormEmailInput = RouterInput['data']['selectForEmail']
+export type DataUpdateInput = RouterInput['data']['update']
+export type DataDeleteInput = RouterInput['data']['delete']
+
+export type ApiDataSelectForIdInput = RouterInput['apiData']['selectForId']
+export type ApiDataCreateInput = RouterInput['apiData']['create']
+export type ApiDataUpdateInput = RouterInput['apiData']['update']
+export type ApiDataDeleteInput = RouterInput['apiData']['delete']
+
+export type ApiKeySelectForIdInput = RouterInput['apiKey']['selectForId']
+export type ApiKeyCreateInput = RouterInput['apiKey']['create']
+export type ApiKeyUpdateInput = RouterInput['apiKey']['update']
+export type ApiKeyDeleteInput = RouterInput['apiKey']['delete']
+
+export type AuthLoginInput = RouterInput['auth']['login']
+export type AuthRegisterInput = RouterInput['auth']['register']
+export type AuthLogoutInput = RouterInput['auth']['logout']
+
+
+export type UserColabCreateInput = RouterInput['userColab']['create']
+export type UserColabDeleteInput = RouterInput['userColab']['delete']
+export type UserColabUpdateInput = RouterInput['userColab']['update']
+
+export type RefreshTokenRefreshInput = RouterInput['refreshToken']['refresh']
+
+// Outputs 
+// TODO: Finish this
+export type DataListOutput = RouterOutput['data']['list']
+export type DataListOutput = RouterOutput['data']['list']
+export type DataListOutput = RouterOutput['data']['list']
+export type DataListOutput = RouterOutput['data']['list']
+export type DataListOutput = RouterOutput['data']['list']
+export type DataListOutput = RouterOutput['data']['list']
