@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // TODO: See the Docs to fix the reuse mutation with INFERRING TYPES: https://trpc.io/docs/client/vanilla/infer-types
 import { useTRPC } from "../../utils/trpc"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, type UseMutationResult } from "@tanstack/react-query"
+
+export type MutationResultType = UseMutationResult<unknown, Error, void, unknown>
 
 // TODO: it's working, now, try to fix TYPES ISSUES.
 export const useMutateHandler = <T> (key:string, innerKey:string) => {
     const trpc = useTRPC()
  
-    const inputInferrring = {
+    const inputInferrring:MutationResultType | any = {
         data:{
            list: trpc.data.list.mutationOptions(),
            create: trpc.data.create.mutationOptions(),
@@ -27,8 +30,19 @@ export const useMutateHandler = <T> (key:string, innerKey:string) => {
            create: trpc.apiData.create.mutationOptions(),
            update: trpc.apiData.update.mutationOptions(),
            delete: trpc.apiData.delete.mutationOptions()
+        },
+        auth:{
+           login: trpc.auth.login.mutationOptions(),
+           register: trpc.auth.register.mutationOptions(),
+           logout: trpc.auth.logout.mutationOptions()
+        },
+        userColab:{
+           list: trpc.userColab.list.queryOptions(),
+           create: trpc.userColab.create.mutationOptions(),
+           delete: trpc.userColab.delete.mutationOptions(),
+           update: trpc.userColab.update.mutationOptions()
         }
     }
-    const inputMutation:T = useMutation(inputInferrring[key][innerKey])
+    const inputMutation = useMutation<T | MutationResultType>(inputInferrring[key][innerKey])
     return { inputMutation }
 }
