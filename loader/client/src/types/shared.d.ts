@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, type SetStateAction } from "react";
 // import type { DataResource } from "./hooks";
-import type { RouterInput, RouterOutput } from "../utils/trpc";
+import  { type RouterInput, type RouterOutput } from "../utils/trpc";
 
 export type ParamTuple = [string, string]
 export interface StateProps {
@@ -67,6 +67,11 @@ export type UserColabUpdateInput = RouterInput['userColab']['update']
 
 export type RefreshTokenRefreshInput = RouterInput['refreshToken']['refresh']
 
+export type UnionInput = DataListInput | DataCreateInput | DataSearchInput | DataSelectForIdInput | DataSelectFormEmailInput | DataUpdateInput | DataDeleteInput | 
+ApiDataSelectForIdInput | ApiDataCreateInput | ApiDataUpdateInput | ApiDataDeleteInput | ApiKeySelectForIdInput | ApiKeyCreateInput | ApiKeyUpdateInput | ApiKeyDeleteInput |
+AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | UserColabDeleteInput | UserColabUpdateInput | RefreshTokenRefreshInput
+
+
 // Outputs 
 // TODO: Finish this
 export type DataListOutput = RouterOutput['data']['list']
@@ -76,3 +81,24 @@ export type DataSelectForIdOutput = RouterOutput['data']['selectForId']
 export type DataSelectForEmailOutput = RouterOutput['data']['selectForEmail']
 export type DataUpdateOutput = RouterOutput['data']['update']
 export type DataDeleteOutput = RouterOutput['data']['delete']
+
+export type ApiDataSelectIdOutput = RouterOutput['apiData']['selectForId']
+export type ApiDataCreateOutput = RouterOutput['apiData']['create']
+export type ApiDataUpdateOutput = RouterOutput['apiData']['update']
+export type ApiDataDeleteOutput = RouterOutput['apiData']['delete']
+
+export type ApiKeySelectIdOutput = RouterOutput['apiKey']['selectForId']
+export type ApiKeyCreateOutput = RouterOutput['apiKey']['create']
+export type ApiKeyUpdateOutput = RouterOutput['apiKey']['update']
+export type ApiKeyDeleteOutput = RouterOutput['apiKey']['delete']
+
+export type AuthLoginOutput = RouterOutput['auth']['login']
+export type AuthRegisterOutput = RouterOutput['auth']['register']
+export type AuthLogoutOutput = RouterOutput['auth']['logout']
+
+export type UserColabCreateOutput = RouterOutput['userColab']['create']
+export type UserColabDeleteOutput = RouterOutput['userColab']['delete']
+export type UserColabUpdateOutput = RouterOutput['userColab']['update']
+export type UserColabListOutput = RouterOutput['userColab']['list']
+
+export type RefreshTokenRefreshOutput = RouterOutput['refreshToken']['refresh']

@@ -5,14 +5,9 @@ import { useFormInputs } from '../../../../../hooks/hooks'
 import { useModifyData } from '../../../../../hooks/custom/useModifyData'
 import { FUL_DATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
-// interface Data {
-//   id: number,
-//   emailSource: string;
-//   emailSourcePsw: string;
-//   xUser: string;
-//   xPsw: string;
-// }
-export default function DataUpdate(data:any):React.ReactNode {
+import type { DataSelectForIdOutput } from '../../../../../types'
+
+export default function DataUpdate(data:DataSelectForIdOutput):React.ReactNode {
      const { handleChange, handleSubmit, formData } = useModifyData(data.data)
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
