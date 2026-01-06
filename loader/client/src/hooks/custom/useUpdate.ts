@@ -1,29 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type ChangeEvent, type FormEvent } from "react";
-
-
 import type { UnionInput, EndPoint } from "../../types";
 
 import { useStateContext } from "./useCtxStates";
 import { useFormBlocker } from "./useFormBlocker";
 import { useFormData } from "./useFormData";
-import { useMutateHandler } from "./useMutateHandler";
+import { useEndPointHandler } from "./useEndPointHandler";
 
 
-
-// TODO: reuse this hook on the updated records and the related data
-// TODO: Try to REUSE mutation with inferring types
-
-
-export const useModifyData = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
+export const useUpdate = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
     
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     
     // Customs hooks 🪝
     const { blocker } = useFormBlocker()
     const { formData, setFormData } = useFormData(values as T)
-    console.log(values)
-    const { inputMutation } = useMutateHandler(endPoint)
+ 
+    const { inputMutation } = useEndPointHandler(endPoint)
 
 
      // Change Event 🛠️

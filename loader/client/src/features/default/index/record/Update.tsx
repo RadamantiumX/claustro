@@ -8,7 +8,7 @@ import DataUpdate from './cascade/DataUpdate';
 
 export default function Update():React.ReactNode {
   const { data } = useFetchCascade()
-  
+  console.log(data)
     return (
     <DefaultContent>
       

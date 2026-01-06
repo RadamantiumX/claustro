@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
@@ -7,7 +6,7 @@ import { FUL_DATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 import type { DataSelectForIdOutput } from '../../../../../types'
 
-export default function DataUpdate(data:DataSelectForIdOutput):React.ReactNode {
+export default function ApiDataUpdate(data:DataSelectForIdOutput):React.ReactNode {
      const { handleChange, handleSubmit, formData } = useUpdate(data.data, {route:"data",method:"update"})
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
