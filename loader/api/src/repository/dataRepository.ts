@@ -2,8 +2,8 @@ import type { Datum, CascadeData } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
-// TODO Fix types
 
+// TODO: fix returns types on: "getUnique" & "getForEmailSource" => Returns "any" to the client
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>{
@@ -70,7 +70,7 @@ export class DataRepository{
       return dataSearched
    }
     async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<CascadeData | null>{
-       const unique:any = await this.prismaClient.data.findUnique({
+       const unique = await this.prismaClient.data.findUnique({
         where:{ emailSource: payload.emailSource },
         select:{
             id: true,
@@ -106,8 +106,8 @@ export class DataRepository{
                  xUser: unique?.xUser, 
                  xPsw: unique?.xPsw 
                 }, 
-                apiData: unique.apiData,
-                apiKeys: unique.apiKeys 
+                apiData: unique?.apiData,
+                apiKeys: unique?.apiKeys 
             }
     }
    

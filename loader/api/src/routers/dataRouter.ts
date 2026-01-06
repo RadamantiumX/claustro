@@ -3,7 +3,6 @@ import { DataService } from "../services/dataService";
 import { dataSchema, metaSchema } from "../schemas/zodSchemas/dataValidation";
 import { protectedProcedure } from "../lib/procedure";
 
-
 const dataServiceInstance = DataService.getInstance()
 
 export const dataRouter = trpc.router({
@@ -36,8 +35,12 @@ export const dataRouter = trpc.router({
     }),
     selectForId: protectedProcedure.input(dataSchema.pick({id:true})).mutation(
         (({input })=>{
-
-              return dataServiceInstance.data.selectUniqueForId(input)
+           try{
+            return dataServiceInstance.data.selectUniqueForId(input)
+           }catch(error){
+            throw new Error('Missing request!')
+           }
+              
            
         }
         )

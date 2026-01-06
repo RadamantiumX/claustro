@@ -2,12 +2,12 @@ import { createTRPCContext } from '@trpc/tanstack-react-query';
 import type { AppRouter } from '../../../api/src/routers/index';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { getToken } from '../helper/cookieHandler';
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 
 // For all use
 export type RouterInput = inferRouterInputs<AppRouter>
 export type RouterOutput = inferRouterOutputs<AppRouter>
-type LoopInput = RouterOutput['data']['selectForId']
+export type LoopRoute = RouterOutput['data']['selectForId']
 
 
 export const  { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()

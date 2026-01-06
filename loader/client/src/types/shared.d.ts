@@ -73,7 +73,6 @@ AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | Us
 
 
 // Outputs 
-// TODO: Finish this
 export type DataListOutput = RouterOutput['data']['list']
 export type DataCreateOutput = RouterOutput['data']['create']
 export type DataSearchOutput = RouterOutput['data']['search']
