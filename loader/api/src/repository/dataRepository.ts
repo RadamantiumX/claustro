@@ -7,7 +7,7 @@ import { PrismaClient } from '@prisma/client';
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
     async getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>{
-       const unique:any = await this.prismaClient.data.findUnique({
+       const unique = await this.prismaClient.data.findUnique({
         where:{ id: payload.id },
         select:{
             id: true,
@@ -34,7 +34,7 @@ export class DataRepository{
             }
         }
     })
-
+   if(unique){
     return { 
                data: { 
                  id: unique?.id, 
@@ -46,6 +46,9 @@ export class DataRepository{
                 apiData: unique.apiData,
                 apiKeys: unique.apiKeys 
             }
+   }
+   return null
+    
     }
    async searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
       const dataSearched = await this.prismaClient.data.findMany({
@@ -97,7 +100,7 @@ export class DataRepository{
             }
         }
     })
-
+if(unique){
     return { 
                data: { 
                  id: unique?.id, 
@@ -109,6 +112,8 @@ export class DataRepository{
                 apiData: unique?.apiData,
                 apiKeys: unique?.apiKeys 
             }
+}
+    return null
     }
    
     async allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>{

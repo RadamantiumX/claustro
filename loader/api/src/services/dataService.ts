@@ -5,9 +5,7 @@ import { TRPCError } from "@trpc/server";
 import { Prisma } from "@prisma/client";
 ///// TODO: adding the methods on definitions ✅
 
-interface Entry{
-  payload: string
-}
+
 export class DataService{
     private static instance:DataService;
     dataRepository:IDataRepository;

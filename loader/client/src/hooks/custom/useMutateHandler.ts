@@ -2,11 +2,14 @@
 // TODO: See the Docs to fix the reuse mutation with INFERRING TYPES: https://trpc.io/docs/client/vanilla/infer-types
 import { useTRPC } from "../../utils/trpc"
 import { useMutation, type UseMutationResult } from "@tanstack/react-query"
+import type { EndPoint } from "../../types"
 
 export type MutationResultType = UseMutationResult<unknown, Error, void, unknown>
 
+
+
 // TODO: it's working, now, try to fix TYPES ISSUES.
-export const useMutateHandler = <T> (key:string, innerKey:string) => {
+export const useMutateHandler = <T> (endPoint:EndPoint) => {
     const trpc = useTRPC()
  
     const inputInferrring:MutationResultType | any = {
@@ -43,6 +46,6 @@ export const useMutateHandler = <T> (key:string, innerKey:string) => {
            update: trpc.userColab.update.mutationOptions()
         }
     }
-    const inputMutation = useMutation<T | MutationResultType>(inputInferrring[key][innerKey])
+    const inputMutation = useMutation<T | MutationResultType>(inputInferrring[endPoint.route][endPoint.method])
     return { inputMutation }
 }

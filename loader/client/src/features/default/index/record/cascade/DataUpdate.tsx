@@ -8,7 +8,7 @@ import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 import type { DataSelectForIdOutput } from '../../../../../types'
 
 export default function DataUpdate(data:DataSelectForIdOutput):React.ReactNode {
-     const { handleChange, handleSubmit, formData } = useModifyData(data.data)
+     const { handleChange, handleSubmit, formData } = useModifyData(data.data, {route:"data",method:"update"})
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
     <>

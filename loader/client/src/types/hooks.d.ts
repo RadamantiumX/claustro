@@ -55,3 +55,8 @@ export interface DataValues {
     xUser: string;
     xPsw: string;
 }
+
+export interface EndPoint{
+  route: string;
+  method: string;
+}

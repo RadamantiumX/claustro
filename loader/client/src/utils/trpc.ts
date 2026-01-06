@@ -7,7 +7,7 @@ import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 // For all use
 export type RouterInput = inferRouterInputs<AppRouter>
 export type RouterOutput = inferRouterOutputs<AppRouter>
-export type LoopRoute = RouterOutput['data']['selectForId']
+
 
 
 export const  { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()
