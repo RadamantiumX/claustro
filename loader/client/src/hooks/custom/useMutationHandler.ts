@@ -8,7 +8,7 @@ import { useFormData } from "./useFormData";
 import { useEndPointHandler } from "./useEndPointHandler";
 
 
-export const useUpdate = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
+export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
     
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
     

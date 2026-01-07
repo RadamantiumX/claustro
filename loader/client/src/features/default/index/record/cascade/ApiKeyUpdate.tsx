@@ -1,13 +1,13 @@
 import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
-import { useUpdate } from '../../../../../hooks/custom/useUpdate'
+import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
 import { FUL_DATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 import type { DataSelectForIdOutput } from '../../../../../types'
 
 export default function ApiKeyUpdate(data:DataSelectForIdOutput):React.ReactNode {
-     const { handleChange, handleSubmit, formData } = useUpdate(data.data, {route:"data",method:"update"})
+     const { handleChange, handleSubmit, formData } = useMutationHandler(data.data, {route:"data",method:"update"})
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
     <>
