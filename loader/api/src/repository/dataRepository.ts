@@ -127,6 +127,9 @@ if(unique){
                 xUser: true,
                 userColabId: true, 
                 createdAt: true
+            },
+            orderBy:{
+                createdAt: 'desc'
             }
         })
         const count = await this.prismaClient.data.count()

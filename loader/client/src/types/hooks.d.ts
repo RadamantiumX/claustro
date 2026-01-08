@@ -1,3 +1,5 @@
+import type { JwtPayload } from "jwt-decode";
+
 export interface SignInHandler{
     formData: FormDataSignIn;
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -34,7 +36,7 @@ export interface None {
 }
 
 export interface FormDataAddData {
-        id: number;
+      
         emailSource:string;
         emailSourcePsw: string;
         xUser:string;
@@ -59,4 +61,10 @@ export interface DataValues {
 export interface EndPoint{
   route: string;
   method: string;
+}
+
+
+
+export interface CustomPayload extends JwtPayload{
+  id:string
 }
