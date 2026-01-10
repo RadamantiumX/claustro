@@ -1,4 +1,4 @@
-import type { Datum, CascadeData } from "../types/index";
+import type { Datum, CascadeData, ApiData } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
@@ -34,21 +34,21 @@ export class DataRepository{
             }
         }
     })
-   if(unique){
-    return { 
-               data: { 
-                 id: unique?.id, 
-                 emailSource: unique?.emailSource, 
-                 emailSourcePsw: unique?.emailSourcePsw, 
-                 xUser: unique?.xUser, 
-                 xPsw: unique?.xPsw 
-                }, 
-                apiData: unique.apiData,
-                apiKeys: unique.apiKeys 
-            }
-   }
+    if(unique){
+     return { 
+                data: { 
+                  id: unique?.id, 
+                  emailSource: unique?.emailSource, 
+                  emailSourcePsw: unique?.emailSourcePsw, 
+                  xUser: unique?.xUser, 
+                  xPsw: unique?.xPsw 
+                 }, 
+                 apiData: unique.apiData,
+                 apiKeys: unique.apiKeys 
+             }
+    }
    return null
-    
+
     }
    async searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>{
       const dataSearched = await this.prismaClient.data.findMany({
@@ -100,21 +100,21 @@ export class DataRepository{
             }
         }
     })
-if(unique){
-    return { 
-               data: { 
-                 id: unique?.id, 
-                 emailSource: unique?.emailSource, 
-                 emailSourcePsw: unique?.emailSourcePsw, 
-                 xUser: unique?.xUser, 
-                 xPsw: unique?.xPsw 
-                }, 
-                apiData: unique?.apiData,
-                apiKeys: unique?.apiKeys 
-            }
-}
+  if(unique){
+     return { 
+                data: { 
+                  id: unique?.id, 
+                  emailSource: unique?.emailSource, 
+                  emailSourcePsw: unique?.emailSourcePsw, 
+                  xUser: unique?.xUser, 
+                  xPsw: unique?.xPsw 
+                 }, 
+                 apiData: unique?.apiData,
+                 apiKeys: unique?.apiKeys 
+             }
+  }
     return null
-    }
+}
    
     async allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>{
         // Only "pageSize" number of records for page

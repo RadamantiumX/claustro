@@ -17,7 +17,7 @@ export default function FormSection():React.ReactNode {
   const { formInputs } = useFormInputs(SIGNIN_INPUTS, formData)
   return (
     <GuestContent>
-      {responseError && <AuthErrorCard message={responseError}/> }
+      { responseError && <AuthErrorCard message={responseError}/> }
           <BasicCard>
               <PageSubTitle title="Sign In to your account"/>
               <AuthForm
@@ -28,7 +28,6 @@ export default function FormSection():React.ReactNode {
                 />
              <CustomLink inner="Back" route="/" fontSize=""/>
            </BasicCard>
-             
     </GuestContent>
   )
 }

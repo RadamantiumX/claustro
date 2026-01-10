@@ -4,10 +4,22 @@ import { useFormInputs } from '../../../../../hooks/hooks'
 import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
 import { FUL_DATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
-import type { DataSelectForIdOutput } from '../../../../../types'
 
-export default function ApiKeyUpdate(data:DataSelectForIdOutput):React.ReactNode {
-     const { handleChange, handleSubmit, formData } = useMutationHandler(data.data, {route:"data",method:"update"})
+const apikeyFields = {
+    
+    apiKey: "",
+    apiKeySecret: "",
+    bearerToken: "",
+    accessToken: "",
+    accessTokenSecret: "",
+    apiDataId: "",
+    dataId: ""
+}
+
+// TODO:Try this to work
+export default function ApiKeyUpdate(apiKey:any):React.ReactNode {
+     console.log(apiKey)
+     const { handleChange, handleSubmit, formData } = useMutationHandler(apiKey, {route:"data",method:"update"})
      const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
   return (
     <>

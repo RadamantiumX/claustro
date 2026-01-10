@@ -3,12 +3,12 @@ import { useTRPC } from "../../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import type { DataValues } from "../../types/hooks";
+
 
 export const useFetchCascade = () => {
    const trpc = useTRPC()
    const params:any = useParams()
-   const [data, setData] = useState<DataValues>()
+   const [data, setData] = useState({})
    const [apiKeys, setApiKeys] = useState()
    const [apiData, setApiData] = useState()
 
@@ -24,7 +24,7 @@ export const useFetchCascade = () => {
          console.log(data.apiKeys)
          console.log(data.apiData)
          console.log(variables)
-        setData(data.data)
+         setData({id:data.id, emailSource: data.emailSource, emailSourcePsw:data.emailSourcePsw, xUser: data.xUser, xPsw: data.xPsw})
          setApiData(data.apiData)
          setApiKeys(data.apiKeys)
       },
