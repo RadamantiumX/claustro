@@ -8,27 +8,6 @@ export interface CascadeData{
     data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">;
     apiData: Pick<ApiData, "id"| "appName" | "appId"> | null;
     apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null;
-
-  // data:{
-  //   id: number;
-  //   emailSource: string;
-  //   emailSourcePsw:string;
-  //   xUser: string;
-  //   xPsw: string;
-  // },
-  // apiData: {
-  //   id:number;
-  //   appName:string ;
-  //   appId: string;
-  // } | null;
-  // apiKeys: {
-  //   id: number;
-  //   apiKey: string;
-  //   apiKeySecret: string ;
-  //   bearerToken: string ;
-  //   accessToken: string;
-  //   accessTokenSecret: string;
-  // } | null;
 }
 
 
