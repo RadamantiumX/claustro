@@ -18,8 +18,8 @@ export interface DataMethods{
    list: (bodyReq:{page:number, pageSize:number}) => Promise<{data:Pick<Datum, "id" | "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number |null}>;
    search:(bodyReq:{entry:string, page:number, pageSize:number})=>Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
    create: (bodyReq:Omit<Datum, "id" | "createdAt" | "updatedAt">) => Promise<void>;
-   selectUniqueForId: (bodyReq:Pick<Datum, "id">) => Promise<CascadeData | null>;
-   selectUniqueForEmail: (bodyReq:Pick<Datum, "emailSource">) => Promise<CascadeData | null>;
+   selectUniqueForId: (bodyReq:Pick<Datum, "id">) => Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>;
+   selectUniqueForEmail: (bodyReq:Pick<Datum, "emailSource">) => Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>;
    update: (bodyReq:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">) => Promise<void>;
    delete: (bodyReq:Pick<Datum, 'id'>) => Promise<void>;
 }

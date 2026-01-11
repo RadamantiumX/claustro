@@ -1,4 +1,4 @@
-import type { Datum, CascadeData, ApiData } from "../types/index";
+import type { Datum, CascadeData, ApiData, ApiKey } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 
@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 // TODO: fix returns types on: "getUnique" & "getForEmailSource" => Returns "any" to the client
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
-    async getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>{
+    async getUnique(payload:Pick<Datum, "id">):Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>{
        const unique = await this.prismaClient.data.findUnique({
         where:{ id: payload.id },
         select:{
@@ -72,7 +72,7 @@ export class DataRepository{
 
       return dataSearched
    }
-    async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<CascadeData | null>{
+    async getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>{
        const unique = await this.prismaClient.data.findUnique({
         where:{ emailSource: payload.emailSource },
         select:{

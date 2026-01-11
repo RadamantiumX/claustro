@@ -25,9 +25,9 @@ export interface IuserColabRepository {
 }
 
 export interface IDataRepository{
-     getUnique(payload:Pick<Datum, "id">):Promise<CascadeData | null>;
+     getUnique(payload:Pick<Datum, "id">):Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>;
      searchData(payload:{entry:string, page:number, pageSize:number}):Promise<Pick<Datum, 'id' | 'emailSource' | 'xUser'> [] | null>;
-     getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<CascadeData | null>;
+     getForEmailSource(payload:Pick<Datum, "emailSource">):Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>;
      allData(payload:{page:number, pageSize:number}):Promise<{data:Pick<Datum, "id"| "emailSource" | "xUser" | "userColabId" | "createdAt"> [] | null, count:number | null}>;
      createData(payload:Omit<Datum, "id" | "createdAt" | "updatedAt">):Promise<void>;
      updateData(payload:Omit<Datum, "createdAt" | "updatedAt" | "userColabId">):Promise<void>;

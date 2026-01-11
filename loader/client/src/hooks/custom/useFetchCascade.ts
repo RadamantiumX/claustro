@@ -3,14 +3,14 @@ import { useTRPC } from "../../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import type { DataSelectForIdOutput } from "../../types";
 
-
-export const useFetchCascade = () => {
+export const useFetchCascade =<T extends DataSelectForIdOutput> () => {
    const trpc = useTRPC()
    const params:any = useParams()
-   const [data, setData] = useState({})
-   const [apiKeys, setApiKeys] = useState()
-   const [apiData, setApiData] = useState()
+   const [data, setData] = useState()
+   const [apiKeys, setApiKeys] = useState({})
+   const [apiData, setApiData] = useState({})
 
    const mutationRq = useMutation(trpc.data.selectForId.mutationOptions())
    console.log(params.id)
@@ -18,15 +18,14 @@ export const useFetchCascade = () => {
    const handleFn = async() =>{
       try{
       mutationRq.mutate({id:parseInt(params.id)},{
-      onSuccess:(data, variables)=>{
+      onSuccess:(data)=>{
          console.log(data)
-         console.log(data.data)
-         console.log(data.apiKeys)
-         console.log(data.apiData)
-         console.log(variables)
-         setData({id:data.id, emailSource: data.emailSource, emailSourcePsw:data.emailSourcePsw, xUser: data.xUser, xPsw: data.xPsw})
-         setApiData(data.apiData)
-         setApiKeys(data.apiKeys)
+         console.log(data?.data.id)
+         console.log(data?.apiKeys)
+         console.log(data?.apiData)
+         setData(data?.data)
+         setApiData(data?.apiData)
+         setApiKeys(data?.apiKeys)
       },
       onError:(error)=>{
          console.log(error)
