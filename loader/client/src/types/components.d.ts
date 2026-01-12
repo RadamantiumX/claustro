@@ -66,3 +66,36 @@ export interface PaginationProps {
   end:number;
   start:number
 }
+
+export interface DataProps {
+ data:{
+  id:number;
+  emailSource:string;
+  emailSourcePsw:string;
+  xUser:string;
+  xPsw:string
+ } 
+}
+
+export interface DataReq {
+  id:number;
+  emailSource:string;
+  emailSourcePsw:string;
+  xUser:string;
+  xPsw:string
+ }
+
+ export interface ApiDataReq {
+    id: number;
+    appName: string;
+    appId: string;
+ }
+
+ export interface ApiKeysReq {
+    id: number;
+    apiKey: true;
+    apiKeySecret: true;
+    bearerToken: true;
+    accessToken: true;
+    accessTokenSecret: true;
+ }
