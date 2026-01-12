@@ -6,7 +6,10 @@ import { PrismaClient } from '@prisma/client';
 // TODO: fix returns types on: "getUnique" & "getForEmailSource" => Returns "any" to the client
 export class DataRepository{
     constructor(private prismaClient:PrismaClient){}
-    async getUnique(payload:Pick<Datum, "id">):Promise<{data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>{
+    async getUnique(payload:Pick<Datum, "id">):Promise<{   
+        data: Pick<Datum , "id" | "emailSource" | "xUser" | "emailSourcePsw" | "xPsw">,
+        apiData: Pick<ApiData, "id"| "appName" | "appId"> | null,
+        apiKeys: Pick<ApiKey, "id" | "apiKey" | "apiKeySecret" | "bearerToken" | "accessToken" | "accessTokenSecret"> | null} | null>{
        const unique = await this.prismaClient.data.findUnique({
         where:{ id: payload.id },
         select:{
