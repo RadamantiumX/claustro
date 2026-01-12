@@ -3,14 +3,16 @@ import { useTRPC } from "../../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import type { DataSelectForIdOutput } from "../../types";
+import type { DataReq, ApiDataReq, ApiKeysReq } from "../../types";
 
-export const useFetchCascade =<T extends DataSelectForIdOutput> () => {
+
+
+export const useFetchCascade =() => {
    const trpc = useTRPC()
    const params:any = useParams()
-   const [data, setData] = useState()
-   const [apiKeys, setApiKeys] = useState({})
-   const [apiData, setApiData] = useState({})
+   const [data, setData] = useState<DataReq>()
+   const [apiKeys, setApiKeys] = useState<ApiKeysReq | null | undefined>()
+   const [apiData, setApiData] = useState<ApiDataReq | null | undefined>()
 
    const mutationRq = useMutation(trpc.data.selectForId.mutationOptions())
    console.log(params.id)
