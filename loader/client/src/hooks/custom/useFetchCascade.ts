@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTRPC } from "../../utils/trpc";
 import { useMutation } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useParams, type Params } from "react-router-dom";
 import { useState, useEffect } from "react";
 import type { DataReq, ApiDataReq, ApiKeysReq } from "../../types";
 
@@ -9,17 +9,17 @@ import type { DataReq, ApiDataReq, ApiKeysReq } from "../../types";
 
 export const useFetchCascade =() => {
    const trpc = useTRPC()
-   const params:any = useParams()
+   const {id}:Readonly<Params<string>> = useParams()
    const [data, setData] = useState<DataReq>()
-   const [apiKeys, setApiKeys] = useState<ApiKeysReq | null | undefined>()
-   const [apiData, setApiData] = useState<ApiDataReq | null | undefined>()
+   const [apiKeys, setApiKeys] = useState<ApiKeysReq | null>()
+   const [apiData, setApiData] = useState<ApiDataReq | null>()
 
    const mutationRq = useMutation(trpc.data.selectForId.mutationOptions())
-   console.log(params.id)
+   console.log(id)
 
    const handleFn = async() =>{
       try{
-      mutationRq.mutate({id:parseInt(params.id)},{
+      mutationRq.mutate({id:parseInt(id as string)},{
       onSuccess:(data)=>{
          console.log(data)
          console.log(data?.data.id)
@@ -40,8 +40,8 @@ export const useFetchCascade =() => {
    useEffect(()=>{
       handleFn()
        
-   },[params])
+   },[id])
   
 
-   return { data, apiKeys, apiData }
+   return { data, apiKeys, apiData, id }
 }

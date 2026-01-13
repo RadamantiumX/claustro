@@ -76,6 +76,26 @@ export interface DataProps {
   xPsw:string
  } 
 }
+export interface ApiDataProps {
+ apiData:{
+  id:number;
+  appName: string;
+  appId: string;
+ } | null | undefined,
+ dataId: number
+}
+
+export interface ApiKeyProps {
+    apiKeys:{
+        id: number;
+        apiKey: string;
+        apiKeySecret: string;
+        bearerToken: string;
+        accessToken: string;
+        accessTokenSecret: string;
+    } | null | undefined,
+    dataId:number;
+}
 
 export interface DataReq {
   id:number;
@@ -93,9 +113,9 @@ export interface DataReq {
 
  export interface ApiKeysReq {
     id: number;
-    apiKey: true;
-    apiKeySecret: true;
-    bearerToken: true;
-    accessToken: true;
-    accessTokenSecret: true;
+    apiKey: string;
+    apiKeySecret: string;
+    bearerToken: string;
+    accessToken: string;
+    accessTokenSecret: string;
  }

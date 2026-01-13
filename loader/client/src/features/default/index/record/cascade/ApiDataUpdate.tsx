@@ -2,18 +2,20 @@ import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
 import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
-import { FUL_DATA_INPUTS } from '../../../../../utils/const'
+import {  FULL_APIDATA_INPUTS, APIDATA_INPUTS } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
-import type { DataSelectForIdOutput } from '../../../../../types'
+import type { ApiDataProps } from '../../../../../types'
 
-export default function ApiDataUpdate(data:DataSelectForIdOutput):React.ReactNode {
-     const { handleChange, handleSubmit, formData } = useMutationHandler(data.data, {route:"data",method:"update"})
-     const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
+export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.ReactNode {
+    // TODO: change, with ternary, the route and method
+    const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ appName:"", appId:"", dataId:dataId }, {route:"data",method:"update"})
+     const { formInputs } = useFormInputs(apiData ? FULL_APIDATA_INPUTS : APIDATA_INPUTS, formData)
+    console.log(apiData)
   return (
     <>
     
-    <PageSubTitle title='Data Update'/>
-     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Data'/>
+    <PageSubTitle title={apiData ? 'Api Data Update':'Api Data'}/>
+     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton={apiData ? 'Update Api Data': "Add Api Data"}/>
      
     </>
   )

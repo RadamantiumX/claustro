@@ -33,6 +33,27 @@ export const DATA_INPUTS = [
   },
 ]
 
+export const APIDATA_INPUTS = [
+ {
+    for: "appName",
+    label: "App name",
+    typeInput: "text",
+    propInput: "appName",
+    placeholder: "Insert App Name",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "appId",
+    label: "App Id",
+    typeInput: "text",
+    propInput: "AppId",
+    placeholder: "Insert App Id",
+    value: "",
+    readonly:false
+  }
+]
+
 export const FUL_DATA_INPUTS = [
    {
     for: "Id",
@@ -79,6 +100,37 @@ export const FUL_DATA_INPUTS = [
     value: "",
     readonly:false
   },
+]
+
+export const FULL_APIDATA_INPUTS = [
+  {
+    for: "Id",
+    label: "Id",
+    typeInput: "number",
+    propInput: "Id",
+    placeholder: "",
+    value: "",
+    readonly:true
+  },
+  
+  {
+    for: "appName",
+    label: "App name",
+    typeInput: "text",
+    propInput: "appName",
+    placeholder: "Insert App Name",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "appId",
+    label: "App Id",
+    typeInput: "text",
+    propInput: "AppId",
+    placeholder: "Insert App Id",
+    value: "",
+    readonly:false
+  }
 ]
 
 
