@@ -4,6 +4,7 @@ import DefaultContent from '../../../../components/sectionsTemplate/DefaultConte
 import { useFetchCascade} from '../../../../hooks/hooks';
 import DataUpdate from './cascade/DataUpdate';
 import ApiDataUpdate from './cascade/ApiDataUpdate';
+import ApiKeyUpdate from './cascade/ApiKeyUpdate';
 
 export default function Update():React.ReactNode {
   const { data, apiData, apiKeys, id } = useFetchCascade()
@@ -13,7 +14,8 @@ export default function Update():React.ReactNode {
     <DefaultContent>
       
         { data && <DataUpdate data={data}/> }
-        <ApiDataUpdate apiData={apiData} dataId={parseInt(id as string)}/>
+        { data && <ApiDataUpdate apiData={apiData} dataId={parseInt(id as string)}/> }
+        { apiData && <ApiKeyUpdate apiKeys={apiKeys} dataId={parseInt(id as string)} apiDataId={apiData.id}/> }
     </DefaultContent>
   )
 

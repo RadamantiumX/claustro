@@ -133,6 +133,73 @@ export const FULL_APIDATA_INPUTS = [
   }
 ]
 
+export const FULL_APIKEYS_INPUTS = [
+   {
+    for: "Id",
+    label: "Id",
+    typeInput: "number",
+    propInput: "Id",
+    placeholder: "",
+    value: "",
+    readonly:true
+  }, {
+    for: "ApiKey",
+    label: "Api Key",
+    typeInput: "text",
+    propInput: "ApiKey",
+    placeholder: "Insert Api Key",
+    value: "",
+    readonly:false
+  }, {
+    for: "ApiKeySecret",
+    label: "Api Key Secret",
+    typeInput: "text",
+    propInput: "ApiKeySecret",
+    placeholder: "Insert Api Key Secret",
+    value: "",
+    readonly:false
+  }, {
+    for: "BearerToken",
+    label: "BearerToken",
+    typeInput: "text",
+    propInput: "BearerToken",
+    placeholder: "Insert Bearer Token",
+    value: "",
+    readonly:false
+  }, {
+    for: "AccessToken",
+    label: "AccessToken",
+    typeInput: "number",
+    propInput: "AccessToken",
+    placeholder: "Insert Access Token",
+    value: "",
+    readonly:false
+  }, {
+    for: "AccessTokenSecret",
+    label: "Access Token Secret",
+    typeInput: "text",
+    propInput: "AccessTokenSecret",
+    placeholder: "Insert Access Token Secret",
+    value: "",
+    readonly:false
+  }, {
+    for: "ApiDataId",
+    label: "Api Data Id",
+    typeInput: "number",
+    propInput: "apiDataId",
+    placeholder: "Api Data Id",
+    value: "",
+    readonly:true
+  },{
+    for: "DataId",
+    label: "Data Id",
+    typeInput: "number",
+    propInput: "DataId",
+    placeholder: "Data Id",
+    value: "",
+    readonly:true
+  }
+]
 
 export const SIGNIN_INPUTS = [
                   {

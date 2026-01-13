@@ -95,6 +95,7 @@ export interface ApiKeyProps {
         accessTokenSecret: string;
     } | null | undefined,
     dataId:number;
+    apiDataId: number;
 }
 
 export interface DataReq {

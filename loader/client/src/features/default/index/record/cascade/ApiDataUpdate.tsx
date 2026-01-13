@@ -8,7 +8,9 @@ import type { ApiDataProps } from '../../../../../types'
 
 export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.ReactNode {
     // TODO: change, with ternary, the route and method
-    const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ appName:"", appId:"", dataId:dataId }, {route:"data",method:"update"})
+    const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ appName:"", appId:"", dataId:dataId }, apiData?{route:"apiData",method:"update"}:
+      {route:"apiData",method:"create"}
+    )
      const { formInputs } = useFormInputs(apiData ? FULL_APIDATA_INPUTS : APIDATA_INPUTS, formData)
     console.log(apiData)
   return (
