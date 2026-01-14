@@ -2,7 +2,7 @@ import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
 import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
-import { FUL_DATA_INPUTS } from '../../../../../utils/const'
+import { APIKEYS_INPUTS, APIKEYS_INPUTS_UPDATE } from '../../../../../utils/const'
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 import type { ApiKeyProps } from '../../../../../types'
 
@@ -23,7 +23,7 @@ export default function ApiKeyUpdate({apiKeys, dataId, apiDataId}:ApiKeyProps):R
      const { handleChange, handleSubmit, formData } = useMutationHandler(apiKeys ? apiKeys : 
       {apiKey: "", apiKeySecret: "", bearerToken: "", accessToken: "", accessTokenSecret: "", apiDataId: apiDataId, dataId: dataId}, 
         apiKeys ?{route:"apiKey",method:"update"}:{route:"apiKey",method:"create"})
-     const { formInputs } = useFormInputs(FUL_DATA_INPUTS, formData)
+     const { formInputs } = useFormInputs(apiKeys ? APIKEYS_INPUTS_UPDATE : APIKEYS_INPUTS, formData)
   return (
     <>
     

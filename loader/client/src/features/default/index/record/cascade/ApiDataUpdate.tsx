@@ -2,16 +2,16 @@ import React from 'react'
 import { GenericForm } from '../../../../../components/forms/GenericForm'
 import { useFormInputs } from '../../../../../hooks/hooks'
 import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
-import {  FULL_APIDATA_INPUTS, APIDATA_INPUTS } from '../../../../../utils/const'
+import { APIDATA_INPUTS_UPDATE, APIDATA_INPUTS } from '../../../../../utils/const';
 import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
 import type { ApiDataProps } from '../../../../../types'
 
 export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.ReactNode {
-    // TODO: change, with ternary, the route and method
+  
     const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ appName:"", appId:"", dataId:dataId }, apiData?{route:"apiData",method:"update"}:
       {route:"apiData",method:"create"}
     )
-     const { formInputs } = useFormInputs(apiData ? FULL_APIDATA_INPUTS : APIDATA_INPUTS, formData)
+     const { formInputs } = useFormInputs(apiData ? APIDATA_INPUTS_UPDATE : APIDATA_INPUTS, formData)
     console.log(apiData)
   return (
     <>
