@@ -8,11 +8,11 @@ import type { ApiDataProps } from '../../../../../types'
 
 export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.ReactNode {
   
-    const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ appName:"", appId:"", dataId:dataId }, apiData?{route:"apiData",method:"update"}:
+    const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{ dataId:dataId ,appName:"", appId:"",  }, apiData?{route:"apiData",method:"update"}:
       {route:"apiData",method:"create"}
     )
      const { formInputs } = useFormInputs(apiData ? APIDATA_INPUTS_UPDATE : APIDATA_INPUTS, formData)
-    console.log(apiData)
+    
   return (
     <>
     

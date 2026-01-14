@@ -34,6 +34,15 @@ export const DATA_INPUTS = [
 ]
 
 export const APIDATA_INPUTS = [
+  {
+    for: "DataId",
+    label: "Data Id",
+    typeInput: "number",
+    propInput: "DataId",
+    placeholder: "Data Id",
+    value: "",
+    readonly:true
+  },
  {
     for: "appName",
     label: "App name",
@@ -164,8 +173,8 @@ export const DATA_INPUTS_UPDATE = [
 
 export const APIDATA_INPUTS_UPDATE = [
   {
-    for: "Id",
-    label: "Id",
+    for: "DataId",
+    label: "DataId",
     typeInput: "number",
     propInput: "Id",
     placeholder: "",
