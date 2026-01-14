@@ -44,6 +44,12 @@ export interface FormDataAddData {
         userColabId: string;
 }
 
+export interface FormDataAddApiData {
+    appName: string;
+    appId: string;
+    dataId: number;
+}
+
 export interface FormDataSignIn{
     username: string;
     password: string;

@@ -32,8 +32,26 @@ export const DATA_INPUTS = [
     value: ""
   },
 ]
-
+// TODO: change all uppercases
 export const APIDATA_INPUTS = [
+  {
+    for: "appId",
+    label: "App Id",
+    typeInput: "text",
+    propInput: "appId",
+    placeholder: "Insert App Id",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "appName",
+    label: "App Name",
+    typeInput: "text",
+    propInput: "appName",
+    placeholder: "Insert App Name",
+    value: "",
+    readonly:false
+  },
   {
     for: "DataId",
     label: "Data Id",
@@ -43,24 +61,8 @@ export const APIDATA_INPUTS = [
     value: "",
     readonly:true
   },
- {
-    for: "appName",
-    label: "App name",
-    typeInput: "text",
-    propInput: "appName",
-    placeholder: "Insert App Name",
-    value: "",
-    readonly:false
-  },
-  {
-    for: "appId",
-    label: "App Id",
-    typeInput: "text",
-    propInput: "AppId",
-    placeholder: "Insert App Id",
-    value: "",
-    readonly:false
-  }
+ 
+  
 ]
 
 export const APIKEYS_INPUTS = [
