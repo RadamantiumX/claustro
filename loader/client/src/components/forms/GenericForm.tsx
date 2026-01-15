@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormButton } from '../buttons/FormButton';
-import { Plus } from '../../icons/elements/Plus';
+import { Plus, BookmarkUpdate } from '../../icons/icons';
 import { useStateContext } from '../../hooks/hooks';
 import type { FormProps } from '../../types/components';
 import { ErrorInputMessage } from '../misc/ErrorInputMessage';
@@ -49,7 +49,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
         <FormButton loading={loading}>
           <div className='flex flex-row justify-center gap-x-2'>
             {innerTextButton}
-            <Plus/>
+            {innerTextButton.includes("Update")?<BookmarkUpdate/>:<Plus/>}
           </div>
           
         </FormButton>
