@@ -67,47 +67,47 @@ export const APIDATA_INPUTS = [
 
 export const APIKEYS_INPUTS = [
     {
-    for: "ApiKey",
+    for: "apiKey",
     label: "Api Key",
     typeInput: "text",
-    propInput: "ApiKey",
+    propInput: "apiKey",
     placeholder: "Insert Api Key",
     value: "",
     readonly:false
   }, {
-    for: "ApiKeySecret",
+    for: "apiKeySecret",
     label: "Api Key Secret",
     typeInput: "text",
-    propInput: "ApiKeySecret",
+    propInput: "apiKeySecret",
     placeholder: "Insert Api Key Secret",
     value: "",
     readonly:false
   }, {
-    for: "BearerToken",
-    label: "BearerToken",
+    for: "bearerToken",
+    label: "Bearer Token",
     typeInput: "text",
-    propInput: "BearerToken",
+    propInput: "bearerToken",
     placeholder: "Insert Bearer Token",
     value: "",
     readonly:false
   }, {
-    for: "AccessToken",
-    label: "AccessToken",
-    typeInput: "number",
-    propInput: "AccessToken",
+    for: "accessToken",
+    label: "Access Token",
+    typeInput: "text",
+    propInput: "accessToken",
     placeholder: "Insert Access Token",
     value: "",
     readonly:false
   }, {
-    for: "AccessTokenSecret",
+    for: "accessTokenSecret",
     label: "Access Token Secret",
     typeInput: "text",
-    propInput: "AccessTokenSecret",
+    propInput: "accessTokenSecret",
     placeholder: "Insert Access Token Secret",
     value: "",
     readonly:false
   }, {
-    for: "ApiDataId",
+    for: "apiDataId",
     label: "Api Data Id",
     typeInput: "number",
     propInput: "apiDataId",
@@ -115,10 +115,10 @@ export const APIKEYS_INPUTS = [
     value: "",
     readonly:true
   },{
-    for: "DataId",
+    for: "dataId",
     label: "Data Id",
     typeInput: "number",
-    propInput: "DataId",
+    propInput: "dataId",
     placeholder: "Data Id",
     value: "",
     readonly:true
@@ -127,10 +127,10 @@ export const APIKEYS_INPUTS = [
 
 export const DATA_INPUTS_UPDATE = [
    {
-    for: "Id",
+    for: "id",
     label: "Id",
     typeInput: "number",
-    propInput: "Id",
+    propInput: "id",
     placeholder: "",
     value: "",
     readonly:true
@@ -145,11 +145,11 @@ export const DATA_INPUTS_UPDATE = [
     readonly:false
   },
   {
-    for: "email-password",
-    label: "Email Password",
+    for: "emailSourcePassword",
+    label: "Email Source Password",
     typeInput: "text",
     propInput: "emailSourcePsw",
-    placeholder: "Insert Email Password",
+    placeholder: "Insert Email Source Password",
     value: "",
     readonly:false
   },
@@ -175,10 +175,10 @@ export const DATA_INPUTS_UPDATE = [
 
 export const APIDATA_INPUTS_UPDATE = [
   {
-    for: "DataId",
-    label: "DataId",
+    for: "id",
+    label: "Api Data Id",
     typeInput: "number",
-    propInput: "Id",
+    propInput: "id",
     placeholder: "",
     value: "",
     readonly:true
@@ -197,7 +197,7 @@ export const APIDATA_INPUTS_UPDATE = [
     for: "appId",
     label: "App Id",
     typeInput: "text",
-    propInput: "AppId",
+    propInput: "appId",
     placeholder: "Insert App Id",
     value: "",
     readonly:false
@@ -207,51 +207,51 @@ export const APIDATA_INPUTS_UPDATE = [
 export const APIKEYS_INPUTS_UPDATE = [
   
     {
-    for: "Id",
+    for: "id",
     label: "Id",
     typeInput: "number",
-    propInput: "Id",
+    propInput: "id",
     placeholder: "Api Key ID",
     value: "",
     readonly:true
     },
     {
-    for: "ApiKey",
+    for: "apiKey",
     label: "Api Key",
     typeInput: "text",
-    propInput: "ApiKey",
+    propInput: "apiKey",
     placeholder: "Insert Api Key",
     value: "",
     readonly:false
   }, {
-    for: "ApiKeySecret",
+    for: "apiKeySecret",
     label: "Api Key Secret",
     typeInput: "text",
-    propInput: "ApiKeySecret",
+    propInput: "apiKeySecret",
     placeholder: "Insert Api Key Secret",
     value: "",
     readonly:false
   }, {
-    for: "BearerToken",
+    for: "bearerToken",
     label: "BearerToken",
     typeInput: "text",
-    propInput: "BearerToken",
+    propInput: "bearerToken",
     placeholder: "Insert Bearer Token",
     value: "",
     readonly:false
   }, {
-    for: "AccessToken",
+    for: "accessToken",
     label: "AccessToken",
-    typeInput: "number",
-    propInput: "AccessToken",
+    typeInput: "text",
+    propInput: "accessToken",
     placeholder: "Insert Access Token",
     value: "",
     readonly:false
   }, {
-    for: "AccessTokenSecret",
+    for: "accessTokenSecret",
     label: "Access Token Secret",
     typeInput: "text",
-    propInput: "AccessTokenSecret",
+    propInput: "accessTokenSecret",
     placeholder: "Insert Access Token Secret",
     value: "",
     readonly:false
