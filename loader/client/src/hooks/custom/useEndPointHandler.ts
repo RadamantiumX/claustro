@@ -7,8 +7,8 @@ import { useMutation, type UseMutationResult } from "@tanstack/react-query";
 
 export type MutationResultType = UseMutationResult<unknown, Error, void, unknown>
 
-
-
+// TRPc end-points OBJECT LITERAL conditional
+// Param @endPoint --> TRPc Hook APP-ROUTER instance
 // TODO: it's working, now, try to fix TYPES ISSUES.
 export const useEndPointHandler = <T> (endPoint:EndPoint) => {
     const trpc = useTRPC()

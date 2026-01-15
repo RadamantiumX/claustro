@@ -5,13 +5,13 @@ import { useTRPC } from "../../utils/trpc";
 import { useEffect, useState } from "react";
 
 // TODO: finish this mutation
+// FETCH all DATA
 export const useFetchData = (page:number) => {
     const trpc = useTRPC()
     // const { setData, setCount }:any = useStateContext()
     const [fetchData, setFetchData]:any = useState([])
     
     const [responseCount, setResponseCount]:any = useState(0)
-    console.log(page)
     const mutationRq = useMutation(trpc.data.list.mutationOptions())
     useEffect(()=>{
    

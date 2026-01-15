@@ -74,3 +74,14 @@ export interface EndPoint{
 export interface CustomPayload extends JwtPayload{
   id:string
 }
+
+export interface JWTPayload {
+  id:string
+  username: string
+  currentDate: string
+  isSuperAdmin: boolean
+}
+export interface DecodedTokenKeys extends JWTPayload {
+  iat: Date | number
+  exp: Date | number
+}

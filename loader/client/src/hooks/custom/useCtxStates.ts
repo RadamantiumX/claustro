@@ -8,6 +8,8 @@ export interface ObjParams  {
     path:string
 }
 
+
+// CONTEXT STATE --> 
 export const useCtxState = () =>{
     const [ user, _setUser ] = useState(Cookies.get(`${import.meta.env.VITE_USERNAME}`))
     const [token, _setToken] = useState(Cookies.get(`${import.meta.env.VITE_ACCESS_TOKEN}`))

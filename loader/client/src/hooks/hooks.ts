@@ -1,4 +1,3 @@
-export { useAddData } from './custom/useAddData';
 export { useCtxState, useStateContext } from './custom/useCtxStates';
 export { useCloseBar } from './custom/useCloseBar';
 export { useLogin } from './custom/useLogin';

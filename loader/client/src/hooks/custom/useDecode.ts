@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useStateContext } from "./useCtxStates";
 import type { CustomPayload } from "../../types";
 
-
+// Decode USER TOKEN HOOK
 export const useDecodeToken = () => {
   const {token} = useStateContext()
    // const [ id, setId ] = useState<Dispatch<SetStateAction<string>>>()

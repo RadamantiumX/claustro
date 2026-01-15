@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import type { DataReq, ApiDataReq, ApiKeysReq } from "../../types";
 
 
-
+// Fetching all related DATA from DATA ID
 export const useFetchCascade =() => {
    const trpc = useTRPC()
    const {id}:Readonly<Params<string>> = useParams()
