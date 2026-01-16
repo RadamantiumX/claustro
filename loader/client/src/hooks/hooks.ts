@@ -14,3 +14,5 @@ export { usePagination } from './custom/usePagination';
 export { useSetParams } from './custom/useSetParams';
 export { useFormInputs } from './custom/useFormInputs';
 export { useFetchCascade } from './custom/useFetchCascade';
+export { useMutationHandler } from './custom/useMutationHandler';
+export { useEndPointHandler } from './custom/useEndPointHandler';

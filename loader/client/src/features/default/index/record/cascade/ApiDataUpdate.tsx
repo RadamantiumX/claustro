@@ -1,11 +1,16 @@
-import React from 'react'
-import { GenericForm } from '../../../../../components/forms/GenericForm'
-import { useFormInputs } from '../../../../../hooks/hooks'
-import { useMutationHandler } from '../../../../../hooks/custom/useMutationHandler'
+import React from 'react';
+import { GenericForm } from '../../../../../components/forms/GenericForm';
+import { useFormInputs, useMutationHandler } from '../../../../../hooks/hooks';
 import { APIDATA_INPUTS_UPDATE, APIDATA_INPUTS } from '../../../../../utils/const';
-import { PageSubTitle } from '../../../../../components/headers/PageSubTitle'
-import type { ApiDataProps } from '../../../../../types'
+import { PageSubTitle } from '../../../../../components/headers/PageSubTitle';
+import type { ApiDataProps } from '../../../../../types';
 
+
+/**
+ * 
+ * @param { ApiDataProps }
+ * @returns { React.ReactNode }
+ */
 export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.ReactNode {
   
     const { handleChange, handleSubmit, formData } = useMutationHandler(apiData ? apiData :{  appId:"", appName:"",dataId:dataId }, apiData?{route:"apiData",method:"update"}:
