@@ -93,6 +93,19 @@ export class UserColabRepository{
 
     return
     }
+    
+
+    // TODO: finish this, but check the OLD PASSWORD
+    async updateUserColabPassword(payload:Pick<UserColab, "id">){
+        await this.prismaClient.userColab.update({
+          where: { id:payload.id },
+          data:{
+
+          }
+        })
+    }
+
+
     async destroyUserColab({id}: Pick<UserColab, 'id'>):Promise<void>{
      await this.prismaClient.userColab.delete({ where: { id: id } })
      return
