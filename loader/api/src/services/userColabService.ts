@@ -3,6 +3,8 @@ import { UserColabRepository } from "../repository/userColabRepository"
 import prisma from "../config/prismaClient"
 import { TRPCError } from "@trpc/server";
 
+
+// TODO: make a UPDATE PASSWORD method
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository

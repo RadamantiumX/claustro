@@ -80,6 +80,17 @@ export class UserColabRepository{
     return userColab
     }
 
+    async getUniquePassword(payload:Pick<UserColab, "username">){
+         const userColabPassword = await this.prismaClient.userColab.findFirst({
+           where: {username: payload.username},
+           select:{
+            password:true
+           }
+         })
+
+         return userColabPassword
+    }
+
     async updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>): Promise<void>{
        await this.prismaClient.userColab.update({
       where: { id: payload.id },
@@ -94,15 +105,16 @@ export class UserColabRepository{
     return
     }
     
-
-    // TODO: finish this, but check the OLD PASSWORD
-    async updateUserColabPassword(payload:Pick<UserColab, "id">){
+  
+    async updateUserColabPassword(payload:Pick<UserColab, "id" | "password">){
         await this.prismaClient.userColab.update({
           where: { id:payload.id },
           data:{
-
+             password:process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password
           }
         })
+
+        return
     }
 
 
