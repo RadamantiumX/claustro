@@ -2,7 +2,7 @@ import type { IuserColabRepository, UserColab, UserColabClientResponse, UserCola
 import { UserColabRepository } from "../repository/userColabRepository"
 import prisma from "../config/prismaClient"
 import { TRPCError } from "@trpc/server";
-
+import bcrypt from "bcryptjs";
 
 // TODO: make a UPDATE PASSWORD method
 export class UserColabService {
@@ -73,6 +73,28 @@ export class UserColabService {
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                }
                
+            },
+            // TODO: add definitions TYPE to this method
+            updatePassword: async(bodyReq:Pick<UserColab, "username" | "password">)=>{
+               try{
+                  const verifyUnique = await this.userColabRepository.getUniquePassword({username:bodyReq.username})
+                  
+                  if(!verifyUnique){
+                     throw new Error('Not found User')
+                  }
+
+                  const verifyPsw = await bcrypt.compare(
+                     bodyReq.password,
+                     verifyUnique?.password
+                  )
+                  if(!verifyPsw){
+                     throw new Error('The password provided is wrong!')
+                  }
+                  await this.userColabRepository.updateUserColabPassword({username:bodyReq.username, password:bodyReq.password})
+                  return
+               }catch(error){
+                  throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`}))
+               }
             },
             delete: async(id: Pick<UserColab, 'id'>):Promise<void>=>{
                try{

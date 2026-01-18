@@ -106,9 +106,9 @@ export class UserColabRepository{
     }
     
   
-    async updateUserColabPassword(payload:Pick<UserColab, "id" | "password">){
+    async updateUserColabPassword(payload:Pick<UserColab, "username" | "password">){
         await this.prismaClient.userColab.update({
-          where: { id:payload.id },
+          where: { username:payload.username },
           data:{
              password:process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password
           }
