@@ -1,5 +1,6 @@
 import z from 'zod'
 import type { UserColab } from '../../types/index'
+;
 
 export const userSchema = z
   .object({
@@ -17,6 +18,7 @@ export const userSchema = z
         required_error: 'The password is riquered'
       })
       .min(8, { message: 'The password must be at 8 characters minimum' }),
+    email:z.string().email({message:'Must be a valid email'}).nullable(),  
     isSuperAdmin: z.boolean()
   })
   .required()

@@ -9,10 +9,10 @@ const authServiceInstance = AuthService.getInstance()
 
 
 export const authRouter = trpc.router({
-    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({ input })=>{
+    login: publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true, email:true})).mutation(({ input })=>{
         return authServiceInstance.auth.login(input)
     }),
-    register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true})).mutation(({input})=>{
+    register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true, email:true})).mutation(({input})=>{
         return authServiceInstance.auth.register(input)
     }),
     logout: publicProcedure.input(refreshTokenSchema.pick({ userColabId: true })).mutation(({input, ctx})=>{
