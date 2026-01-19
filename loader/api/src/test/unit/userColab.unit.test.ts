@@ -3,6 +3,7 @@ import { prismaMock } from "../setup";
 import { it, expect, beforeEach, describe } from "vitest";
 import { timeStampParsed } from "../../helper/timeStampParser";
 import { mockUserColab } from "../mockedData";
+import { email } from "envalid/dist";
 /**
  * Testing REPOSITORIES FILES
  */
@@ -50,7 +51,7 @@ it('should return unique UserColab',async ()=>{
 
 it('should update UserColab',async ()=>{
    prismaMock.userColab.update.mockResolvedValueOnce(mockUserColab)
-   const mockedUser = await userColabRepository.updateUserColab({id:'asas',username:'usecolabmock', password:'testingmock123',isSuperAdmin:false})
+   const mockedUser = await userColabRepository.updateUserColab({id:'asas',username:'usecolabmock', email:'mailer@mail.com'})
 
    expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
 
@@ -61,8 +62,7 @@ it('should update UserColab',async ()=>{
       },
       data:{
          username: 'usecolabmock',
-         password: 'testingmock123',
-         isSuperAdmin: false,
+         email:'mailer@mail.com',
          updatedAt: timeStampParsed()
       }
    })
