@@ -1,6 +1,6 @@
 import { trpc } from "../lib/trpcContext";
 import { DataService } from "../services/dataService";
-import { dataSchema, metaSchema } from "../schemas/zodSchemas/dataValidation";
+import { dataSchema, metaSchema } from "../schemas/index";
 import { protectedProcedure } from "../lib/procedure";
 
 const dataServiceInstance = DataService.getInstance()

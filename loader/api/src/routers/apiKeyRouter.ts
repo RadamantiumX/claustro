@@ -1,8 +1,8 @@
 import { trpc } from "../lib/trpcContext";
 import { ApiKeyService } from "../services/apiKeyService";
-import { apiKeySchema } from "../schemas/zodSchemas/apiKeyValidation";
+import { apiKeySchema } from "../schemas/index";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server";
+
 
 const apiKeyServiceInstance = ApiKeyService.getInstance()
 

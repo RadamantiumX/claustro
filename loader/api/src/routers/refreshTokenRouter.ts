@@ -5,7 +5,7 @@ import { protectedProcedure } from "../lib/procedure";
 import { TRPCError } from "@trpc/server";
 import { JWTtokenSign, JWTverifyAndDecode } from "../helper/jwtFunctions";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
-import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
+import { refreshTokenSchema } from "../schemas/index";
 
 
 // Services Instances

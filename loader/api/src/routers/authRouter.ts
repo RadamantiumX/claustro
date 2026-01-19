@@ -1,9 +1,9 @@
 import { trpc } from "../lib/trpcContext";
 import { AuthService } from "../services/authService";
-import { userSchema } from '../schemas/zodSchemas/userColabValidation';
+import { userSchema } from '../schemas/index';
 import { refreshTokenSchema } from "../schemas/zodSchemas/refreshTokenValidation";
 import { publicProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server";
+
 
 const authServiceInstance = AuthService.getInstance()
 

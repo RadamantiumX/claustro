@@ -1,8 +1,7 @@
 import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
-import {  userSchema, newPasswordSchema } from "../schemas/zodSchemas/userColabValidation";
+import {  userSchema, newPasswordSchema } from "../schemas/index";
 import { protectedProcedure } from "../lib/procedure";
-// import { TRPCError } from "@trpc/server";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
