@@ -91,13 +91,12 @@ export class UserColabRepository{
          return userColabPassword
     }
 
-    async updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'password' | 'isSuperAdmin'>): Promise<void>{
+    async updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'email'>): Promise<void>{
        await this.prismaClient.userColab.update({
       where: { id: payload.id },
       data: {
         username: payload.username,
-        password: process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password,
-        isSuperAdmin: payload.isSuperAdmin,
+        email: payload.email,
         updatedAt: timeStampParsed()
       }
     })
