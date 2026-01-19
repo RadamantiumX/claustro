@@ -1,8 +1,14 @@
 import type { ApiData, UserColab, ApiKey, UserColabClientResponse, AuthRefreshToken } from "src/types/factory";
-import type { CascadeData } from "serviceInjection";
+import type { CascadeData } from "definitions/serviceInjection";
 
 interface Entry{
   payload: string
+}
+
+export interface PasswordUpdateReq{
+  username: string;
+  password: string;
+  newPassword: string;
 }
 export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
@@ -11,6 +17,7 @@ export interface UserColabMethods{
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
   select: (id:Pick<UserColab, "id">) => Promise<> ;
   update: (payload:Pick<UserColab, "id"| "username" | "password" | "isSuperAdmin">)=>Promise<void>;
+  updatePassword:(bodyReq:PasswordUpdateReq)=>Promise<void>;
   delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
 }
 

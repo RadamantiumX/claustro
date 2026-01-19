@@ -1,8 +1,8 @@
 import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
-import {  userSchema } from "../schemas/zodSchemas/userColabValidation";
+import {  userSchema, newPasswordSchema } from "../schemas/zodSchemas/userColabValidation";
 import { protectedProcedure } from "../lib/procedure";
-import { TRPCError } from "@trpc/server";
+// import { TRPCError } from "@trpc/server";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
@@ -26,5 +26,9 @@ export const userColabRouter = trpc.router({
     update: protectedProcedure.input(userSchema.omit({ lastSignIn:true }))
      .mutation(({input})=>{
           return userColabServiceInstance.userData.update(input) 
-     })
+     }),
+     updatePassword: protectedProcedure.input(newPasswordSchema.pick({ username:true, password:true, newPassword:true }))
+       .mutation(({input})=>{
+         return userColabServiceInstance.userData.updatePassword(input)
+       })
 })

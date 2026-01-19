@@ -25,3 +25,10 @@ export const userSchema = z
     const parseSync = await userSchema.safeParseAsync(input)
     return parseSync
   }
+
+// Extends "userSchema" properties
+  export const newPasswordSchema = userSchema.extend({
+     newPassword: z.string({
+      required_error: 'The new password is required'
+     })
+  })
