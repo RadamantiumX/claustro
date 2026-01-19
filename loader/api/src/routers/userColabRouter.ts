@@ -12,6 +12,10 @@ export const userColabRouter = trpc.router({
        return userColabServiceInstance.userData.list()
       
     }),
+    select: protectedProcedure.input(userSchema.pick({ id:true }))
+    .mutation(({input})=>{
+       return userColabServiceInstance.userData.select(input)
+    }),
     create: protectedProcedure.input(userSchema.omit({ id:true, lastSignIn:true }))
      .mutation(({input})=>{
              return userColabServiceInstance.userData.create(input)
