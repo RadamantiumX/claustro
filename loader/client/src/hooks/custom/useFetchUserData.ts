@@ -9,12 +9,17 @@ export const useFetchUserData = () => {
    const { userColabId } = useDecodeToken()
 
    const mutationRq = useMutation(trpc.userColab.select.mutationOptions())
-
+ 
+   // TODO: TRY TO REDUCE THE REQUEST DATA FROM THE SERVER SIDE
    const handleFn = () => {
       try{
         mutationRq.mutate({id:userColabId},{
           onSuccess:(data)=>{
             console.log(data)
+            // TESTING FORMATING DATE
+            const altDate = new Date(data.createdAt)
+            const formatDate = altDate.toDateString()
+            console.log(formatDate)
           },
           onError:(error)=>{
             console.log(error)
