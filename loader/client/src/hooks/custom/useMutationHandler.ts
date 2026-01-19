@@ -9,6 +9,7 @@ import { useEndPointHandler } from "./useEndPointHandler";
 
 // @values from any FORM COMPONENT to use into "useFormData" hook
 // @endPoint OBJECT LITERAL --> {route, method} --> Selected to any TRPC APP-ROUTER
+// ⛔ ONLY FOR VOIDS ROUTE METHODS
 export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
     
     const { setLoading, setNotification, setInputError, inputError } = useStateContext()
