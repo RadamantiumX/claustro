@@ -17,7 +17,7 @@ export const useFetchUserData = () => {
           onSuccess:(data)=>{
             console.log(data)
             // TESTING FORMATING DATE
-            const altDate = new Date(data.createdAt)
+            const altDate = new Date(data?.createdAt)
             const formatDate = altDate.toDateString()
             console.log(formatDate)
           },
