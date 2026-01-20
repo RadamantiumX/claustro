@@ -2,6 +2,7 @@ import type { UserColab, UserColabClientResponse } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 import { PrismaClient } from "@prisma/client";
+import { email } from 'envalid/dist';
 
 
 export class UserColabRepository{
@@ -71,10 +72,16 @@ export class UserColabRepository{
     return { users, totalUsers }
     }
 
-    async getUserColab({id}: Pick<UserColab, 'id'>):Promise<Omit<UserColab, 'password'> | null>{
+    async getUserColab({id}: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'id'|'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>{
       const userColab = await this.prismaClient.userColab.findFirst({
       where: { id: id },
-      omit: { password: true }
+      select: { 
+        id:true,
+        username: true,
+        email:true,
+        createdAt:true,
+        isSuperAdmin:true
+      }
     })
 
     return userColab
