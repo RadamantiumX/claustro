@@ -75,11 +75,11 @@ export class UserColabRepository{
     async getUserColab({id}: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>{
       const userColab = await this.prismaClient.userColab.findFirst({
       where: { id: id },
-      select: { 
-        username: true,
-        email:true,
-        createdAt:true,
-        isSuperAdmin:true
+      omit: { 
+        id:true,
+        lastSignIn:true,
+        updatedAt:true,
+        password:true
       }
     })
 

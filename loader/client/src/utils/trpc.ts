@@ -4,6 +4,7 @@ import { createTRPCClient, httpBatchLink } from '@trpc/client';
 import { getToken } from '../helper/cookieHandler';
 import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 
+
 // For all use
 export type RouterInput = inferRouterInputs<AppRouter>
 export type RouterOutput = inferRouterOutputs<AppRouter>
@@ -12,6 +13,7 @@ export type RouterOutput = inferRouterOutputs<AppRouter>
 
 export const  { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()
 export const refreshClient = createTRPCClient<AppRouter>({
+    
     links: [
       httpBatchLink({
         url: 'http://localhost:3000/trpc',
@@ -21,5 +23,6 @@ export const refreshClient = createTRPCClient<AppRouter>({
          },
       }),
       
-    ]
+    ],
+    
 })

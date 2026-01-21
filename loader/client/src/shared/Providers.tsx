@@ -11,7 +11,7 @@ import { TRPCProvider } from "../utils/trpc";
  */
 export const Providers = ({children}: PropsWithChildren):JSX.Element =>{
   const { trpcQueryClient, trpcClient } = useTrpc()
-   trpcQueryClient.invalidateQueries({queryKey:['']})
+   trpcQueryClient.getQueryCache().clear()
   return(
     <QueryClientProvider client={trpcQueryClient}>
     <TRPCProvider trpcClient={trpcClient} queryClient={trpcQueryClient}>
