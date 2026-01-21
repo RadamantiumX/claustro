@@ -9,8 +9,9 @@ export const UserUpdate = ({userData}:UserSetting):React.ReactNode => {
   console.log(userData)
   return (
     <>
-    <PageSubTitle title='User data'/>
+  
     <BasicCard>
+      <PageSubTitle title='Basic User data'/>
       <div>
         Some
       </div>

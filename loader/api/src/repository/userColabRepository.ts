@@ -115,11 +115,32 @@ export class UserColabRepository{
         await this.prismaClient.userColab.update({
           where: { username:payload.username },
           data:{
-             password:process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password
+             password:process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password,
+             updatedAt:timeStampParsed()
           }
         })
 
         return
+    }
+
+    async updateUserColabUsername(payload:Pick<UserColab, "id" | "username">):Promise<void>{
+      await this.prismaClient.userColab.update({
+        where: {id: payload.id},
+        data:{
+          username:payload.username,
+          updatedAt: timeStampParsed()
+        }
+      })
+    }
+
+    async updateUserColabEmail(payload:Pick<UserColab, "id" | "email">):Promise<void>{
+       await this.prismaClient.userColab.update({
+        where: {id: payload.id},
+        data:{
+          email:payload.email,
+          updatedAt: timeStampParsed()
+        }
+      })
     }
 
 
