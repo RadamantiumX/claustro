@@ -1,11 +1,20 @@
 import React from 'react'
-import { GenericForm } from '../../../../components/forms/GenericForm'
+// import { GenericForm } from '../../../../components/forms/GenericForm'
 import { PageSubTitle } from '../../../../components/headers/PageSubTitle'
+import { BasicCard } from '../../../../components/cards/BasicCard'
+import type { UserSetting } from '../../../../types'
 
-export const UserUpdate = ():React.ReactNode => {
+
+export const UserUpdate = ({userData}:UserSetting):React.ReactNode => {
+  console.log(userData)
   return (
     <>
     <PageSubTitle title='User data'/>
+    <BasicCard>
+      <div>
+        Some
+      </div>
+    </BasicCard>
     </>
   )
 }

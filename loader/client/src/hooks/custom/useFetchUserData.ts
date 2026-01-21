@@ -1,10 +1,11 @@
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { useTRPC } from "../../utils/trpc"
 import { useDecodeToken } from "./useDecode"
+import type { UserSettingReq } from "../../types"
 
 export const useFetchUserData = () => {
-   const [ userData, setUserData ] = useState()
+   const [ userData, setUserData ] = useState<UserSettingReq | null>()
    const trpc = useTRPC()
    const { userColabId } = useDecodeToken()
    const mutationRq = useMutation(trpc.userColab.select.mutationOptions())
@@ -15,6 +16,7 @@ export const useFetchUserData = () => {
         mutationRq.mutate({id:userColabId},{
           onSuccess:(data)=>{
             console.log(data)
+            setUserData(data)
             // TESTING FORMATING DATE
             const altDate = new Date(data?.createdAt)
             const formatDate = altDate.toDateString()

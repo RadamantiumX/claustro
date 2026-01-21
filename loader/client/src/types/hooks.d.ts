@@ -56,6 +56,22 @@ export interface FormDataSignIn{
     isSuperAdmin:boolean;
 }
 
+export interface UserSetting {
+  userData:{
+    username:string;
+    email:string | null;
+    createdAt: Date;
+    isSuperAdmin: boolean;
+  }
+  
+} 
+
+export interface UserSettingReq {
+    username:string;
+    email:string | null;
+    createdAt: Date;
+    isSuperAdmin: boolean;
+  }
 export interface DataValues {
     id: number;
     emailSource: string;
