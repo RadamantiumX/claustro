@@ -65,7 +65,7 @@ export class UserColabService {
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                 }
             },
-            update: async (payload:Pick<UserColab, 'id' | 'username' | 'email'>):Promise<void> =>{
+            update: async (payload:Pick<UserColab, 'username' | 'email'>):Promise<void> =>{
                try{
                await this.userColabRepository.updateUserColab(payload)
                return

@@ -97,9 +97,9 @@ export class UserColabRepository{
          return userColabPassword
     }
 
-    async updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'email'>): Promise<void>{
+    async updateUserColab(payload:Pick<UserColab, 'username' | 'email'>): Promise<void>{
        await this.prismaClient.userColab.update({
-      where: { id: payload.id },
+      where: { username: payload.username },
       data: {
         username: payload.username,
         email: payload.email,

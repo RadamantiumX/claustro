@@ -51,14 +51,14 @@ it('should return unique UserColab',async ()=>{
 
 it('should update UserColab',async ()=>{
    prismaMock.userColab.update.mockResolvedValueOnce(mockUserColab)
-   const mockedUser = await userColabRepository.updateUserColab({id:'asas',username:'usecolabmock', email:'mailer@mail.com'})
+   const mockedUser = await userColabRepository.updateUserColab({username:'usecolabmock', email:'mailer@mail.com'})
 
    expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
 
    // Mocking Prisma Properties
    expect(prismaMock.userColab.update).toHaveBeenCalledWith({
       where:{
-         id:'asas'
+         username:'usecolabmock'
       },
       data:{
          username: 'usecolabmock',

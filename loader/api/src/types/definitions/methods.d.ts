@@ -16,7 +16,7 @@ export interface UserColabMethods{
   uniqueForUsername: (bodyReq:Pick<UserColab, 'username'>) => Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
   select: (id:Pick<UserColab, "id">) => Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
-  update: (payload:Pick<UserColab, 'id' | 'username' | 'email'>)=>Promise<void>;
+  update: (payload:Pick<UserColab, 'username' | 'email'>)=>Promise<void>;
   updatePassword:(bodyReq:PasswordUpdateReq)=>Promise<void>;
   delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
 }

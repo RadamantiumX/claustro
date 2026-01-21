@@ -21,7 +21,7 @@ export interface IuserColabRepository {
     getUsersColab(): Promise<UserColabClientResponse>;
     getUserColab(id: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
     getUniquePassword(payload:Pick<UserColab, "username">):Promise<Pick<UserColab, "password">| null>;
-    updateUserColab(payload:Pick<UserColab, 'id' | 'username' | 'email'>): Promise<void>;
+    updateUserColab(payload:Pick<UserColab,'username' | 'email'>): Promise<void>;
     updateUserColabPassword(payload:Pick<UserColab, "username" | "password">):Promise<void>
     destroyUserColab(id: Pick<UserColab, 'id'>): Promise<void>;
 }

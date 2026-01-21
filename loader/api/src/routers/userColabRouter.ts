@@ -27,7 +27,7 @@ export const userColabRouter = trpc.router({
             return userColabServiceInstance.userData.delete(input)
 
     }),
-    update: protectedProcedure.input(userSchema.pick({ id:true, username:true, email:true }))
+    update: protectedProcedure.input(userSchema.pick({ username:true, email:true }))
      .mutation(({input})=>{
           return userColabServiceInstance.userData.update(input) 
      }),

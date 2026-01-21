@@ -38,16 +38,3 @@ export const useFetchUserData = () => {
    return {userData}
 }
 
-/**
- * REQUEST RESPONSE
- * 
- * {
-    id: 'bf93c00b-d68f-4875-8bf3-674922349498',
-    username: 'radamantium',
-    email: null,
-    lastSignIn: '2026-01-20T18:12:22.951Z',
-    createdAt: '2025-09-14T02:02:18.114Z',
-    updatedAt: null,
-    isSuperAdmin: true
-  }
- */
