@@ -57,17 +57,17 @@ export class UserColabService {
                      throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                   }
             },
-            select: async (id:Pick<UserColab, "id">)=>{
+            select: async (bodyReq:Pick<UserColab, "id">)=>{
                 try{
-                  const user = await this.userColabRepository.getUserColab(id)
+                  const user = await this.userColabRepository.getUserColab({id:bodyReq.id})
                   return user
                 }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                 }
             },
-            update: async (payload:Pick<UserColab, 'username' | 'email'>):Promise<void> =>{
+            update: async (bodyReq:Pick<UserColab, 'username' | 'email'>):Promise<void> =>{
                try{
-               await this.userColabRepository.updateUserColab(payload)
+               await this.userColabRepository.updateUserColab(bodyReq)
                return
                }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
@@ -77,6 +77,7 @@ export class UserColabService {
             // TODO: add definitions TYPE to this method
             updatePassword: async(bodyReq:PasswordUpdateReq)=>{
                try{
+                  // Try username password
                   const verifyUnique = await this.userColabRepository.getUniquePassword({username:bodyReq.username})
                   
                   if(!verifyUnique){
@@ -96,9 +97,25 @@ export class UserColabService {
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
                }
             },
-            delete: async(id: Pick<UserColab, 'id'>):Promise<void>=>{
+            updateUsername: async(bodyReq:Pick<UserColab, "id" | "username">)=>{
                try{
-               await this.userColabRepository.destroyUserColab(id)
+                  await this.userColabRepository.updateUserColabUsername(bodyReq)
+                  return
+               }catch(error){
+                 throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
+               }
+            },
+            updateEmail: async(bodyReq:Pick<UserColab, "id" | "email">)=>{
+               try{
+                  await this.userColabRepository.updateUserColabEmail(bodyReq)
+                  return
+               }catch(error){
+                  throw new TRPCError({code:'BAD_REQUEST', message:'Something went wrong!'})
+               }
+            },
+            delete: async(bodyReq: Pick<UserColab, 'id'>):Promise<void>=>{
+               try{
+               await this.userColabRepository.destroyUserColab({id:bodyReq.id})
                return
                }catch(error){
                  throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})

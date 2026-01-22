@@ -15,10 +15,12 @@ export interface UserColabMethods{
   uniqueForId: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>;
   uniqueForUsername: (bodyReq:Pick<UserColab, 'username'>) => Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>
   create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
-  select: (id:Pick<UserColab, "id">) => Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
-  update: (payload:Pick<UserColab, 'username' | 'email'>)=>Promise<void>;
+  select: (bodyReq:Pick<UserColab, "id">) => Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
+  update: (bodyReq:Pick<UserColab, 'username' | 'email'>)=>Promise<void>;
   updatePassword:(bodyReq:PasswordUpdateReq)=>Promise<void>;
-  delete: (id: Pick<UserColab, 'id'>) => Promise<void> ;
+  updateUsername:(bodyReq:Pick<UserColab, "id" | "username">)=>Promise<void>;
+  updateEmail:(bodyReq:Pick<UserColab, "id" | "email">)=>Promise<void>;
+  delete: (bodyReq: Pick<UserColab, 'id'>) => Promise<void> ;
 }
 
 export interface DataMethods{
