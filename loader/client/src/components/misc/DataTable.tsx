@@ -40,7 +40,7 @@ export const DataTable:React.FC<{arrayData:any[]}> = ({arrayData}):React.ReactNo
         <td className="flex p-3 gap-2">
           
           <TableLink id={d.id} target="delete" to='/index'><Trash/></TableLink>
-          <TableLink id={d.id} target="edit" to={`/index/record/${d.id}`}><Edit/></TableLink>
+          <TableLink id={d.id} target="edit" to={`/index/record/${d.id}`}><Edit width='24' height='24'/></TableLink>
           
         </td>
       </tr>
