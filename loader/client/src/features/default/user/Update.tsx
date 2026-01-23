@@ -6,6 +6,7 @@ import type { UserSettingReq } from '../../../types/hooks';
 
 export const Update = ():React.ReactNode => {
   const { userData } = useFetchUserData()
+  console.log(userData)
   return (
     <>
      <DefaultContent>

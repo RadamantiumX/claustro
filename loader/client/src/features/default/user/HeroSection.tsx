@@ -6,7 +6,7 @@ export const HeroSection = ():React.ReactNode => {
   return (
     <>
       <HeroDefault>
-        <PageTitle title='Settings'/>
+        <PageTitle title='User Settings'/>
       </HeroDefault>
     </>
   )

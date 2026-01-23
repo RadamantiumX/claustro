@@ -4,7 +4,7 @@ import prisma from "../config/prismaClient"
 import { TRPCError } from "@trpc/server";
 import bcrypt from "bcryptjs";
 
-// TODO: ADDING METHODS --> UPDATE USERCOLAB USERNAME & EMAIL
+
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
