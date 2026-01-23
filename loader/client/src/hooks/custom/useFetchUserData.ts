@@ -9,8 +9,7 @@ export const useFetchUserData = () => {
    const trpc = useTRPC()
    const { userColabId } = useDecodeToken()
    const mutationRq = useMutation(trpc.userColab.select.mutationOptions())
-   console.log(userColabId)
-   // TODO: TRY TO REDUCE THE REQUEST DATA FROM THE SERVER SIDE
+  
    const handleFn = () => {
       try{
         mutationRq.mutate({id:userColabId},{
@@ -35,7 +34,7 @@ export const useFetchUserData = () => {
 
    useEffect(()=>{
       handleFn()
-   },[mutationRq])
+   },[])
 
    return {userData}
 }
