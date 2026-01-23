@@ -19,7 +19,7 @@ export interface IuserColabRepository {
     createUserColab(payload: Pick<UserColab, 'username' | 'password'>): Promise<void>; // I change here
     createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;
     getUsersColab(): Promise<UserColabClientResponse>;
-    getUserColab(id: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
+    getUserColab(payload: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
     getUniquePassword(payload:Pick<UserColab, "username">):Promise<Pick<UserColab, "password">| null>;
     updateUserColab(payload:Pick<UserColab,'username' | 'email'>): Promise<void>;
     updateUserColabPassword(payload:Pick<UserColab, "username" | "password">):Promise<void>;

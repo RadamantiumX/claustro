@@ -59,7 +59,7 @@ export class UserColabService {
             },
             select: async (bodyReq:Pick<UserColab, "id">)=>{
                 try{
-                  const user = await this.userColabRepository.getUserColab({id:bodyReq.id})
+                  const user = await this.userColabRepository.getUserColab(bodyReq)
                   return user
                 }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
