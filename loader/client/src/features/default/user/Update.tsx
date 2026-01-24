@@ -4,9 +4,10 @@ import { UserUpdate } from './record/UserUpdate';
 import { useFetchUserData } from '../../../hooks/custom/useFetchUserData';
 import type { UserSettingReq } from '../../../types/hooks';
 
+
 export const Update = ():React.ReactNode => {
   const { userData } = useFetchUserData()
-  
+  console.log(userData?.email ? userData.email : "Not values" )
   return (
     <>
      <DefaultContent>

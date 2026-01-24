@@ -259,6 +259,29 @@ export const APIKEYS_INPUTS_UPDATE = [
 ]
 
 
+export const USERNAME_INPUT = [
+  {
+    for: "username",
+    label: "Username",
+    typeInput: "text",
+    propInput: "username",
+    placeholder: "",
+    value: "",
+    readonly:false
+  }
+]
+
+export const EMAIL_INPUT = [
+  {
+    for: "email",
+    label: "Email",
+    typeInput: "email",
+    propInput: "email",
+    placeholder: "",
+    value: "",
+    readonly:false
+  }
+]
 
 export const SIGNIN_INPUTS = [
                   {
