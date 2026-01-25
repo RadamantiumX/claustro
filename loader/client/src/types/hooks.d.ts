@@ -62,7 +62,8 @@ export interface UserSetting {
     email:string | null;
     createdAt: Date;
     isSuperAdmin: boolean;
-  }
+  },
+  userColabId:string;
   
 } 
 

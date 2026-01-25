@@ -36,6 +36,6 @@ export const useFetchUserData = () => {
       handleFn()
    },[])
 
-   return {userData}
+   return {userData, userColabId}
 }
 

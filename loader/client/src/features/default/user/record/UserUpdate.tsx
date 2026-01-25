@@ -1,19 +1,15 @@
-import React, {useState } from 'react'
+import React from 'react'
 import { PageSubTitle } from '../../../../components/headers/PageSubTitle';
+import { UniqueInputForm } from '../../../../components/forms/UniqueInputForm';
+import { USERNAME_INPUT } from '../../../../utils/const';
+import { useMutationHandler, useFormInputs } from '../../../../hooks/hooks';
+
 import type { UserSetting } from '../../../../types';
 
 
-
-export const UserUpdate = ({userData}:UserSetting):React.ReactNode => {
-  const [show, setShow] = useState(true)
-  const handleInputBlock = () => {
-    
-     if(show){
-      setShow(false)
-     }else{
-      setShow(true)
-     }
-  }
+// TODO: finish this 
+export const UserUpdate = ({userData, userColabId}:UserSetting):React.ReactNode => {
+ const { handleChange, handleSubmit, formData } = useMutationHandler({id:userColabId,username: userData.username},{route:"userColab", method:"updateUsername"})
   return (
     <>
     
@@ -21,17 +17,9 @@ export const UserUpdate = ({userData}:UserSetting):React.ReactNode => {
       
         <PageSubTitle title='Profile Data'/>
         <div>
-          <div className='flex items-center gap-x-4'>
-          <form action="">
-            <div className='flex items-center gap-x-4'>
-              <label htmlFor="user" className="block text-sm/6 font-medium text-white"><span className='font-bold'>Email</span></label>
-            <input id="user" type="text" value={userData?.email ? userData?.email : ""} disabled={show} className='single-input' />
-             {!show && <button className='text-[12px] bg-green-500 rounded-md p-2 cursor-pointer'>Change</button> }
-            </div>
-          </form>
-          {!show && <button onClick={handleInputBlock} className='text-[12px] bg-red-500 rounded-md p-2 cursor-pointer'>Cancel</button>}
-          {show && <button onClick={handleInputBlock} className='text-[12px] bg-indigo-500 w-auto rounded-md p-2 cursor-pointer' title='Edit'>Edit</button> }
-          </div>
+
+         <UniqueInputForm/>
+
         </div>
      
     </div>

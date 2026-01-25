@@ -64,12 +64,14 @@ export type AuthLogoutInput = RouterInput['auth']['logout']
 export type UserColabCreateInput = RouterInput['userColab']['create']
 export type UserColabDeleteInput = RouterInput['userColab']['delete']
 export type UserColabUpdateInput = RouterInput['userColab']['update']
+export type UserColabUsernameUpdateInput = RouterInput['userColab']['updateUsername']
+export type UserColabEmailUpdateInput = RouterInput['userColab']['updateEmail']
 
 export type RefreshTokenRefreshInput = RouterInput['refreshToken']['refresh']
 
 export type UnionInput = DataListInput | DataCreateInput | DataSearchInput | DataSelectForIdInput | DataSelectFormEmailInput | DataUpdateInput | DataDeleteInput | 
 ApiDataSelectForIdInput | ApiDataCreateInput | ApiDataUpdateInput | ApiDataDeleteInput | ApiKeySelectForIdInput | ApiKeyCreateInput | ApiKeyUpdateInput | ApiKeyDeleteInput |
-AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | UserColabDeleteInput | UserColabUpdateInput | RefreshTokenRefreshInput
+AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | UserColabDeleteInput | UserColabUpdateInput | UserColabUsernameUpdateInput | UserColabEmailUpdateInput | RefreshTokenRefreshInput
 
 
 // Outputs 

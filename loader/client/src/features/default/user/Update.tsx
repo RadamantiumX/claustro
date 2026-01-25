@@ -6,12 +6,12 @@ import type { UserSettingReq } from '../../../types/hooks';
 
 
 export const Update = ():React.ReactNode => {
-  const { userData } = useFetchUserData()
+  const { userData, userColabId } = useFetchUserData()
   console.log(userData?.email ? userData.email : "Not values" )
   return (
     <>
      <DefaultContent>
-        <UserUpdate userData={userData as UserSettingReq}/>
+        <UserUpdate userData={userData as UserSettingReq} userColabId={userColabId}/>
      </DefaultContent>
     </>
   )
