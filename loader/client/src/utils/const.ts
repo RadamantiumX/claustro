@@ -261,6 +261,15 @@ export const APIKEYS_INPUTS_UPDATE = [
 
 export const USERNAME_INPUT = [
   {
+    for: "id",
+    label: "Id",
+    typeInput: "text",
+    propInput: "id",
+    placeholder: "",
+    value: "",
+    readonly:true
+  },
+  {
     for: "username",
     label: "Username",
     typeInput: "text",
@@ -269,6 +278,8 @@ export const USERNAME_INPUT = [
     value: "",
     readonly:false
   }
+  
+  
 ]
 
 export const EMAIL_INPUT = [

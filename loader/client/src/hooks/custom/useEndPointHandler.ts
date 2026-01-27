@@ -44,7 +44,10 @@ export const useEndPointHandler = <T> (endPoint:EndPoint) => {
            list: trpc.userColab.list.queryOptions(),
            create: trpc.userColab.create.mutationOptions(),
            delete: trpc.userColab.delete.mutationOptions(),
-           update: trpc.userColab.update.mutationOptions()
+           update: trpc.userColab.update.mutationOptions(),
+           updateUsername: trpc.userColab.updateUsername.mutationOptions(),
+           updateEmail: trpc.userColab.updateEmail.mutationOptions(),
+           updatePassword: trpc.userColab.updatePassword.mutationOptions()
         }
     }
     const inputMutation = useMutation<T | MutationResultType>(inputInferring[endPoint.route][endPoint.method])

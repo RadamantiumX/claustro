@@ -51,6 +51,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         },
         onError: (error)=>{
             const parsedError = JSON.parse(error.message)
+            console.log(error)
             setInputError(parsedError)
             console.log(inputError)
             setLoading(false)

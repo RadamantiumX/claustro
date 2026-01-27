@@ -11,7 +11,7 @@ export const Update = ():React.ReactNode => {
   return (
     <>
      <DefaultContent>
-        <UserUpdate userData={userData as UserSettingReq} userColabId={userColabId}/>
+       {userData && <UserUpdate userData={userData as UserSettingReq} userColabId={userColabId}/>}
      </DefaultContent>
     </>
   )
