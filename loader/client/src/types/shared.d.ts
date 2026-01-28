@@ -72,7 +72,8 @@ export type RefreshTokenRefreshInput = RouterInput['refreshToken']['refresh']
 
 export type UnionInput = DataListInput | DataCreateInput | DataSearchInput | DataSelectForIdInput | DataSelectFormEmailInput | DataUpdateInput | DataDeleteInput | 
 ApiDataSelectForIdInput | ApiDataCreateInput | ApiDataUpdateInput | ApiDataDeleteInput | ApiKeySelectForIdInput | ApiKeyCreateInput | ApiKeyUpdateInput | ApiKeyDeleteInput |
-AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | UserColabDeleteInput | UserColabUpdateInput | UserColabUsernameUpdateInput | UserColabEmailUpdateInput | UserColabPasswordUpdateInput | RefreshTokenRefreshInput
+AuthLoginInput | AuthRegisterInput | AuthLogoutInput | UserColabCreateInput | UserColabDeleteInput | UserColabUpdateInput | UserColabUsernameUpdateInput | UserColabEmailUpdateInput | 
+UserColabPasswordUpdateInput | RefreshTokenRefreshInput
 
 
 // Outputs 
