@@ -28,6 +28,10 @@ export interface InputArray {
     value: string;
 }
 
+export interface InputsImprove extends InputArray{
+   readonly: boolean;
+}
+
 export interface None {
      typeInput: string;
      propInput:string;
@@ -64,7 +68,7 @@ export interface UserSetting {
     isSuperAdmin: boolean;
   },
   userColabId:string;
-  
+  inputs: InputsImprove []
 } 
 
 export interface UserSettingReq {

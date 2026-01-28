@@ -284,6 +284,15 @@ export const USERNAME_INPUT = [
 
 export const EMAIL_INPUT = [
   {
+    for: "id",
+    label: "Id",
+    typeInput: "text",
+    propInput: "id",
+    placeholder: "",
+    value: "",
+    readonly:true
+  },
+  {
     for: "email",
     label: "Email",
     typeInput: "email",
