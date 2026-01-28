@@ -12,7 +12,7 @@ import { useEndPointHandler } from "./useEndPointHandler";
 // ⛔ ONLY FOR VOIDS ROUTE METHODS
 export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndPoint) => {
     
-    const { setLoading, setNotification, setInputError, inputError } = useStateContext()
+    const { setLoading, setNotification, setInputError, inputError, setUser } = useStateContext()
     
     // Customs hooks 🪝
     const { blocker } = useFormBlocker()
@@ -38,12 +38,11 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
       }
       setLoading(true)
       inputMutation.mutate(formData, {
-        onSuccess: (data, variables)=>{
-          console.log(data)
-          console.log(variables)
+        onSuccess: (data, variables:any)=>{
           setLoading(false)
           setInputError([])
           setNotification('Success: Save Update Data! ☑️')
+          if(endPoint.method === 'updateUsername') setUser(variables.username)
           setTimeout(()=>{
             window.location.reload()
           },1000)
