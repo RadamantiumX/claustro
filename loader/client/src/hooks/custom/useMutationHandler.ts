@@ -42,7 +42,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
           setLoading(false)
           setInputError([])
           setNotification('Success: Save Update Data! ☑️')
-          if(endPoint.method === 'updateUsername') setUser(variables.username)
+          if(endPoint.method === 'updateUsername') setUser(variables.username) // Instant USERNAME update
           setTimeout(()=>{
             window.location.reload()
           },1000)

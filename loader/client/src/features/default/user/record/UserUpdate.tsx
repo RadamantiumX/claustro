@@ -7,7 +7,7 @@ import { useMutationHandler, useFormInputs } from '../../../../hooks/hooks';
 import type { UserSetting } from '../../../../types';
 
 
-// TODO: finish this 
+// TODO: Try to reuse this or make some different
 export const UserUpdate = ({userData, userColabId}:UserSetting):React.ReactNode => {
  const { handleChange, handleSubmit, formData } = useMutationHandler({ id:userColabId, username: userData.username  },{route:"userColab", method:"updateUsername"})
  const { formInputs } = useFormInputs(USERNAME_INPUT, formData)
