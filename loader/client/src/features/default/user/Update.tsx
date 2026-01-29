@@ -6,18 +6,23 @@ import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
 import { PageSubTitle } from '../../../components/headers/PageSubTitle';
 
 import type { UserSettingReq } from '../../../types/hooks';
-import type { InputArray } from '../../../types/hooks';
 
-const userUpdateForms = [
-  {
-    method: "updateUsername",
-    inputs: USERNAME_INPUT
-  }
-]
+
+
 
 export const Update = ():React.ReactNode => {
   const { userData, userColabId } = useFetchUserData()
-  console.log(userData?.email ? userData.email : "Not values" )
+  const userUpdateForms = [
+  {
+    method: "updateUsername",
+    inputs: USERNAME_INPUT
+  },
+  {
+    method: "updateEmail",
+    inputs: EMAIL_INPUT
+  }
+]
+
   return (
     <>
      <DefaultContent>
@@ -25,11 +30,17 @@ export const Update = ():React.ReactNode => {
         <PageSubTitle title='Profile Data'/>
         {userData && 
           userUpdateForms.map((item, key)=>(
-            <UserUpdate userData={userData as UserSettingReq} userColabId={userColabId} inputs={item.inputs}/>
+            <div key={key}>
+               <UserUpdate userData={userData as UserSettingReq} userColabId={userColabId} method={item.method}inputs={item.inputs}/>
+            </div>
+           
           ))
         }
+         <div className='rounded-md bg-green'>
+        <h3>Super Admin</h3>
+       </div>
       </div>
-       
+      
      </DefaultContent>
     </>
   )

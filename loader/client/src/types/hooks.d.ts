@@ -68,6 +68,7 @@ export interface UserSetting {
     isSuperAdmin: boolean;
   },
   userColabId:string;
+  method:string;
   inputs: InputsImprove []
 } 
 
@@ -77,6 +78,8 @@ export interface UserSettingReq {
     createdAt: Date;
     isSuperAdmin: boolean;
   }
+
+  
 export interface DataValues {
     id: number;
     emailSource: string;
