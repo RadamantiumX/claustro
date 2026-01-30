@@ -318,6 +318,36 @@ export const SIGNIN_INPUTS = [
                   }
                 ]
 
+export const PASSWORD_UPDATE = [
+  {
+    for: "password",
+    label: "Password",
+    typeInput: "password",
+    propInput: "password",
+    placeholder: "Current Password",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "password",
+    label: "Password",
+    typeInput: "password",
+    propInput: "password",
+    placeholder: "Current Password",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "password",
+    label: "Password",
+    typeInput: "password",
+    propInput: "password",
+    placeholder: "Current Password",
+    value: "",
+    readonly:false
+  }
+]                
+
 /**
  * Data Get Unique (ID) RESPONSE:
  *  select:{
