@@ -6,6 +6,7 @@ import type { UserSettingReq } from "../../types"
 
 export const useFetchUserData = () => {
    const [ userData, setUserData ] = useState<UserSettingReq | null>()
+   const [ strDate, setStrDate ] = useState<string>()
    const trpc = useTRPC()
    const { userColabId } = useDecodeToken()
    const mutationRq = useMutation(trpc.userColab.select.mutationOptions())
@@ -19,6 +20,7 @@ export const useFetchUserData = () => {
             // TESTING FORMATING DATE
             const altDate = new Date(data?.createdAt)
             const formatDate = altDate.toDateString()
+            setStrDate(formatDate)
             //console.log(data?.id)
             console.log(formatDate)
           },
@@ -36,6 +38,6 @@ export const useFetchUserData = () => {
       handleFn()
    },[])
 
-   return {userData, userColabId}
+   return {userData, userColabId, strDate }
 }
 
