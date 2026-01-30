@@ -2,7 +2,7 @@ import React from 'react';
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent';
 import { UserUpdate } from './record/UserUpdate';
 import { CornerRibbon } from '../../../components/misc/CornerRibbon';
-import { useFetchUserData } from '../../../hooks/custom/useFetchUserData';
+import { useFetchUserData } from '../../../hooks/hooks';
 import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
 import { PageSubTitle } from '../../../components/headers/PageSubTitle';
 import { CustomLink } from '../../../components/buttons/CustomLink';
@@ -13,7 +13,8 @@ import type { UserSettingReq } from '../../../types/hooks';
 
 
 export const Update = ():React.ReactNode => {
-  const { userData, userColabId } = useFetchUserData()
+  const { userData, userColabId, strDate } = useFetchUserData()
+ 
   const userUpdateForms = [
   {
     method: "updateUsername",
@@ -33,7 +34,7 @@ export const Update = ():React.ReactNode => {
 
        {userData?.isSuperAdmin === true && <CornerRibbon>SA</CornerRibbon>}
 
-        <PageSubTitle title='Profile Data'/>
+        <PageSubTitle title='Profile Settings'/>
         {userData && 
           userUpdateForms.map((item, key)=>(
             <div key={key}>
@@ -42,7 +43,10 @@ export const Update = ():React.ReactNode => {
            
           ))
         }
+        <div className='flex flex-row gap-10'><h6 className='font-bold'>Created At</h6>{userData && <p className='font-thin text-[15px]'>{strDate}</p>}</div>
        {userData?.isSuperAdmin === true && <CustomLink inner='Add User' route='' fontSize='15'></CustomLink>}
+       
+       <PageSubTitle title='Password update'/>
       </div>
       
      </DefaultContent>
