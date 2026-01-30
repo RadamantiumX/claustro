@@ -6,7 +6,7 @@ interface Entry{
 }
 
 export interface PasswordUpdateReq{
-  username: string;
+  id: string;
   password: string;
   newPassword: string;
 }

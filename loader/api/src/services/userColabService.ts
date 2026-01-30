@@ -78,7 +78,7 @@ export class UserColabService {
             updatePassword: async(bodyReq:PasswordUpdateReq)=>{
                try{
                   // Try username password
-                  const verifyUnique = await this.userColabRepository.getUniquePassword({username:bodyReq.username})
+                  const verifyUnique = await this.userColabRepository.getUniquePassword({id:bodyReq.id})
                   
                   if(!verifyUnique){
                      throw new Error('Not found User')
@@ -91,7 +91,7 @@ export class UserColabService {
                   if(!verifyPsw){
                      throw new Error('The password provided is wrong!')
                   }
-                  await this.userColabRepository.updateUserColabPassword({username:bodyReq.username, password:bodyReq.newPassword})
+                  await this.userColabRepository.updateUserColabPassword({id:bodyReq.id, password:bodyReq.newPassword})
                   return
                }catch(error){
                   throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})

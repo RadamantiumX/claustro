@@ -31,7 +31,7 @@ export const userColabRouter = trpc.router({
      .mutation(({input})=>{
           return userColabServiceInstance.userData.update(input) 
      }),
-     updatePassword: protectedProcedure.input(newPasswordSchema.pick({ username:true, password:true, newPassword:true }))
+     updatePassword: protectedProcedure.input(newPasswordSchema.pick({ id:true, password:true, newPassword:true }))
        .mutation(({input})=>{
          return userColabServiceInstance.userData.updatePassword(input)
        }),
