@@ -2,14 +2,13 @@ import React from 'react';
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent';
 import { UserUpdate } from './record/UserUpdate';
 import { CornerRibbon } from '../../../components/misc/CornerRibbon';
-import { useFetchUserData } from '../../../hooks/hooks';
-import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
 import { PageSubTitle } from '../../../components/headers/PageSubTitle';
 import { CustomLink } from '../../../components/buttons/CustomLink';
+import { PasswordUpdate } from './record/PasswordUpdate';
 
 import type { UserSettingReq } from '../../../types/hooks';
-
-
+import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
+import { useFetchUserData } from '../../../hooks/hooks';
 
 
 export const Update = ():React.ReactNode => {
@@ -47,6 +46,10 @@ export const Update = ():React.ReactNode => {
        {userData?.isSuperAdmin === true && <CustomLink inner='Add User' route='' fontSize='15'></CustomLink>}
        
        <PageSubTitle title='Password update'/>
+       <div className='flex flex-col items-center w-full'>
+        <PasswordUpdate/>
+       </div>
+       
       </div>
       
      </DefaultContent>
