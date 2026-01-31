@@ -329,20 +329,20 @@ export const PASSWORD_UPDATE = [
     readonly:false
   },
   {
-    for: "password",
-    label: "Password",
+    for: "newPassword",
+    label: "New Password",
     typeInput: "password",
-    propInput: "password",
-    placeholder: "Current Password",
+    propInput: "newPassword",
+    placeholder: "Enter new password",
     value: "",
     readonly:false
   },
   {
-    for: "password",
-    label: "Password",
+    for: "retypeNewPassword",
+    label: "Retype new Password",
     typeInput: "password",
-    propInput: "password",
-    placeholder: "Current Password",
+    propInput: "retypeNewPassword",
+    placeholder: "Enter again new password",
     value: "",
     readonly:false
   }
