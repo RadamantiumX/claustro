@@ -1,10 +1,8 @@
 import React from 'react'
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { GenericForm } from '../../../components/forms/GenericForm'
-import { useFormInputs } from '../../../hooks/custom/useFormInputs'
 import { DATA_INPUTS } from '../../../utils/const'
-import { useDecodeToken } from '../../../hooks/custom/useDecode'
-import { useMutationHandler } from '../../../hooks/custom/useMutationHandler'
+import { useDecodeToken, useMutationHandler, useFormInputs } from '../../../hooks/hooks'
 import type { FormDataAddData } from '../../../types'
 
 export default function FormSection():React.ReactNode {
