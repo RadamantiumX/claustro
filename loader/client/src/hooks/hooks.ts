@@ -19,3 +19,4 @@ export { useEndPointHandler } from './custom/useEndPointHandler';
 export { useShowBtn } from './custom/useShowBtn';
 export { useFetchUserData } from './custom/useFetchUserData';
 export { useFormatDate } from './custom/useFormatDate';
+export { useDecodeToken } from './custom/useDecode';
