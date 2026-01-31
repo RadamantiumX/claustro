@@ -19,12 +19,12 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
   
   return (
    <>
-      <div className='w-[50%]'>
+      <div className='w-[70%]'>
             <form onSubmit={handleSubmit}>
                <div className='flex flex-col gap-y-4'>
              {dataInputs.map((data, key)=>(
               <div key={key}>
-                   <label htmlFor={data.for} className='flex flex-row items-center gap-3'>{data.label}<div className="w-[70%]" >
+                   <label htmlFor={data.for} className='flex flex-row text-[15px] items-center gap-3'>{data.label}<div className="w-[70%]" >
                 </div>
                 </label>
                  <div className="relative w-full">
