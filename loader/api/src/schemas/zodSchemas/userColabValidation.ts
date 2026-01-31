@@ -29,8 +29,19 @@ export const userSchema = z
   }
 
 // Extends "userSchema" properties
-  export const newPasswordSchema = userSchema.extend({
+  export const newPasswordSchema = z.object({
+     id:z.string(),
+     password:z.string({
+      required_error: 'The password is riquered'
+     }),
      newPassword: z.string({
       required_error: 'The new password is required'
+     }),
+     confirmNewPassword:z.string({
+      required_error: 'You must confirm new password'
      })
   })
+   .refine((data)=> data.newPassword === data.confirmNewPassword, {
+     message: "Passwords don't match"
+   })
+ 
