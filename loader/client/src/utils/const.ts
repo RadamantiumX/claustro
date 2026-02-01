@@ -338,10 +338,10 @@ export const PASSWORD_UPDATE = [
     readonly:false
   },
   {
-    for: "retypeNewPassword",
+    for: "confirmNewPassword",
     label: "Retype new Password",
     typeInput: "password",
-    propInput: "retypeNewPassword",
+    propInput: "confirmNewPassword",
     placeholder: "Enter again new password",
     value: "",
     readonly:false

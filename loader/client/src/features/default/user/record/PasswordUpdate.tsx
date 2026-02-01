@@ -1,14 +1,15 @@
 import React from 'react'
 import { GenericForm } from '../../../../components/forms/GenericForm';
-import { useMutationHandler, useFormInputs } from '../../../../hooks/hooks';
+import { useMutationHandler, useFormInputs, useDecodeToken } from '../../../../hooks/hooks';
 import { PASSWORD_UPDATE } from '../../../../utils/const';
 
 export const PasswordUpdate = ():React.ReactNode => {
+  const { userColabId } = useDecodeToken()
   const formValues = {
     password:"",
     newPassword:"",
-    retypeNewPassword:"",
-    id:""
+    confirmNewPassword:"",
+    id: userColabId
   }
   const { formData, handleChange, handleSubmit } = useMutationHandler(formValues, {route:"userColab",method:"updatePassword"})
   const { formInputs } = useFormInputs(PASSWORD_UPDATE,formData)

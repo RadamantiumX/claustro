@@ -48,11 +48,12 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
           },1000)
           
         },
+        // TODO: try to handle the errors
         onError: (error)=>{
             const parsedError = JSON.parse(error.message)
             console.log(error)
             setInputError(parsedError)
-            console.log(inputError)
+            console.log(inputError[0].message)
             setLoading(false)
             setNotification('Error: Something went wrong!⚠️')
             
