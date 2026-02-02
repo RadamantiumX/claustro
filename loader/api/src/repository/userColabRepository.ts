@@ -38,18 +38,18 @@ export class UserColabRepository{
         })
         return
     }
-    async createUserColab(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>{ // <-- Change to test
+    async createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{ // <-- Used only for SUPER ADMIN
         await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,
                 password: process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password,
-                
+                isSuperAdmin: payload.isSuperAdmin
             }
         })
         return
     }
 
-    async createSuperAdmin(payload: Pick<UserColab, 'username' | 'password' >):Promise<void>{
+    async createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>{
       await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,
