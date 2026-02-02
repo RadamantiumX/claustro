@@ -1,8 +1,7 @@
 import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema, newPasswordSchema } from "../schemas/index";
-import { protectedProcedure } from "../lib/procedure";
-import { ZodError } from "zod";
+import { protectedProcedure, superAdminProcedure } from "../lib/procedure";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
@@ -17,12 +16,12 @@ export const userColabRouter = trpc.router({
     .mutation(({input})=>{
        return userColabServiceInstance.userData.select(input)
     }),
-    create: protectedProcedure.input(userSchema.omit({ id:true, lastSignIn:true }))
+    create: superAdminProcedure.input(userSchema.omit({ id:true, lastSignIn:true }))
      .mutation(({input})=>{
              return userColabServiceInstance.userData.create(input)
 
      }),
-     delete: protectedProcedure.input(userSchema.pick({ id:true }))
+     delete: superAdminProcedure.input(userSchema.pick({ id:true }))
        .mutation(({input})=>{
             return userColabServiceInstance.userData.delete(input)
 

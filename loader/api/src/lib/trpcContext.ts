@@ -10,11 +10,12 @@ import { JWTverifyAndDecode } from '../helper/jwtFunctions'
 export const createContext = async ({  res, req }:trpcExpress.CreateExpressContextOptions) =>{
    const token:string | undefined = req.headers.authorization
    let user:string | null = null
+   let supAdmin:boolean | null = null
  if(token){
     try{
-        const { username } = JWTverifyAndDecode(token)
+        const { username, isSuperAdmin } = JWTverifyAndDecode(token)
         user = username
-
+        supAdmin = isSuperAdmin
     }catch(error){
          throw new TRPCError({message:'Invalid token', code:'UNAUTHORIZED' })
     }
@@ -22,7 +23,7 @@ export const createContext = async ({  res, req }:trpcExpress.CreateExpressConte
     }
  
     
-    return { req, res, user }
+    return { req, res, user, supAdmin }
 }
 
 // One of MILLON TESTING 😅
