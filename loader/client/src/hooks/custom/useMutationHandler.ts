@@ -7,6 +7,7 @@ import { useFormBlocker } from "./useFormBlocker";
 import { useFormData } from "./useFormData";
 import { useEndPointHandler } from "./useEndPointHandler";
 
+
 // @values from any FORM COMPONENT to use into "useFormData" hook
 // @endPoint OBJECT LITERAL --> {route, method} --> Selected to any TRPC APP-ROUTER
 // ⛔ ONLY FOR VOIDS ROUTE METHODS
@@ -50,12 +51,13 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         },
         // TODO: try to handle the errors
         onError: (error)=>{
-            const parsedError = JSON.parse(error.message)
-            console.log(error)
-            setInputError(parsedError)
-            console.log(inputError[0].message)
             setLoading(false)
-            setNotification('Error: Something went wrong!⚠️')
+            setNotification(`Error: Something went wrong!⚠️ ${error}`)
+            // const parsedError = JSON.parse(error.message)
+            console.log(error.message)
+            // setInputError(parsedError)
+            console.log(inputError[0])
+           
             
         }
       })
