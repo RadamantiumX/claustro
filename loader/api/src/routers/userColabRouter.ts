@@ -2,7 +2,7 @@ import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
 import {  userSchema, newPasswordSchema } from "../schemas/index";
 import { protectedProcedure } from "../lib/procedure";
-
+import { ZodError } from "zod";
 
 const userColabServiceInstance = UserColabService.getInstance()
 
@@ -33,7 +33,10 @@ export const userColabRouter = trpc.router({
      }),
      updatePassword: protectedProcedure.input(newPasswordSchema)
        .mutation(({input})=>{
-         return userColabServiceInstance.userData.updatePassword({id:input.id, password:input.password, newPassword:input.newPassword})
+        
+          return userColabServiceInstance.userData.updatePassword({id:input.id, password:input.password, newPassword:input.newPassword})
+       
+         
        }),
      updateUsername: protectedProcedure.input(userSchema.pick({id:true,username:true}))
         .mutation(({input})=>{

@@ -42,12 +42,8 @@ export const userSchema = z
      })
   })
    .refine((data)=> data.newPassword === data.confirmNewPassword, {
-     message: 'No match passwords',
-     path:['confirmNewPassword']
+      message: 'Passwords no match'
    })
 
-   export async function validateUpdatePassword(input:{id:string, newPassword:string,confirmNewPassword:string}){
-     const parseSync = await newPasswordSchema.safeParseAsync(input)
-     return parseSync
-   }
+ 
  
