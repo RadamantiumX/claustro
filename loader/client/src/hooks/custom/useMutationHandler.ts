@@ -50,7 +50,6 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
           },1000)
           
         },
-        // TODO: try to handle the errors
         onError: (error)=>{
             try{
             const parsedError = JSON.parse(error.message) // Parsing error (ZOD Validations)
