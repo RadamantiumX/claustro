@@ -52,15 +52,18 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         },
         // TODO: try to handle the errors
         onError: (error)=>{
-            console.log(error)
-            setLoading(false)
-            const parsedError = JSON.parse(error.message) // Parsing error
+            try{
+            const parsedError = JSON.parse(error.message) // Parsing error (ZOD Validations)
+            setLoading(false)  
             setNotification(`Error: Something went wrong!⚠️ ${parsedError[0].message ? parsedError[0].message : ""}`) // Ternary ERROR MESSAGE
-            console.log(parsedError[0].message)
             setInputError(parsedError)
-            console.log(inputError[0])
-          
-            
+            }catch(e){
+              // Only if JASON PARSING FAILS
+              console.log(e)
+              setLoading(false)
+              setNotification(`${error.message}`)
+              console.log(inputError)
+            }
         }
       })
    
@@ -68,7 +71,5 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         console.log(error)
     }
       }
-
       return { formData, handleChange, handleSubmit }
-    
 }

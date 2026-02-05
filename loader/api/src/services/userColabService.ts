@@ -87,7 +87,7 @@ export class UserColabService {
                   const verifyUnique = await this.userColabRepository.getUniquePassword({id:bodyReq.id})
                   
                   if(!verifyUnique){
-                     throw new AppError('UNAUTHORIZED',401,'Wrong credentials provided', false)
+                     throw new AppError('Incorrect Credentials',401,'Wrong credentials provided', false)
                   }
                  
                   const verifyPsw = await bcrypt.compare(
@@ -95,13 +95,13 @@ export class UserColabService {
                      verifyUnique?.password
                   )
                   if(!verifyPsw){
-                     throw new AppError('UNAUTHORIZED',401,'Incorrect password provied', false)
+                     throw new AppError('Wrong Password',401,'Incorrect password provied', false)
                   }
                   await this.userColabRepository.updateUserColabPassword({id:bodyReq.id, password:bodyReq.newPassword})
                   return
                }catch(error){
                   if(error instanceof AppError){
-                     console.log(error.httpCode)
+                     throw new TRPCError({code: 'UNAUTHORIZED', message:`${error.name}`})
                   }
                   // TODO: now fix the error handler
                   throw new TRPCError({code:"BAD_REQUEST", message:`Something went wrong! --> The Error details: ${error}`})
