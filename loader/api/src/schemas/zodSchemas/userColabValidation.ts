@@ -30,7 +30,6 @@ export const userSchema = z
 
 // Extends "userSchema" properties
   export const newPasswordSchema = z.object({
-     id:z.string(),
      password:z.string({
       required_error: 'The password is riquered'
      }),
@@ -39,7 +38,8 @@ export const userSchema = z
      }),
      confirmNewPassword:z.string({
       required_error: 'You must confirm new password'
-     })
+     }),
+     id:z.string(),
   })
    .refine((data)=> data.newPassword === data.confirmNewPassword, {
       message: 'Passwords no match'

@@ -33,13 +33,13 @@ export class AuthService {
            throw new Error('Wrong username or password')
            }
 
-          const verifyPsw = await bcrypt.compare(
-            bodyReq.password,
-            verifyUser.password
-          )
-          if (!verifyPsw) 
-            {
-              throw new Error('Wrong username or password')
+           const verifyPsw = await bcrypt.compare(
+             bodyReq.password,
+             verifyUser.password
+            )
+           if (!verifyPsw) 
+             {
+               throw new Error('Wrong username or password')
            }
 
           // The User Session is only available in ONE DEVICE ONCE

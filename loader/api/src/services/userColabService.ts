@@ -2,9 +2,15 @@ import type { IuserColabRepository, UserColab, UserColabClientResponse, UserCola
 import { UserColabRepository } from "../repository/userColabRepository"
 import prisma from "../config/prismaClient"
 import { TRPCError } from "@trpc/server";
+import AppError from "../errors/appErrors";
 import bcrypt from "bcryptjs";
-
-
+import type { HttpCode } from "../types/index";
+export interface  TestError {
+   name:string;
+   httpCode: HttpCode;
+   description:string;
+   isOperational: boolean;
+}
 export class UserColabService {
     private static instance:UserColabService
     userColabRepository:IuserColabRepository
@@ -81,20 +87,24 @@ export class UserColabService {
                   const verifyUnique = await this.userColabRepository.getUniquePassword({id:bodyReq.id})
                   
                   if(!verifyUnique){
-                     throw new Error('Not found User')
+                     throw new AppError('UNAUTHORIZED',401,'Wrong credentials provided', false)
                   }
-
+                 
                   const verifyPsw = await bcrypt.compare(
                      bodyReq.password,
                      verifyUnique?.password
                   )
                   if(!verifyPsw){
-                     throw new Error('The password provided is wrong!')
+                     throw new AppError('UNAUTHORIZED',401,'Incorrect password provied', false)
                   }
                   await this.userColabRepository.updateUserColabPassword({id:bodyReq.id, password:bodyReq.newPassword})
                   return
                }catch(error){
-                  throw new TRPCError({code:'BAD_REQUEST', message:`Something went wrong!`})
+                  if(error instanceof AppError){
+                     console.log(error.httpCode)
+                  }
+                  // TODO: now fix the error handler
+                  throw new TRPCError({code:"BAD_REQUEST", message:`Something went wrong! --> The Error details: ${error}`})
                }
             },
             updateUsername: async(bodyReq:Pick<UserColab, "id" | "username">)=>{

@@ -1,6 +1,7 @@
 import { TRPCError } from '@trpc/server'
 import { trpc } from './trpcContext'
 
+// Regular Protected
 export const authMiddleware = trpc.middleware(({ctx, next})=>{
  
   if(!ctx){

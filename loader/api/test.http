@@ -1,0 +1,8 @@
+# New Login
+POST http://localhost:3000/trpc/auth.register
+Content-Type: application/json
+
+{
+    "username":"radamantiumx",
+    "password":"seba2010!"
+}

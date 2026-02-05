@@ -25,16 +25,15 @@ app.get('/', (req: Request, res: Response, next: NextFunction)=>{
     
 })
 
-/*app.all('*', (req:Request, res:Response, next:NextFunction)=>{
-  debugger
-  const error = new AppError(
-    'Resource not found',
-     404,
-    'Due to the mismatch between the client defnied user and existing users in the database...',
-    false
-  )
-  next(error)
-})*/
+// app.all('*', (req:Request, res:Response, next:NextFunction)=>{
+//   const error = new AppError(
+//     'Resource not found',
+//      404,
+//     'Due to the mismatch between the client defnied user and existing users in the database...',
+//     false
+//   )
+//   next(error)
+// })
 
 app.use(
   '/trpc',

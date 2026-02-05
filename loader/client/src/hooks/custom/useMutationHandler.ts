@@ -40,6 +40,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
       setLoading(true)
       inputMutation.mutate(formData, {
         onSuccess: (data, variables:any)=>{
+          console.log(data)
           setLoading(false)
           setInputError([])
           setNotification('Success: Save Update Data! ☑️')
@@ -51,13 +52,14 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         },
         // TODO: try to handle the errors
         onError: (error)=>{
+            console.log(error)
             setLoading(false)
             const parsedError = JSON.parse(error.message) // Parsing error
             setNotification(`Error: Something went wrong!⚠️ ${parsedError[0].message ? parsedError[0].message : ""}`) // Ternary ERROR MESSAGE
             console.log(parsedError[0].message)
             setInputError(parsedError)
             console.log(inputError[0])
-           
+          
             
         }
       })
