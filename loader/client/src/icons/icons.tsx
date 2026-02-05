@@ -14,3 +14,4 @@ export { ChevronLeft } from './elements/ChevronLeft';
 export { ChevronRight } from './elements/ChevronRight';
 export { Dots } from './elements/Dots';
 export { BookmarkUpdate } from './elements/BookmarkUpdate';
+export { UserPlus } from './elements/UserPlus';

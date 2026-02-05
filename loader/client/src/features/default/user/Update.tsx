@@ -3,8 +3,10 @@ import DefaultContent from '../../../components/sectionsTemplate/DefaultContent'
 import { UserUpdate } from './record/UserUpdate';
 import { CornerRibbon } from '../../../components/misc/CornerRibbon';
 import { PageSubTitle } from '../../../components/headers/PageSubTitle';
-import { CustomLink } from '../../../components/buttons/CustomLink';
+
 import { PasswordUpdate } from './record/PasswordUpdate';
+import { UserPlus } from '../../../icons/icons';
+import { ModalButton } from '../../../components/buttons/ModalButton';
 
 import type { UserSettingReq } from '../../../types/hooks';
 import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
@@ -43,7 +45,7 @@ export const Update = ():React.ReactNode => {
           ))
         }
         <div className='flex flex-row gap-10'><h6 className='font-bold'>Created At</h6>{userData && <p className='font-thin text-[15px]'>{strDate}</p>}</div>
-       {userData?.isSuperAdmin === true && <CustomLink inner='Add User' route='' fontSize='15'></CustomLink>}
+       {userData?.isSuperAdmin === true && <ModalButton>Add New User<UserPlus/></ModalButton>}
        
        <PageSubTitle title='Password update'/>
        <div className='flex flex-col items-center w-full'>
