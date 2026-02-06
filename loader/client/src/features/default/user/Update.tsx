@@ -7,6 +7,7 @@ import { PageSubTitle } from '../../../components/headers/PageSubTitle';
 import { PasswordUpdate } from './record/PasswordUpdate';
 import { UserPlus } from '../../../icons/icons';
 import { ModalButton } from '../../../components/buttons/ModalButton';
+import { ModalAlert } from '../../../components/misc/ModalAlert';
 
 import type { UserSettingReq } from '../../../types/hooks';
 import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
@@ -46,7 +47,7 @@ export const Update = ():React.ReactNode => {
         }
         <div className='flex flex-row gap-10'><h6 className='font-bold'>Created At</h6>{userData && <p className='font-thin text-[15px]'>{strDate}</p>}</div>
        {userData?.isSuperAdmin === true && <ModalButton>Add New User<UserPlus/></ModalButton>}
-       
+       <ModalAlert/>
        <PageSubTitle title='Password update'/>
        <div className='flex flex-col items-center w-full'>
         <PasswordUpdate/>

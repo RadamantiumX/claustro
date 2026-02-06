@@ -52,6 +52,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
         },
         onError: (error)=>{
             try{
+            // Parsing ERROR MESSAGES  
             const parsedError = JSON.parse(error.message) // Parsing error (ZOD Validations)
             setLoading(false)  
             setNotification(`Error: Something went wrong!⚠️ ${parsedError[0].message ? parsedError[0].message : ""}`) // Ternary ERROR MESSAGE
