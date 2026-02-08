@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent';
 import { UserUpdate } from './record/UserUpdate';
 import { CornerRibbon } from '../../../components/misc/CornerRibbon';
@@ -16,7 +16,7 @@ import { useFetchUserData } from '../../../hooks/hooks';
 
 export const Update = ():React.ReactNode => {
   const { userData, userColabId, strDate } = useFetchUserData()
- 
+  const [hide, setHide] = useState(false)
   const userUpdateForms = [
   {
     method: "updateUsername",
@@ -32,7 +32,7 @@ export const Update = ():React.ReactNode => {
     <>
      <DefaultContent>
 
-      <div className='flex flex-col relative overflow-hidden  items-start w-auto p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl'>
+      <div onClick={()=>setHide(false)} className='flex flex-col relative overflow-hidden  items-start w-auto p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl'>
 
        {userData?.isSuperAdmin === true && <CornerRibbon>SA</CornerRibbon>}
 
@@ -46,9 +46,16 @@ export const Update = ():React.ReactNode => {
           ))
         }
         <div className='flex flex-row gap-10'><h6 className='font-bold'>Created At</h6>{userData && <p className='font-thin text-[15px]'>{strDate}</p>}</div>
-       {userData?.isSuperAdmin === true && <ModalButton>Add New User<UserPlus/></ModalButton>}
-       <ModalAlert/>
-       <PageSubTitle title='Password update'/>
+       {userData?.isSuperAdmin === true && <ModalButton setHide={setHide}>Add New User<UserPlus/></ModalButton>}
+
+   
+       <ModalAlert hide={hide} setHide={setHide}>
+        <div className="">
+          New User
+        </div>
+       </ModalAlert>
+
+       <PageSubTitle title='Password Change'/>
        <div className='flex flex-col items-center w-full'>
         <PasswordUpdate/>
        </div>

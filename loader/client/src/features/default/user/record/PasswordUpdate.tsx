@@ -15,7 +15,7 @@ export const PasswordUpdate = ():React.ReactNode => {
   const { formInputs } = useFormInputs(PASSWORD_UPDATE,formData)
   return (
     <>
-    <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Change Password'/>
+    <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Password'/>
     </>
   )
 }

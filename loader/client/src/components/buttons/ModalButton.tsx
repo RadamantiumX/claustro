@@ -1,11 +1,15 @@
 import React from 'react'
 
-export const ModalButton:React.FC<{children:React.ReactNode}> = ({children}):React.ReactNode => {
+export const ModalButton:React.FC<{
+  children:React.ReactNode,
+   setHide:React.Dispatch<React.SetStateAction<boolean>>}> 
+   = ({children, setHide}):React.ReactNode => {
   return (
     <>
 <button 
+  onClick={()=>setHide(true)}
   data-dialog-target="sign-in-modal"
-  className="rounded-md flex flex-row items-center gap-2 cursor-pointer bg-indigo-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
+  className="btn-rounded-hover" type="button">
   {children}
 </button>
     </>
