@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import DefaultContent from '../../../components/sectionsTemplate/DefaultContent';
 import { UserUpdate } from './record/UserUpdate';
 import { CornerRibbon } from '../../../components/misc/CornerRibbon';
@@ -11,12 +11,12 @@ import { ModalAlert } from '../../../components/misc/ModalAlert';
 
 import type { UserSettingReq } from '../../../types/hooks';
 import { USERNAME_INPUT, EMAIL_INPUT } from '../../../utils/const';
-import { useFetchUserData } from '../../../hooks/hooks';
+import { useFetchUserData, useModal } from '../../../hooks/hooks';
 
 
 export const Update = ():React.ReactNode => {
   const { userData, userColabId, strDate } = useFetchUserData()
-  const [hide, setHide] = useState(false)
+  const { show, handleClose, handleOpen } = useModal()
   const userUpdateForms = [
   {
     method: "updateUsername",
@@ -32,7 +32,7 @@ export const Update = ():React.ReactNode => {
     <>
      <DefaultContent>
 
-      <div onClick={()=>setHide(false)} className='flex flex-col relative overflow-hidden  items-start w-auto p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl'>
+      <div className='flex flex-col relative overflow-hidden  items-start w-auto p-10 gap-y-5 bg-gray-800 rounded-sm shadow-2xl'>
 
        {userData?.isSuperAdmin === true && <CornerRibbon>SA</CornerRibbon>}
 
@@ -46,14 +46,14 @@ export const Update = ():React.ReactNode => {
           ))
         }
         <div className='flex flex-row gap-10'><h6 className='font-bold'>Created At</h6>{userData && <p className='font-thin text-[15px]'>{strDate}</p>}</div>
-       {userData?.isSuperAdmin === true && <ModalButton setHide={setHide}>Add New User<UserPlus/></ModalButton>}
+       {userData?.isSuperAdmin === true && <ModalButton handleEvent={handleOpen}>Add New User<UserPlus/></ModalButton>}
 
    
-       <ModalAlert>
+       {show && <ModalAlert show={show} handleEvent={handleClose}>
         <div className="">
           New User
         </div>
-       </ModalAlert>
+       </ModalAlert>}
 
        <PageSubTitle title='Password Change'/>
        <div className='flex flex-col items-center w-full'>

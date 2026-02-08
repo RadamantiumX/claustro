@@ -346,7 +346,37 @@ export const PASSWORD_UPDATE = [
     value: "",
     readonly:false
   }
-]                
+]
+
+export const USER_CREATE = [
+  {
+    for: "username",
+    label: "Username",
+    typeInput: "text",
+    propInput: "password",
+    placeholder: "Current Password",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "newPassword",
+    label: "New Password",
+    typeInput: "password",
+    propInput: "newPassword",
+    placeholder: "Enter new password",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "confirmNewPassword",
+    label: "Retype new Password",
+    typeInput: "password",
+    propInput: "confirmNewPassword",
+    placeholder: "Enter again new password",
+    value: "",
+    readonly:false
+  }
+] 
 
 /**
  * Data Get Unique (ID) RESPONSE:

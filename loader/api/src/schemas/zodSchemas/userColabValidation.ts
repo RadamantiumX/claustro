@@ -28,6 +28,18 @@ export const userSchema = z
     return parseSync
   }
 
+export const passwordConfirmationSchema = z.object({
+   password:z.string({
+      required_error: 'The password is riquered'
+     }),
+     confirmPassword:z.string({
+      required_error: 'You must confirm new password'
+     }),
+})
+.refine((data)=> data.password === data.confirmPassword, {
+      message: 'Passwords no match'
+   })
+
 // Extends "userSchema" properties
   export const newPasswordSchema = z.object({
      password:z.string({
