@@ -49,7 +49,7 @@ export const Update = ():React.ReactNode => {
        {userData?.isSuperAdmin === true && <ModalButton setHide={setHide}>Add New User<UserPlus/></ModalButton>}
 
    
-       <ModalAlert hide={hide} setHide={setHide}>
+       <ModalAlert>
         <div className="">
           New User
         </div>
