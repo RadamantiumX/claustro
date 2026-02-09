@@ -8,10 +8,10 @@ export const userSchema = z
     lastSignIn: z.string(),
     username: z
       .string({
-        required_error: 'The nickname is riquired'
+        required_error: 'The username is riquired'
       })
       .min(8, {
-        message: 'The nickname must be larger than 8 characters minimum'
+        message: 'The username must be larger than 8 characters minimum'
       }),
     password: z
       .string({
@@ -28,13 +28,21 @@ export const userSchema = z
     return parseSync
   }
 
-export const passwordConfirmationSchema = z.object({
+export const newUserSchema = z.object({
+  username: z.string({
+     required_error:'The username is required'
+  })
+   .min(8, {
+        message: 'The username must be larger than 8 characters minimum'
+      }),
    password:z.string({
       required_error: 'The password is riquered'
      }),
-     confirmPassword:z.string({
+   confirmPassword:z.string({
       required_error: 'You must confirm new password'
      }),
+   email:z.string().email({message:'Must be a valid email'}).nullable(),
+   isSuperAdmin: z.boolean()
 })
 .refine((data)=> data.password === data.confirmPassword, {
       message: 'Passwords no match'

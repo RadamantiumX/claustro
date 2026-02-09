@@ -1,6 +1,6 @@
 import { trpc } from "../lib/trpcContext";
 import { UserColabService } from "../services/userColabService";
-import {  userSchema, newPasswordSchema } from "../schemas/index";
+import {  userSchema, newPasswordSchema, newUserSchema } from "../schemas/index";
 import { protectedProcedure, superAdminProcedure } from "../lib/procedure";
 
 const userColabServiceInstance = UserColabService.getInstance()
@@ -16,9 +16,9 @@ export const userColabRouter = trpc.router({
     .mutation(({input})=>{
        return userColabServiceInstance.userData.select(input)
     }),
-    create: superAdminProcedure.input(userSchema.omit({ id:true, lastSignIn:true }))
+    create: superAdminProcedure.input(newUserSchema)
      .mutation(({input})=>{
-             return userColabServiceInstance.userData.create(input)
+             return userColabServiceInstance.userData.create({ username:input.username, password: input.password, email: input.email, isSuperAdmin:input.isSuperAdmin })
 
      }),
      delete: superAdminProcedure.input(userSchema.pick({ id:true }))

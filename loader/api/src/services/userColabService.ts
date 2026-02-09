@@ -50,7 +50,7 @@ export class UserColabService {
                   throw new TRPCError({code:'BAD_REQUEST', message:`${error}!`})
                }
             },
-            create: async (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >):Promise<void> => {
+            create: async (bodyReq:Pick<UserColab, "username" | "password"| "email" |"isSuperAdmin" >):Promise<void> => {
                   try{
                   const verifyUnique = await this.userColabRepository.getUniqueUsername({username:bodyReq.username})
                   if(verifyUnique){

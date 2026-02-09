@@ -21,7 +21,7 @@ describe('UserColabRepository',()=>{
 it('should create new userColab',async ()=>{
 
    prismaMock.userColab.create.mockResolvedValueOnce(mockUserColab)
-   const mockedUser = await userColabRepository.createUserColab({username: 'usecolabmock', password: 'testingmock123', isSuperAdmin:true})
+   const mockedUser = await userColabRepository.createUserColab({username: 'usecolabmock', password: 'testingmock123', email:"email@mock.com" ,isSuperAdmin:true})
    
    expect(mockedUser).toEqual(undefined) // <-- Mocking VOID behavior
 
@@ -30,6 +30,7 @@ it('should create new userColab',async ()=>{
       data: {
          username: 'usecolabmock',
          password: 'testingmock123',
+         email: 'email@mock.com',
          isSuperAdmin: true
       }
    })

@@ -38,11 +38,13 @@ export class UserColabRepository{
         })
         return
     }
-    async createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>):Promise<void>{ // <-- Used only for SUPER ADMIN
+    // TODO: add email to create user
+    async createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'email' |'isSuperAdmin'>):Promise<void>{ // <-- Used only for SUPER ADMIN
         await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,
                 password: /*process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password*/bcrypt.hashSync(payload.password, 10),
+                email: payload.email,
                 isSuperAdmin: payload.isSuperAdmin
             }
         })

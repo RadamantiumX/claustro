@@ -16,7 +16,7 @@ export interface IuserColabRepository {
     getUniqueUsername({username}:Pick<UserColab, 'username'> ): Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>;
     getUniqueId({id}:Pick<UserColab, 'id'> ): Promise<Pick<UserColab, "id" | "username" | "isSuperAdmin"> | null>;
     updateTimestampSignIn(username: Pick<UserColab, "username">): Promise<void>;
-    createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'isSuperAdmin'>): Promise<void>; 
+    createUserColab(payload: Pick<UserColab, 'username' | 'password' | 'email' |'isSuperAdmin'>): Promise<void>; 
     createSuperAdmin(payload: Pick<UserColab, 'username' | 'password'>):Promise<void>;
     getUsersColab(): Promise<UserColabClientResponse>;
     getUserColab(payload: Pick<UserColab, 'id'>):Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;

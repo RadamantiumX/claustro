@@ -14,7 +14,7 @@ export interface UserColabMethods{
   list: () => Promise<UserColabClientResponse>;
   uniqueForId: (bodyReq:Pick<UserColab, 'id'>) => Promise<Pick<UserColab, "id"| "username"|"isSuperAdmin"> | null>;
   uniqueForUsername: (bodyReq:Pick<UserColab, 'username'>) => Promise<Pick<UserColab, "id" | "username" | "password" | "isSuperAdmin"> | null>
-  create: (bodyReq:Pick<UserColab, "username" | "password"| "isSuperAdmin" >) => Promise<void>; 
+  create: (bodyReq:Pick<UserColab, "username" | "password"| "email" |"isSuperAdmin" >) => Promise<void>; 
   select: (bodyReq:Pick<UserColab, "id">) => Promise<Pick<UserColab, 'username'| 'email'| 'createdAt'| 'isSuperAdmin'> | null>;
   update: (bodyReq:Pick<UserColab, 'username' | 'email'>)=>Promise<void>;
   updatePassword:(bodyReq:PasswordUpdateReq)=>Promise<void>;
