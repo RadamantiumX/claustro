@@ -5,6 +5,8 @@ import { CornerRibbon } from '../../../components/misc/CornerRibbon';
 import { PageSubTitle } from '../../../components/headers/PageSubTitle';
 
 import { PasswordUpdate } from './record/PasswordUpdate';
+import { UserCreate } from './record/UserCreate';
+
 import { UserPlus } from '../../../icons/icons';
 import { ModalButton } from '../../../components/buttons/ModalButton';
 import { ModalAlert } from '../../../components/misc/ModalAlert';
@@ -51,7 +53,7 @@ export const Update = ():React.ReactNode => {
    
        {show && <ModalAlert show={show} handleEvent={handleClose}>
         <div className="">
-          New User
+          <UserCreate/>
         </div>
        </ModalAlert>}
 
