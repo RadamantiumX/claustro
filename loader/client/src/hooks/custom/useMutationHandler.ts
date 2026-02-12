@@ -24,7 +24,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
 
      // Change Event 🛠️
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.name === 'isSuperAdmin'? e.target.checked : e.target.value }) // Convert ONLY SA values (take the "checked value")
       }
 
      // Submit Event 📨📩
