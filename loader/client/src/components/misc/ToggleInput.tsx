@@ -1,6 +1,8 @@
 import { useToggleValue } from "../../hooks/hooks"
+import React from "react"
+import type { FormProps } from "../../types"
 
-export const ToggleInput = ():React.ReactNode => {
+export const ToggleInput:React.FC<Pick<FormProps, "handleChange">> = ({handleChange}):React.ReactNode => {
     const { value, handleClickToggle } = useToggleValue()
   return (
     <>
@@ -13,7 +15,7 @@ export const ToggleInput = ():React.ReactNode => {
     name='isSuperAdmin'
     type="checkbox"
     className="peer sr-only appearance-none"
-    onChange={(e)=>console.log(e.target.checked)}
+    onChange={handleChange}
     onClick={handleClickToggle}
   />
 
@@ -30,7 +32,7 @@ export const ToggleInput = ():React.ReactNode => {
   </div>
   <div className={value === 0 ?'bg-red-700 px-2 py-0.5 rounded-md opacity-25 line-through' : 'bg-green-700 px-2 py-0.5 rounded-md'}>
     <p className='font-bold'>
-    {}
+    SA
   </p>
   </div>
   

@@ -44,7 +44,7 @@ export const GenericForm:React.FC<Omit<FormProps, 'authInputs'>> = ({ handleSubm
                   </div>
                 </div>
              ))}
-            {toggle && <ToggleInput/>}
+            {toggle && <ToggleInput handleChange={handleChange}/>}
                
                
         <FormButton loading={loading}>
