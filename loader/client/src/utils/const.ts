@@ -359,20 +359,29 @@ export const USER_CREATE = [
     readonly:false
   },
   {
-    for: "newPassword",
-    label: "New Password",
-    typeInput: "password",
-    propInput: "newPassword",
-    placeholder: "Enter new password",
+    for: "email",
+    label: "Email",
+    typeInput: "email",
+    propInput: "email",
+    placeholder: "Enter new User email",
     value: "",
     readonly:false
   },
   {
-    for: "confirmNewPassword",
-    label: "Retype new Password",
+    for: "password",
+    label: "Password",
     typeInput: "password",
-    propInput: "confirmNewPassword",
-    placeholder: "Enter again new password",
+    propInput: "password",
+    placeholder: "Enter The user password",
+    value: "",
+    readonly:false
+  },
+  {
+    for: "confirmPassword",
+    label: "Confirm the User password",
+    typeInput: "password",
+    propInput: "confirmPassword",
+    placeholder: "Confirm the password",
     value: "",
     readonly:false
   }
