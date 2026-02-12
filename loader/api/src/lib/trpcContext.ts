@@ -6,24 +6,29 @@ import { JWTverifyAndDecode } from '../helper/jwtFunctions'
 
 // TODO: put inside this context other functions with other context. EXAMPLE: THE REFRESH TOKEN
 // TODO: See this https://github.com/trpc/trpc/discussions/4226 ⚠️
+// TODO: The last thing, you must test and change this context
 // see the documentation
 export const createContext = async ({  res, req }:trpcExpress.CreateExpressContextOptions) =>{
    const token:string | undefined = req.headers.authorization
    let user:string | null = null
    let supAdmin:boolean | null = null
+   console.log(token)
  if(token){
     try{
+        console.log(`Here is the token: ${token}`)
         const { username, isSuperAdmin } = JWTverifyAndDecode(token)
         user = username
         supAdmin = isSuperAdmin
     }catch(error){
+         console.log('Sorry no TOKEN')
          throw new TRPCError({message:'Invalid token', code:'UNAUTHORIZED' })
+         
     }
      
     }
  
     
-    return { req, res, user, supAdmin }
+    return { req, res, user, supAdmin, token }
 }
 
 // One of MILLON TESTING 😅

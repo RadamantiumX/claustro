@@ -353,8 +353,8 @@ export const USER_CREATE = [
     for: "username",
     label: "Username",
     typeInput: "text",
-    propInput: "password",
-    placeholder: "Current Password",
+    propInput: "username",
+    placeholder: "Enter username",
     value: "",
     readonly:false
   },

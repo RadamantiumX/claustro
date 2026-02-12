@@ -24,7 +24,9 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
 
      // Change Event 🛠️
      const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
-        setFormData({...formData, [e.target.name]: e.target.name === 'isSuperAdmin'? e.target.checked : e.target.value }) // Convert ONLY SA values (take the "checked value")
+        setFormData({...formData, [e.target.name]: e.target.name === 'isSuperAdmin'
+          ? e.target.checked
+          : e.target.value }) // Convert ONLY SA values (take the "checked value")
       }
 
      // Submit Event 📨📩
@@ -43,7 +45,7 @@ export const useMutationHandler = <T extends UnionInput>(values:T, endPoint:EndP
           console.log(data)
           setLoading(false)
           setInputError([])
-          setNotification('Success: Save Update Data! ☑️')
+          setNotification(endPoint.method.includes('update')? 'Success: Save Update Data! ☑️':'Success on create new Record')
           if(endPoint.method === 'updateUsername') setUser(variables.username) // Instant USERNAME update
           setTimeout(()=>{
             window.location.reload()

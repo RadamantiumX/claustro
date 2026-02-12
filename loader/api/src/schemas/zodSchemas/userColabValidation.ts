@@ -42,7 +42,7 @@ export const newUserSchema = z.object({
       required_error: 'You must confirm new password'
      }),
    email:z.string().email({message:'Must be a valid email'}).nullable(),
-   isSuperAdmin: z.boolean()
+   isSuperAdmin: z.boolean().default(false)
 })
 .refine((data)=> data.password === data.confirmPassword, {
       message: 'Passwords no match'

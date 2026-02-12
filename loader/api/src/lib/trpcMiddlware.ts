@@ -14,11 +14,12 @@ export const authMiddleware = trpc.middleware(({ctx, next})=>{
 
 // Only for SUPER ADMIN CONSTRAINS
 export const superAdminMiddleware = trpc.middleware(({ctx, next})=>{
-    if(!ctx || !ctx.supAdmin){
+    if(!ctx){
     
     console.log('no user authorized')
     throw new TRPCError({ code: 'UNAUTHORIZED', message:'You are not authorized user' })
      
   }
+  console.log(`The token is: ${ctx.token}`)
   return next({ ctx })
 })

@@ -11,7 +11,7 @@ export const UserCreate = ():React.ReactNode => {
     password:"",
     confirmPassword:""
   }
-   const { formData, handleChange, handleSubmit } = useMutationHandler(formValues, {route:"userColab",method:"updatePassword"})
+   const { formData, handleChange, handleSubmit } = useMutationHandler(formValues, {route:"userColab",method:"create"})
    const { formInputs } = useFormInputs(USER_CREATE, formData)
   return (
     <>
