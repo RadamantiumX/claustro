@@ -22,6 +22,7 @@ export interface FormProps{
     authInputs: AuthInputs [];
     dataInputs: DataInputs [] | any[];
     innerTextButton: string;
+    toggle:boolean
 }
 
 export interface NavBarBtnProp{
