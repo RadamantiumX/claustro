@@ -3,7 +3,7 @@ import { useShowBtn, useStateContext } from '../../hooks/hooks';
 import { FormButton } from '../buttons/FormButton';
 import type { FormProps } from '../../types';
 
-export const UniqueInputForm:React.FC<Omit<FormProps, 'authInputs'>> = ({handleSubmit, handleChange, dataInputs, innerTextButton}):React.ReactNode => {
+export const UniqueInputForm:React.FC<Omit<FormProps, 'authInputs' | 'toggle'>> = ({handleSubmit, handleChange, dataInputs, innerTextButton}):React.ReactNode => {
   const { show, handleInputBlock } = useShowBtn()
   const { loading } = useStateContext()
   return (
