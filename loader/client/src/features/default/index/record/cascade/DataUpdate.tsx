@@ -13,7 +13,7 @@ export default function DataUpdate({data}:DataProps):React.ReactNode {
     <>
     
       <PageSubTitle title='Data Update'/>
-      <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Data'/>
+      <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Update Data' toggle={false}/>
      
     </>
   )

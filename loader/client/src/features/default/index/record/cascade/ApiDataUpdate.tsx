@@ -22,7 +22,7 @@ export default function ApiDataUpdate({apiData, dataId}:ApiDataProps):React.Reac
     <>
     
     <PageSubTitle title={apiData ? 'Api Data Update':'Api Data'}/>
-     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton={apiData ? 'Update Api Data': "Add Api Data"}/>
+     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton={apiData ? 'Update Api Data': "Add Api Data"} toggle={false}/>
      
     </>
   )

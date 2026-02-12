@@ -20,7 +20,7 @@ export default function FormSection():React.ReactNode {
 
   return (
     <DefaultContent>
-          <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Add new'/>
+          <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton='Add new' toggle={false}/>
     </DefaultContent>
   )
 }

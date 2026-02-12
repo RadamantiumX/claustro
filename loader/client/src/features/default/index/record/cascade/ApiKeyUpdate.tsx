@@ -14,7 +14,7 @@ export default function ApiKeyUpdate({apiKeys, dataId, apiDataId}:ApiKeyProps):R
     <>
     
     <PageSubTitle title={apiKeys ?'Api Key Update': "Api Key"}/>
-     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton={apiKeys?'Update Api Key':'Add Api key'}/>
+     <GenericForm handleChange={handleChange} handleSubmit={handleSubmit} dataInputs={formInputs} innerTextButton={apiKeys?'Update Api Key':'Add Api key'} toggle={false}/>
 
     </>
   )
