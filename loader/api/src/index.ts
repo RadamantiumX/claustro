@@ -7,7 +7,7 @@ import { appRouter } from './routers'
 import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
-import AppError from './errors/appErrors';
+
 
 
 dotenv.config()
