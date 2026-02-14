@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { isExpiredToken } from "../helper/tokenExpiration";
 import { refreshClient } from "./trpc";
 
+
  // Intercepts the TRPC server responses
 export const customLink:TRPCLink<AppRouter>= () =>{
  
@@ -20,14 +21,13 @@ export const customLink:TRPCLink<AppRouter>= () =>{
         next(value){
 
          
-         const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-         const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
-
-
-        console.log('getting inside')
+         
         // Here evaluates the access token
           const exec = async ()=>{
+            const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+           const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
+
             if(token !== undefined){
             if(isExpiredToken(token)){
              // TRPC refresh token router
@@ -42,7 +42,9 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           }
           }
           }
-         
+
+          
+         if(op.path === 'auth.login'){
           exec().then((data)=>{
             console.log(data) // Here Nothing happen 🤨
              
@@ -57,6 +59,8 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           }
           }
           })
+         }
+          
       
 
           console.log('we recibed value', value);
