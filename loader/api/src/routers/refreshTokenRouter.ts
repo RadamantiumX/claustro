@@ -20,12 +20,12 @@ export const refreshTokenRouter = trpc.router({
         try{
 
           if(input.refreshToken === undefined){
-            throw new TRPCError({ code:'UNAUTHORIZED', message:'The refresh token is missing! first stage' })
+            throw new TRPCError({ code:'UNAUTHORIZED', message:'The refresh token is missing! <<first stage>>' })
           }
 
         const blackListToken = await refreshTokenInstance.refreshToken.blackList(input.refreshToken)
          if(blackListToken){
-             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is expired' })
+             throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provided is expired! <<second stage>>' })
          }
 
         // Decoding ⬇️
@@ -33,12 +33,12 @@ export const refreshTokenRouter = trpc.router({
 
         const owner = await refreshTokenInstance.refreshToken.verifyOwner({userColabId:id, refreshToken: input.refreshToken})
         if(!owner){
-            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Corrupted credentials!' })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Corrupted credentials! <<third stage>>' })
         }
        
         const verify = await userColabInstance.userData.uniqueForId({id:id})
         if(!verify){
-            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted' })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: 'The token provied is corrupted <<fourth stage>>' })
         }
         const newAccessToken:string = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: A_TOKEN_EXP })
         const newRefreshToken:string = JWTtokenSign({ id:verify.id, username:verify.username, isSuperAdmin: verify.isSuperAdmin, expiresIn: R_TOKEN_EXP })
@@ -48,7 +48,7 @@ export const refreshTokenRouter = trpc.router({
        
         return {newAccessToken:newAccessToken, newRefreshToken:newRefreshToken}
         }catch(error){
-            throw new TRPCError({ code: 'UNAUTHORIZED', message: `Somenthing went wrong on refreshToken router: ${error}`, cause:error })
+            throw new TRPCError({ code: 'UNAUTHORIZED', message: `Somenthing went wrong on refreshToken router: ${error} <<Cached Error>>`, cause:error })
         }
        
     })

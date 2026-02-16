@@ -14,7 +14,7 @@ export type RouterOutput = inferRouterOutputs<AppRouter>
 export const  { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>()
 
 // This is used only for REFRESH TOKENS
-export const refreshClient = createTRPCClient<AppRouter>({
+export const trpcRefreshClient = createTRPCClient<AppRouter>({
     
     links: [
       httpBatchLink({

@@ -12,7 +12,7 @@ export const createContext = async ({  res, req }:trpcExpress.CreateExpressConte
    const token:string | undefined = req.headers.authorization
    let user:string | null = null
    let supAdmin:boolean | null = null
-   console.log(token)
+   console.log(res.status)
  if(token){
     try{
         console.log(`Here is the token: ${token}`)

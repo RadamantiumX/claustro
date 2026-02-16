@@ -2,8 +2,8 @@ import type{ TRPCLink } from "@trpc/client";
 import type { AppRouter } from "../../../api/src/routers";
 import { observable } from "@trpc/server/observable";
 import Cookies from "js-cookie";
-import { isExpiredToken } from "../helper/tokenExpiration";
-import { refreshClient } from "./trpc";
+// import { isExpiredToken } from "../helper/tokenExpiration";
+import { trpcRefreshClient } from "./trpc";
 
 
  // Intercepts the TRPC server responses
@@ -20,7 +20,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       const unsubscribe = next(op).subscribe({
         next(value){
 
-         
+         console.log(op.signal)
          
         // Here evaluates the access token
           const exec = async ()=>{
@@ -28,10 +28,11 @@ export const customLink:TRPCLink<AppRouter>= () =>{
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
            const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
 
-            if(token !== undefined){
-            if(isExpiredToken(token)){
+            console.log(token)
+     
+              console.log('The token is expired')
              // TRPC refresh token router
-             const refreshedAccessToken = await refreshClient.refreshToken.refresh.mutate({ refreshToken: refreshToken })
+             const refreshedAccessToken = await trpcRefreshClient.refreshToken.refresh.mutate({ refreshToken: refreshToken })
              console.log(refreshedAccessToken) // ⚠️Only for debug ---> Delete in production
 
              // Success on server request
@@ -39,15 +40,16 @@ export const customLink:TRPCLink<AppRouter>= () =>{
              // This modify the value on State Context
               Cookies.set('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7',refreshedAccessToken.newAccessToken,{expires: 1})
               Cookies.set('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo',refreshedAccessToken.newRefreshToken,{expires: 1})
-          }
-          }
+             
+              return refreshedAccessToken
+          
           }
 
           
-         if(op.path === 'auth.login'){
+    
           exec().then((data)=>{
             console.log(data) // Here Nothing happen 🤨
-             
+            console.log('Enter here')
           }).catch((error)=>{
             
             if(error.data?.httpStatus){
@@ -59,7 +61,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           }
           }
           })
-         }
+         
           
       
 

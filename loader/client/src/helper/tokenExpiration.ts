@@ -6,5 +6,5 @@ export const isExpiredToken = (token:string):boolean =>{
   const decodedToken:JwtPayload | undefined | any = jwtDecode(token)
   const currentTime =  Date.now() /1000
 
-  return decodedToken?.exp < currentTime
+  return decodedToken?.exp <= currentTime
 }
