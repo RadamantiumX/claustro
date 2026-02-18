@@ -1,6 +1,9 @@
 import { createTRPCContext } from '@trpc/tanstack-react-query';
 import type { AppRouter } from '../../../api/src/routers/index';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
+
+
+
 import { getToken } from '../helper/cookieHandler';
 import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 
@@ -17,12 +20,11 @@ export const  { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRo
 export const trpcRefreshClient = createTRPCClient<AppRouter>({
     
     links: [
+      
       httpBatchLink({
         url: 'http://localhost:3000/trpc',
-         headers:{
-                Authorization: getToken(),
-                credentials: 'include'
-         },
+        
+         
       }),
       
     ],

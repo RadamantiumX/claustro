@@ -2,7 +2,9 @@ import { useState } from "react";
 import { httpBatchLink, createTRPCClient } from "@trpc/client";
 import { QueryClient } from "@tanstack/react-query";
 import type { AppRouter } from "../../../../api/src/routers";
-import { customLink } from "../../utils/customLinks";
+// import { customLink } from "../../utils/customLinks";
+import { customFetcher } from "../../utils/customFetcher";
+
 import { getToken } from "../../helper/cookieHandler";
 // import { customLink } from "../../utils/customLinks";
 // import { isExpiredToken } from "../helper/tokenExpiration";
@@ -30,21 +32,28 @@ export const useTrpc = () => {
                     queries: {
                         staleTime: 1,
                         retry:true
-                    },
-                    mutations: {
-                        
                     }
                 }
             })
     )
    // TODO: WORKS, but do more for this
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [  
-             customLink,
+            //  retryLink({
+            //     retry(opts){
+            //         if(opts.error.data?.code === 'UNAUTHORIZED'){
+            //             console.log('The user is unauthorized')
+            //             return false
+            //         }
+
+            //         return opts.attempts <= 2
+            //     }
+            //  }),
              httpBatchLink({ url: 'http://localhost:3000/trpc' ,
-               headers:{
+             fetch:customFetcher 
+            //    headers:{
                     
-                    Authorization: getToken() ?? ''
-                },
+            //         Authorization: getToken() ?? ''
+            //     },
                /* async headers (){
                     const jwtAuthToken = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
     

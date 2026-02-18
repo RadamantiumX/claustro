@@ -51,6 +51,7 @@ export const useLogin = ():SignInHandler =>{
               setResponseError('')
         },
         onError:(error)=>{
+          console.log(error)
           setResponseError(error.message)
           setLoading(false)
         }

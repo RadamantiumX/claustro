@@ -15,7 +15,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
       
       
       console.log('Perf. operation: ', op)
-      console.log(op.path)
+      console.log(op.type)
       
       const unsubscribe = next(op).subscribe({
         next(value){
@@ -26,7 +26,7 @@ export const customLink:TRPCLink<AppRouter>= () =>{
           const exec = async ()=>{
             const token:string | undefined= Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-           const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
+            const refreshToken:any = Cookies.get('CLAUSTRO_REFRESH_TOKEN_3iwV166eYJQSTEVo')
 
             console.log(token)
      
