@@ -3,8 +3,6 @@ import type { AppRouter } from '../../../api/src/routers/index';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 
 
-
-import { getToken } from '../helper/cookieHandler';
 import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
 
 

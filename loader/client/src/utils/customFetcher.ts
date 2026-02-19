@@ -7,15 +7,17 @@ import { trpcRefreshClient } from "./trpc"
 // Only for auto REFRESH ACCESS TOKENS
 export const customFetcher = async (
     input: RequestInfo | URL,
-    init?: RequestInit
+    init?: RequestInit | undefined
 ) => {
-   const accessToken = cookieHandler.getAccessToken
+   if(cookieHandler.getAccessToken()){
    let response = await fetch(input, {
       ...init,
-      headers:{
-         Authorization: accessToken !== null  ? `Bearer ${accessToken}` : ""
-      },
-      credentials:'include'
+     headers:{
+      "Authorization": `Bearer ${cookieHandler.getAccessToken()}`,
+      'Content-Type': 'application/json'
+     }, 
+     
+     credentials:'include'
       
    })
    console.log('Enter the first stage custom fetch')
@@ -23,8 +25,8 @@ export const customFetcher = async (
      console.log('Verying the Refresh Token') 
      const rt = cookieHandler.getRefreshToken()
      if(!rt){
-        cookieHandler.clearTokens()
         console.log('Enter the refresh token clear code: 401')
+        cookieHandler.clearTokens()
         return response
      }
    console.log('Second stage on custom fetch')
@@ -38,12 +40,12 @@ export const customFetcher = async (
         if(newRefreshToken) cookieHandler.setRefreshToken(newRefreshToken)
        
         // Retry the original REQUEST with new access token    
-        const orginRequestHeaders = new Headers(init?.headers)
-        orginRequestHeaders.set('Authorization', `Bearer ${newAccessToken}`) 
-        
+        const originalRequestHeaders = new Headers(init?.headers)
+        originalRequestHeaders.set('Authorization', `Bearer ${newAccessToken}`) 
+        originalRequestHeaders.set('Content-Type', 'application/json')
        response = await fetch(input, {
             ...init,
-            headers: orginRequestHeaders
+            headers: originalRequestHeaders
         })
      }catch(error){
         console.log(error)
@@ -58,3 +60,6 @@ export const customFetcher = async (
 
    return response
 }
+return await fetch(input,init)
+}
+

@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { httpBatchLink, createTRPCClient } from "@trpc/client";
+import { httpBatchLink, createTRPCClient, retryLink } from "@trpc/client";
 import { QueryClient } from "@tanstack/react-query";
 import type { AppRouter } from "../../../../api/src/routers";
 // import { customLink } from "../../utils/customLinks";
 import { customFetcher } from "../../utils/customFetcher";
 
-import { getToken } from "../../helper/cookieHandler";
+ import { cookieHandler, getToken } from "../../helper/cookieHandler";
+
+ import { trpcRefreshClient } from "../../utils/trpc";
 // import { customLink } from "../../utils/customLinks";
 // import { isExpiredToken } from "../helper/tokenExpiration";
 // import Cookies from "js-cookie";
@@ -38,22 +40,73 @@ export const useTrpc = () => {
     )
    // TODO: WORKS, but do more for this
     const [ trpcClient ] = useState(()=> createTRPCClient<AppRouter>({ links: [  
-            //  retryLink({
-            //     retry(opts){
-            //         if(opts.error.data?.code === 'UNAUTHORIZED'){
-            //             console.log('The user is unauthorized')
-            //             return false
-            //         }
+              retryLink({
+                 retry(opts){
+                     if(opts.error.data?.code === 'UNAUTHORIZED'){
+                         console.log('The user is unauthorized')
+                         return false
+                  }
 
-            //         return opts.attempts <= 2
-            //     }
-            //  }),
+                    return opts.attempts <= 2
+                 }
+              }),
              httpBatchLink({ url: 'http://localhost:3000/trpc' ,
-             fetch:customFetcher 
-            //    headers:{
+            //   headers(){
+            //     let authHeaders: { Authorization?:string } = {}
+            //     const token = cookieHandler.getAccessToken()
+            //     console.log(token)
+            //     if(token){
+            //         authHeaders = {
+            //             Authorization: `Bearer ${token}`
+            //         }
+            //     }
+
+            //     return authHeaders
+            //   },
+              fetch:customFetcher
+            //   async (url, options):Promise<Response> =>{
+            //      const res = await fetch(url, options)
+                
+            //      if(res.status === 401){
+            //         console.log('UNAUTHORIZED')
+
+            //         const rtoken = cookieHandler.getRefreshToken()
+
+            //         if(!rtoken){
+            //             cookieHandler.clearTokens()
+            //             console.log('Enter the refresh token clear code: 401')
+            //             return res
+            //         }
+            //         try{
+            //             console.log('Etry the Try Catch')
+            //             const refreshResponse = await trpcRefreshClient.refreshToken.refresh.mutate({ refreshToken: rtoken })
+            //             const newAccessToken = refreshResponse.newAccessToken
+            //             const newRefreshToken = refreshResponse.newRefreshToken
+
+            //             console.log(newAccessToken)
+            //             console.log(newRefreshToken)
+
+            //             cookieHandler.setAccessToken(newAccessToken)
+            //             if(newRefreshToken)cookieHandler.setRefreshToken(newRefreshToken)
+                        
+            //             options.headers['Authorization'] = `Bearer ${newAccessToken}`    
+            //             return res    
+            //         }catch(error){
+            //             console.log(error)
+            //             cookieHandler.clearTokens()
+            //             window.location.reload()
+            //         }
+                     
                     
-            //         Authorization: getToken() ?? ''
-            //     },
+
+                    
+            //      }
+
+                 
+            //      return res
+            //   }
+              
+                
                /* async headers (){
                     const jwtAuthToken = Cookies.get('CLAUSTRO_ACCESS_TOKEN_dxgKnoEg0uJqHsl7')
     

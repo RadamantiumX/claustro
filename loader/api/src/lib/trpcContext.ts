@@ -12,13 +12,15 @@ export const createContext = async ({  res, req }:trpcExpress.CreateExpressConte
    const token:string | undefined = req.headers.authorization
    let user:string | null = null
    let supAdmin:boolean | null = null
-   console.log(res.status)
+   console.log(`The token in first stage of context ${token}`)
  if(token){
     try{
         console.log(`Here is the token: ${token}`)
         const { username, isSuperAdmin } = JWTverifyAndDecode(token)
         user = username
         supAdmin = isSuperAdmin
+
+        // return { req, res, user, supAdmin, token }
     }catch(error){
          console.log('Sorry no TOKEN')
          throw new TRPCError({message:'Invalid token', code:'UNAUTHORIZED' })
