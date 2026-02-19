@@ -31,7 +31,7 @@ export const createContext = ({  res, req }:trpcExpress.CreateExpressContextOpti
     }
  
     
-    return { req, res, user }
+    return { req, res, user, supAdmin }
 }
 
 // One of MILLON TESTING 😅
