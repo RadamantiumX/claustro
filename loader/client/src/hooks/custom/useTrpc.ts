@@ -51,6 +51,9 @@ export const useTrpc = () => {
                  }
               }),
              httpBatchLink({ url: 'http://localhost:3000/trpc' ,
+              // headers:{
+              //   Authorization: cookieHandler.getAccessToken() ? `Bearer ${cookieHandler.getAccessToken()}` : ''
+              // },
             //   headers(){
             //     let authHeaders: { Authorization?:string } = {}
             //     const token = cookieHandler.getAccessToken()
