@@ -5,11 +5,10 @@ import { UserColabRepository } from "../repository/userColabRepository";
 import { RefreshTokenRepository } from "../repository/refreshTokenRepository";
 import prisma from "../config/prismaClient";
 import { A_TOKEN_EXP, R_TOKEN_EXP } from "../const/tokenExpiration";
-import { EnvFactoryErrors } from "../errors/envFactoryErrors";
 import { TRPCError } from "@trpc/server";
 
 // Error INSTANCE
-const envErrorFactory = new EnvFactoryErrors()
+
 
 // TODO: Appy "Then - Catch" to each filter to test
 // Dependency Injection + Singleton PATTERN

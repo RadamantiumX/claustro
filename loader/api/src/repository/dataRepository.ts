@@ -1,4 +1,4 @@
-import type { Datum, CascadeData, ApiData, ApiKey } from "../types/index";
+import type { Datum, ApiData, ApiKey } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import { PrismaClient } from '@prisma/client';
 

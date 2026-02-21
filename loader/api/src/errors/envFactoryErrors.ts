@@ -13,13 +13,13 @@ class envCustomErrors extends Error{
     }
 }
 
-class PrismaErrors extends envCustomErrors{
-    constructor(meta:any, code:HttpCode){
-       super(`Prisma Error: The Error appear on target ${meta.target}`, code)
-       this.code = code
-    }
+// class PrismaErrors extends envCustomErrors{
+//     constructor(meta:any, code:HttpCode){
+//        super(`Prisma Error: The Error appear on target ${meta.target}`, code)
+//        this.code = code
+//     }
     
-}
+// }
 
 class ZodErrors extends envCustomErrors{
     constructor( issues:any,code:HttpCode){

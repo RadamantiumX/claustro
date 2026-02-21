@@ -2,7 +2,7 @@ import type { UserColab, UserColabClientResponse } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
 import bcrypt from 'bcryptjs'
 import { PrismaClient } from "@prisma/client";
-import { email } from 'envalid/dist';
+
 
 
 export class UserColabRepository{

@@ -15,7 +15,7 @@ export const authRouter = trpc.router({
     register : publicProcedure.input(userSchema.omit({id:true, lastSignIn: true, isSuperAdmin: true, email:true})).mutation(({input})=>{
         return authServiceInstance.auth.register(input)
     }),
-    logout: publicProcedure.input(refreshTokenSchema.pick({ userColabId: true })).mutation(({input, ctx})=>{
+    logout: publicProcedure.input(refreshTokenSchema.pick({ userColabId: true })).mutation(({input})=>{
         return authServiceInstance.auth.destroySession(input)
     })
 })

@@ -5,9 +5,10 @@ import { App } from './core/App'
 import './styles/global.css'
 
 createRoot(document.getElementById('root')!).render(
-  
+  <StrictMode>
     <Providers>
          <App/>
     </Providers>
+    </StrictMode>
   
 )
