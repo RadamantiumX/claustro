@@ -9,6 +9,8 @@ import Add from "../pages/default/Add";
 import UserSettings from "../pages/default/user/UserSettings";
 import Search from "../pages/default/Search";
 import Record from "../pages/default/index/Record";
+import NotFound from "../pages/404/NotFound";
+import RootErrorBoundary from "../pages/error/RootErrorBoundary";
 /**
  * 
  */
@@ -16,15 +18,17 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <GuestLayout/>,
+        ErrorBoundary: RootErrorBoundary,
         children:[
             {
                 path: '/',
-                element: <Navigate to='/home'/>
-
+                element: <Navigate to='/home'/>,
+                
             },
             {
                 path: '/home',
-                element: <Home/>
+                element: <Home/>,
+                
             },
             {
                 path: '/signin',
@@ -35,6 +39,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         Component: DefaultLayout,
+        ErrorBoundary: RootErrorBoundary,
         children: [
             {
                 path:'/',
@@ -65,6 +70,10 @@ const router = createBrowserRouter([
                 element:<Search/>
             }
         ]
+    },
+    {
+        path:"*",
+        Component: NotFound,
     }
 ])
 
