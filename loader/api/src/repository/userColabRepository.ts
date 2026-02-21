@@ -43,7 +43,7 @@ export class UserColabRepository{
         await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,
-                password: /*process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password*/bcrypt.hashSync(payload.password, 10),
+                password: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'dev' ? bcrypt.hashSync(payload.password, 10): payload.password, //bcrypt.hashSync(payload.password, 10),
                 email: payload.email,
                 isSuperAdmin: payload.isSuperAdmin
             }
@@ -55,7 +55,7 @@ export class UserColabRepository{
       await this.prismaClient.userColab.create({
             data:{
                 username: payload.username,
-                password: /*process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password*/bcrypt.hashSync(payload.password, 10),
+                password: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'dev' ? bcrypt.hashSync(payload.password, 10): payload.password,//bcrypt.hashSync(payload.password, 10),
                 isSuperAdmin: true
             }
         })
@@ -117,7 +117,7 @@ export class UserColabRepository{
         await this.prismaClient.userColab.update({
           where: { id:payload.id },
           data:{
-             password: /*process.env.NODE_ENV === 'production' ? bcrypt.hashSync(payload.password, 10): payload.password*/bcrypt.hashSync(payload.password, 10),
+             password: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'dev' ? bcrypt.hashSync(payload.password, 10): payload.password, //bcrypt.hashSync(payload.password, 10),
              updatedAt:timeStampParsed()
           }
         })
