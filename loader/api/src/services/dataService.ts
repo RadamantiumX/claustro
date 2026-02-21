@@ -2,7 +2,7 @@ import type { IDataRepository, DataMethods, Datum } from "../types/index";
 import { DataRepository } from "../repository/dataRepository";
 import prisma from "../config/prismaClient";
 import { TRPCError } from "@trpc/server";
-import { Prisma } from "@prisma/client";
+// import { Prisma } from "@prisma/client";
 ///// TODO: adding the methods on definitions ✅
 
 
@@ -37,9 +37,9 @@ export class DataService{
                 await this.dataRepository.createData(bodyReq)
                 return
                 }catch(error){
-                  if(error instanceof Prisma.PrismaClientKnownRequestError){
-                    console.log(error.code) // Last ERROR CODE: P2003
-                  }
+                //   if(error instanceof Prisma.PrismaClientKnownRequestError){
+                //     console.log(error.code) // Last ERROR CODE: P2003
+                //   }
                   throw new TRPCError({code:'BAD_REQUEST', message:`${error}`})
                   
                 }
