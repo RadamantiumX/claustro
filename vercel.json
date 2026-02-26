@@ -9,7 +9,7 @@
     {
       "src": "loader/client/vite.config.js",
       "use": "@vercel/static-build",
-      "config": { "distDir": "loader/client/dist" }
+      "config": { "distDir": "loader/client" }
     }
   ],
   "routes": [
