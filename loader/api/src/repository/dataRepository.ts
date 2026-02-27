@@ -1,6 +1,6 @@
 import type { Datum, ApiData, ApiKey } from "../types/index";
 import { timeStampParsed } from "../helper/timeStampParser";
-import { PrismaClient } from '@prisma/client';
+import { type PrismaClient } from '@prisma/client';
 
 
 // TODO: fix returns types on: "getUnique" & "getForEmailSource" => Returns "any" to the client
