@@ -15,7 +15,11 @@
         ".env"
       ]
     },
-
+      "web#build":{
+        "dependsOn": ["^build"],
+        "env":[],
+        "outputs":["dist/**"]
+      },
     "dev": {
       "inputs": [
         "$TURBO_DEFAULT$",

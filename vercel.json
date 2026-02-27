@@ -5,7 +5,12 @@
     {
       "src": "loader/api/dist/src/index.js",
       "use": "@vercel/node"
-    }
+    },
+    {
+  "src": "loader/client/package.json",
+  "use": "@vercel/static-build",
+  "config": { "distDir": "loader/client/dist" }
+}
   ],
   "routes": [
     {
