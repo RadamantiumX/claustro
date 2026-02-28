@@ -1,5 +1,6 @@
 import { type ApiData } from "../types/index";
 import { type PrismaClient } from "@prisma/client";
+ 
 export class ApiDataRepository{
 
     constructor(private prismaClient:PrismaClient){}
