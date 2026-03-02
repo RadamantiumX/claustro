@@ -37,6 +37,8 @@ jobs:
               uses: actions/upload-pages-artifact@v4
               with:
                 path: './loader/client/dist'
+            - name: Build Client
+              run: npx turbo run build --filter=client     
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4    
