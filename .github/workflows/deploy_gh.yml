@@ -31,14 +31,18 @@ jobs:
               with:
                 node-version:  20
                 cache: 'pnpm'
+
             - name: Setup Pages
               uses: actions/configure-pages@v5
+
             - name: Upload Artifact
               uses: actions/upload-pages-artifact@v4
               with:
                 path: './loader/client/dist'
+
             - name: Build Client
-              run: npx turbo run build --filter=client     
+              run: npx turbo run build --filter=client
+
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4    
