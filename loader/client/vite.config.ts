@@ -14,7 +14,7 @@ export default defineConfig({
     include:['linked-dep']
   },
   build: {
-    outDir:"dist",
+    outDir:"./dist",
     commonjsOptions:{
       include: [/linked-dep/, /node_modules/]
     }
