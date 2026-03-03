@@ -14,6 +14,7 @@
     "dev:gen": "pnpm run gen && npx turbo run dev",
     "build": "npx turbo run build",
     "test": "npx turbo run test",
+    "lint": "npx turbo run lint",
     "test:watch": "npx turbo run test:watch",
     "ws:pkg": "node shell/index.js",
     "gen": "cd loader/api && npx prisma generate"

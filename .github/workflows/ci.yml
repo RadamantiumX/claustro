@@ -8,7 +8,7 @@ on:
         
 jobs:
     build:
-        name: Test Only
+        name: Test & Lint
         timeout-minutes: 15
         runs-on: ubuntu-latest
 
@@ -32,3 +32,6 @@ jobs:
             
             - name: Test
               run: pnpm test 
+
+            - name: Lint
+              run: pnpm lint  

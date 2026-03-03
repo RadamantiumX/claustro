@@ -15,6 +15,9 @@
         ".env"
       ]
     },
+    "lint":{
+      "dependsOn": ["^lint"]
+    },
       "web#build":{
         "dependsOn": ["^build"],
         "env":[],
