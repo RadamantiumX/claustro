@@ -10,8 +10,14 @@ export default defineConfig({
     tailwindcss(),
     
   ],
+  optimizeDeps:{
+    include:['linked-dep']
+  },
   build: {
-    outDir:"dist"
+    outDir:"dist",
+    commonjsOptions:{
+      include: [/linked-dep/, /node_modules/]
+    }
   },
   base: '/claustro/'
 })
