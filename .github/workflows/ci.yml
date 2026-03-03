@@ -29,9 +29,6 @@ jobs:
 
             - name: Install deps
               run: pnpm install
-
-           # - name: Build
-            #  run: pnpm -r run build
             
             - name: Test
               run: pnpm test 
