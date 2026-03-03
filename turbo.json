@@ -16,7 +16,12 @@
       ]
     },
     "lint":{
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "inputs": [
+        "$TURBO_DEFAULT$", 
+        ".eslintrc.js",
+         "eslint.config.mjs"
+      ]
     },
       "web#build":{
         "dependsOn": ["^build"],
