@@ -13,5 +13,5 @@ export default defineConfig({
   build: {
     outDir:"dist"
   },
-  base: '/claustro/'
+  base: '/'
 })
