@@ -1,4 +1,16 @@
 {
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "outputDirectory":"./loader/client/dist"
+    "version":2,
+    "github":{
+        "enabled": false
+    },
+    "builds":[
+        {
+            "src": "/loader/api/dist/*",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "/loader/client/dist/*",
+            "use": "@now/static"
+        }
+    ]
 }
