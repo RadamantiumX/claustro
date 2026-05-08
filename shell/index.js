@@ -4,7 +4,7 @@ import { workspaceGroupConfig } from './config/workspaces.config.js'
 import { packageManager } from './config/data.config.js'
 import { commandExe } from './process/command-exe.process.js'
 import { SIGN_NAME } from './ASCII/console.avatar.js' // ASCII Sign Dev Name: Radamantium
-
+import { exec } from 'child_process'
 
 /**
  * Executable script: "pnpm run ws-pkg"
