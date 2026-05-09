@@ -1,0 +1,12 @@
+[
+       {
+            "name": "api",
+            "value": "api",
+            "description": "//api"
+        },
+        {
+            "name": "client",
+            "value": "client",
+            "description": "//client"
+        }
+]

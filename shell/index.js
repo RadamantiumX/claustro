@@ -6,6 +6,8 @@ import { commandExe } from './process/command-exe.process.js'
 import { SIGN_NAME } from './ASCII/console.avatar.js' // ASCII Sign Dev Name: Radamantium
 import { exec } from 'child_process'
 
+import fs from 'fs'
+
 /**
  * Executable script: "pnpm run ws-pkg"
  * Install dependencies packages with short node-command into any workspace folder of choice
@@ -16,11 +18,16 @@ export async function shellInput(){
   
   console.log(colors.magenta(SIGN_NAME))
   try{
-  
+    // If the file doesn't exists
+  if(!fs.existsSync('../claustro/shell/ASCII/choices.json')){
+ // Create the file
+ // First use the confirm of inquirer prompt 
+  }
+
   // inquirer/prompts   
   const workspace = await select({ // All exists Workspace folders on the projects
     message: "Select a workspace folder 📁",
-    choices: workspaceGroupConfig
+    choices: JSON.parse(fs.readFileSync('../claustro/shell/ASCII/choices.json'))
   })
 
    const pkgManagerSelector = await select({ // 
@@ -54,7 +61,7 @@ export async function shellInput(){
   console.error(colors.bgGreen('Your are Exit from package administrator...'))
   return
 }else{
-  console.error(error)
+  console.error(`The error appear on: ${error}`)
   return
 }
 }
