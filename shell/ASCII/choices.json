@@ -1,12 +1,1 @@
-[
-       {
-            "name": "api",
-            "value": "api",
-            "description": "//api"
-        },
-        {
-            "name": "client",
-            "value": "client",
-            "description": "//client"
-        }
-]
+[{"name":"api","value":"api","description":"loader\\api"},{"name":"client","value":"client","description":"loader\\client"}]

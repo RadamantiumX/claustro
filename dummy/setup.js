@@ -1,10 +1,10 @@
-import { commandExe } from "./index.js";
+import { commandExeDummy } from "./index.js";
 //   with {type: 'json'}
 //  import { readFile } from 'fs/promises';
 import fs from 'fs';
 
 
- const customs = commandExe()
+ const customs = commandExeDummy()
 
 
  customs.on('data', (data)=>{

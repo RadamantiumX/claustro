@@ -5,7 +5,7 @@ import { packageManager } from './config/data.config.js'
 import { commandExe } from './process/command-exe.process.js'
 import { SIGN_NAME } from './ASCII/console.avatar.js' // ASCII Sign Dev Name: Radamantium
 import { exec } from 'child_process'
-
+import { commandExeDummy } from '../dummy/index.js'
 import fs from 'fs'
 
 /**
@@ -16,12 +16,31 @@ import fs from 'fs'
 export async function shellInput(){
 
   
+
   console.log(colors.magenta(SIGN_NAME))
   try{
     // If the file doesn't exists
   if(!fs.existsSync('../claustro/shell/ASCII/choices.json')){
- // Create the file
- // First use the confirm of inquirer prompt 
+      const confirmWorkspaceFileCreation = await confirm({
+        message: 'Want to share your workspace? 🤔'
+      })
+      if(!confirmWorkspaceFileCreation){
+        console.log(colors.bgMagenta('Installation cancelled...'))
+        return
+      }
+      commandExeDummy().on('data', (data)=>{
+        const choices = []
+         JSON.parse(data).map((item)=>{
+         choices.push({name: item.name, value: item.name, description: item.path})
+         })
+
+           fs.appendFileSync('../claustro/shell/ASCII/choices.json', JSON.stringify(choices), 'utf-8')
+             
+      })
+
+
+      
+
   }
 
   // inquirer/prompts   
@@ -61,7 +80,7 @@ export async function shellInput(){
   console.error(colors.bgGreen('Your are Exit from package administrator...'))
   return
 }else{
-  console.error(`The error appear on: ${error}`)
+  console.error(`The main error appear on: ${error}`)
   return
 }
 }

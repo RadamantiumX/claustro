@@ -4,7 +4,7 @@ import { exec, spawn, execFile } from 'child_process'
 import colors from 'ansi-colors'
 
 
-export function commandExe() {
+export function commandExeDummy() {
     try{
 
        let io = []
@@ -43,4 +43,3 @@ export function commandExe() {
 }
 
 
- // commandExe()
