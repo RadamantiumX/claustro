@@ -1,29 +1,45 @@
 import { commandExeDummy } from "./index.js";
+import { select } from "@inquirer/prompts";
 //   with {type: 'json'}
 //  import { readFile } from 'fs/promises';
 import fs from 'fs';
 
 
  const customs = commandExeDummy()
+ 
 
+ const turboEvent = customs.on('data', eventReady)
 
- customs.on('data', (data)=>{
-     const choices = []
-    if(fs.existsSync('./outlog.json')){
-        console.log('This file already exists')
-        console.log('Exit from log')
-        return
-    }
+async function eventReady(data){
+    const choices = []
      JSON.parse(data).map((item)=>{
          choices.push({name: item.name, value: item.name, description: item.path})
      })
-     try{
-        fs.appendFileSync('outlog.json', JSON.stringify(choices), 'utf-8')
-     }catch(error){
-        console.log(`The error appear on: ${error}`)
-     }
-     
-     
-   
- })
+    const selected = await select({
+        message: 'select on options',
+        choices: choices
+    })
+     const selecte = await select({
+        message: 'Somethinf to addiing?',
+        choices: [
+            {
+                name: 'first value',
+                value: 'first',
+                description: 'And example desc'
+            },
+             {
+                name: 'second value',
+                value: 'second',
+                description: 'And example desc'
+            },
+             {
+                name: 'third value',
+                value: 'third',
+                description: 'And example desc'
+            }
+        ]
+    }) 
+ }
+
+
 
