@@ -10,6 +10,7 @@ import fs from 'fs';
 
  const turboEvent = customs.on('data', eventReady)
 
+// Use the Callback for main function... Only works in this way 
 async function eventReady(data){
     const choices = []
      JSON.parse(data).map((item)=>{
