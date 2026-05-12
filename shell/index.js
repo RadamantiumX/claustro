@@ -13,40 +13,25 @@ import fs from 'fs'
  * Install dependencies packages with short node-command into any workspace folder of choice
  * @returns {void}
  */
-export async function shellInput(){
+const dummy = commandExeDummy()
+
+dummy.on('data',shellInput)
+
+export async function shellInput(data){
 
   
 
   console.log(colors.magenta(SIGN_NAME))
   try{
-    // If the file doesn't exists
-  if(!fs.existsSync('../claustro/shell/ASCII/choices.json')){
-      const confirmWorkspaceFileCreation = await confirm({
-        message: 'Want to share your workspace? 🤔'
-      })
-      if(!confirmWorkspaceFileCreation){
-        console.log(colors.bgMagenta('Installation cancelled...'))
-        return
-      }
-      commandExeDummy().on('data', (data)=>{
-        const choices = []
-         JSON.parse(data).map((item)=>{
-         choices.push({name: item.name, value: item.name, description: item.path})
-         })
-
-           fs.appendFileSync('../claustro/shell/ASCII/choices.json', JSON.stringify(choices), 'utf-8')
-             
-      })
-
-
-      
-
-  }
+   const wschoices = []
+     JSON.parse(data).map((item)=>{
+         wschoices.push({name: item.name, value: item.name, description: item.path})
+     })
 
   // inquirer/prompts   
   const workspace = await select({ // All exists Workspace folders on the projects
     message: "Select a workspace folder 📁",
-    choices: JSON.parse(fs.readFileSync('../claustro/shell/ASCII/choices.json'))
+    choices: wschoices
   })
 
    const pkgManagerSelector = await select({ // 
@@ -86,4 +71,4 @@ export async function shellInput(){
 }
 }
 
-shellInput()
+// shellInput()

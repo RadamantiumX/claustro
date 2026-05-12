@@ -27,7 +27,7 @@ importers:
   loader/api:
     dependencies:
       '@prisma/client':
-        specifier: ^6.9.0
+        specifier: ^6.8.2
         version: 6.9.0(prisma@6.9.0(typescript@5.8.3))(typescript@5.8.3)
       '@trpc/client':
         specifier: ^11.3.0
@@ -56,6 +56,9 @@ importers:
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
+      router:
+        specifier: ^2.2.0
+        version: 2.2.0
       zod:
         specifier: ^3.25.17
         version: 3.25.56

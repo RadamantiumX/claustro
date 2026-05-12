@@ -20,7 +20,7 @@ async function eventReady(data){
         message: 'select on options',
         choices: choices
     })
-     const selecte = await select({
+     const selectedTwo = await select({
         message: 'Somethinf to addiing?',
         choices: [
             {
@@ -40,6 +40,27 @@ async function eventReady(data){
             }
         ]
     }) 
+
+    const selectThree = await select({
+        message: 'Another more?',
+        choices: [
+            {
+                name: 'Chrome',
+                value: 'chrome',
+                description: 'Popular browser'
+            },
+             {
+                name: 'Edge',
+                value: 'microsoft_edge',
+                description: 'The explorer line'
+            },
+             {
+                name: 'Brave',
+                value: 'brave',
+                description: 'Used by developers'
+            }
+        ]
+    })
  }
 
 
