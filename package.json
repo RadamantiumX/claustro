@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "npx turbo run dev",
     "pm2:start": "pnpm --filter api pm2:start",
-    "pm2:stop":"pnpm --filter api pm2:stop",
-    "pm2:delete":"pnpm --filter api pm2:delete",
+    "pm2:stop": "pnpm --filter api pm2:stop",
+    "pm2:delete": "pnpm --filter api pm2:delete",
     "pm2:status": "pnpm --filter api pm2:status ",
     "prisma:studio": "cd loader/api && npx prisma studio",
     "dev:gen": "pnpm run gen && npx turbo run dev",
@@ -17,8 +17,9 @@
     "test": "npx turbo run test",
     "lint": "npx turbo run lint",
     "test:watch": "npx turbo run test:watch",
-    "ws:pkg": "node shell/index.js",
-    "gen": "cd loader/api && npx prisma generate"
+    "ws:pkg": "node --disable-warning=DEP0190 shell/index.js",
+    "gen": "cd loader/api && npx prisma generate",
+    "pkg": "vendor-cli"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +31,10 @@
     "readline": "^1.3.0",
     "turbo": "^2.5.3",
     "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@jsonlint/core": "^0.1.1",
+    "cross-spawn": "^7.0.6",
+    "shell-quote": "^1.10.0"
   }
 }

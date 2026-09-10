@@ -1,17 +1,18 @@
 "ts-check"
-import { exec, spawn, execFile } from 'child_process'
-
+import { exec, execFile } from 'child_process'
+import spawn from 'cross-spawn'
 import colors from 'ansi-colors'
 
 
 export function commandExeDummy() {
+  
     try{
 
        let io = []
-        const turbo = spawn(`turbo ls`, [`--output=json`, `| jq -r ".packages.items"`],
+        const turbo = spawn(`turbo ls`,[`--output=json`, `| jq -r ".packages.items"`],
             {
-                stdio: 'overlapped',
-                shell: true
+                shell:true,
+                stdio: ['pipe', 'overlapped','overlapped'],
             }
         )
       

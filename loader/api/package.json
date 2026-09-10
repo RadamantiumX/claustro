@@ -59,7 +59,7 @@
     "@vitest/coverage-v8": "^3.2.4",
     "cross-env": "^10.0.0",
     "envalid": "^8.1.0",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.14",
     "pm2": "^6.0.8",
     "prisma": "^6.8.2",
     "supertest": "^7.1.4",
