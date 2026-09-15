@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-;
+
 
 function workspacesFound(){
     const chunksArr = []
