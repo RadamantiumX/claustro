@@ -54,6 +54,6 @@ function cbTurbo(code){
      const fullBuff = Buffer.concat(io)
      const jsonString = new TextDecoder('utf-8').decode(fullBuff)
      const parsedObj = JSON.parse(jsonString)
-     console.log(parsedObj)
+     console.log(parsedObj.packages.items)
      return parsedObj
 }
